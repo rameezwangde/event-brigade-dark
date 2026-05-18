@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mic2, PartyPopper, Sparkles, UsersRound } from 'lucide-react';
+import { Check, Mic2, PartyPopper, Sparkles, UsersRound } from 'lucide-react';
 import { services } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
@@ -33,6 +33,22 @@ export default function Services() {
               </Reveal>
             );
           })}
+        </div>
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          {services.map((service, index) => (
+            <Reveal key={`${service.title}-details`} delay={index * 0.06} className="glass-card p-6 md:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-champagne">Services we provide</p>
+              <h3 className="mt-3 font-serif text-3xl text-ivory">{service.title}</h3>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {service.servicesWeProvide.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm leading-6 text-smoke">
+                    <Check className="mt-1 shrink-0 text-gold" size={16} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          ))}
         </div>
         <Reveal className="mt-12 rounded-[2rem] border border-champagne/25 bg-ivory/[0.04] p-8 text-center shadow-glow backdrop-blur md:p-12">
           <p className="font-serif text-3xl text-ivory md:text-5xl">Have an event in mind? Let&apos;s make it extraordinary.</p>

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, CalendarDays, Sparkles } from 'lucide-react';
 import { useEffect, useRef } from 'react';
-import { images, stats } from '../data.js';
+import { images, siteCopy, stats } from '../data.js';
 
 function Counter({ value, suffix }) {
   const ref = useRef(null);
@@ -39,12 +39,13 @@ export default function Hero() {
           className="max-w-5xl"
         >
           <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-champagne/30 bg-ivory/5 px-4 py-2 text-xs uppercase tracking-[0.34em] text-champagne backdrop-blur">
-            <Sparkles size={15} /> Premium Event Management
+            <Sparkles size={15} /> {siteCopy.heroKicker}
           </div>
           <h1 className="font-serif text-5xl leading-[0.95] text-ivory md:text-7xl lg:text-8xl">
             To Your Rescue, <span className="text-gradient">Event Brigade</span>
           </h1>
-          <p className="mt-7 max-w-2xl text-xl font-light tracking-wide text-ivory/80 md:text-3xl">We Design. We Plan. We Deliver.</p>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.42em] text-gold">{siteCopy.heroLine}</p>
+          <p className="mt-4 max-w-2xl text-xl font-light tracking-wide text-ivory/80 md:text-3xl">We Design. We Plan. We Deliver.</p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a href="#services" className="btn-primary">
               Explore Services <ArrowRight size={18} />

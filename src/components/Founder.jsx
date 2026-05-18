@@ -1,6 +1,6 @@
 import React from 'react';
 import { Award, Linkedin, Mail, Users } from 'lucide-react';
-import { contact, images } from '../data.js';
+import { contact, images, siteCopy } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
 
@@ -18,7 +18,7 @@ export default function Founder() {
             <div className="absolute -inset-5 rounded-[2.5rem] border border-gold/25 shadow-glow" />
             <img
               src={images.founder}
-              alt="Premium founder portrait placeholder for Kunal Garg"
+              alt="Kunal Garg, Founder and Director of Event Brigade"
               loading="lazy"
               className="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-soft"
             />
@@ -32,14 +32,7 @@ export default function Founder() {
             </div>
           </Reveal>
           <Reveal className="space-y-7">
-            <p className="text-lg leading-9 text-smoke">
-              While doing BCA, Kunal first came to know about event management as a field and it immediately stuck with him.
-              Following his passion, he completed a degree course in event management and since then there has been no looking back.
-            </p>
-            <p className="text-lg leading-9 text-smoke">
-              With 12+ years of solid experience, Kunal is well versed with the internal aspects and intricacies of the field,
-              from production to logistics, artist management to hospitality and everything that makes an event move seamlessly.
-            </p>
+            <p className="text-lg leading-9 text-smoke">{siteCopy.founder}</p>
             <div className="grid gap-4 sm:grid-cols-3">
               {[
                 ['12+', 'Years', Award],

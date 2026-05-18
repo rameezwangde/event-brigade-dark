@@ -1,6 +1,6 @@
 import React from 'react';
-import { Compass, Gem, Handshake, Target } from 'lucide-react';
-import { images } from '../data.js';
+import { Compass, Gem, Handshake, Lightbulb, Sparkles, Target, Trophy } from 'lucide-react';
+import { images, siteCopy } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
 
@@ -30,17 +30,10 @@ export default function About() {
               align="left"
               eyebrow="About Us"
               title="A brigade of event enthusiasts to rescue your biggest occasions."
-              text="Event Brigade is a team of young, creative, enthusiastic and dynamic professionals with a sparkling stream of ideas and solid experience in Events and Entertainment."
+              text="A squad of event enthusiasts and event managers to rescue you from the worry of organizing and managing an event of your life makes an Event Brigade!"
             />
             <Reveal className="mt-8 space-y-5 text-base leading-8 text-smoke md:text-lg">
-              <p>
-                We aim to be the first choice for organizations and families looking for unique and personalized events.
-                Our team conceives, designs and executes experiences that exceed expectations while making planning feel easier.
-              </p>
-              <p>
-                Operating across entertainment, media, communication and production, Event Brigade is widely recognized as a
-                holistic events solution factory. Every event receives a distinct meaning, identity and vision with true professionalism.
-              </p>
+              <p>{siteCopy.about}</p>
             </Reveal>
           </div>
         </div>
@@ -55,17 +48,28 @@ export default function About() {
           ))}
         </div>
 
-        <div className="mt-20 grid gap-8 lg:grid-cols-3">
+        <div className="mt-24 grid gap-6 lg:grid-cols-3">
           {[
-            ['Company Overview', 'We offer a comprehensive and integrated range of services, ensuring the target audience experiences the event with clarity, comfort and delight.'],
-            ['Philosophy', 'With dedication and teamwork, we can make dreams come true and achieve wonders. That belief continues to shape every brief we accept.'],
-            ['Mission', 'To give the best to our clients by putting our heart and soul into excellent quality service, responsible planning and consistent customer delight.']
-          ].map(([title, text], index) => (
-            <Reveal key={title} delay={index * 0.1} className="timeline-card">
-              <span className="timeline-dot" />
-              <p className="text-xs uppercase tracking-[0.32em] text-champagne">0{index + 1}</p>
-              <h3 className="mt-4 font-serif text-3xl text-ivory">{title}</h3>
-              <p className="mt-4 leading-7 text-smoke">{text}</p>
+            ['Company Overview', siteCopy.company, Trophy],
+            ['Our Philosophy', siteCopy.philosophy, Lightbulb],
+            ['Our Mission', siteCopy.mission, Sparkles]
+          ].map(([title, text, Icon], index) => (
+            <Reveal
+              key={title}
+              delay={index * 0.1}
+              className={`timeline-card group ${index === 1 ? 'lg:mt-10' : ''}`}
+            >
+              <div className="relative z-10 flex items-center justify-between">
+                <div className="grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow transition duration-300 group-hover:scale-105">
+                  <Icon size={25} />
+                </div>
+                <span className="rounded-full border border-champagne/25 bg-obsidian/70 px-4 py-2 text-xs font-semibold tracking-[0.22em] text-champagne">
+                  0{index + 1}
+                </span>
+              </div>
+              <h3 className="relative z-10 mt-8 font-serif text-4xl leading-tight text-ivory">{title}</h3>
+              <div className="relative z-10 mt-5 h-px w-24 bg-gradient-to-r from-gold to-transparent" />
+              <p className="relative z-10 mt-6 text-[15px] leading-8 text-smoke md:text-base">{text}</p>
             </Reveal>
           ))}
         </div>

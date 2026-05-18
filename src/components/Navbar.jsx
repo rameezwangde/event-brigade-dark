@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import eventBrigadeLogo from '../assets/event-brigade-logo.svg';
 
 const links = [
   ['Home', 'home'],
@@ -33,8 +34,8 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-champagne/20 bg-obsidian/60 px-5 py-3 shadow-soft backdrop-blur-xl">
         <a href="#home" className="group flex items-center gap-3" aria-label="Event Brigade Home">
-          <span className="grid h-11 w-11 place-items-center rounded-full border border-champagne/40 bg-gold-radial font-serif text-xl text-gold shadow-glow">
-            EB
+          <span className="grid h-14 w-16 place-items-center rounded-2xl border border-champagne/25 bg-obsidian/65 p-1.5 shadow-glow">
+            <img src={eventBrigadeLogo} alt="Event Brigade logo" className="h-full w-full object-contain" />
           </span>
           <span>
             <span className="block font-serif text-xl leading-none text-ivory">Event Brigade</span>

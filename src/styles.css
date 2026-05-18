@@ -54,16 +54,21 @@ body {
   }
 
   .timeline-card {
-    @apply relative rounded-[1.5rem] border border-champagne/20 bg-ivory/[0.04] p-7 shadow-soft;
+    @apply relative min-h-[520px] overflow-hidden rounded-[2rem] border border-champagne/20 bg-[linear-gradient(145deg,rgba(248,241,223,0.075),rgba(248,241,223,0.025))] p-8 shadow-soft transition duration-500 hover:-translate-y-2 hover:border-gold/50 hover:shadow-glow md:p-9;
   }
 
   .timeline-card::before {
     content: '';
-    @apply absolute left-7 top-0 h-full w-px bg-gradient-to-b from-gold/70 via-champagne/20 to-transparent;
+    @apply absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent;
   }
 
-  .timeline-dot {
-    @apply absolute left-[21px] top-7 h-3 w-3 rounded-full bg-gold shadow-glow;
+  .timeline-card::after {
+    content: '';
+    @apply absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gold-radial opacity-50 blur-2xl transition duration-500;
+  }
+
+  .timeline-card:hover::after {
+    @apply opacity-80;
   }
 
   .social-btn {
@@ -98,6 +103,16 @@ body {
   background-size: 120px 120px, 170px 170px;
   animation: float-particles 18s linear infinite;
   opacity: 0.32;
+}
+
+.brand-logo-frame {
+  width: min(260px, 72vw);
+  aspect-ratio: 43 / 30;
+  padding: 10px;
+  border: 1px solid rgba(244, 215, 138, 0.35);
+  border-radius: 28px;
+  background: radial-gradient(circle at 50% 15%, rgba(244, 215, 138, 0.16), rgba(7, 7, 7, 0.82) 56%);
+  box-shadow: 0 0 42px rgba(244, 215, 138, 0.26), 0 25px 80px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes float-particles {

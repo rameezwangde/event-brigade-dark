@@ -26,7 +26,13 @@ function Counter({ value, suffix }) {
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden pt-32">
-      <img src={images.hero} alt="Luxury event stage with elegant warm lights" className="absolute inset-0 h-full w-full object-cover" />
+      <img
+        src={images.hero}
+        alt="Luxury event stage with elegant warm lights"
+        className="absolute inset-0 h-full w-full object-cover"
+        fetchPriority="high"
+        decoding="async"
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-obsidian/70 via-obsidian/75 to-obsidian" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(244,215,138,0.26),transparent_32%),radial-gradient(circle_at_12%_65%,rgba(216,183,106,0.18),transparent_28%)]" />
       <div className="particles" aria-hidden="true" />

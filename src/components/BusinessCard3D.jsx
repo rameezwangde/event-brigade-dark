@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
@@ -68,10 +68,33 @@ function makeRoundedCard(width, height, radius) {
 
 export default function BusinessCard3D() {
   const mountRef = useRef(null);
+  const sectionRef = useRef(null);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsReady(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '450px 0px' }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const mount = mountRef.current;
-    if (!mount) return undefined;
+    if (!mount || !isReady) return undefined;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
     const scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0x070707, 0.045);
@@ -81,7 +104,7 @@ export default function BusinessCard3D() {
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(mount.clientWidth, mount.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 1.75));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -90,8 +113,10 @@ export default function BusinessCard3D() {
 
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
-    composer.addPass(new UnrealBloomPass(new THREE.Vector2(mount.clientWidth, mount.clientHeight), 0.26, 0.72, 0.78));
-    composer.addPass(new SMAAPass(mount.clientWidth, mount.clientHeight));
+    if (!isMobile && !reducedMotion) {
+      composer.addPass(new UnrealBloomPass(new THREE.Vector2(mount.clientWidth, mount.clientHeight), 0.2, 0.58, 0.82));
+      composer.addPass(new SMAAPass(mount.clientWidth, mount.clientHeight));
+    }
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
@@ -100,29 +125,30 @@ export default function BusinessCard3D() {
     controls.maxDistance = 8;
     controls.maxPolarAngle = Math.PI * 0.72;
     controls.minPolarAngle = Math.PI * 0.25;
-    controls.autoRotate = true;
+    controls.autoRotate = !reducedMotion;
     controls.autoRotateSpeed = 0.45;
 
     const bgCanvas = document.createElement('canvas');
-    bgCanvas.width = 1024;
-    bgCanvas.height = 1024;
+    bgCanvas.width = isMobile ? 512 : 1024;
+    bgCanvas.height = isMobile ? 512 : 1024;
     const bg = bgCanvas.getContext('2d');
-    const gradient = bg.createRadialGradient(512, 260, 40, 512, 512, 650);
+    const bgSize = bgCanvas.width;
+    const gradient = bg.createRadialGradient(bgSize / 2, bgSize * 0.25, 40, bgSize / 2, bgSize / 2, bgSize * 0.64);
     gradient.addColorStop(0, '#4d3b17');
     gradient.addColorStop(0.32, '#171412');
     gradient.addColorStop(1, '#050505');
     bg.fillStyle = gradient;
-    bg.fillRect(0, 0, 1024, 1024);
+    bg.fillRect(0, 0, bgSize, bgSize);
     bg.globalAlpha = 0.35;
-    for (let i = 0; i < 140; i += 1) {
+    for (let i = 0; i < (isMobile ? 70 : 120); i += 1) {
       bg.fillStyle = `rgba(244,215,138,${0.18 + Math.random() * 0.38})`;
       bg.beginPath();
-      bg.arc(Math.random() * 1024, Math.random() * 1024, 1 + Math.random() * 2, 0, Math.PI * 2);
+      bg.arc(Math.random() * bgSize, Math.random() * bgSize, 1 + Math.random() * 2, 0, Math.PI * 2);
       bg.fill();
     }
     const bgTexture = new THREE.CanvasTexture(bgCanvas);
     const bgMesh = new THREE.Mesh(
-      new THREE.SphereGeometry(40, 48, 48),
+      new THREE.SphereGeometry(40, isMobile ? 28 : 40, isMobile ? 28 : 40),
       new THREE.MeshBasicMaterial({ map: bgTexture, side: THREE.BackSide })
     );
     scene.add(bgMesh);
@@ -221,7 +247,7 @@ export default function BusinessCard3D() {
     scene.add(ground);
 
     const particles = new THREE.BufferGeometry();
-    const count = 90;
+    const count = isMobile ? 42 : 72;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i += 1) {
       positions[i * 3] = (Math.random() - 0.5) * 9;
@@ -237,13 +263,26 @@ export default function BusinessCard3D() {
 
     const clock = new THREE.Clock();
     let frameId = 0;
+    let visible = true;
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible && frameId === 0) animate();
+    });
+    visibilityObserver.observe(mount);
+
     const animate = () => {
+      if (!visible) {
+        frameId = 0;
+        return;
+      }
       const elapsed = clock.getElapsedTime();
       cardGroup.position.y = Math.sin(elapsed * 0.65) * 0.08;
-      cardGroup.rotation.y = Math.sin(elapsed * 0.34) * 0.08;
-      cardGroup.rotation.z = Math.cos(elapsed * 0.28) * 0.015;
-      particleMesh.rotation.y = elapsed * 0.035;
-      under.intensity = 2.4 + Math.sin(elapsed * 0.8) * 0.35;
+      if (!reducedMotion) {
+        cardGroup.rotation.y = Math.sin(elapsed * 0.34) * 0.08;
+        cardGroup.rotation.z = Math.cos(elapsed * 0.28) * 0.015;
+        particleMesh.rotation.y = elapsed * 0.035;
+        under.intensity = 2.4 + Math.sin(elapsed * 0.8) * 0.35;
+      }
       controls.update();
       composer.render();
       frameId = window.requestAnimationFrame(animate);
@@ -261,6 +300,7 @@ export default function BusinessCard3D() {
 
     return () => {
       window.cancelAnimationFrame(frameId);
+      visibilityObserver.disconnect();
       window.removeEventListener('resize', resize);
       controls.dispose();
       composer.dispose();
@@ -276,10 +316,10 @@ export default function BusinessCard3D() {
       renderer.dispose();
       mount.removeChild(renderer.domElement);
     };
-  }, []);
+  }, [isReady]);
 
   return (
-    <section id="business-card" className="section relative overflow-hidden bg-charcoal">
+    <section id="business-card" ref={sectionRef} className="section relative overflow-hidden bg-charcoal">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(244,215,138,0.16),transparent_36%),radial-gradient(circle_at_85%_60%,rgba(216,183,106,0.1),transparent_28%)]" />
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader
@@ -290,6 +330,7 @@ export default function BusinessCard3D() {
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
           <div className="relative min-h-[520px] overflow-hidden rounded-[2rem] border border-champagne/20 bg-obsidian shadow-soft">
             <div ref={mountRef} className="absolute inset-0" aria-label="Interactive 3D Event Brigade business card" />
+            {!isReady && <div className="absolute inset-0 animate-pulse bg-gold-radial opacity-30" />}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-obsidian to-transparent" />
           </div>
           <div className="space-y-4">

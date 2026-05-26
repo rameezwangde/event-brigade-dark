@@ -35,9 +35,9 @@ export default function Founder() {
             <p className="text-lg leading-9 text-smoke">{siteCopy.founder}</p>
             <div className="grid gap-4 sm:grid-cols-3">
               {[
-                ['12+', 'Years', Award],
-                ['2000+', 'Events Managed', Users],
-                ['500+', 'Clients Served', Award]
+                ['15+', 'Years', Award],
+                ['3000+', 'Events Managed', Users],
+                ['700+', 'Clients Served', Award]
               ].map(([value, label, Icon]) => (
                 <div key={label} className="glass-card p-5">
                   <Icon className="mb-4 text-gold" size={24} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
-import eventBrigadeLogo from '../assets/event-brigade-logo.svg';
+import eventBrigadeLogo from '../../eventbrigade.PNG';
 
 const links = [
   ['Home', 'home'],
@@ -16,9 +16,11 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
+      setScrolled(window.scrollY > 24);
       const current = links
         .map(([, id]) => document.getElementById(id))
         .filter(Boolean)
@@ -31,44 +33,50 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-champagne/20 bg-obsidian/60 px-5 py-3 shadow-soft backdrop-blur-xl">
-        <a href="#home" className="group flex items-center gap-3" aria-label="Event Brigade Home">
-          <span className="grid h-14 w-16 place-items-center rounded-2xl border border-champagne/25 bg-obsidian/65 p-1.5 shadow-glow">
-            <img src={eventBrigadeLogo} alt="Event Brigade logo" className="h-full w-full object-contain" />
-          </span>
-          <span>
-            <span className="block font-serif text-xl leading-none text-ivory">Event Brigade</span>
-            <span className="text-[10px] uppercase tracking-[0.28em] text-champagne">Pune</span>
-          </span>
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6">
+      <nav className="relative mx-auto flex max-w-7xl items-center justify-between gap-4">
+        <a
+          href="#home"
+          className="block h-20 w-24 transition duration-300 hover:scale-105 md:h-24 md:w-28"
+          aria-label="Event Brigade Home"
+        >
+          <img src={eventBrigadeLogo} alt="Event Brigade logo" className="h-full w-full object-contain" />
         </a>
 
-        <div className="hidden items-center gap-7 lg:flex">
+        <div
+          className={`absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border border-champagne/15 bg-obsidian/50 p-1.5 shadow-soft backdrop-blur-xl transition duration-300 lg:flex ${
+            scrolled ? 'bg-obsidian/82' : ''
+          }`}
+        >
           {links.map(([label, id]) => (
-            <a key={id} href={`#${id}`} className="relative text-sm font-medium text-ivory/80 transition hover:text-gold">
-              {label}
+            <a
+              key={id}
+              href={`#${id}`}
+              aria-current={active === id ? 'page' : undefined}
+              className={`relative rounded-full px-4 py-2.5 text-sm font-semibold transition duration-300 ${
+                active === id ? 'text-obsidian' : 'text-ivory/72 hover:bg-ivory/[0.06] hover:text-gold'
+              }`}
+            >
               {active === id && (
                 <motion.span
                   layoutId="activeNav"
-                  className="absolute -bottom-2 left-0 h-px w-full bg-gradient-to-r from-transparent via-gold to-transparent"
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-gold to-champagne shadow-glow"
+                  transition={{ type: 'spring', stiffness: 420, damping: 34 }}
                 />
               )}
+              <span className="relative z-10">{label}</span>
             </a>
           ))}
         </div>
 
-        <a
-          href="#contact"
-          className="hidden rounded-full border border-champagne/40 px-5 py-2 text-sm font-semibold text-gold transition hover:border-gold hover:bg-gold hover:text-obsidian lg:inline-flex"
-        >
-          Plan An Event
-        </a>
-
         <button
           type="button"
-          className="grid h-11 w-11 place-items-center rounded-full border border-champagne/25 text-gold lg:hidden"
+          className={`grid h-12 w-12 place-items-center rounded-full border border-champagne/25 bg-obsidian/60 text-gold shadow-soft backdrop-blur-xl transition hover:border-gold/60 lg:hidden ${
+            open ? 'bg-gold text-obsidian' : ''
+          }`}
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
+          aria-expanded={open}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -78,14 +86,17 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mx-auto mt-3 max-w-7xl rounded-3xl border border-champagne/20 bg-charcoal/95 p-4 shadow-soft backdrop-blur-xl lg:hidden"
+          className="mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.75rem] border border-champagne/20 bg-charcoal/95 p-2 shadow-soft backdrop-blur-xl lg:hidden"
         >
           {links.map(([label, id]) => (
             <a
               key={id}
               href={`#${id}`}
               onClick={() => setOpen(false)}
-              className="block rounded-2xl px-4 py-3 text-sm text-ivory/80 hover:bg-champagne/10 hover:text-gold"
+              aria-current={active === id ? 'page' : undefined}
+              className={`block rounded-2xl px-4 py-3 text-sm font-semibold transition ${
+                active === id ? 'bg-gold text-obsidian' : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
+              }`}
             >
               {label}
             </a>

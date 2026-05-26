@@ -47,7 +47,7 @@ export const siteCopy = {
   mission:
     'To give the best to our clients by putting our heart and soul in what we do. To provide excellent quality services at affordable prices, by responsibly taking the on us of event planning and management for our clients, so that they can rest assured knowing their events are in capable hands. And by delivering high quality service consistently achieving customer delight.',
   founder:
-    'While doing BCA, Kunal first came to know about event management as a field and it immediately stuck with him. So following his passion, He did a degree course in event management and since then there has been no looking back. He now has a solid experience of 12 years in the field and he is very well versed with all the internal aspects and intricacies of the field right from production to logistics, artist management to hospitality and so on and so forth. In the last 12 years, a time period that He has thoroughly enjoyed, He has worked on 2000+ events and still going on strong!'
+    'While doing BCA, Kunal first came to know about event management as a field and it immediately stuck with him. So following his passion, He did a degree course in event management and since then there has been no looking back. He now has a solid experience of 15+ years in the field and he is very well versed with all the internal aspects and intricacies of the field right from production to logistics, artist management to hospitality and so on and so forth. In the last 15+ years, a time period that He has thoroughly enjoyed, He has worked on 3000+ events and still going on strong!'
 };
 
 export const stats = [

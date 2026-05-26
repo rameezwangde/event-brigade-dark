@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck } from 'lucide-react';
 import { brandCollage } from '../data.js';
-import eventBrigadeLogo from '../assets/event-brigade-logo.svg';
+import eventBrigadeLogo from '../../eventbrigade.PNG';
 
 export default function BrandHeritage() {
   return (
@@ -41,7 +41,7 @@ export default function BrandHeritage() {
 
           <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
             <motion.div
-              className="brand-logo-frame"
+              className="brand-logo-frame px-8 py-6"
               initial={{ opacity: 0, scale: 0.86 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}

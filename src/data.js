@@ -114,27 +114,6 @@ export const services = [
       'House Warming Ceremonies',
       'Naming Ceremonies'
     ]
-  },
-  {
-    title: 'Artist Management',
-    image: images.artist,
-    text: 'From dancers to comedians and live bands to mind boggling artists, we provide them all for perfect artistic events!',
-    servicesWeProvide: [
-      'Live Bands',
-      'Singers',
-      'Illusionist / Mentalists / Magicians',
-      'Instrumental Artists',
-      'Comedians',
-      'Acrobatics Act',
-      'DJ with Musicians',
-      'Mime Act',
-      'International Symphony',
-      'Mascots',
-      'Stilt Walkers',
-      'Special Celebrities',
-      'Dance Troupes',
-      'Bartenders'
-    ]
   }
 ];
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Check, Mic2, PartyPopper, Sparkles, UsersRound } from 'lucide-react';
+import { Check, PartyPopper, Sparkles, UsersRound } from 'lucide-react';
 import { services, weddingShowcase } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
 
-const icons = [Sparkles, UsersRound, PartyPopper, Mic2];
+const icons = [Sparkles, UsersRound, PartyPopper];
 
 export default function Services() {
   return (

@@ -7,7 +7,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { SMAAPass } from 'three/addons/postprocessing/SMAAPass.js';
 import { Mail, MapPin, Phone, Sparkles } from 'lucide-react';
 import { contact } from '../data.js';
-import eventBrigadeLogo from '../assets/event-brigade-logo.svg';
+import eventBrigadeLogo from '../../eventbrigade.PNG';
 import SectionHeader from './SectionHeader.jsx';
 
 function makeTextTexture(lines, options = {}) {
@@ -193,10 +193,10 @@ export default function BusinessCard3D() {
     const logoTexture = new THREE.TextureLoader().load(eventBrigadeLogo);
     logoTexture.colorSpace = THREE.SRGBColorSpace;
     const logoPlane = new THREE.Mesh(
-      new THREE.PlaneGeometry(1.08, 0.76),
+      new THREE.PlaneGeometry(1.18, 0.96),
       new THREE.MeshBasicMaterial({ map: logoTexture, transparent: true })
     );
-    logoPlane.position.set(1.2, 0.5, 0.13);
+    logoPlane.position.set(1.18, 0.48, 0.13);
     cardGroup.add(logoPlane);
 
     const nameTexture = makeTextTexture(

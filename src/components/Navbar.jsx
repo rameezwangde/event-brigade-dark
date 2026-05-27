@@ -19,7 +19,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const isPortfolioPage = window.location.pathname.replace(/\/$/, '') === '/corporate-portfolio';
+    const path = window.location.pathname.replace(/\/$/, '');
+    const isPortfolioPage = path === '/corporate-portfolio' || path === '/wedding-portfolio';
     if (isPortfolioPage) {
       setActive('portfolio');
       return undefined;

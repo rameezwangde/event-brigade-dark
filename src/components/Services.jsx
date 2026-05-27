@@ -19,14 +19,19 @@ export default function Services() {
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {services.map((service, index) => {
             const Icon = icons[index];
-            const isCorporate = service.title === 'Corporate Events';
-            const CardTag = isCorporate ? 'a' : 'article';
+            const portfolioHref =
+              service.title === 'Corporate Events'
+                ? '/corporate-portfolio'
+                : service.title === 'Weddings'
+                  ? '/wedding-portfolio'
+                  : undefined;
+            const CardTag = portfolioHref ? 'a' : 'article';
             return (
               <Reveal key={service.title} delay={index * 0.08}>
                 <CardTag
-                  href={isCorporate ? '/corporate-portfolio' : undefined}
+                  href={portfolioHref}
                   className="group service-card"
-                  aria-label={isCorporate ? 'Open corporate event portfolio' : undefined}
+                  aria-label={portfolioHref ? `Open ${service.title.toLowerCase()} portfolio` : undefined}
                 >
                   <img src={service.image} alt={`${service.title} by Event Brigade`} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent" />
@@ -36,7 +41,7 @@ export default function Services() {
                     </div>
                     <h3 className="font-serif text-4xl text-ivory">{service.title}</h3>
                     <p className="mt-4 max-w-xl leading-7 text-ivory/75">{service.text}</p>
-                    {isCorporate && (
+                    {portfolioHref && (
                       <span className="mt-6 inline-flex text-sm font-bold uppercase tracking-[0.14em] text-gold">
                         View Portfolio
                       </span>

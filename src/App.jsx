@@ -5,6 +5,7 @@ import BrandHeritage from './components/BrandHeritage.jsx';
 import About from './components/About.jsx';
 import Services from './components/Services.jsx';
 import CorporatePortfolio from './components/CorporatePortfolio.jsx';
+import WeddingPortfolio from './components/WeddingPortfolio.jsx';
 import PortfolioAccess from './components/PortfolioAccess.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Founder from './components/Founder.jsx';
@@ -61,7 +62,9 @@ function BusinessCardSlot() {
 }
 
 export default function App() {
-  const isCorporatePortfolioPage = window.location.pathname.replace(/\/$/, '') === '/corporate-portfolio';
+  const currentPath = window.location.pathname.replace(/\/$/, '');
+  const isCorporatePortfolioPage = currentPath === '/corporate-portfolio';
+  const isWeddingPortfolioPage = currentPath === '/wedding-portfolio';
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-obsidian text-ivory">
@@ -69,6 +72,8 @@ export default function App() {
       <main>
         {isCorporatePortfolioPage ? (
           <CorporatePortfolio />
+        ) : isWeddingPortfolioPage ? (
+          <WeddingPortfolio />
         ) : (
           <>
             <Hero />

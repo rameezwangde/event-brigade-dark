@@ -2,7 +2,8 @@ import React from 'react';
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, CalendarDays } from 'lucide-react';
 import { useEffect, useRef } from 'react';
-import { images, stats } from '../data.js';
+import { stats } from '../data.js';
+import heroImage from '../../hero.png';
 
 function Counter({ value, suffix }) {
   const ref = useRef(null);
@@ -27,8 +28,8 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden pt-32">
       <img
-        src={images.hero}
-        alt="Luxury event stage with elegant warm lights"
+        src={heroImage}
+        alt="Event Brigade corporate event stage with seating and production lights"
         className="absolute inset-0 h-full w-full object-cover"
         fetchPriority="high"
         decoding="async"

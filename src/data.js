@@ -203,6 +203,7 @@ export const testimonials = [
 
 export const contact = {
   address: '202, Swami Shraddha Apartments, Opposite SBI Bank, Bavdhan, Pune - 411021',
+  mapUrl: 'https://maps.app.goo.gl/mWkgcbVrVeSiAfR29',
   phones: ['+91 8552831191', '+91 9028755979'],
   email: 'info@eventbrigade.in',
   founderEmail: 'kunal@eventbrigade.in',

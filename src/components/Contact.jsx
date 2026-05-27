@@ -21,7 +21,7 @@ export default function Contact() {
             <h3 className="font-serif text-4xl text-ivory">Contact us</h3>
             <p className="mt-3 text-smoke">We are always available to listen.</p>
             <div className="mt-8 space-y-5">
-              <a className="contact-line" href={`https://maps.google.com/?q=${encodeURIComponent(contact.address)}`}>
+              <a className="contact-line" href={contact.mapUrl} target="_blank" rel="noreferrer">
                 <MapPin className="text-gold" /> <span>{contact.address}</span>
               </a>
               <a className="contact-line" href="tel:+918552831191">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Check, Mic2, PartyPopper, Sparkles, UsersRound } from 'lucide-react';
-import { services } from '../data.js';
+import { services, weddingShowcase } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
 
@@ -34,6 +34,52 @@ export default function Services() {
             );
           })}
         </div>
+
+        <Reveal className="mt-16 overflow-hidden rounded-[2rem] border border-champagne/20 bg-obsidian shadow-soft">
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="relative min-h-[420px]">
+              <img
+                src={weddingShowcase.gallery[0]}
+                alt="Wedding planning and event production by Event Brigade"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/25 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.34em] text-champagne">{weddingShowcase.eyebrow}</p>
+                <h3 className="mt-3 font-serif text-4xl leading-tight text-ivory md:text-5xl">{weddingShowcase.title}</h3>
+              </div>
+            </div>
+
+            <div className="p-7 md:p-10">
+              <p className="text-base leading-8 text-smoke md:text-lg">{weddingShowcase.text}</p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {weddingShowcase.modules.map((module) => (
+                  <article key={module.title} className="overflow-hidden rounded-2xl border border-champagne/15 bg-ivory/[0.035]">
+                    <img src={module.image} alt={`${module.title} by Event Brigade`} loading="lazy" className="h-36 w-full object-cover" />
+                    <div className="p-5">
+                      <h4 className="font-serif text-2xl text-ivory">{module.title}</h4>
+                      <p className="mt-3 text-sm leading-6 text-smoke">{module.text}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 border-t border-champagne/15 md:grid-cols-4">
+            {weddingShowcase.gallery.map((image, galleryIndex) => (
+              <img
+                key={image}
+                src={image}
+                alt={`Wedding service visual ${galleryIndex + 1}`}
+                loading="lazy"
+                className="h-44 w-full object-cover opacity-80 transition hover:opacity-100"
+              />
+            ))}
+          </div>
+        </Reveal>
+
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {services.map((service, index) => (
             <Reveal key={`${service.title}-details`} delay={index * 0.06} className="glass-card p-6 md:p-8">

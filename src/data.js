@@ -1,7 +1,16 @@
+import weddingStage from './assets/weddings/wedding-stage.jpg';
+import weddingInvites from './assets/weddings/wedding-invites.jpg';
+import guestWelcome from './assets/weddings/guest-welcome.jpg';
+import weddingDecor from './assets/weddings/wedding-decor.jpg';
+import haldiMehendi from './assets/weddings/haldi-mehendi.jpg';
+import reception from './assets/weddings/reception.jpg';
+import specialEntry from './assets/weddings/special-entry.jpg';
+import weddingActivities from './assets/weddings/wedding-activities.jpg';
+
 export const images = {
   hero: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=2200&q=85',
   about: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1400&q=85',
-  wedding: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=85',
+  wedding: weddingStage,
   corporate: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=85',
   social: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1400&q=85',
   artist: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1400&q=85',
@@ -128,6 +137,46 @@ export const services = [
     ]
   }
 ];
+
+export const weddingShowcase = {
+  eyebrow: 'Wedding Services',
+  title: 'We do not just plan weddings. We curate experiences.',
+  text:
+    'At Event Brigade, a wedding is more than an event. It is a once-in-a-lifetime story waiting to be told beautifully. From the first idea to the final farewell, we handle every detail with precision, creativity and calm execution.',
+  modules: [
+    {
+      title: 'Invitation & RSVP',
+      text: 'Wedding logos, e-invites, special cards, guest RSVP coordination and custom wedding stationery.',
+      image: weddingInvites
+    },
+    {
+      title: 'Logistics & Hospitality',
+      text: 'Guest travel, hotel bookings, welcome desks, transport planning, luggage tagging and room hampers.',
+      image: guestWelcome
+    },
+    {
+      title: 'Decor & Themes',
+      text: 'Connected wedding themes, floral installations, mandap styling and immersive venue transformations.',
+      image: weddingDecor
+    },
+    {
+      title: 'Haldi, Mehendi & Rituals',
+      text: 'Dedicated ritual teams, function-wise requirements, material planning and festive guest experiences.',
+      image: haldiMehendi
+    },
+    {
+      title: 'Reception & Entertainment',
+      text: 'Reception design, live bands, artists, performers, celebrity acts, singers and curated stage experiences.',
+      image: reception
+    },
+    {
+      title: 'Special Entries & Activities',
+      text: 'Bride and groom entries, live calligraphy, candle-making, bangle stations, perfume bars and guest engagement zones.',
+      image: specialEntry
+    }
+  ],
+  gallery: [weddingStage, reception, specialEntry, weddingActivities]
+};
 
 export const portfolio = [
   { title: 'Weddings', category: 'Weddings', image: images.wedding },

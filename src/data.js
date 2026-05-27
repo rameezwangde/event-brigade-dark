@@ -43,9 +43,9 @@ export const siteCopy = {
   company:
     'Event Brigade is a Pune-based, full-service event management and production company specializing in the planning and execution of corporate, social, and large-format events. With a strong foundation in operational excellence and creative strategy, we deliver end-to-end event solutions that align with client objectives, brand positioning, and audience engagement goals. Our approach integrates concept development, project management, technical production, and on-ground execution to ensure seamless delivery at every stage.',
   philosophy:
-    'The core philosophy that has kept us going all these years is that with dedication and teamwork, we can make all your dreams come true and achieve wonders.',
+    'To become India’s most trusted "Experience Factory," where every event sets a new benchmark for excellence. We aim to redefine the event management landscape by fostering a culture of precision and creativity. Our goal is to grow alongside our clients, evolving from a local leader into a national standard for how modern events should be felt, seen, and remembered.',
   mission:
-    'To give the best to our clients by putting our heart and soul in what we do. To provide excellent quality services at affordable prices, by responsibly taking the on us of event planning and management for our clients, so that they can rest assured knowing their events are in capable hands. And by delivering high quality service consistently achieving customer delight.',
+    'To redefine global event standards by integrating immersive technology and creative strategy. We build the world-class platforms where brands, individuals, and ideas connect without boundaries.',
   founder:
     'While doing BCA, Kunal first came to know about event management as a field and it immediately stuck with him. So following his passion, He did a degree course in event management and since then there has been no looking back. He now has a solid experience of 15+ years in the field and he is very well versed with all the internal aspects and intricacies of the field right from production to logistics, artist management to hospitality and so on and so forth. In the last 15+ years, a time period that He has thoroughly enjoyed, He has worked on 3000+ events and still going on strong!'
 };

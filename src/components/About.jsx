@@ -63,8 +63,8 @@ export default function About() {
 
         <div className="mt-24 grid gap-6 lg:grid-cols-2">
           {[
-            ['Our Philosophy', siteCopy.philosophy, Lightbulb],
-            ['Our Mission', siteCopy.mission, Sparkles]
+            ['Vision', siteCopy.philosophy, Lightbulb],
+            ['Mission', siteCopy.mission, Sparkles]
           ].map(([title, text, Icon], index) => (
             <Reveal
               key={title}

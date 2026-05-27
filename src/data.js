@@ -51,10 +51,10 @@ export const siteCopy = {
 };
 
 export const stats = [
-  { value: 1500, suffix: '+', label: 'Projects Completed' },
-  { value: 1400, suffix: '+', label: 'Happy Customers' },
-  { value: 20, suffix: '+', label: 'Cities Covered' },
-  { value: 50000, suffix: '+', label: 'Impressed Audience' }
+  { value: 3000, suffix: '+', label: 'Projects Completed' },
+  { value: 3000, suffix: '+', label: 'Happy Customers' },
+  { value: 40, suffix: '+', label: 'Cities Covered' },
+  { value: 100000, suffix: '+', label: 'Impressed Audience' }
 ];
 
 export const services = [

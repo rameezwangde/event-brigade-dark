@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 import eventBrigadeLogo from '../../eventbrigade.PNG';
 
 const links = [
-  ['Home', 'home'],
-  ['About', 'about'],
-  ['Services', 'services'],
-  ['Portfolio', 'portfolio'],
-  ['Testimonials', 'testimonials'],
-  ['Founder', 'founder'],
-  ['Contact', 'contact']
+  { label: 'Home', id: 'home', href: '/#home' },
+  { label: 'About', id: 'about', href: '/#about' },
+  { label: 'Services', id: 'services', href: '/#services' },
+  { label: 'Portfolio', id: 'portfolio', href: '/corporate-portfolio' },
+  { label: 'Testimonials', id: 'testimonials', href: '/#testimonials' },
+  { label: 'Founder', id: 'founder', href: '/#founder' },
+  { label: 'Contact', id: 'contact', href: '/#contact' }
 ];
 
 export default function Navbar() {
@@ -19,10 +19,16 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    const isPortfolioPage = window.location.pathname.replace(/\/$/, '') === '/corporate-portfolio';
+    if (isPortfolioPage) {
+      setActive('portfolio');
+      return undefined;
+    }
+
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
       const current = links
-        .map(([, id]) => document.getElementById(id))
+        .map(({ id }) => document.getElementById(id))
         .filter(Boolean)
         .findLast((section) => section.getBoundingClientRect().top <= 120);
       if (current) setActive(current.id);
@@ -36,7 +42,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6">
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between gap-4">
         <a
-          href="#home"
+          href="/#home"
           className="block h-20 w-24 transition duration-300 hover:scale-105 md:h-24 md:w-28"
           aria-label="Event Brigade Home"
         >
@@ -48,10 +54,10 @@ export default function Navbar() {
             scrolled ? 'bg-obsidian/82' : ''
           }`}
         >
-          {links.map(([label, id]) => (
+          {links.map(({ label, id, href }) => (
             <a
               key={id}
-              href={`#${id}`}
+              href={href}
               aria-current={active === id ? 'page' : undefined}
               className={`relative rounded-full px-4 py-2.5 text-sm font-semibold transition duration-300 ${
                 active === id ? 'text-obsidian' : 'text-ivory/72 hover:bg-ivory/[0.06] hover:text-gold'
@@ -88,10 +94,10 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           className="mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.75rem] border border-champagne/20 bg-charcoal/95 p-2 shadow-soft backdrop-blur-xl lg:hidden"
         >
-          {links.map(([label, id]) => (
+          {links.map(({ label, id, href }) => (
             <a
               key={id}
-              href={`#${id}`}
+              href={href}
               onClick={() => setOpen(false)}
               aria-current={active === id ? 'page' : undefined}
               className={`block rounded-2xl px-4 py-3 text-sm font-semibold transition ${

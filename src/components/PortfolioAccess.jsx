@@ -1,0 +1,34 @@
+import React from 'react';
+import { ArrowRight, BriefcaseBusiness } from 'lucide-react';
+import Reveal from './Reveal.jsx';
+
+export default function PortfolioAccess() {
+  return (
+    <section id="portfolio" className="section bg-obsidian">
+      <div className="mx-auto max-w-7xl px-5">
+        <Reveal className="relative overflow-hidden rounded-[2rem] border border-champagne/20 bg-[linear-gradient(135deg,rgba(248,241,223,0.08),rgba(248,241,223,0.025))] p-8 shadow-soft md:p-12">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+          <div className="grid gap-8 lg:grid-cols-[0.75fr_0.25fr] lg:items-center">
+            <div>
+              <div className="mb-6 grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-obsidian/70 text-gold shadow-glow">
+                <BriefcaseBusiness size={26} />
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-[0.36em] text-champagne">Portfolio</p>
+              <h2 className="mt-4 max-w-3xl font-serif text-4xl leading-tight text-ivory md:text-6xl">
+                View the corporate event portfolio.
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-smoke md:text-lg">
+                Open the dedicated portfolio page to see all 19 corporate event pages in one place.
+              </p>
+            </div>
+            <div className="lg:justify-self-end">
+              <a href="/corporate-portfolio" className="btn-primary">
+                Open Portfolio <ArrowRight size={18} />
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}

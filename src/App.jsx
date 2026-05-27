@@ -4,7 +4,8 @@ import Hero from './components/Hero.jsx';
 import BrandHeritage from './components/BrandHeritage.jsx';
 import About from './components/About.jsx';
 import Services from './components/Services.jsx';
-import Portfolio from './components/Portfolio.jsx';
+import CorporatePortfolio from './components/CorporatePortfolio.jsx';
+import PortfolioAccess from './components/PortfolioAccess.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Founder from './components/Founder.jsx';
 import Contact from './components/Contact.jsx';
@@ -60,19 +61,27 @@ function BusinessCardSlot() {
 }
 
 export default function App() {
+  const isCorporatePortfolioPage = window.location.pathname.replace(/\/$/, '') === '/corporate-portfolio';
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-obsidian text-ivory">
       <Navbar />
       <main>
-        <Hero />
-        <BrandHeritage />
-        <About />
-        <Services />
-        <Portfolio />
-        <Testimonials />
-        <Founder />
-        <BusinessCardSlot />
-        <Contact />
+        {isCorporatePortfolioPage ? (
+          <CorporatePortfolio />
+        ) : (
+          <>
+            <Hero />
+            <BrandHeritage />
+            <About />
+            <Services />
+            <PortfolioAccess />
+            <Testimonials />
+            <Founder />
+            <BusinessCardSlot />
+            <Contact />
+          </>
+        )}
       </main>
       <Footer />
     </div>

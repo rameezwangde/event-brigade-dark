@@ -53,7 +53,7 @@ export default function Hero() {
             <a href="#services" className="btn-primary">
               Explore Services <ArrowRight size={18} />
             </a>
-            <a href="#portfolio" className="btn-secondary">View Portfolio</a>
+            <a href="/corporate-portfolio" className="btn-secondary">View Portfolio</a>
             <a href="#contact" className="btn-secondary">
               <CalendarDays size={18} /> Plan An Event
             </a>

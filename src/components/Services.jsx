@@ -19,17 +19,30 @@ export default function Services() {
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {services.map((service, index) => {
             const Icon = icons[index];
+            const isCorporate = service.title === 'Corporate Events';
+            const CardTag = isCorporate ? 'a' : 'article';
             return (
-              <Reveal key={service.title} delay={index * 0.08} className="group service-card">
-                <img src={service.image} alt={`${service.title} by Event Brigade`} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent" />
-                <div className="relative z-10 mt-auto p-7 md:p-9">
-                  <div className="mb-6 grid h-14 w-14 place-items-center rounded-full border border-gold/40 bg-obsidian/60 text-gold shadow-glow backdrop-blur">
-                    <Icon size={28} />
+              <Reveal key={service.title} delay={index * 0.08}>
+                <CardTag
+                  href={isCorporate ? '/corporate-portfolio' : undefined}
+                  className="group service-card"
+                  aria-label={isCorporate ? 'Open corporate event portfolio' : undefined}
+                >
+                  <img src={service.image} alt={`${service.title} by Event Brigade`} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent" />
+                  <div className="relative z-10 mt-auto p-7 md:p-9">
+                    <div className="mb-6 grid h-14 w-14 place-items-center rounded-full border border-gold/40 bg-obsidian/60 text-gold shadow-glow backdrop-blur">
+                      <Icon size={28} />
+                    </div>
+                    <h3 className="font-serif text-4xl text-ivory">{service.title}</h3>
+                    <p className="mt-4 max-w-xl leading-7 text-ivory/75">{service.text}</p>
+                    {isCorporate && (
+                      <span className="mt-6 inline-flex text-sm font-bold uppercase tracking-[0.14em] text-gold">
+                        View Portfolio
+                      </span>
+                    )}
                   </div>
-                  <h3 className="font-serif text-4xl text-ivory">{service.title}</h3>
-                  <p className="mt-4 max-w-xl leading-7 text-ivory/75">{service.text}</p>
-                </div>
+                </CardTag>
               </Reveal>
             );
           })}

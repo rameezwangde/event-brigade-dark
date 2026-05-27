@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, BriefcaseBusiness, Heart } from 'lucide-react';
+import { ArrowRight, BriefcaseBusiness, Heart, PartyPopper } from 'lucide-react';
 import Reveal from './Reveal.jsx';
 
 export default function PortfolioAccess() {
@@ -18,7 +18,7 @@ export default function PortfolioAccess() {
                 View our event portfolios.
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-8 text-smoke md:text-lg">
-                Open the dedicated portfolio pages for corporate productions and weddings.
+                Open the dedicated portfolio pages for corporate productions, weddings and social events.
               </p>
             </div>
             <div className="grid gap-4 lg:justify-self-end">
@@ -27,6 +27,9 @@ export default function PortfolioAccess() {
               </a>
               <a href="/wedding-portfolio" className="btn-secondary">
                 <Heart size={18} /> Weddings <ArrowRight size={18} />
+              </a>
+              <a href="/social-events-portfolio" className="btn-secondary">
+                <PartyPopper size={18} /> Social Events <ArrowRight size={18} />
               </a>
             </div>
           </div>

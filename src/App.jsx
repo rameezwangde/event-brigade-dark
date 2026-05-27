@@ -6,6 +6,7 @@ import About from './components/About.jsx';
 import Services from './components/Services.jsx';
 import CorporatePortfolio from './components/CorporatePortfolio.jsx';
 import WeddingPortfolio from './components/WeddingPortfolio.jsx';
+import SocialEventsPortfolio from './components/SocialEventsPortfolio.jsx';
 import PortfolioAccess from './components/PortfolioAccess.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Founder from './components/Founder.jsx';
@@ -65,6 +66,7 @@ export default function App() {
   const currentPath = window.location.pathname.replace(/\/$/, '');
   const isCorporatePortfolioPage = currentPath === '/corporate-portfolio';
   const isWeddingPortfolioPage = currentPath === '/wedding-portfolio';
+  const isSocialEventsPortfolioPage = currentPath === '/social-events-portfolio';
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-obsidian text-ivory">
@@ -74,6 +76,8 @@ export default function App() {
           <CorporatePortfolio />
         ) : isWeddingPortfolioPage ? (
           <WeddingPortfolio />
+        ) : isSocialEventsPortfolioPage ? (
+          <SocialEventsPortfolio />
         ) : (
           <>
             <Hero />

@@ -24,7 +24,9 @@ export default function Services() {
                 ? '/corporate-portfolio'
                 : service.title === 'Weddings'
                   ? '/wedding-portfolio'
-                  : undefined;
+                  : service.title === 'Social Events'
+                    ? '/social-events-portfolio'
+                    : undefined;
             const CardTag = portfolioHref ? 'a' : 'article';
             return (
               <Reveal key={service.title} delay={index * 0.08}>

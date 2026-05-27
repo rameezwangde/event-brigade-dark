@@ -20,7 +20,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const path = window.location.pathname.replace(/\/$/, '');
-    const isPortfolioPage = path === '/corporate-portfolio' || path === '/wedding-portfolio';
+    const isPortfolioPage =
+      path === '/corporate-portfolio' || path === '/wedding-portfolio' || path === '/social-events-portfolio';
     if (isPortfolioPage) {
       setActive('portfolio');
       return undefined;

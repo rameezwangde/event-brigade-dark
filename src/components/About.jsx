@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, Gem, Handshake, Lightbulb, Sparkles, Target, Trophy } from 'lucide-react';
+import { Compass, Gem, Handshake, Lightbulb, Sparkles, Target } from 'lucide-react';
 import { images, siteCopy } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
@@ -15,27 +15,40 @@ export default function About() {
   return (
     <section id="about" className="section bg-gradient-to-b from-obsidian via-charcoal to-obsidian">
       <div className="mx-auto max-w-7xl px-5">
-        <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal className="relative">
-            <div className="absolute -inset-6 rounded-full bg-gold-radial blur-3xl" />
+        <SectionHeader
+          eyebrow="About Us"
+          title="We do not just manage events. We engineer experiences."
+          text="A Pune-based full-service event management and production company built for seamless execution."
+        />
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <Reveal className="relative overflow-hidden rounded-[2rem] border border-champagne/20 bg-ivory/[0.035] shadow-soft">
             <img
               src={images.about}
-              alt="Elegant celebration table and chandeliers"
+              alt="Elegant event stage designed by Event Brigade"
               loading="lazy"
-              className="relative aspect-[4/5] w-full rounded-[2rem] border border-champagne/20 object-cover shadow-soft"
+              className="h-full min-h-[460px] w-full object-cover opacity-85"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-obsidian/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.36em] text-champagne">Introduction</p>
+              <h3 className="mt-3 max-w-xl font-serif text-4xl leading-tight text-ivory">
+                Every occasion begins as a blank canvas.
+              </h3>
+            </div>
           </Reveal>
-          <div>
-            <SectionHeader
-              align="left"
-              eyebrow="About Us"
-              title="A brigade of event enthusiasts to rescue your biggest occasions."
-              text="A squad of event enthusiasts and event managers to rescue you from the worry of organizing and managing an event of your life makes an Event Brigade!"
-            />
-            <Reveal className="mt-8 space-y-5 text-base leading-8 text-smoke md:text-lg">
+
+          <Reveal delay={0.08} className="relative overflow-hidden rounded-[2rem] border border-champagne/20 bg-[linear-gradient(145deg,rgba(248,241,223,0.08),rgba(248,241,223,0.025))] p-8 shadow-soft md:p-10">
+            <div className="absolute right-0 top-0 h-32 w-1 bg-gold" />
+            <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-gold to-transparent" />
+            <p className="text-xs font-semibold uppercase tracking-[0.36em] text-champagne">Company Overview</p>
+            <h3 className="mt-4 font-serif text-4xl leading-tight text-ivory md:text-5xl">From idea to on-ground execution.</h3>
+            <div className="mt-6 h-px w-28 bg-gradient-to-r from-gold to-transparent" />
+            <div className="mt-7 space-y-6 text-base leading-8 text-smoke md:text-lg">
               <p>{siteCopy.about}</p>
-            </Reveal>
-          </div>
+              <p>{siteCopy.company}</p>
+            </div>
+          </Reveal>
         </div>
 
         <div className="mt-20 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -48,9 +61,8 @@ export default function About() {
           ))}
         </div>
 
-        <div className="mt-24 grid gap-6 lg:grid-cols-3">
+        <div className="mt-24 grid gap-6 lg:grid-cols-2">
           {[
-            ['Company Overview', siteCopy.company, Trophy],
             ['Our Philosophy', siteCopy.philosophy, Lightbulb],
             ['Our Mission', siteCopy.mission, Sparkles]
           ].map(([title, text, Icon], index) => (

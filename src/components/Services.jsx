@@ -4,7 +4,95 @@ import { services, weddingShowcase } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
 
+import corporateHero from '../assets/corporate-extracted/corporate-p15-xref1070.jpg';
+import corporateAwards from '../assets/corporate-extracted/corporate-p08-xref843.jpg';
+import corporateLaunch from '../assets/corporate-extracted/corporate-p14-xref1054.jpg';
+import corporateConference from '../assets/corporate-extracted/corporate-p17-xref1109.jpg';
+import corporateFamily from '../assets/corporate-extracted/corporate-p15-xref1073.jpg';
+import corporatePartner from '../assets/corporate-extracted/corporate-p14-xref1046.jpg';
+import socialHero from '../assets/social-curated/social-birthday-hero.jpg';
+import socialBirthday from '../assets/social-curated/social-birthday-cake.jpg';
+import socialAnniversary from '../assets/social-curated/social-anniversary-hero.jpg';
+import socialBabyShower from '../assets/social-curated/social-baby-shower-decor.jpg';
+import socialCommunity from '../assets/social-curated/social-community-stage.jpg';
+import socialActivities from '../assets/social-curated/social-paint-plant.jpg';
+import socialGifts from '../assets/social-curated/social-return-gift.jpg';
+
 const icons = [Sparkles, UsersRound, PartyPopper];
+
+const serviceShowcases = [
+  {
+    eyebrow: weddingShowcase.eyebrow,
+    title: weddingShowcase.title,
+    text: weddingShowcase.text,
+    hero: weddingShowcase.gallery[0],
+    href: '/wedding-portfolio',
+    modules: weddingShowcase.modules,
+    gallery: weddingShowcase.gallery
+  },
+  {
+    eyebrow: 'Corporate Services',
+    title: 'Corporate events engineered for impact.',
+    text:
+      'From annual days and launches to conferences, partner meets and outdoor experiences, Event Brigade brings together strategy, technical production, hospitality and on-ground execution.',
+    hero: corporateHero,
+    href: '/corporate-portfolio',
+    modules: [
+      {
+        title: 'Annual Days & Awards Night',
+        text: 'Brand-aligned themes, immersive stage design, lighting, entertainment, recognition moments and curated F&B.',
+        image: corporateAwards
+      },
+      {
+        title: 'Product Launches',
+        text: 'Concept, reveal moments, registration, hospitality, LED walls, AV, lighting and special effects.',
+        image: corporateLaunch
+      },
+      {
+        title: 'Conference',
+        text: 'Stage design, seating layout, branding, check-in, speaker coordination and smooth session flow.',
+        image: corporateConference
+      },
+      {
+        title: 'Family Days & Theme Parties',
+        text: 'Vibrant themes, kids zones, games, live performances, food options and comfortable guest experiences.',
+        image: corporateFamily
+      }
+    ],
+    gallery: [corporateAwards, corporateLaunch, corporateConference, corporatePartner]
+  },
+  {
+    eyebrow: 'Social Event Services',
+    title: 'Social celebrations made personal, seamless and memorable.',
+    text:
+      'Birthdays, anniversaries, baby showers and community events are shaped with decor, activities, gifting, entertainment and a clear planning process.',
+    hero: socialHero,
+    href: '/social-events-portfolio',
+    modules: [
+      {
+        title: 'Birthdays',
+        text: 'Theme-led celebrations for kids and adults, from playful balloon installations to elegant party styling.',
+        image: socialBirthday
+      },
+      {
+        title: 'Anniversaries',
+        text: 'Romantic decor, milestone storytelling and warm guest experiences built around shared history.',
+        image: socialAnniversary
+      },
+      {
+        title: 'Baby Showers',
+        text: 'Coordinated backdrops, festive decor, creative stations, games and keepsake moments.',
+        image: socialBabyShower
+      },
+      {
+        title: 'Community Events',
+        text: 'Cultural calendars, club moments, festival formats and member engagement experiences.',
+        image: socialCommunity
+      }
+    ],
+    gallery: [socialActivities, socialGifts, socialBabyShower, socialCommunity]
+  }
+];
 
 export default function Services() {
   return (
@@ -55,50 +143,61 @@ export default function Services() {
           })}
         </div>
 
-        <Reveal className="mt-16 overflow-hidden rounded-[2rem] border border-champagne/20 bg-obsidian shadow-soft">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="relative min-h-[420px]">
-              <img
-                src={weddingShowcase.gallery[0]}
-                alt="Wedding planning and event production by Event Brigade"
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/25 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.34em] text-champagne">{weddingShowcase.eyebrow}</p>
-                <h3 className="mt-3 font-serif text-4xl leading-tight text-ivory md:text-5xl">{weddingShowcase.title}</h3>
-              </div>
-            </div>
+        <div className="mt-16 space-y-10">
+          {serviceShowcases.map((showcase, index) => (
+            <Reveal
+              key={showcase.eyebrow}
+              delay={index * 0.08}
+              className="overflow-hidden rounded-[2rem] border border-champagne/20 bg-obsidian shadow-soft"
+            >
+              <div className={`grid lg:grid-cols-[0.9fr_1.1fr] ${index % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+                <div className="relative min-h-[420px]">
+                  <img
+                    src={showcase.hero}
+                    alt={`${showcase.eyebrow} by Event Brigade`}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/25 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <p className="text-xs font-semibold uppercase tracking-[0.34em] text-champagne">{showcase.eyebrow}</p>
+                    <h3 className="mt-3 font-serif text-4xl leading-tight text-ivory md:text-5xl">{showcase.title}</h3>
+                    <a href={showcase.href} className="mt-6 inline-flex text-sm font-bold uppercase tracking-[0.14em] text-gold">
+                      View Portfolio
+                    </a>
+                  </div>
+                </div>
 
-            <div className="p-7 md:p-10">
-              <p className="text-base leading-8 text-smoke md:text-lg">{weddingShowcase.text}</p>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {weddingShowcase.modules.map((module) => (
-                  <article key={module.title} className="overflow-hidden rounded-2xl border border-champagne/15 bg-ivory/[0.035]">
-                    <img src={module.image} alt={`${module.title} by Event Brigade`} loading="lazy" className="h-36 w-full object-cover" />
-                    <div className="p-5">
-                      <h4 className="font-serif text-2xl text-ivory">{module.title}</h4>
-                      <p className="mt-3 text-sm leading-6 text-smoke">{module.text}</p>
-                    </div>
-                  </article>
+                <div className="p-7 md:p-10">
+                  <p className="text-base leading-8 text-smoke md:text-lg">{showcase.text}</p>
+                  <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                    {showcase.modules.map((module) => (
+                      <article key={module.title} className="overflow-hidden rounded-2xl border border-champagne/15 bg-ivory/[0.035]">
+                        <img src={module.image} alt={`${module.title} by Event Brigade`} loading="lazy" className="h-36 w-full object-cover" />
+                        <div className="p-5">
+                          <h4 className="font-serif text-2xl text-ivory">{module.title}</h4>
+                          <p className="mt-3 text-sm leading-6 text-smoke">{module.text}</p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 border-t border-champagne/15 md:grid-cols-4">
+                {showcase.gallery.map((image, galleryIndex) => (
+                  <img
+                    key={`${showcase.eyebrow}-${galleryIndex}`}
+                    src={image}
+                    alt={`${showcase.eyebrow} visual ${galleryIndex + 1}`}
+                    loading="lazy"
+                    className="h-44 w-full object-cover opacity-80 transition hover:opacity-100"
+                  />
                 ))}
               </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 border-t border-champagne/15 md:grid-cols-4">
-            {weddingShowcase.gallery.map((image, galleryIndex) => (
-              <img
-                key={image}
-                src={image}
-                alt={`Wedding service visual ${galleryIndex + 1}`}
-                loading="lazy"
-                className="h-44 w-full object-cover opacity-80 transition hover:opacity-100"
-              />
-            ))}
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {services.map((service, index) => (

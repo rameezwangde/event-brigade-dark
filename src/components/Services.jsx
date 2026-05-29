@@ -90,7 +90,12 @@ const serviceShowcases = [
         image: socialCommunity
       }
     ],
-    gallery: [socialActivities, socialGifts, socialBabyShower, socialCommunity]
+    gallery: [
+      { image: socialActivities, position: 'center center' },
+      { image: socialGifts, position: 'center 42%' },
+      { image: socialBabyShower, position: 'center 48%' },
+      { image: socialCommunity, position: 'center 72%' }
+    ]
   }
 ];
 
@@ -188,15 +193,21 @@ export default function Services() {
               </div>
 
               <div className="grid grid-cols-2 border-t border-champagne/15 md:grid-cols-4">
-                {showcase.gallery.map((image, galleryIndex) => (
-                  <img
-                    key={`${showcase.eyebrow}-${galleryIndex}`}
-                    src={image}
-                    alt={`${showcase.eyebrow} visual ${galleryIndex + 1}`}
-                    loading="lazy"
-                    className="h-44 w-full object-cover opacity-80 transition hover:opacity-100"
-                  />
-                ))}
+                {showcase.gallery.map((item, galleryIndex) => {
+                  const image = typeof item === 'string' ? item : item.image;
+                  const position = typeof item === 'string' ? 'center center' : item.position;
+
+                  return (
+                    <img
+                      key={`${showcase.eyebrow}-${galleryIndex}`}
+                      src={image}
+                      alt={`${showcase.eyebrow} visual ${galleryIndex + 1}`}
+                      loading="lazy"
+                      style={{ objectPosition: position }}
+                      className="h-44 w-full object-cover opacity-80 transition hover:opacity-100"
+                    />
+                  );
+                })}
               </div>
             </Reveal>
           ))}

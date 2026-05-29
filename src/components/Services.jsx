@@ -158,13 +158,16 @@ export default function Services() {
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/25 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <p className="text-xs font-semibold uppercase tracking-[0.34em] text-champagne">{showcase.eyebrow}</p>
-                    <h3 className="mt-3 font-serif text-4xl leading-tight text-ivory md:text-5xl">{showcase.title}</h3>
-                    <a href={showcase.href} className="mt-6 inline-flex text-sm font-bold uppercase tracking-[0.14em] text-gold">
+                  <div className="absolute inset-0 bg-obsidian/55 md:bg-obsidian/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/80 to-obsidian/35 md:from-obsidian/95 md:via-obsidian/35 md:to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8">
+                    <div className="rounded-[1.25rem] border border-champagne/10 bg-obsidian/78 p-5 shadow-soft backdrop-blur-sm md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0">
+                      <p className="text-xs font-semibold uppercase tracking-[0.34em] text-champagne drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">{showcase.eyebrow}</p>
+                      <h3 className="mt-3 font-serif text-4xl leading-tight text-ivory drop-shadow-[0_3px_18px_rgba(0,0,0,0.95)] md:text-5xl">{showcase.title}</h3>
+                      <a href={showcase.href} className="mt-6 inline-flex text-sm font-bold uppercase tracking-[0.14em] text-gold drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
                       View Portfolio
-                    </a>
+                      </a>
+                    </div>
                   </div>
                 </div>
 

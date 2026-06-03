@@ -55,6 +55,10 @@ body {
     @apply relative flex min-h-[480px] overflow-hidden rounded-[2rem] border border-champagne/20 bg-graphite shadow-soft transition duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-glow;
   }
 
+  .services-provided-card {
+    @apply rounded-[1.75rem] border border-gold/30 bg-[#1d1d1f] px-7 py-8 shadow-soft md:px-8 md:py-9 xl:px-7;
+  }
+
   .timeline-card {
     @apply relative min-h-[520px] overflow-hidden rounded-[2rem] border border-champagne/20 bg-[linear-gradient(145deg,rgba(248,241,223,0.075),rgba(248,241,223,0.025))] p-8 shadow-soft transition duration-500 hover:-translate-y-2 hover:border-gold/50 hover:shadow-glow md:p-9;
   }
@@ -118,12 +122,46 @@ body {
   box-shadow: 0 0 42px rgba(244, 215, 138, 0.26), 0 25px 80px rgba(0, 0, 0, 0.5);
 }
 
+.auto-scroll-gallery {
+  animation: auto-scroll-gallery 22s linear infinite;
+}
+
+.auto-scroll-gallery:hover {
+  animation-play-state: paused;
+}
+
+.testimonial-scroll {
+  animation: testimonial-scroll 48s linear infinite;
+}
+
+.testimonial-scroll:hover {
+  animation-play-state: paused;
+}
+
 @keyframes float-particles {
   from {
     transform: translate3d(0, 0, 0);
   }
   to {
     transform: translate3d(0, -120px, 0);
+  }
+}
+
+@keyframes auto-scroll-gallery {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes testimonial-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 

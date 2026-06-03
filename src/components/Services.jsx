@@ -20,6 +20,27 @@ import socialGifts from '../assets/social-curated/social-return-gift.jpg';
 
 const icons = [Sparkles, UsersRound, PartyPopper];
 
+const serviceDetailCards = services.flatMap((service) => {
+  if (service.title !== 'Corporate Events') {
+    return [service];
+  }
+
+  const splitIndex = Math.floor(service.servicesWeProvide.length / 2);
+
+  return [
+    {
+      ...service,
+      title: 'Corporate Events',
+      servicesWeProvide: service.servicesWeProvide.slice(0, splitIndex)
+    },
+    {
+      ...service,
+      title: 'Corporate Solutions',
+      servicesWeProvide: service.servicesWeProvide.slice(splitIndex)
+    }
+  ];
+});
+
 const serviceShowcases = [
   {
     eyebrow: weddingShowcase.eyebrow,
@@ -101,7 +122,7 @@ const serviceShowcases = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative overflow-hidden bg-charcoal pb-24 pt-10 md:pb-32 md:pt-14">
+    <section id="services" className="relative overflow-hidden bg-charcoal pb-8 pt-10 md:pb-10 md:pt-14">
       <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top,rgba(216,183,106,0.16),transparent_58%)]" />
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader
@@ -130,7 +151,7 @@ export default function Services() {
                 >
                   <img src={service.image} alt={`${service.title} by Event Brigade`} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent" />
-                  <div className="relative z-10 mt-auto p-7 md:p-9">
+                  <div className="relative z-10 mt-auto grid w-full grid-rows-[auto_auto_minmax(4.25rem,auto)_auto] p-7 md:p-9">
                     <div className="mb-6 grid h-14 w-14 place-items-center rounded-full border border-gold/40 bg-obsidian/60 text-gold shadow-glow backdrop-blur">
                       <Icon size={28} />
                     </div>
@@ -179,49 +200,51 @@ export default function Services() {
                 <div className="p-7 md:p-10">
                   <p className="text-base leading-8 text-smoke md:text-lg">{showcase.text}</p>
                   <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                    {showcase.modules.map((module) => (
-                      <article key={module.title} className="overflow-hidden rounded-2xl border border-champagne/15 bg-ivory/[0.035]">
-                        <img src={module.image} alt={`${module.title} by Event Brigade`} loading="lazy" className="h-36 w-full object-cover" />
-                        <div className="p-5">
-                          <h4 className="font-serif text-2xl text-ivory">{module.title}</h4>
-                          <p className="mt-3 text-sm leading-6 text-smoke">{module.text}</p>
-                        </div>
+                    {showcase.modules.map((module, moduleIndex) => (
+                      <article key={module.title} className="rounded-2xl border border-champagne/15 bg-ivory/[0.035] p-5">
+                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-champagne">
+                          {String(moduleIndex + 1).padStart(2, '0')}
+                        </p>
+                        <h4 className="mt-3 font-serif text-2xl leading-tight text-ivory">{module.title}</h4>
+                        <p className="mt-3 text-sm leading-6 text-smoke">{module.text}</p>
                       </article>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 border-t border-champagne/15 md:grid-cols-4">
-                {showcase.gallery.map((item, galleryIndex) => {
+              <div className="overflow-hidden border-t border-champagne/15">
+                <div className="auto-scroll-gallery flex w-max gap-0">
+                {[...showcase.gallery, ...showcase.gallery].map((item, galleryIndex) => {
                   const image = typeof item === 'string' ? item : item.image;
                   const position = typeof item === 'string' ? 'center center' : item.position;
 
                   return (
                     <img
-                      key={`${showcase.eyebrow}-${galleryIndex}`}
+                      key={`${showcase.eyebrow}-${galleryIndex}-${image}`}
                       src={image}
                       alt={`${showcase.eyebrow} visual ${galleryIndex + 1}`}
                       loading="lazy"
                       style={{ objectPosition: position }}
-                      className="h-44 w-full object-cover opacity-80 transition hover:opacity-100"
+                      className="h-44 w-[72vw] shrink-0 object-cover opacity-80 transition hover:opacity-100 sm:w-[44vw] lg:w-96"
                     />
                   );
                 })}
+                </div>
               </div>
             </Reveal>
           ))}
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {services.map((service, index) => (
-            <Reveal key={`${service.title}-details`} delay={index * 0.06} className="glass-card p-6 md:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-champagne">Services we provide</p>
-              <h3 className="mt-3 font-serif text-3xl text-ivory">{service.title}</h3>
-              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+        <div className="mt-12 grid items-stretch gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {serviceDetailCards.map((service, index) => (
+            <Reveal key={`${service.title}-details`} delay={index * 0.06} className="services-provided-card h-full">
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-champagne md:text-sm">Services we provide</p>
+              <h3 className="mt-5 min-h-[5.25rem] font-serif text-4xl font-semibold leading-none text-ivory md:text-[2.45rem] xl:text-[2.35rem]">{service.title}</h3>
+              <ul className="mt-6 grid gap-4">
                 {service.servicesWeProvide.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm leading-6 text-smoke">
-                    <Check className="mt-1 shrink-0 text-gold" size={16} />
+                  <li key={item} className="grid grid-cols-[1rem_1fr] items-start gap-4 text-base font-semibold leading-7 text-smoke md:text-[1.03rem] xl:text-base">
+                    <Check className="mt-1.5 text-gold" size={16} strokeWidth={2.25} />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -229,8 +252,11 @@ export default function Services() {
             </Reveal>
           ))}
         </div>
-        <Reveal className="mt-12 rounded-[2rem] border border-champagne/25 bg-ivory/[0.04] p-8 text-center shadow-glow backdrop-blur md:p-12">
-          <p className="font-serif text-3xl text-ivory md:text-5xl">Have an event in mind? Let&apos;s make it extraordinary.</p>
+        <Reveal className="mt-10 px-4 py-4 text-center md:py-6">
+          <p className="mx-auto max-w-4xl font-serif text-3xl leading-tight text-ivory md:text-5xl">
+            Have an event in mind?
+            <span className="mt-2 block">Let&apos;s make it ordinary.</span>
+          </p>
           <a href="#contact" className="btn-primary mt-8 inline-flex">Plan An Event</a>
         </Reveal>
       </div>

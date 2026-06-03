@@ -4,7 +4,7 @@ import Reveal from './Reveal.jsx';
 
 export default function PortfolioAccess() {
   return (
-    <section id="portfolio" className="section bg-obsidian">
+    <section id="portfolio" className="relative bg-obsidian pb-8 pt-8 md:pb-10 md:pt-10">
       <div className="mx-auto max-w-7xl px-5">
         <Reveal className="relative overflow-hidden rounded-[2rem] border border-champagne/20 bg-[linear-gradient(135deg,rgba(248,241,223,0.08),rgba(248,241,223,0.025))] p-8 shadow-soft md:p-12">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
@@ -22,11 +22,11 @@ export default function PortfolioAccess() {
               </p>
             </div>
             <div className="grid gap-4 lg:justify-self-end">
-              <a href="/corporate-portfolio" className="btn-primary">
-                <BriefcaseBusiness size={18} /> Corporate <ArrowRight size={18} />
-              </a>
-              <a href="/wedding-portfolio" className="btn-secondary">
+              <a href="/wedding-portfolio" className="btn-primary">
                 <Heart size={18} /> Weddings <ArrowRight size={18} />
+              </a>
+              <a href="/corporate-portfolio" className="btn-secondary">
+                <BriefcaseBusiness size={18} /> Corporate <ArrowRight size={18} />
               </a>
               <a href="/social-events-portfolio" className="btn-secondary">
                 <PartyPopper size={18} /> Social Events <ArrowRight size={18} />

@@ -13,7 +13,7 @@ const cards = [
 
 export default function About() {
   return (
-    <section id="about" className="section bg-gradient-to-b from-obsidian via-charcoal to-obsidian">
+    <section id="about" className="relative bg-gradient-to-b from-obsidian via-charcoal to-obsidian pb-24 pt-10 md:pb-32 md:pt-14">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeader
           eyebrow="About Us"

@@ -148,7 +148,7 @@ export default function Services() {
           })}
         </div>
 
-        <div className="mt-16 space-y-10">
+        <div className="mt-8 space-y-10 md:mt-10">
           {serviceShowcases.map((showcase, index) => (
             <Reveal
               key={showcase.eyebrow}

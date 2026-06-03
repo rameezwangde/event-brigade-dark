@@ -26,7 +26,7 @@ function Counter({ value, suffix }) {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden pt-32">
+    <section id="home" className="relative overflow-hidden pb-8 pt-32 md:pb-10">
       <img
         src={heroImage}
         alt="Event Brigade corporate event stage with seating and production lights"
@@ -38,18 +38,18 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(244,215,138,0.26),transparent_32%),radial-gradient(circle_at_12%_65%,rgba(216,183,106,0.18),transparent_28%)]" />
       <div className="particles" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl flex-col justify-center px-5 pb-16">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center px-5">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
-          className="max-w-5xl"
+          className="mx-auto max-w-5xl text-center"
         >
           <h1 className="font-serif text-5xl leading-[0.95] text-ivory md:text-7xl lg:text-8xl">
             <span className="text-gradient">Event Brigade</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-xl font-light tracking-wide text-ivory/80 md:text-3xl">We Design. We Plan. We Deliver.</p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <p className="mx-auto mt-6 max-w-2xl text-xl font-light tracking-wide text-ivory/80 md:text-3xl">We Design. We Plan. We Deliver.</p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a href="#services" className="btn-primary">
               Explore Services <ArrowRight size={18} />
             </a>

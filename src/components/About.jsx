@@ -13,7 +13,7 @@ const cards = [
 
 export default function About() {
   return (
-    <section id="about" className="relative bg-gradient-to-b from-obsidian via-charcoal to-obsidian pb-24 pt-10 md:pb-32 md:pt-14">
+    <section id="about" className="relative bg-gradient-to-b from-obsidian via-charcoal to-obsidian pb-10 pt-10 md:pb-14 md:pt-14">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeader
           eyebrow="About Us"
@@ -61,7 +61,7 @@ export default function About() {
           ))}
         </div>
 
-        <div className="mt-24 grid gap-6 lg:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:mt-14 lg:grid-cols-2">
           {[
             ['Vision', siteCopy.philosophy, Lightbulb],
             ['Mission', siteCopy.mission, Sparkles]
@@ -69,19 +69,19 @@ export default function About() {
             <Reveal
               key={title}
               delay={index * 0.1}
-              className={`timeline-card group ${index === 1 ? 'lg:mt-10' : ''}`}
+              className="timeline-card group flex min-h-0 flex-col justify-center"
             >
-              <div className="relative z-10 flex items-center justify-between">
-                <div className="grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow transition duration-300 group-hover:scale-105">
-                  <Icon size={25} />
-                </div>
-                <span className="rounded-full border border-champagne/25 bg-obsidian/70 px-4 py-2 text-xs font-semibold tracking-[0.22em] text-champagne">
-                  0{index + 1}
-                </span>
+              <div className="absolute left-8 top-8 z-10 grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow transition duration-300 group-hover:scale-105 md:left-9 md:top-9">
+                <Icon size={25} />
               </div>
-              <h3 className="relative z-10 mt-8 font-serif text-4xl leading-tight text-ivory">{title}</h3>
-              <div className="relative z-10 mt-5 h-px w-24 bg-gradient-to-r from-gold to-transparent" />
-              <p className="relative z-10 mt-6 text-[15px] leading-8 text-smoke md:text-base">{text}</p>
+              <span className="absolute right-8 top-8 z-10 rounded-full border border-champagne/25 bg-obsidian/70 px-4 py-2 text-xs font-semibold tracking-[0.22em] text-champagne md:right-9 md:top-9">
+                0{index + 1}
+              </span>
+              <div className="relative z-10 pt-20">
+                <h3 className="font-serif text-4xl leading-tight text-ivory">{title}</h3>
+                <div className="mt-5 h-px w-24 bg-gradient-to-r from-gold to-transparent" />
+                <p className="mt-6 text-[15px] leading-8 text-smoke md:text-base">{text}</p>
+              </div>
             </Reveal>
           ))}
         </div>

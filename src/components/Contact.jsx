@@ -8,19 +8,22 @@ export default function Contact() {
   const whatsapp = `https://wa.me/918552831191?text=${encodeURIComponent('Hello Event Brigade, I would like to plan an event.')}`;
 
   return (
-    <section id="contact" className="section relative overflow-hidden bg-obsidian">
+    <section id="contact" className="relative overflow-hidden bg-obsidian pb-24 pt-10 md:pb-32 md:pt-12">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(244,215,138,0.16),transparent_36%)]" />
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader
           eyebrow="Plan An Event"
+          eyebrowClassName="text-2xl md:text-3xl"
           title="Let us design your next extraordinary gathering."
           text="Share your brief and the Event Brigade team will help you shape the event with clarity, creativity and confident execution."
         />
-        <div className="mt-14 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal className="rounded-[2rem] border border-champagne/20 bg-charcoal/70 p-8 shadow-soft md:p-10">
-            <h3 className="font-serif text-4xl text-ivory">Contact us</h3>
-            <p className="mt-3 text-smoke">We are always available to listen.</p>
-            <div className="mt-8 space-y-5">
+        <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-2">
+          <Reveal className="flex h-full flex-col rounded-[2rem] border border-champagne/20 bg-charcoal/70 p-8 shadow-soft md:p-10">
+            <div>
+              <h3 className="font-serif text-4xl text-ivory">Contact us</h3>
+              <p className="mt-3 text-smoke">We are always available to listen.</p>
+            </div>
+            <div className="mt-8 grid gap-4">
               <a className="contact-line" href={contact.mapUrl} target="_blank" rel="noreferrer">
                 <MapPin className="text-gold" /> <span>{contact.address}</span>
               </a>
@@ -34,13 +37,13 @@ export default function Contact() {
                 <Sparkles className="text-gold" /> <span>{contact.website}</span>
               </a>
             </div>
-            <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary mt-9 inline-flex">
+            <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary mt-7 w-full justify-center">
               <MessageCircle size={18} /> WhatsApp Quick Contact
             </a>
           </Reveal>
 
-          <Reveal className="glass-card p-6 md:p-10" delay={0.08}>
-            <form className="space-y-5" onSubmit={(event) => event.preventDefault()}>
+          <Reveal className="glass-card h-full p-8 md:p-10" delay={0.08}>
+            <form className="flex h-full flex-col gap-5" onSubmit={(event) => event.preventDefault()}>
               <div className="grid gap-5 md:grid-cols-2">
                 <label className="field">
                   <span>Name*</span>
@@ -59,7 +62,7 @@ export default function Contact() {
                 <span>Message*</span>
                 <textarea name="message" rows="6" placeholder="Tell us about your event..." required />
               </label>
-              <button type="submit" className="btn-primary w-full justify-center">
+              <button type="submit" className="btn-primary mt-auto w-full justify-center">
                 Send Inquiry <Send size={18} />
               </button>
             </form>

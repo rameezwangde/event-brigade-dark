@@ -5,7 +5,7 @@ import SectionHeader from './SectionHeader.jsx';
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="relative overflow-hidden bg-gradient-to-b from-charcoal via-obsidian to-charcoal py-16 md:py-20">
+    <section id="testimonials" className="relative overflow-hidden bg-gradient-to-b from-charcoal via-obsidian to-charcoal pb-8 pt-16 md:pb-10 md:pt-20">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(216,183,106,0.16),transparent_28%),radial-gradient(circle_at_84%_68%,rgba(244,215,138,0.12),transparent_30%)]" />
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader

@@ -319,7 +319,7 @@ export default function BusinessCard3D() {
   }, [isReady]);
 
   return (
-    <section id="business-card" ref={sectionRef} className="section relative overflow-hidden bg-charcoal">
+    <section id="business-card" ref={sectionRef} className="relative overflow-hidden bg-charcoal pb-8 pt-16 md:pb-10 md:pt-20">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(244,215,138,0.16),transparent_36%),radial-gradient(circle_at_85%_60%,rgba(216,183,106,0.1),transparent_28%)]" />
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader
@@ -333,18 +333,18 @@ export default function BusinessCard3D() {
             {!isReady && <div className="absolute inset-0 animate-pulse bg-gold-radial opacity-30" />}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-obsidian to-transparent" />
           </div>
-          <div className="space-y-4">
+          <div className="grid w-full max-w-[400px] gap-4 lg:justify-self-end">
             {[
               [Mail, contact.email],
               [Phone, contact.phones.join(' / ')],
               [MapPin, 'Bavdhan, Pune'],
               [Sparkles, 'Drag to rotate. Scroll to zoom.']
             ].map(([Icon, text]) => (
-              <div key={text} className="glass-card flex items-center gap-4 p-5">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-gold/30 bg-gold-radial text-gold">
-                  <Icon size={22} />
+              <div key={text} className="glass-card grid min-h-[88px] grid-cols-[52px_1fr] items-center gap-4 px-5 py-4">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl border border-gold/30 bg-gold-radial text-gold">
+                  <Icon size={21} />
                 </span>
-                <span className="leading-7 text-smoke">{text}</span>
+                <span className="text-base font-medium leading-6 text-smoke">{text}</span>
               </div>
             ))}
           </div>

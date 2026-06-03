@@ -57,19 +57,19 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xl font-black uppercase tracking-[0.14em]">Navigation</h3>
+            <h3 className="text-xl font-black uppercase tracking-[0.08em]">Navigation</h3>
             <div className="mt-8 grid grid-cols-2 gap-x-10 gap-y-4">
               {quickLinks.map(([label, id]) => (
-                <a key={label} href={`#${id}`} className="block text-sm font-semibold uppercase tracking-[0.18em] text-black/75 transition hover:text-black">
+                <a key={label} href={`#${id}`} className="block text-sm font-semibold uppercase tracking-[0.08em] text-black/75 transition hover:text-black">
                   {label}
                 </a>
               ))}
             </div>
 
-            <h3 className="mt-12 text-xl font-black uppercase tracking-[0.14em]">Services</h3>
+            <h3 className="mt-12 text-xl font-black uppercase tracking-[0.08em]">Services</h3>
             <div className="mt-8 space-y-4">
               {serviceLinks.map((service) => (
-                <a key={service} href="#services" className="block text-sm font-semibold uppercase tracking-[0.18em] text-black/75 transition hover:text-black">
+                <a key={service} href="#services" className="block text-sm font-semibold uppercase tracking-[0.08em] text-black/75 transition hover:text-black">
                   {service}
                 </a>
               ))}
@@ -77,8 +77,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xl font-black uppercase tracking-[0.14em]">Contact</h3>
-            <div className="mt-8 space-y-6 text-sm font-semibold uppercase leading-7 tracking-[0.12em] text-black/80">
+            <h3 className="text-xl font-black uppercase tracking-[0.08em]">Contact</h3>
+            <div className="mt-8 space-y-6 text-sm font-semibold uppercase leading-7 tracking-[0.06em] text-black/80">
               <a
                 href={contact.mapUrl}
                 target="_blank"
@@ -105,7 +105,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 border-t border-black/20 pt-8">
-          <div className="flex flex-col gap-5 text-sm font-semibold uppercase tracking-[0.12em] text-black md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-5 text-sm font-semibold uppercase tracking-[0.06em] text-black md:flex-row md:items-center md:justify-between">
             <p className="flex items-center gap-4">
               <Zap size={20} /> © {year} Event Brigade. All rights reserved.
             </p>

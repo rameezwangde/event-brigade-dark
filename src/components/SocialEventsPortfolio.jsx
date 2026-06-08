@@ -41,8 +41,8 @@ import retroMetro from '../assets/social-curated/social-retro-metro.jpg';
 import communityStage from '../assets/social-curated/social-community-stage.jpg';
 
 const portfolioLinks = [
-  { label: 'Corporate', href: '/corporate-portfolio' },
   { label: 'Weddings', href: '/wedding-portfolio' },
+  { label: 'Corporate', href: '/corporate-portfolio' },
   { label: 'Social Events', href: '/social-events-portfolio' }
 ];
 

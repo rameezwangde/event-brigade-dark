@@ -4,8 +4,8 @@ import { ArrowLeft, ArrowRight, Grid2X2, Maximize2, Sparkles, X } from 'lucide-r
 import Reveal from './Reveal.jsx';
 
 const portfolioLinks = [
-  { label: 'Corporate', href: '/corporate-portfolio' },
   { label: 'Weddings', href: '/wedding-portfolio' },
+  { label: 'Corporate', href: '/corporate-portfolio' },
   { label: 'Social Events', href: '/social-events-portfolio' }
 ];
 

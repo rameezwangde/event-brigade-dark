@@ -34,8 +34,8 @@ import mandapVisual from '../assets/weddings/pdf-page21-xref1238.jpg';
 import brideGroomVisual from '../assets/weddings/pdf-page30-xref363.jpg';
 
 const portfolioLinks = [
-  { label: 'Corporate', href: '/corporate-portfolio' },
   { label: 'Weddings', href: '/wedding-portfolio' },
+  { label: 'Corporate', href: '/corporate-portfolio' },
   { label: 'Social Events', href: '/social-events-portfolio' }
 ];
 

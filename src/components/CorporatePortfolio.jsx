@@ -32,8 +32,8 @@ import reviewOne from '../assets/corporate-extracted/corporate-p18-xref1127.jpg'
 import reviewTwo from '../assets/corporate-extracted/corporate-p18-xref1184.jpg';
 
 const portfolioLinks = [
-  { label: 'Corporate', href: '/corporate-portfolio' },
   { label: 'Weddings', href: '/wedding-portfolio' },
+  { label: 'Corporate', href: '/corporate-portfolio' },
   { label: 'Social Events', href: '/social-events-portfolio' }
 ];
 

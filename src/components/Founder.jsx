@@ -29,7 +29,7 @@ export default function Founder() {
             <div className="grid gap-4 sm:grid-cols-3">
               {[
                 ['15+', 'Years', Award],
-                ['3000+', 'Events Managed', Users],
+                ['2000+', 'Events Managed', Users],
                 ['700+', 'Clients Served', Award]
               ].map(([value, label, Icon]) => (
                 <div key={label} className="glass-card p-5">

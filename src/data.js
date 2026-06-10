@@ -57,12 +57,11 @@ export const siteCopy = {
   mission:
     'To redefine global event standards by integrating immersive technology and creative strategy. We build the world-class platforms where brands, individuals, and ideas connect without boundaries.',
   founder:
-    'While doing BCA, Kunal first came to know about event management as a field and it immediately stuck with him. So following his passion, He did a degree course in event management and since then there has been no looking back. He now has a solid experience of 15+ years in the field and he is very well versed with all the internal aspects and intricacies of the field right from production to logistics, artist management to hospitality and so on and so forth. In the last 15+ years, a time period that He has thoroughly enjoyed, He has worked on 3000+ events and still going on strong!'
+    'While doing BCA, Kunal first came to know about event management as a field and it immediately stuck with him. So following his passion, He did a degree course in event management and since then there has been no looking back. He now has a solid experience of 15+ years in the field and he is very well versed with all the internal aspects and intricacies of the field right from production to logistics, artist management to hospitality and so on and so forth. In the last 15+ years, a time period that He has thoroughly enjoyed, He has worked on 2000+ events and still going on strong!'
 };
 
 export const stats = [
-  { value: 3000, suffix: '+', label: 'Projects Completed' },
-  { value: 3000, suffix: '+', label: 'Happy Customers' },
+  { value: 2000, suffix: '+', label: 'Projects Completed' },
   { value: 40, suffix: '+', label: 'Cities Covered' },
   { value: 100000, suffix: '+', label: 'Impressed Audience' }
 ];

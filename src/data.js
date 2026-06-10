@@ -6,6 +6,7 @@ import haldiMehendi from './assets/weddings/haldi-mehendi.jpg';
 import reception from './assets/weddings/reception.jpg';
 import specialEntry from './assets/weddings/special-entry.jpg';
 import weddingActivities from './assets/weddings/wedding-activities.jpg';
+import founderImage from '../founder.jpeg';
 
 export const images = {
   hero: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=2200&q=85',
@@ -14,7 +15,7 @@ export const images = {
   corporate: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=85',
   social: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1400&q=85',
   artist: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1400&q=85',
-  founder: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhtU7mmijOriy5hIfHEOTdlYk7qwPIhovRQaPHHeI7IJrxGK-eYZG4XL5261os8SppAIrewy_y6D2XBL0KfuD1Hubcm5u3lOgJrhTsqA-KP5hgOMEOB2qlRG0T8YK2ZNUhrKT3asf0bRI/s1600/kg.jpg'
+  founder: founderImage
 };
 
 export const brandCollage = [

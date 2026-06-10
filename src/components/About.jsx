@@ -44,7 +44,7 @@ export default function About() {
             <p className="text-base font-semibold uppercase tracking-[0.28em] text-champagne md:text-lg">Company Overview</p>
             <h3 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-ivory md:text-5xl">From idea to on-ground execution.</h3>
             <div className="mt-6 h-px w-28 bg-gradient-to-r from-gold to-transparent" />
-            <div className="mt-7 max-w-xl space-y-5 text-base leading-8 text-smoke md:text-lg md:leading-8">
+            <div className="mt-7 max-w-xl space-y-5 text-base leading-8 text-smoke md:text-lg md:leading-8 text-justify">
               <p>{siteCopy.about}</p>
               <p>{siteCopy.company}</p>
             </div>

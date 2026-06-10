@@ -121,7 +121,7 @@ const serviceShowcases = [
 export default function Services() {
   return (
     <section id="services" className="relative overflow-hidden bg-charcoal pb-8 pt-10 md:pb-10 md:pt-14">
-      <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top,rgba(216,183,106,0.16),transparent_58%)]" />
+      <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_58%)]" />
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader
           eyebrow="Our Services"

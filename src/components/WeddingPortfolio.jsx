@@ -122,7 +122,7 @@ const activityIdeas = [
 export default function WeddingPortfolio() {
   return (
     <section id="portfolio" className="relative min-h-screen overflow-hidden bg-obsidian pb-20 pt-32 md:pt-36">
-      <div className="absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_50%_0%,rgba(244,215,138,0.18),transparent_62%)]" />
+      <div className="absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_62%)]" />
       <div className="particles opacity-20" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-5">

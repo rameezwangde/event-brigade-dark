@@ -9,7 +9,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative overflow-hidden bg-obsidian pb-24 pt-10 md:pb-32 md:pt-12">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(244,215,138,0.16),transparent_36%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.16),transparent_36%)]" />
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader
           eyebrow="Plan An Event"

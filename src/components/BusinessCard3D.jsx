@@ -15,8 +15,8 @@ function makeTextTexture(lines, options = {}) {
     width = 1024,
     height = 512,
     align = 'left',
-    color = '#f8f1df',
-    accent = '#f4d78a',
+    color = '#FFFFFF',
+    accent = '#F4D06F',
     titleSize = 72,
     bodySize = 34
   } = options;
@@ -141,7 +141,7 @@ export default function BusinessCard3D() {
     bg.fillRect(0, 0, bgSize, bgSize);
     bg.globalAlpha = 0.35;
     for (let i = 0; i < (isMobile ? 70 : 120); i += 1) {
-      bg.fillStyle = `rgba(244,215,138,${0.18 + Math.random() * 0.38})`;
+      bg.fillStyle = `rgba(212,175,55,${0.18 + Math.random() * 0.38})`;
       bg.beginPath();
       bg.arc(Math.random() * bgSize, Math.random() * bgSize, 1 + Math.random() * 2, 0, Math.PI * 2);
       bg.fill();
@@ -159,10 +159,10 @@ export default function BusinessCard3D() {
     key.position.set(3.5, 4.8, 3.2);
     key.castShadow = true;
     scene.add(key);
-    const rim = new THREE.DirectionalLight(0xf4d78a, 4.4);
+    const rim = new THREE.DirectionalLight(0xf4d06f, 4.4);
     rim.position.set(-4, 2.4, -3);
     scene.add(rim);
-    const under = new THREE.PointLight(0xd8b76a, 2.4, 12);
+    const under = new THREE.PointLight(0xd4af37, 2.4, 12);
     under.position.set(0, -1.8, 2.5);
     scene.add(under);
 
@@ -183,7 +183,7 @@ export default function BusinessCard3D() {
 
     const border = new THREE.Mesh(
       new THREE.TorusGeometry(1, 0.006, 8, 160),
-      new THREE.MeshBasicMaterial({ color: 0xf4d78a })
+      new THREE.MeshBasicMaterial({ color: 0xf4d06f })
     );
     border.scale.set(2.14, 1.19, 1);
     border.position.z = 0.09;
@@ -232,7 +232,7 @@ export default function BusinessCard3D() {
 
     const accent = new THREE.Mesh(
       new THREE.BoxGeometry(2.2, 0.018, 0.02),
-      new THREE.MeshStandardMaterial({ color: 0xf4d78a, emissive: 0x3b2500, emissiveIntensity: 0.32 })
+      new THREE.MeshStandardMaterial({ color: 0xf4d06f, emissive: 0x3b2500, emissiveIntensity: 0.32 })
     );
     accent.position.set(-0.44, -0.04, 0.14);
     cardGroup.add(accent);
@@ -257,7 +257,7 @@ export default function BusinessCard3D() {
     particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     const particleMesh = new THREE.Points(
       particles,
-      new THREE.PointsMaterial({ color: 0xf4d78a, size: 0.018, transparent: true, opacity: 0.45 })
+      new THREE.PointsMaterial({ color: 0xf4d06f, size: 0.018, transparent: true, opacity: 0.45 })
     );
     scene.add(particleMesh);
 
@@ -320,7 +320,7 @@ export default function BusinessCard3D() {
 
   return (
     <section id="business-card" ref={sectionRef} className="relative overflow-hidden bg-charcoal pb-8 pt-16 md:pb-10 md:pt-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(244,215,138,0.16),transparent_36%),radial-gradient(circle_at_85%_60%,rgba(216,183,106,0.1),transparent_28%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(212,175,55,0.16),transparent_36%),radial-gradient(circle_at_85%_60%,rgba(244,208,111,0.1),transparent_28%)]" />
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader
           eyebrow="Signature Card"

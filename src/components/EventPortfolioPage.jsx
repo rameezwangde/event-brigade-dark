@@ -15,7 +15,7 @@ export default function EventPortfolioPage({ eyebrow, title, intro, pages, activ
 
   return (
     <section id="portfolio" className="relative min-h-screen overflow-hidden bg-obsidian pb-20 pt-32 md:pt-36">
-      <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_50%_0%,rgba(244,215,138,0.18),transparent_62%)]" />
+      <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_62%)]" />
       <div className="particles opacity-20" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-5">
@@ -63,7 +63,7 @@ export default function EventPortfolioPage({ eyebrow, title, intro, pages, activ
             </div>
 
             <div className="relative min-h-[420px] overflow-hidden bg-obsidian/45 p-5 md:p-8">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(244,215,138,0.14),transparent_58%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.14),transparent_58%)]" />
               <div className="relative h-full rounded-[1.5rem] border border-champagne/20 bg-ivory p-2 shadow-glow">
                 <img
                   src={heroImage}

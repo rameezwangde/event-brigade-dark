@@ -27,7 +27,7 @@ function HexButton({ href, label, Icon }) {
       target="_blank"
       rel="noreferrer"
       aria-label={label}
-      className="grid h-9 w-9 place-items-center text-black/70 transition hover:text-gold"
+      className="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white text-[#555555] transition hover:border-gold hover:text-gold"
     >
       <Icon size={19} strokeWidth={2.2} />
     </a>
@@ -38,14 +38,15 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#f7f7f4] text-[#050505]">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:px-10 lg:px-14">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-14">
-          <div>
+    <footer className="footer-luxury relative bg-[#FAF6EC] text-[#111111]">
+      <div className="absolute inset-x-0 -top-24 h-24 bg-gradient-to-b from-obsidian to-[#FAF6EC]" />
+      <div className="relative mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-14">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-2xl bg-white p-7 shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
             <a href="#home" className="inline-flex" aria-label="Event Brigade Home">
               <img src={eventBrigadeLogo} alt="Event Brigade logo" className="h-20 w-24 object-contain" />
             </a>
-            <p className="mt-6 max-w-xs text-sm leading-7 text-black/70">
+            <p className="mt-6 max-w-xs text-sm leading-7 text-[#555555]">
               Your premier partner in turning ordinary moments into extraordinary memories. We specialize in complete event experiences with creative planning and seamless execution.
             </p>
             <div className="mt-8 flex gap-4">
@@ -55,31 +56,31 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
-            <h3 className="font-serif text-2xl font-bold text-[#050505]">Navigation</h3>
+          <div className="rounded-2xl bg-white p-7 shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
+            <h3 className="font-serif text-2xl font-bold text-[#111111]">Navigation</h3>
             <div className="mt-6 grid gap-3">
               {quickLinks.map(([label, id]) => (
-                <a key={label} href={`#${id}`} className="block text-sm text-black/70 transition hover:text-gold">
+                <a key={label} href={`#${id}`} className="block text-sm text-[#555555] transition hover:text-gold">
                   {label}
                 </a>
               ))}
             </div>
           </div>
 
-          <div>
-            <h3 className="font-serif text-2xl font-bold text-[#050505]">Services</h3>
+          <div className="rounded-2xl bg-white p-7 shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
+            <h3 className="font-serif text-2xl font-bold text-[#111111]">Services</h3>
             <div className="mt-6 grid gap-3">
               {serviceLinks.map((service) => (
-                <a key={service} href="#services" className="block text-sm text-black/70 transition hover:text-gold">
+                <a key={service} href="#services" className="block text-sm text-[#555555] transition hover:text-gold">
                   {service}
                 </a>
               ))}
             </div>
           </div>
 
-          <div>
-            <h3 className="font-serif text-2xl font-bold text-[#050505]">Contact</h3>
-            <div className="mt-6 space-y-4 text-sm leading-7 text-black/70">
+          <div className="rounded-2xl bg-white p-7 shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
+            <h3 className="font-serif text-2xl font-bold text-[#111111]">Contact</h3>
+            <div className="mt-6 space-y-4 text-sm leading-7 text-[#555555]">
               <a
                 href={contact.mapUrl}
                 target="_blank"
@@ -105,8 +106,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-black/15 pt-7">
-          <div className="flex flex-col gap-5 text-xs text-black/60 md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 border-t border-black/10 pt-7">
+          <div className="flex flex-col gap-5 text-xs text-[#555555] md:flex-row md:items-center md:justify-between">
             <p className="flex items-center gap-3">
               <Zap size={16} /> © {year} Event Brigade. All rights reserved.
             </p>

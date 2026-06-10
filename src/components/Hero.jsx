@@ -35,7 +35,7 @@ export default function Hero() {
         decoding="async"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-obsidian/70 via-obsidian/75 to-obsidian" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(244,215,138,0.26),transparent_32%),radial-gradient(circle_at_12%_65%,rgba(216,183,106,0.18),transparent_28%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(212,175,55,0.26),transparent_32%),radial-gradient(circle_at_12%_65%,rgba(244,208,111,0.18),transparent_28%)]" />
       <div className="particles" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center px-5">

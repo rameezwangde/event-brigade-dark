@@ -7,7 +7,7 @@ import eventBrigadeLogo from '../../eventbrigade.PNG';
 export default function BrandHeritage() {
   return (
     <section className="relative overflow-hidden bg-obsidian pb-2 pt-8 md:pb-4 md:pt-12" aria-labelledby="brand-heritage-title">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(244,215,138,0.14),transparent_35%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(212,175,55,0.14),transparent_35%)]" />
       <div className="relative mx-auto max-w-7xl px-5">
         <motion.div
           className="relative overflow-hidden rounded-[2rem] border border-champagne/20 bg-charcoal shadow-soft"

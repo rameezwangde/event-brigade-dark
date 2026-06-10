@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, PartyPopper, Sparkles, UsersRound } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { services, weddingShowcase } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
@@ -17,8 +17,6 @@ import socialBabyShower from '../assets/social-curated/social-baby-shower-decor.
 import socialCommunity from '../assets/social-curated/social-community-stage.jpg';
 import socialActivities from '../assets/social-curated/social-paint-plant.jpg';
 import socialGifts from '../assets/social-curated/social-return-gift.jpg';
-
-const icons = [Sparkles, UsersRound, PartyPopper];
 
 const serviceDetailCards = services.flatMap((service) => {
   if (service.title !== 'Corporate Events') {
@@ -130,46 +128,7 @@ export default function Services() {
           title="Tailored solutions for every occasion."
           text="Weddings, corporate experiences, social celebrations and artist-led entertainment delivered with premium planning discipline."
         />
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {services.map((service, index) => {
-            const Icon = icons[index];
-            const portfolioHref =
-              service.title === 'Corporate Events'
-                ? '/corporate-portfolio'
-                : service.title === 'Weddings'
-                  ? '/wedding-portfolio'
-                  : service.title === 'Social Events'
-                    ? '/social-events-portfolio'
-                    : undefined;
-            const CardTag = portfolioHref ? 'a' : 'article';
-            return (
-              <Reveal key={service.title} delay={index * 0.08}>
-                <CardTag
-                  href={portfolioHref}
-                  className="group service-card"
-                  aria-label={portfolioHref ? `Open ${service.title.toLowerCase()} portfolio` : undefined}
-                >
-                  <img src={service.image} alt={`${service.title} by Event Brigade`} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent" />
-                  <div className="relative z-10 mt-auto grid w-full grid-rows-[auto_auto_minmax(4.25rem,auto)_auto] p-7 md:p-9">
-                    <div className="mb-6 grid h-14 w-14 place-items-center rounded-full border border-gold/40 bg-obsidian/60 text-gold shadow-glow backdrop-blur">
-                      <Icon size={28} />
-                    </div>
-                    <h3 className="font-serif text-4xl text-ivory">{service.title}</h3>
-                    <p className="mt-4 max-w-xl leading-7 text-ivory/75">{service.text}</p>
-                    {portfolioHref && (
-                      <span className="mt-6 inline-flex text-sm font-bold uppercase tracking-[0.14em] text-gold">
-                        View Portfolio
-                      </span>
-                    )}
-                  </div>
-                </CardTag>
-              </Reveal>
-            );
-          })}
-        </div>
-
-        <div className="mt-8 space-y-10 md:mt-10">
+        <div className="mt-12 space-y-10">
           {serviceShowcases.map((showcase, index) => (
             <Reveal
               key={showcase.eyebrow}

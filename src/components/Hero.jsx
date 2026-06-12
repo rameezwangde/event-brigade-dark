@@ -55,7 +55,7 @@ export default function Hero() {
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              className="glass-card p-5"
+              className="glass-card p-5 text-center h-full"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 + index * 0.1 }}

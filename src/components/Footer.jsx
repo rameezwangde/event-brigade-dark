@@ -48,16 +48,16 @@ export default function Footer() {
 
   return (
     <footer className="footer-luxury relative border-t border-[#d4af37]/15 bg-[#FAF6EC] text-[#111111]">
-      <div className="relative mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-14">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div className="relative mx-auto max-w-7xl px-6 py-10 md:px-10 lg:px-14 md:py-12">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <a href="/" onClick={(e) => handleNavClick(e, '/')} className="inline-flex" aria-label="Event Brigade Home">
-              <img src={eventBrigadeLogo} alt="Event Brigade logo" className="h-20 w-24 object-contain" />
+              <img src={eventBrigadeLogo} alt="Event Brigade logo" className="h-20 w-24 md:h-24 md:w-28 object-contain object-left" />
             </a>
-            <p className="mt-6 max-w-xs text-sm leading-7 text-[#555555]">
+            <p className="mt-4 max-w-xs text-sm leading-6 text-[#555555]">
               Your premier partner in turning ordinary moments into extraordinary memories. We specialize in complete event experiences with creative planning and seamless execution.
             </p>
-            <div className="mt-8 flex gap-4">
+            <div className="mt-5 flex gap-4">
               {socialLinks.map(([label, href, Icon]) => (
                 <HexButton key={label} href={href} label={label} Icon={Icon} />
               ))}
@@ -65,8 +65,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-serif text-2xl font-bold text-[#111111]">Navigation</h3>
-            <div className="mt-6 grid gap-3">
+            <h3 className="font-serif text-xl font-bold text-[#111111]">Navigation</h3>
+            <div className="mt-4 grid gap-2.5">
               {quickLinks.map(([label, href]) => (
                 <a key={label} href={href} onClick={(e) => handleNavClick(e, href)} className="block text-sm text-[#555555] transition hover:text-gold">
                   {label}
@@ -76,8 +76,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-serif text-2xl font-bold text-[#111111]">Services</h3>
-            <div className="mt-6 grid gap-3">
+            <h3 className="font-serif text-xl font-bold text-[#111111]">Services</h3>
+            <div className="mt-4 grid gap-2.5">
               {serviceLinks.map(([label, href]) => (
                 <a key={label} href={href} onClick={(e) => handleNavClick(e, href)} className="block text-sm text-[#555555] transition hover:text-gold">
                   {label}
@@ -87,8 +87,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-serif text-2xl font-bold text-[#111111]">Contact</h3>
-            <div className="mt-6 space-y-4 text-sm leading-7 text-[#555555]">
+            <h3 className="font-serif text-xl font-bold text-[#111111]">Contact</h3>
+            <div className="mt-4 space-y-3.5 text-sm leading-6 text-[#555555]">
               <a
                 href={contact.mapUrl}
                 target="_blank"
@@ -114,8 +114,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-black/10 pt-7">
-          <div className="flex flex-col gap-5 text-xs text-[#555555] md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 border-t border-black/10 pt-5">
+          <div className="flex flex-col gap-4 text-xs text-[#555555] md:flex-row md:items-center md:justify-between">
             <p className="flex items-center gap-3">
               <Zap size={16} /> © {year} Event Brigade. All rights reserved.
             </p>

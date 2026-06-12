@@ -21,7 +21,7 @@ export default function Testimonials() {
 
         <div className="relative z-20 mt-20 overflow-visible pb-10">
           <div
-            className="testimonial-scroll flex w-max gap-4"
+            className="testimonial-scroll flex w-max gap-4 items-stretch"
             style={{ animationPlayState: openReview !== null ? 'paused' : undefined }}
           >
             {[...testimonials, ...testimonials].map((testimonial, testimonialIndex) => (

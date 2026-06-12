@@ -250,7 +250,7 @@ export default function Services() {
             <Reveal
               key={`${service.title}-details`}
               delay={index * 0.08}
-              className="group relative overflow-hidden rounded-[2rem] border border-champagne/15 bg-graphite/40 p-8 shadow-soft transition-all duration-500 hover:-translate-y-2 hover:border-gold/50 hover:bg-graphite/70 hover:shadow-glow"
+              className="group relative overflow-hidden rounded-[2rem] border border-champagne/15 bg-graphite/40 p-8 shadow-soft transition-all duration-500 hover:-translate-y-2 hover:border-gold/50 hover:bg-graphite/70 hover:shadow-glow h-full flex flex-col"
             >
               {/* Large Background Number */}
               <span className="absolute right-8 top-6 font-serif text-8xl font-bold text-gold/10 select-none pointer-events-none transition-colors duration-500 group-hover:text-gold/15">
@@ -268,7 +268,7 @@ export default function Services() {
               </h3>
               <div className="mt-5 h-px w-24 bg-gradient-to-r from-gold/50 to-transparent transition-all duration-500 group-hover:w-32 group-hover:from-gold" />
               
-              <ul className="mt-8 grid gap-x-6 gap-y-4 sm:grid-cols-2">
+              <ul className="mt-8 grid gap-x-6 gap-y-4 sm:grid-cols-2 flex-grow">
                 {service.servicesWeProvide.map((item) => (
                   <li
                     key={item}

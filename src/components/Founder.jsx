@@ -25,14 +25,14 @@ export default function Founder() {
             </div>
           </Reveal>
           <Reveal className="flex flex-col justify-center gap-8 lg:py-6">
-            <p className="max-w-3xl text-justify text-lg leading-9 text-smoke">{siteCopy.founder}</p>
+            <p className="max-w-3xl text-left text-lg leading-9 text-smoke">{siteCopy.founder}</p>
             <div className="grid gap-4 sm:grid-cols-3">
               {[
                 ['15+', 'Years', Award],
                 ['2000+', 'Events Managed', Users],
                 ['700+', 'Clients Served', Award]
               ].map(([value, label, Icon]) => (
-                <div key={label} className="glass-card p-5">
+                <div key={label} className="glass-card p-5 h-full">
                   <Icon className="mb-4 text-gold" size={24} />
                   <p className="font-serif text-4xl text-gold">{value}</p>
                   <p className="mt-1 text-xs uppercase tracking-[0.22em] text-smoke">{label}</p>

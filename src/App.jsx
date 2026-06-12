@@ -3,7 +3,9 @@ import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import BrandHeritage from './components/BrandHeritage.jsx';
 import About from './components/About.jsx';
-import Services from './components/Services.jsx';
+import WeddingServices from './components/WeddingServices.jsx';
+import CorporateServices from './components/CorporateServices.jsx';
+import SocialServices from './components/SocialServices.jsx';
 import CorporatePortfolio from './components/CorporatePortfolio.jsx';
 import WeddingPortfolio from './components/WeddingPortfolio.jsx';
 import SocialEventsPortfolio from './components/SocialEventsPortfolio.jsx';
@@ -124,8 +126,12 @@ export default function App() {
           <SocialEventsPortfolio />
         ) : path === '/about' ? (
           <About />
-        ) : path === '/services' ? (
-          <Services />
+        ) : path === '/services' || path === '/wedding-services' ? (
+          <WeddingServices />
+        ) : path === '/corporate-services' ? (
+          <CorporateServices />
+        ) : path === '/social-services' ? (
+          <SocialServices />
         ) : path === '/testimonials' ? (
           <Testimonials />
         ) : path === '/founder' ? (

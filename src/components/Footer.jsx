@@ -6,13 +6,17 @@ import eventBrigadeLogo from '../../eventbrigade.PNG';
 const quickLinks = [
   ['Home', '/'],
   ['About', '/about'],
-  ['Services', '/services'],
+  ['Services', '/wedding-services'],
   ['Portfolio', '/wedding-portfolio'],
   ['Contact', '/contact'],
   ['Privacy', '/contact']
 ];
 
-const serviceLinks = ['Corporate Events', 'Social Events', 'Cultural Events', 'Wedding Events', 'Entertainment Events'];
+const serviceLinks = [
+  ['Wedding Events', '/wedding-services'],
+  ['Corporate Events', '/corporate-services'],
+  ['Social Events', '/social-services']
+];
 
 const socialLinks = [
   ['Facebook', 'https://www.facebook.com/EventBrigade', Facebook],
@@ -74,9 +78,9 @@ export default function Footer() {
           <div>
             <h3 className="font-serif text-2xl font-bold text-[#111111]">Services</h3>
             <div className="mt-6 grid gap-3">
-              {serviceLinks.map((service) => (
-                <a key={service} href="/services" onClick={(e) => handleNavClick(e, '/services')} className="block text-sm text-[#555555] transition hover:text-gold">
-                  {service}
+              {serviceLinks.map(([label, href]) => (
+                <a key={label} href={href} onClick={(e) => handleNavClick(e, href)} className="block text-sm text-[#555555] transition hover:text-gold">
+                  {label}
                 </a>
               ))}
             </div>

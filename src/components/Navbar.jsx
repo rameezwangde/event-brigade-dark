@@ -9,11 +9,11 @@ const links = [
   {
     label: 'Services',
     id: 'services',
-    href: '/services',
+    href: '/wedding-services',
     dropdown: [
-      { label: 'Weddings', href: '/services#weddings' },
-      { label: 'Corporate', href: '/services#corporate' },
-      { label: 'Social', href: '/services#social' }
+      { label: 'Weddings', href: '/wedding-services' },
+      { label: 'Corporate', href: '/corporate-services' },
+      { label: 'Social', href: '/social-services' }
     ]
   },
   {
@@ -45,7 +45,12 @@ export default function Navbar() {
         setActive('home');
       } else if (path === '/about') {
         setActive('about');
-      } else if (path === '/services') {
+      } else if (
+        path === '/services' ||
+        path === '/wedding-services' ||
+        path === '/corporate-services' ||
+        path === '/social-services'
+      ) {
         setActive('services');
       } else if (
         path === '/corporate-portfolio' ||

@@ -1,39 +1,101 @@
 import React from 'react';
-import { ArrowRight, BriefcaseBusiness, Heart, PartyPopper } from 'lucide-react';
+import { ArrowUpRight, BriefcaseBusiness, Heart, PartyPopper } from 'lucide-react';
 import Reveal from './Reveal.jsx';
 
+const divisions = [
+  {
+    title: 'Weddings',
+    tagline: 'Vogue-inspired luxury curation.',
+    desc: 'From custom invitations and styling to grand venue production, hospitality management and celebrity bookings.',
+    servicesUrl: '/wedding-services',
+    portfolioUrl: '/wedding-portfolio',
+    icon: Heart
+  },
+  {
+    title: 'Corporate Events',
+    tagline: 'Precision meets brand strategy.',
+    desc: 'Delivering product launch reveal moments, conferences, channel meets, and awards nights with exact execution.',
+    servicesUrl: '/corporate-services',
+    portfolioUrl: '/corporate-portfolio',
+    icon: BriefcaseBusiness
+  },
+  {
+    title: 'Social Celebrations',
+    tagline: 'Bespoke, warm milestone celebrations.',
+    desc: 'Shaping milestones, anniversaries, baby showers and community moments with custom decor, games and curations.',
+    servicesUrl: '/social-services',
+    portfolioUrl: '/social-events-portfolio',
+    icon: PartyPopper
+  }
+];
+
 export default function PortfolioAccess() {
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    window.history.pushState({}, '', href);
+  };
+
   return (
-    <section id="portfolio" className="relative bg-obsidian pb-8 pt-8 md:pb-10 md:pt-10">
+    <section className="relative bg-obsidian pb-20 pt-16 md:pb-24 md:pt-20">
       <div className="mx-auto max-w-7xl px-5">
-        <Reveal className="relative overflow-hidden rounded-[2rem] border border-champagne/20 bg-[linear-gradient(135deg,rgba(248,241,223,0.08),rgba(248,241,223,0.025))] p-8 shadow-soft md:p-12">
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-          <div className="grid gap-8 lg:grid-cols-[0.68fr_0.32fr] lg:items-center">
-            <div>
-              <div className="mb-6 grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-obsidian/70 text-gold shadow-glow">
-                <BriefcaseBusiness size={26} />
-              </div>
-              <p className="text-xs font-semibold uppercase tracking-[0.36em] text-champagne">Portfolio</p>
-              <h2 className="mt-4 max-w-3xl font-serif text-4xl leading-tight text-ivory md:text-6xl">
-                View our event portfolios.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-smoke md:text-lg">
-                Open the dedicated portfolio pages for corporate productions, weddings and social events.
-              </p>
-            </div>
-            <div className="grid gap-4 lg:justify-self-end">
-              <a href="/wedding-portfolio" className="btn-primary">
-                <Heart size={18} /> Weddings <ArrowRight size={18} />
-              </a>
-              <a href="/corporate-portfolio" className="btn-secondary">
-                <BriefcaseBusiness size={18} /> Corporate <ArrowRight size={18} />
-              </a>
-              <a href="/social-events-portfolio" className="btn-secondary">
-                <PartyPopper size={18} /> Social Events <ArrowRight size={18} />
-              </a>
-            </div>
-          </div>
-        </Reveal>
+        <div className="mb-14 text-center">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-champagne">Our Services</p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight text-ivory md:text-6xl">
+              The Art of Event Curation
+            </h2>
+            <div className="mx-auto mt-5 h-px w-28 bg-gradient-to-r from-transparent via-gold to-transparent" />
+          </Reveal>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {divisions.map((div, index) => {
+            const Icon = div.icon;
+            return (
+              <Reveal
+                key={div.title}
+                delay={index * 0.08}
+                className="glass-card group flex flex-col justify-between p-8 min-h-[380px] h-full"
+              >
+                <div className="relative">
+                  <div className="mb-6 grid h-12 w-12 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow transition duration-300 group-hover:scale-105">
+                    <Icon size={22} />
+                  </div>
+
+                  <h3 className="font-serif text-3xl leading-tight text-ivory transition-colors duration-300 group-hover:text-gold">
+                    {div.title}
+                  </h3>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-champagne/80">
+                    {div.tagline}
+                  </p>
+                  <p className="mt-5 text-sm leading-7 text-smoke text-justify">
+                    {div.desc}
+                  </p>
+                </div>
+
+                <div className="mt-8 border-t border-champagne/10 pt-6">
+                  <div className="flex items-center justify-between gap-4">
+                    <a
+                      href={div.servicesUrl}
+                      onClick={(e) => handleNavClick(e, div.servicesUrl)}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.16em] text-ivory/82 transition-colors duration-300 hover:text-gold"
+                    >
+                      Services <ArrowUpRight size={14} className="opacity-60" />
+                    </a>
+                    <div className="h-4 w-px bg-champagne/20" />
+                    <a
+                      href={div.portfolioUrl}
+                      onClick={(e) => handleNavClick(e, div.portfolioUrl)}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.16em] text-ivory/82 transition-colors duration-300 hover:text-gold"
+                    >
+                      Portfolio <ArrowUpRight size={14} className="opacity-60" />
+                    </a>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

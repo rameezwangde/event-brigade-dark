@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function SectionHeader({ eyebrow, title, text, align = 'center', eyebrowClassName = '' }) {
+export default function SectionHeader({ eyebrow, title, text, align = 'center', eyebrowClassName = '', className = 'max-w-4xl' }) {
   return (
     <motion.div
-      className={`mx-auto max-w-3xl ${align === 'left' ? 'mx-0 text-left' : 'text-center'}`}
+      className={`mx-auto ${className} ${align === 'left' ? 'mx-0 text-left' : 'text-center'}`}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}

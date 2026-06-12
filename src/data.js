@@ -72,14 +72,12 @@ export const services = [
     image: images.wedding,
     text: 'From simple to big fat weddings, we specialize in managing them all!',
     servicesWeProvide: [
-      'Invitation and Guest RSVP',
-      'Logistics',
-      'Hospitality',
-      'Stationary',
-      'Decor',
-      'Artist Management',
       'Food and Beverages',
-      'Vendor Management'
+      'Vendor Management',
+      'Pre-wedding Shoot Coordination',
+      'Sangeet Choreography',
+      'Bridal Makeup & Styling',
+      'Trousseau & Gifting Packaging'
     ]
   },
   {
@@ -87,17 +85,18 @@ export const services = [
     image: images.corporate,
     text: 'Be it an annual bash, product launch or a conference, we are more than equipped!',
     servicesWeProvide: [
-      'Seminars, Conferences & Meetings',
-      'Brand/Product/Corporate Launches',
       "Dealer/Trade/Retailer's Meet",
-      'Customer Dealer Interaction Programs',
-      'Merchandise and In Shop Promotions',
-      'Brand Extention Services',
-      'Annual Celebrations',
-      'Exibitions',
-      'Press Conferences',
-      'Outbound/Inbound Educational/Spiritual Tours',
-      'Sale, Rental & Installation of Audio Visual Equipments'
+      'Customer Dealer Programs',
+      'Merchandise & Brand Promotions',
+      'Corporate Gifting & Merchandising',
+      'VIP Protocol & Liaison',
+      'Brand Extension Campaigns',
+      'Exhibitions & Stall Fabrication',
+      'PR & Press Conferences',
+      'Outbound Teambuilding Tours',
+      'AV & Technical Setup Services',
+      'Signage & Branding Production',
+      'Temporary Venue Fabrication'
     ]
   },
   {
@@ -105,14 +104,12 @@ export const services = [
     image: images.social,
     text: 'Family functions, social get-togethers or any cultural event, you name it, we got it!',
     servicesWeProvide: [
-      'Anniversaries',
-      'Birthday Parties',
-      'Cultural Events',
-      'Social Club Gettogether',
-      'College Annual Days',
-      'Babyshower',
+      'College Fest & Annual Days',
       'House Warming Ceremonies',
-      'Naming Ceremonies'
+      'Naming Ceremonies',
+      'Ganesh Utsav & Festivals',
+      'Private Theme Parties',
+      'Surprise Proposal Planning'
     ]
   }
 ];

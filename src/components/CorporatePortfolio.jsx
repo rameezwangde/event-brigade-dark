@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  ArrowLeft,
   ArrowRight,
   BadgeCheck,
   Check,
@@ -65,10 +64,7 @@ export default function CorporatePortfolio() {
       <div className="particles opacity-20" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-5">
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <a href="/#portfolio" className="btn-secondary w-fit">
-            <ArrowLeft size={18} /> Back To Site
-          </a>
+        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-end">
           <div className="flex flex-wrap gap-3">
             {portfolioLinks.map((link) => (
               <a
@@ -103,7 +99,7 @@ export default function CorporatePortfolio() {
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
               <p className="text-xs font-semibold uppercase tracking-[0.36em] text-champagne">Introduction</p>
               <h2 className="mt-4 font-serif text-4xl leading-tight text-ivory md:text-5xl">
-                We do not just manage events. We engineer experiences.
+                We do not just manage events.<br />We engineer experiences.
               </h2>
               <div className="mt-6 h-px w-28 bg-gradient-to-r from-gold to-transparent" />
               <div className="mt-7 space-y-5 text-base leading-8 text-smoke md:text-lg">

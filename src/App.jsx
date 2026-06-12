@@ -63,32 +63,81 @@ function BusinessCardSlot() {
 }
 
 export default function App() {
-  const currentPath = window.location.pathname.replace(/\/$/, '');
-  const isCorporatePortfolioPage = currentPath === '/corporate-portfolio';
-  const isWeddingPortfolioPage = currentPath === '/wedding-portfolio';
-  const isSocialEventsPortfolioPage = currentPath === '/social-events-portfolio';
+  const [path, setPath] = useState(window.location.pathname.replace(/\/$/, '') || '/');
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setPath(window.location.pathname.replace(/\/$/, '') || '/');
+      
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const id = decodeURIComponent(hash.slice(1));
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollTo(0, 0);
+          }
+        }, 150);
+      } else {
+        window.scrollTo(0, 0);
+      }
+    };
+
+    // Override window.history.pushState to trigger location changes in state
+    const originalPushState = window.history.pushState;
+    window.history.pushState = function (...args) {
+      originalPushState.apply(this, args);
+      window.dispatchEvent(new Event('popstate'));
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    
+    // Check initial hash on mount
+    const initialHash = window.location.hash;
+    if (initialHash) {
+      setTimeout(() => {
+        const id = decodeURIComponent(initialHash.slice(1));
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500);
+    }
+
+    return () => {
+      window.history.pushState = originalPushState;
+      window.removeEventListener('popstate', handleLocationChange);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-obsidian text-ivory">
       <Navbar />
       <main>
-        {isCorporatePortfolioPage ? (
+        {path === '/corporate-portfolio' ? (
           <CorporatePortfolio />
-        ) : isWeddingPortfolioPage ? (
+        ) : path === '/wedding-portfolio' ? (
           <WeddingPortfolio />
-        ) : isSocialEventsPortfolioPage ? (
+        ) : path === '/social-events-portfolio' ? (
           <SocialEventsPortfolio />
+        ) : path === '/about' ? (
+          <About />
+        ) : path === '/services' ? (
+          <Services />
+        ) : path === '/testimonials' ? (
+          <Testimonials />
+        ) : path === '/founder' ? (
+          <Founder />
+        ) : path === '/contact' ? (
+          <Contact />
         ) : (
           <>
             <Hero />
             <BrandHeritage />
-            <About />
-            <Services />
             <PortfolioAccess />
-            <Testimonials />
-            <Founder />
             <BusinessCardSlot />
-            <Contact />
           </>
         )}
       </main>

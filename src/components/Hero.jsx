@@ -48,14 +48,14 @@ export default function Hero() {
           <h1 className="font-serif text-5xl leading-[0.95] text-ivory md:text-7xl lg:text-8xl">
             <span className="text-gradient">Event Brigade</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl font-light tracking-wide text-ivory/80 md:text-3xl">We Design. We Plan.</p>
+          <p className="mx-auto mt-6 max-w-2xl text-xl font-light tracking-wide text-ivory/80 md:text-3xl">To Your Rescue</p>
         </motion.div>
 
-        <div className="mt-16 grid gap-4 md:grid-cols-3">
+        <div className="mx-auto mt-16 grid max-w-4xl w-full gap-8 md:grid-cols-3">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              className="glass-card p-6"
+              className="glass-card p-5"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 + index * 0.1 }}

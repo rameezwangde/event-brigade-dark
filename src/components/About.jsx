@@ -1,24 +1,18 @@
 import React from 'react';
-import { Compass, Gem, Handshake, Lightbulb, Sparkles, Target } from 'lucide-react';
+import { Lightbulb, Sparkles } from 'lucide-react';
 import { images, siteCopy } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
 
-const cards = [
-  { icon: Gem, title: 'Design-Led', text: 'Distinctive ideas translated into immersive environments and polished guest journeys.' },
-  { icon: Compass, title: 'Detail-Driven', text: 'Every minute detail is acknowledged, attended to and aligned with the event vision.' },
-  { icon: Handshake, title: 'Client-First', text: 'A responsible team that lets families and organizations rest assured.' },
-  { icon: Target, title: 'Outcome-Focused', text: 'Events built with meaning, identity, vision and measurable delight.' }
-];
-
 export default function About() {
   return (
-    <section id="about" className="relative bg-gradient-to-b from-obsidian via-charcoal to-obsidian pb-10 pt-10 md:pb-14 md:pt-14">
+    <section id="about" className="relative bg-gradient-to-b from-obsidian via-charcoal to-obsidian pb-10 pt-32 md:pb-14 md:pt-40">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeader
           eyebrow="About Us"
-          title="We do not just manage events. We engineer experiences."
+          title={<>We do not just manage events.<br />We engineer experiences.</>}
           text="A Pune-based full-service event management and production company built for seamless execution."
+          className="max-w-5xl"
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
@@ -51,16 +45,6 @@ export default function About() {
           </Reveal>
         </div>
 
-        <div className="mt-20 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {cards.map((card, index) => (
-            <Reveal key={card.title} delay={index * 0.08} className="glass-card p-6">
-              <card.icon className="mb-6 text-gold" size={30} />
-              <h3 className="font-serif text-2xl text-ivory">{card.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-smoke">{card.text}</p>
-            </Reveal>
-          ))}
-        </div>
-
         <div className="mt-12 grid gap-6 md:mt-14 lg:grid-cols-2">
           {[
             ['Vision', siteCopy.philosophy, Lightbulb],
@@ -69,7 +53,7 @@ export default function About() {
             <Reveal
               key={title}
               delay={index * 0.1}
-              className="timeline-card group flex min-h-0 flex-col justify-center"
+              className="timeline-card group flex min-h-0 flex-col justify-start"
             >
               <div className="absolute left-8 top-8 z-10 grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow transition duration-300 group-hover:scale-105 md:left-9 md:top-9">
                 <Icon size={25} />

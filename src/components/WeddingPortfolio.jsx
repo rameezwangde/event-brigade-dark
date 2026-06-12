@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  ArrowLeft,
   ArrowRight,
   BadgeCheck,
   Check,
@@ -126,10 +125,7 @@ export default function WeddingPortfolio() {
       <div className="particles opacity-20" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-5">
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <a href="/#portfolio" className="btn-secondary w-fit">
-            <ArrowLeft size={18} /> Back To Site
-          </a>
+        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-end">
           <div className="flex flex-wrap gap-3">
             {portfolioLinks.map((link) => (
               <a

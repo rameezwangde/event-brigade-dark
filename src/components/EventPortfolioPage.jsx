@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Grid2X2, Maximize2, Sparkles, X } from 'lucide-react';
+import { ArrowRight, Grid2X2, Maximize2, Sparkles, X } from 'lucide-react';
 import Reveal from './Reveal.jsx';
 
 const portfolioLinks = [
@@ -19,15 +19,21 @@ export default function EventPortfolioPage({ eyebrow, title, intro, pages, activ
       <div className="particles opacity-20" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-5">
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <a href="/#portfolio" className="btn-secondary w-fit">
-            <ArrowLeft size={18} /> Back To Site
-          </a>
+        <div className="mb-12 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.36em] text-champagne">Work Showcase</p>
+          <h1 className="mt-3 font-serif text-5xl leading-tight text-ivory md:text-6xl">Our Portfolio</h1>
+        </div>
+
+        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-end">
           <div className="flex flex-wrap gap-3">
             {portfolioLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.history.pushState({}, '', link.href);
+                }}
                 className={`rounded-full border px-5 py-2.5 text-sm font-semibold transition ${
                   activeHref === link.href
                     ? 'border-gold bg-gold text-obsidian shadow-glow'

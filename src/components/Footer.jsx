@@ -4,12 +4,12 @@ import { contact } from '../data.js';
 import eventBrigadeLogo from '../../eventbrigade.PNG';
 
 const quickLinks = [
-  ['Home', 'home'],
-  ['About', 'about'],
-  ['Services', 'services'],
-  ['Portfolio', 'portfolio'],
-  ['Contact', 'contact'],
-  ['Privacy', 'contact']
+  ['Home', '/'],
+  ['About', '/about'],
+  ['Services', '/services'],
+  ['Portfolio', '/wedding-portfolio'],
+  ['Contact', '/contact'],
+  ['Privacy', '/contact']
 ];
 
 const serviceLinks = ['Corporate Events', 'Social Events', 'Cultural Events', 'Wedding Events', 'Entertainment Events'];
@@ -37,13 +37,17 @@ function HexButton({ href, label, Icon }) {
 export default function Footer() {
   const year = new Date().getFullYear();
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    window.history.pushState({}, '', href);
+  };
+
   return (
-    <footer className="footer-luxury relative bg-[#FAF6EC] text-[#111111]">
-      <div className="absolute inset-x-0 -top-24 h-24 bg-gradient-to-b from-obsidian to-[#FAF6EC]" />
+    <footer className="footer-luxury relative border-t border-[#d4af37]/15 bg-[#FAF6EC] text-[#111111]">
       <div className="relative mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-14">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-2xl bg-white p-7 shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
-            <a href="#home" className="inline-flex" aria-label="Event Brigade Home">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <a href="/" onClick={(e) => handleNavClick(e, '/')} className="inline-flex" aria-label="Event Brigade Home">
               <img src={eventBrigadeLogo} alt="Event Brigade logo" className="h-20 w-24 object-contain" />
             </a>
             <p className="mt-6 max-w-xs text-sm leading-7 text-[#555555]">
@@ -56,29 +60,29 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="rounded-2xl bg-white p-7 shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
+          <div>
             <h3 className="font-serif text-2xl font-bold text-[#111111]">Navigation</h3>
             <div className="mt-6 grid gap-3">
-              {quickLinks.map(([label, id]) => (
-                <a key={label} href={`#${id}`} className="block text-sm text-[#555555] transition hover:text-gold">
+              {quickLinks.map(([label, href]) => (
+                <a key={label} href={href} onClick={(e) => handleNavClick(e, href)} className="block text-sm text-[#555555] transition hover:text-gold">
                   {label}
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="rounded-2xl bg-white p-7 shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
+          <div>
             <h3 className="font-serif text-2xl font-bold text-[#111111]">Services</h3>
             <div className="mt-6 grid gap-3">
               {serviceLinks.map((service) => (
-                <a key={service} href="#services" className="block text-sm text-[#555555] transition hover:text-gold">
+                <a key={service} href="/services" onClick={(e) => handleNavClick(e, '/services')} className="block text-sm text-[#555555] transition hover:text-gold">
                   {service}
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="rounded-2xl bg-white p-7 shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
+          <div>
             <h3 className="font-serif text-2xl font-bold text-[#111111]">Contact</h3>
             <div className="mt-6 space-y-4 text-sm leading-7 text-[#555555]">
               <a
@@ -112,8 +116,8 @@ export default function Footer() {
               <Zap size={16} /> © {year} Event Brigade. All rights reserved.
             </p>
             <div className="flex flex-wrap gap-6">
-              <a href="#contact" className="transition hover:text-gold">Privacy Policy</a>
-              <a href="#contact" className="transition hover:text-gold">Terms Of Service</a>
+              <a href="/contact" onClick={(e) => handleNavClick(e, '/contact')} className="transition hover:text-gold">Privacy Policy</a>
+              <a href="/contact" onClick={(e) => handleNavClick(e, '/contact')} className="transition hover:text-gold">Terms Of Service</a>
             </div>
           </div>
         </div>

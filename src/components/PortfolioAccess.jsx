@@ -65,7 +65,7 @@ export default function PortfolioAccess() {
                   <h3 className="font-serif text-3xl leading-tight text-ivory transition-colors duration-300 group-hover:text-gold">
                     {div.title}
                   </h3>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-champagne/80">
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-champagne/80 min-h-[36px] flex items-center">
                     {div.tagline}
                   </p>
                   <p className="mt-5 text-sm leading-7 text-smoke text-justify">

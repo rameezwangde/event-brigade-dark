@@ -38,7 +38,7 @@ export default function About() {
             <p className="text-base font-semibold uppercase tracking-[0.28em] text-champagne md:text-lg">Company Overview</p>
             <h3 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-ivory md:text-5xl">From idea to on-ground execution.</h3>
             <div className="mt-6 h-px w-28 bg-gradient-to-r from-gold to-transparent" />
-            <div className="mt-7 max-w-xl space-y-5 text-base leading-8 text-smoke md:text-lg md:leading-8 text-left">
+            <div className="mt-7 max-w-xl space-y-5 text-base leading-8 text-smoke md:text-lg md:leading-8 text-justify">
               <p>{siteCopy.about}</p>
               <p>{siteCopy.company}</p>
             </div>
@@ -58,13 +58,10 @@ export default function About() {
               <div className="absolute left-8 top-8 z-10 grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow transition duration-300 group-hover:scale-105 md:left-9 md:top-9">
                 <Icon size={25} />
               </div>
-              <span className="absolute right-8 top-8 z-10 rounded-full border border-champagne/25 bg-obsidian/70 px-4 py-2 text-xs font-semibold tracking-[0.22em] text-champagne md:right-9 md:top-9">
-                0{index + 1}
-              </span>
               <div className="relative z-10 pt-20">
                 <h3 className="font-serif text-4xl leading-tight text-ivory">{title}</h3>
                 <div className="mt-5 h-px w-24 bg-gradient-to-r from-gold to-transparent" />
-                <p className="mt-6 text-[15px] leading-8 text-smoke md:text-base">{text}</p>
+                <p className="mt-6 text-[15px] leading-8 text-smoke md:text-base text-justify">{text}</p>
               </div>
             </Reveal>
           ))}

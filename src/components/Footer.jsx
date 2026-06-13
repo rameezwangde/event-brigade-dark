@@ -1,7 +1,7 @@
 import React from 'react';
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Zap } from 'lucide-react';
 import { contact } from '../data.js';
-import eventBrigadeLogo from '../../eventbrigade.PNG';
+import eventBrigadeLogo from '../../white light logo.PNG';
 
 const quickLinks = [
   ['Home', '/'],

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import eventBrigadeLogo from '../../eventbrigade.PNG';
+import eventBrigadeLogo from '../../darker bg.png';
 
 const links = [
   { label: 'Home', id: 'home', href: '/' },

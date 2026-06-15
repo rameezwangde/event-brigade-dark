@@ -518,12 +518,8 @@ export default function CorporateServices() {
           <Reveal
             className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#151515]/60 p-8 shadow-xl transition-all duration-300 hover:border-[#D4AF37]/30 h-full flex flex-col"
           >
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]/80">
-              Operations & Management
-            </p>
-            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-white">
-              Corporate Events Checklist
-            </h3>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]/80 font-sans">Operations & Management</p>
+            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-white">Corporate Events Checklist</h3>
             <div className="mt-4 h-[1px] w-24 bg-gradient-to-r from-[#D4AF37] to-transparent" />
             
             <ul className="mt-6.5 grid gap-x-6 gap-y-3.5 sm:grid-cols-2 flex-grow">
@@ -543,12 +539,8 @@ export default function CorporateServices() {
             delay={0.08}
             className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#151515]/60 p-8 shadow-xl transition-all duration-300 hover:border-[#D4AF37]/30 h-full flex flex-col"
           >
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]/80">
-              Technical Production
-            </p>
-            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-white">
-              Corporate Solutions Checklist
-            </h3>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]/80 font-sans">Technical Production</p>
+            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-white">Corporate Solutions Checklist</h3>
             <div className="mt-4 h-[1px] w-24 bg-gradient-to-r from-[#D4AF37] to-transparent" />
             
             <ul className="mt-6.5 grid gap-x-6 gap-y-3.5 sm:grid-cols-2 flex-grow">

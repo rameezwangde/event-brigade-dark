@@ -541,12 +541,8 @@ export default function WeddingServices() {
             {/* Corner ornament background */}
             <BackgroundMandala className="absolute right-[-30px] bottom-[-30px] w-44 h-44 pointer-events-none opacity-20" />
 
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#C8A96B]">
-              Services We Provide
-            </p>
-            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-[#1C1C1C] md:text-4xl">
-              End-to-End Wedding Management
-            </h3>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#C8A96B] font-sans">Services We Provide</p>
+            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-[#1C1C1C] md:text-4xl">End-to-End Wedding Management</h3>
             <div className="mt-4 h-[1px] w-24 bg-gradient-to-r from-[#C8A96B] to-transparent" />
 
             <ul className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2">

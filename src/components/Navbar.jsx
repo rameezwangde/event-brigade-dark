@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import eventBrigadeLogo from '../../darker bg.png';
+import eventBrigadeLogoDark from '../../darker bg.png';
+import eventBrigadeLogoLight from '../../white light logo.PNG';
 
 const links = [
   { label: 'Home', id: 'home', href: '/' },
@@ -36,10 +37,12 @@ export default function Navbar() {
   const [active, setActive] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [expandedMobileItem, setExpandedMobileItem] = useState(null);
+  const [isLightPage, setIsLightPage] = useState(false);
 
   useEffect(() => {
     const handleLocationChange = () => {
       const path = window.location.pathname.replace(/\/$/, '') || '/';
+      setIsLightPage(path === '/wedding-portfolio' || path === '/wedding-services' || path === '/services');
       setScrolled(window.scrollY > 24);
       if (path === '/') {
         setActive('home');
@@ -73,11 +76,20 @@ export default function Navbar() {
       setScrolled(window.scrollY > 24);
     };
 
+    // Listen to history changes
     window.addEventListener('popstate', handleLocationChange);
     window.addEventListener('scroll', onScroll, { passive: true });
+    
+    // Create custom event listener for pushstate
+    const handlePushState = () => {
+      handleLocationChange();
+    };
+    window.addEventListener('popstate', handlePushState);
+    
     return () => {
       window.removeEventListener('popstate', handleLocationChange);
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('popstate', handlePushState);
     };
   }, []);
 
@@ -85,6 +97,8 @@ export default function Navbar() {
     e.preventDefault();
     window.history.pushState({}, '', href);
   };
+
+  const currentLogo = isLightPage ? eventBrigadeLogoLight : eventBrigadeLogoDark;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6">
@@ -95,12 +109,18 @@ export default function Navbar() {
           className="block h-20 w-24 transition duration-300 hover:scale-105 md:h-24 md:w-28"
           aria-label="Event Brigade Home"
         >
-          <img src={eventBrigadeLogo} alt="Event Brigade logo" className="h-full w-full object-contain" />
+          <img src={currentLogo} alt="Event Brigade logo" className="h-full w-full object-contain" />
         </a>
 
         <div
-          className={`absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border border-champagne/15 bg-obsidian/50 p-1.5 shadow-soft backdrop-blur-xl transition duration-300 lg:flex ${
-            scrolled ? 'bg-obsidian/82' : ''
+          className={`absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border p-1.5 shadow-soft backdrop-blur-xl transition duration-300 lg:flex ${
+            isLightPage
+              ? scrolled
+                ? 'border-[#C8A96B]/35 bg-[#FAF7F2]/90 shadow-glow text-[#1C1C1C]'
+                : 'border-[#C8A96B]/15 bg-[#FAF7F2]/50 text-[#1C1C1C]'
+              : scrolled
+                ? 'border-champagne/15 bg-obsidian/82 text-ivory'
+                : 'border-champagne/15 bg-obsidian/50 text-ivory'
           }`}
         >
           {links.map((link) => {
@@ -113,13 +133,21 @@ export default function Navbar() {
                   onClick={(e) => handleNavClick(e, link.href)}
                   aria-current={isLinkActive ? 'page' : undefined}
                   className={`relative flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold transition duration-300 ${
-                    isLinkActive ? 'text-obsidian' : 'text-ivory/72 hover:bg-ivory/[0.06] hover:text-gold'
+                    isLinkActive
+                      ? 'text-obsidian'
+                      : isLightPage
+                        ? 'text-[#1C1C1C]/75 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
+                        : 'text-ivory/72 hover:bg-ivory/[0.06] hover:text-gold'
                   }`}
                 >
                   {isLinkActive && (
                     <motion.span
                       layoutId="activeNav"
-                      className="absolute inset-0 rounded-full bg-gradient-to-r from-gold to-champagne shadow-glow"
+                      className={`absolute inset-0 rounded-full ${
+                        isLightPage
+                          ? 'bg-gradient-to-r from-[#C8A96B] to-[#EDE4D3] shadow-sm border border-[#C8A96B]/30'
+                          : 'bg-gradient-to-r from-gold to-champagne shadow-glow'
+                      }`}
                       transition={{ type: 'spring', stiffness: 420, damping: 34 }}
                     />
                   )}
@@ -129,7 +157,11 @@ export default function Navbar() {
                       <ChevronDown
                         size={14}
                         className={`transition-transform duration-300 group-hover:rotate-180 ${
-                          isLinkActive ? 'text-obsidian' : 'text-ivory/60 group-hover:text-gold'
+                          isLinkActive
+                            ? 'text-obsidian'
+                            : isLightPage
+                              ? 'text-[#1C1C1C]/60 group-hover:text-[#C8A96B]'
+                              : 'text-ivory/60 group-hover:text-gold'
                         }`}
                       />
                     )}
@@ -139,13 +171,21 @@ export default function Navbar() {
                 {hasDropdown && (
                   <div className="absolute left-1/2 top-full z-50 mt-1 w-48 -translate-x-1/2 scale-95 opacity-0 invisible group-hover:scale-100 group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out origin-top">
                     <div className="h-2 w-full" />
-                    <div className="rounded-2xl border border-champagne/20 bg-charcoal/95 p-1.5 shadow-soft shadow-gold/5 backdrop-blur-xl">
+                    <div className={`rounded-2xl border p-1.5 shadow-soft backdrop-blur-xl ${
+                      isLightPage
+                        ? 'border-[#C8A96B]/20 bg-[#FAF7F2]/95 shadow-[#C8A96B]/5'
+                        : 'border-champagne/20 bg-charcoal/95 shadow-gold/5'
+                    }`}>
                       {link.dropdown.map((subItem) => (
                         <a
                           key={subItem.label}
                           href={subItem.href}
                           onClick={(e) => handleNavClick(e, subItem.href)}
-                          className="block rounded-xl px-4 py-2 text-sm font-medium text-ivory/80 hover:bg-gold/10 hover:text-gold transition duration-200"
+                          className={`block rounded-xl px-4 py-2 text-sm font-medium transition duration-200 ${
+                            isLightPage
+                              ? 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/15 hover:text-[#C8A96B]'
+                              : 'text-ivory/80 hover:bg-gold/10 hover:text-gold'
+                          }`}
                         >
                           {subItem.label}
                         </a>
@@ -160,8 +200,10 @@ export default function Navbar() {
 
         <button
           type="button"
-          className={`grid h-12 w-12 place-items-center rounded-full border border-champagne/25 bg-obsidian/60 text-gold shadow-soft backdrop-blur-xl transition hover:border-gold/60 lg:hidden ${
-            open ? 'bg-gold text-obsidian' : ''
+          className={`grid h-12 w-12 place-items-center rounded-full border transition duration-300 shadow-soft backdrop-blur-xl lg:hidden ${
+            isLightPage
+              ? `border-[#C8A96B]/25 bg-[#FAF7F2]/60 text-[#C8A96B] hover:border-[#C8A96B]/60 ${open ? 'bg-[#C8A96B] text-[#FAF7F2]' : ''}`
+              : `border-champagne/25 bg-obsidian/60 text-gold hover:border-gold/60 ${open ? 'bg-gold text-obsidian' : ''}`
           }`}
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
@@ -175,7 +217,11 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.75rem] border border-champagne/20 bg-charcoal/95 p-2 shadow-soft backdrop-blur-xl lg:hidden"
+          className={`mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.75rem] border p-2 shadow-soft backdrop-blur-xl lg:hidden ${
+            isLightPage
+              ? 'border-[#C8A96B]/20 bg-[#FAF7F2]/95'
+              : 'border-champagne/20 bg-charcoal/95'
+          }`}
         >
           {links.map((link) => {
             const hasDropdown = !!link.dropdown;
@@ -190,7 +236,13 @@ export default function Navbar() {
                       type="button"
                       onClick={() => setExpandedMobileItem(isExpanded ? null : link.id)}
                       className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm font-semibold transition text-left ${
-                        isLinkActive ? 'bg-gold/10 text-gold' : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
+                        isLinkActive
+                          ? isLightPage
+                            ? 'bg-[#C8A96B]/15 text-[#C8A96B]'
+                            : 'bg-gold/10 text-gold'
+                          : isLightPage
+                            ? 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
+                            : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
                       }`}
                     >
                       <span>{link.label}</span>
@@ -205,7 +257,7 @@ export default function Navbar() {
                         isExpanded ? 'max-h-40 opacity-100 mt-1 mb-2' : 'max-h-0 opacity-0 pointer-events-none'
                       }`}
                     >
-                      <div className="pl-6 space-y-1 border-l border-champagne/15 ml-4">
+                      <div className={`pl-6 space-y-1 border-l ml-4 ${isLightPage ? 'border-[#C8A96B]/20' : 'border-champagne/15'}`}>
                         {link.dropdown.map((subItem) => (
                           <a
                             key={subItem.label}
@@ -215,7 +267,11 @@ export default function Navbar() {
                               setOpen(false);
                               setExpandedMobileItem(null);
                             }}
-                            className="block rounded-xl px-4 py-2.5 text-xs font-semibold text-ivory/70 hover:text-gold transition"
+                            className={`block rounded-xl px-4 py-2.5 text-xs font-semibold transition ${
+                              isLightPage
+                                ? 'text-[#1C1C1C]/70 hover:text-[#C8A96B]'
+                                : 'text-ivory/70 hover:text-gold'
+                            }`}
                           >
                             {subItem.label}
                           </a>
@@ -233,7 +289,13 @@ export default function Navbar() {
                     }}
                     aria-current={isLinkActive ? 'page' : undefined}
                     className={`block rounded-2xl px-4 py-3 text-sm font-semibold transition ${
-                      isLinkActive ? 'bg-gold text-obsidian' : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
+                      isLinkActive
+                        ? isLightPage
+                          ? 'bg-[#C8A96B] text-white'
+                          : 'bg-gold text-obsidian'
+                        : isLightPage
+                          ? 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
+                          : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
                     }`}
                   >
                     {link.label}

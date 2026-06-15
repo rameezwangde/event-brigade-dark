@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight,
   BadgeCheck,
@@ -11,12 +12,19 @@ import {
   ShieldCheck,
   Sparkles,
   Target,
-  UsersRound
+  UsersRound,
+  Presentation,
+  Award,
+  Globe,
+  Milestone,
+  Smile,
+  Cpu,
+  Tv
 } from 'lucide-react';
 import { services, corporatePortfolio } from '../data.js';
 import Reveal from './Reveal.jsx';
-import SectionHeader from './SectionHeader.jsx';
 
+// Import corporate assets
 import heroStage from '../assets/corporate-extracted/corporate-p15-xref1070.jpg';
 import conferenceStage from '../assets/corporate-extracted/corporate-p17-xref1109.jpg';
 import awardsNight from '../assets/corporate-extracted/corporate-p08-xref843.jpg';
@@ -30,155 +38,302 @@ import clientMeet from '../assets/corporate-extracted/corporate-p12-xref973.jpg'
 import reviewOne from '../assets/corporate-extracted/corporate-p18-xref1127.jpg';
 import reviewTwo from '../assets/corporate-extracted/corporate-p18-xref1184.jpg';
 
+// Mapping of process steps to Lucide icons
 const processIcons = [Target, Lightbulb, Gem, ClipboardCheck, Handshake, BadgeCheck];
 const strengthIcons = [ShieldCheck, BadgeCheck, ClipboardCheck, Sparkles];
 
-const serviceVisuals = {
-  'Annual Days & Awards Night': awardsNight,
-  'Product Launches': launchWalk,
-  Conference: conferenceStage,
-  'Family Days Events & Theme Parties': familyTheme,
-  'Channel Partner & Dealers Meet': partnerMeet,
-  'Outdoor Events': outdoorSetup
-};
-
-const spotlight = [
-  { image: heroStage, title: 'Large-format stage production' },
-  { image: conferenceStage, title: 'Conference and leadership sessions' },
-  { image: registrationDesk, title: 'Guest registration and access flow' },
-  { image: groupPhoto, title: 'Outdoor corporate gatherings' },
-  { image: clientMeet, title: 'Partner and dealer meets' },
-  { image: awardsNight, title: 'Awards nights and celebrations' }
+// 8 Premium B2B Corporate Formats
+const b2bCorporateServices = [
+  {
+    number: '01',
+    title: 'Annual Days',
+    image: awardsNight,
+    icon: Milestone,
+    description: 'High-impact B2B themes, customized LED backdrop graphics, precise stage set fabrications, and professional lighting control.'
+  },
+  {
+    number: '02',
+    title: 'Product Launches',
+    image: launchWalk,
+    icon: Cpu,
+    description: 'Strategic reveal moments, 3D projection mapping, laser installations, media coordinates, and secure VIP logistics.'
+  },
+  {
+    number: '03',
+    title: 'Conferences & Summits',
+    image: conferenceStage,
+    icon: Globe,
+    description: 'High-spec multi-room AV setups, check-in systems, live video broadcast setups, speaker queues, and seating plans.'
+  },
+  {
+    number: '04',
+    title: 'Awards Nights',
+    image: registrationDesk, // Reusing local assets
+    icon: Award,
+    description: 'Chronological trophy lists, professional sound design, VIP registration queues, and high-spec corporate F&B curation.'
+  },
+  {
+    number: '05',
+    title: 'Dealer Meets',
+    image: partnerMeet,
+    icon: Handshake,
+    description: 'Distributor forums, interactive networking lounges, custom brand exhibitions, and outdoor event spaces.'
+  },
+  {
+    number: '06',
+    title: 'Family Days',
+    image: familyTheme,
+    icon: Smile,
+    description: 'Bespoke corporate employee engagement carnivals, family-friendly game zones, stage acts, and safety protocols.'
+  },
+  {
+    number: '07',
+    title: 'Team Building Experiences',
+    image: groupPhoto,
+    icon: UsersRound,
+    description: 'Outbound corporate retreats, custom team challenges, interactive team strategies, and fully managed travel.'
+  },
+  {
+    number: '08',
+    title: 'Leadership Events',
+    image: clientMeet,
+    icon: Presentation,
+    description: 'Boardroom leadership roundtables, high-confidentiality B2B setups, transport coordination, and luxury hospitality.'
+  }
 ];
 
+// Corporate Showcase Config
 const corporateShowcase = {
-  eyebrow: 'Corporate Services',
-  title: 'Corporate events engineered for impact.',
-  text: 'From annual days and launches to conferences, partner meets and outdoor experiences, Event Brigade brings together strategy, technical production, hospitality and on-ground execution.',
   hero: heroStage,
+  eyebrow: 'Corporate Showcase',
+  title: 'Precision Corporate Event Management & Production',
+  text: 'At Event Brigade, we engineer custom B2B experiences with bulletproof logistics, state-of-the-art stage fabrications, and precise technical orchestration. From initial blueprint to final live broadcast, we handle the complexity so your leadership can focus on driving impact.',
   modules: [
     {
-      title: 'Annual Days & Awards Night',
-      text: 'Brand-aligned themes, immersive stage design, lighting, entertainment, recognition moments and curated F&B.',
-      image: awardsNight
-    },
-    {
-      title: 'Product Launches',
-      text: 'Concept, reveal moments, registration, hospitality, LED walls, AV, lighting and special effects.',
-      image: launchWalk
-    },
-    {
-      title: 'Conference',
-      text: 'Stage design, seating layout, branding, check-in, speaker coordination and smooth session flow.',
+      title: 'Stage Production & AV',
+      text: 'Bespoke stage designs, large-format LED screen setups, line-array audio, and multi-camera broadcast systems.',
       image: conferenceStage
     },
     {
-      title: 'Family Days & Theme Parties',
-      text: 'Vibrant themes, kids zones, games, live performances, food options and comfortable guest experiences.',
+      title: 'Logistics & RSVP Flow',
+      text: 'Secure executive check-in, RFID badge scanning, multi-hotel hospitality, and VIP transport networks.',
+      image: registrationDesk
+    },
+    {
+      title: 'Product Unveils',
+      text: 'Theatrical product reveals with synchronous laser shows, turntable setups, and high-impact sound design.',
+      image: launchWalk
+    },
+    {
+      title: 'Partner Meets',
+      text: 'Exhibition stalls fabrication, interactive lounge zones, and tailored executive hospitality for dealer forums.',
+      image: partnerMeet
+    },
+    {
+      title: 'Awards Gala Setups',
+      text: 'Red carpet entries, trophy presentations, live entertainment curation, and premium F&B logistics.',
+      image: awardsNight
+    },
+    {
+      title: 'Corporate Outbounds',
+      text: 'Team building retreats, custom games, stage events, and safety-audited employee carnivals.',
       image: familyTheme
     }
   ],
-  gallery: [awardsNight, launchWalk, conferenceStage, partnerMeet]
+  gallery: [heroStage, conferenceStage, launchWalk, partnerMeet]
 };
 
 export default function CorporateServices() {
-  const [activeModule, setActiveModule] = React.useState(null);
+  const [activeModule, setActiveModule] = useState(null);
+  const [networkNodes, setNetworkNodes] = useState([]);
 
-  // Find corporate data
+  // Generate background network coordinates on mount
+  useEffect(() => {
+    const nodes = Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: 1.5 + Math.random() * 2,
+      duration: 3 + Math.random() * 4
+    }));
+    setNetworkNodes(nodes);
+  }, []);
+
   const corporateData = services.find(s => s.title === 'Corporate Events') || { servicesWeProvide: [] };
   const splitIndex = Math.floor(corporateData.servicesWeProvide.length / 2);
   const corporateEventsList = corporateData.servicesWeProvide.slice(0, splitIndex);
   const corporateSolutionsList = corporateData.servicesWeProvide.slice(splitIndex);
 
   return (
-    <section className="relative overflow-hidden bg-charcoal pb-12 pt-32 md:pb-16 md:pt-40">
-      <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_58%)]" />
-      <div className="relative mx-auto max-w-7xl px-5">
-        <SectionHeader
-          eyebrow="Our Services"
-          title="Engineered for corporate impact."
-          text="From planning and production to hospitality and execution, we deliver end-to-end alignment with your brand strategy."
-          className="max-w-5xl"
-        />
+    <div className="relative w-full min-h-screen bg-[#050505] text-[#FFFFFF] font-sans overflow-x-hidden selection:bg-[#2E6BFF]/30 selection:text-white pt-28 pb-16">
+      
+      {/* Blueprint Grid & Spotlights Background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Navy Mesh Radial */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(8,27,58,0.45),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(46,107,255,0.06),transparent_50%)]" />
+        
+        {/* Tech Blueprint Grid */}
+        <div className="absolute inset-0 corp-blueprint-grid opacity-60" />
 
-        {/* Showcase Block */}
-        <div className="mt-12 space-y-10">
+        {/* Dynamic Sweeping Spotlight Beams */}
+        <div className="absolute -top-[10%] left-[10%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(46,107,255,0.06),transparent_60%)] corp-spotlight" />
+        <div className="absolute top-[40%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(46,107,255,0.04),transparent_60%)] corp-spotlight" style={{ animationDelay: '-8s' }} />
+      </div>
+
+      {/* Abstract Network Connection Lines */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-20">
+        {networkNodes.map((node) => (
+          <motion.div
+            key={node.id}
+            className="absolute rounded-full bg-[#2E6BFF]"
+            style={{
+              left: `${node.x}%`,
+              top: `${node.y}%`,
+              width: `${node.size}px`,
+              height: `${node.size}px`,
+              boxShadow: '0 0 10px #2E6BFF'
+            }}
+            animate={{
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.4, 1]
+            }}
+            transition={{
+              duration: node.duration,
+              repeat: Infinity,
+              ease: 'easeInOut'
+            }}
+          />
+        ))}
+        {/* SVG connection beams */}
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          {networkNodes.slice(0, -1).map((node, i) => {
+            const next = networkNodes[i + 1];
+            return (
+              <line
+                key={i}
+                x1={`${node.x}%`}
+                y1={`${node.y}%`}
+                x2={`${next.x}%`}
+                y2={`${next.y}%`}
+                stroke="rgba(46, 107, 255, 0.08)"
+                strokeWidth="0.5"
+              />
+            );
+          })}
+        </svg>
+      </div>
+
+      {/* Main Page Layout */}
+      <div className="relative max-w-7xl mx-auto px-5 mt-12 z-10">
+        
+        {/* Header Section */}
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 mb-4">
+              <span className="w-6 h-[1px] bg-[#D4AF37]" />
+              <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.36em] text-[#D4AF37]">
+                Corporate Events & Production
+              </p>
+              <span className="w-6 h-[1px] bg-[#D4AF37]" />
+            </div>
+
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white leading-[1.15] max-w-4xl mx-auto">
+              Engineered For <span className="italic font-normal text-[#D4AF37]">Corporate</span> Impact
+            </h1>
+
+            <p className="mt-6 text-sm sm:text-base md:text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
+              From strategy and production to hospitality and execution, we deliver B2B experiences that strengthen brands, engage audiences, and drive measurable enterprise outcomes.
+            </p>
+
+            <div className="mx-auto mt-8 h-px w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+          </Reveal>
+        </div>
+
+        {/* Corporate Showcase Panel */}
+        <div className="mt-8">
           <Reveal
             id="corporate"
-            className="overflow-hidden rounded-[2rem] border border-champagne/20 bg-obsidian shadow-soft scroll-mt-28"
+            className="overflow-hidden rounded-[24px] border border-white/10 bg-[#151515]/90 shadow-2xl scroll-mt-28"
           >
             <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="relative min-h-[460px] overflow-hidden lg:min-h-full">
-                {/* Default Background */}
+              {/* Left Side: LED Keynote Image */}
+              <div className="relative min-h-[440px] overflow-hidden lg:min-h-full">
                 <img
                   src={corporateShowcase.hero}
-                  alt="Corporate Services by Event Brigade"
-                  loading="lazy"
+                  alt="Corporate Event Production"
                   className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${
                     activeModule !== null ? 'opacity-0 scale-100' : 'opacity-100 scale-105'
                   }`}
                 />
 
-                {/* Module Specific Backgrounds */}
-                {corporateShowcase.modules.map((module, moduleIndex) => (
+                {corporateShowcase.modules.map((module, index) => (
                   <img
                     key={module.title}
                     src={module.image}
                     alt={module.title}
-                    loading="lazy"
                     className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${
-                      activeModule === moduleIndex ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
+                      activeModule === index ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
                     }`}
                   />
                 ))}
 
-                <div className="absolute inset-0 bg-obsidian/55 md:bg-obsidian/25" />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/80 to-obsidian/35 md:from-obsidian/95 md:via-obsidian/35 md:to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 pb-9 md:p-8 md:pb-12">
-                  <div className="rounded-[1.25rem] border border-champagne/10 bg-obsidian/78 p-5 shadow-soft backdrop-blur-sm md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0">
-                    <p className="text-xs font-semibold uppercase tracking-[0.34em] text-champagne drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
-                      {corporateShowcase.eyebrow}
-                    </p>
-                    <h3 className="mt-3 font-serif text-4xl leading-tight text-ivory drop-shadow-[0_3px_18px_rgba(0,0,0,0.95)] md:text-5xl">
-                      {corporateShowcase.title}
-                    </h3>
-                    <a href="/corporate-portfolio" className="mt-6 inline-flex text-sm font-bold uppercase tracking-[0.14em] text-gold drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
-                      View Portfolio
-                    </a>
-                  </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-[#050505]/30 z-10" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-[#D4AF37] bg-black/40 px-3.5 py-1.5 rounded-full border border-white/5 backdrop-blur-sm">
+                    {corporateShowcase.eyebrow}
+                  </span>
+                  <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-white leading-snug">
+                    {corporateShowcase.title}
+                  </h3>
+                  <a
+                    href="/corporate-portfolio"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.history.pushState({}, '', '/corporate-portfolio');
+                    }}
+                    className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#D4AF37] hover:text-[#2E6BFF] transition-colors"
+                  >
+                    View Case Studies <ArrowRight size={14} />
+                  </a>
                 </div>
               </div>
 
-              <div className="flex flex-col justify-center p-7 md:p-10">
-                <p className="text-base leading-8 text-smoke md:text-lg">{corporateShowcase.text}</p>
-                <div className="mt-8 divide-y divide-champagne/10">
-                  {corporateShowcase.modules.map((module, moduleIndex) => {
-                    const isHovered = activeModule === moduleIndex;
+              {/* Right Side: Interactive Modules */}
+              <div className="flex flex-col justify-center p-6 sm:p-10 md:p-12 bg-[#151515]/80">
+                <p className="text-sm sm:text-base leading-relaxed text-white/75">{corporateShowcase.text}</p>
+                
+                <div className="mt-8 divide-y divide-white/5">
+                  {corporateShowcase.modules.map((module, index) => {
+                    const isHovered = activeModule === index;
                     return (
                       <div
                         key={module.title}
-                        onMouseEnter={() => setActiveModule(moduleIndex)}
+                        onMouseEnter={() => setActiveModule(index)}
                         onMouseLeave={() => setActiveModule(null)}
-                        className="group cursor-pointer py-5 transition-all duration-300"
+                        className="group cursor-pointer py-4.5 transition-all duration-300"
                       >
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-6">
-                            <span className={`font-mono text-sm tracking-[0.2em] transition-colors duration-300 ${isHovered ? 'text-gold' : 'text-smoke/60'}`}>
-                              {String(moduleIndex + 1).padStart(2, '0')}
+                          <div className="flex items-center gap-5">
+                            <span className={`font-mono text-xs tracking-wider transition-colors duration-300 ${isHovered ? 'text-[#D4AF37]' : 'text-white/40'}`}>
+                              {String(index + 1).padStart(2, '0')}
                             </span>
-                            <h4 className={`font-serif text-2xl leading-none transition-all duration-300 ${isHovered ? 'text-gold pl-2' : 'text-ivory'}`}>
+                            <h4 className={`font-serif text-xl sm:text-2xl transition-all duration-300 ${isHovered ? 'text-[#D4AF37] pl-2' : 'text-white'}`}>
                               {module.title}
                             </h4>
                           </div>
-                          <div className={`h-1.5 w-1.5 rounded-full bg-gold transition-all duration-500 ${isHovered ? 'opacity-100 scale-125' : 'opacity-0 scale-50'}`} />
+                          <div className={`h-1.5 w-1.5 rounded-full bg-[#D4AF37] transition-all duration-500 ${isHovered ? 'opacity-100 scale-125' : 'opacity-0 scale-50'}`} />
                         </div>
+                        
                         <div
                           className={`grid transition-all duration-500 ease-in-out ${
-                            isHovered ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0'
+                            isHovered ? 'grid-rows-[1fr] opacity-100 mt-3.5' : 'grid-rows-[0fr] opacity-0'
                           }`}
                         >
                           <div className="overflow-hidden">
-                            <p className="pl-11 text-sm leading-6 text-smoke/90">
+                            <p className="pl-10 text-xs sm:text-sm leading-relaxed text-white/70">
                               {module.text}
                             </p>
                           </div>
@@ -190,189 +345,194 @@ export default function CorporateServices() {
               </div>
             </div>
 
-            <div className="overflow-hidden border-t border-champagne/15">
+            {/* Auto Scrolling Banner */}
+            <div className="overflow-hidden border-t border-white/5 bg-[#050505]/45">
               <div className="auto-scroll-gallery flex w-max gap-0">
-                {[...corporateShowcase.gallery, ...corporateShowcase.gallery].map((item, galleryIndex) => {
-                  const image = typeof item === 'string' ? item : item.image;
-                  const position = typeof item === 'string' ? 'center center' : item.position;
-
-                  return (
-                    <img
-                      key={`corporate-showcase-${galleryIndex}-${image}`}
-                      src={image}
-                      alt={`Corporate visual ${galleryIndex + 1}`}
-                      loading="lazy"
-                      style={{ objectPosition: position }}
-                      className="h-44 w-[72vw] shrink-0 object-cover opacity-80 transition hover:opacity-100 sm:w-[44vw] lg:w-96"
-                    />
-                  );
-                })}
+                {[...corporateShowcase.gallery, ...corporateShowcase.gallery].map((image, idx) => (
+                  <img
+                    key={`scroll-img-${idx}-${image}`}
+                    src={image}
+                    alt={`Summit moment ${idx + 1}`}
+                    loading="lazy"
+                    className="h-36 w-[55vw] shrink-0 object-cover opacity-60 transition duration-300 hover:opacity-100 sm:w-[35vw] lg:w-72 border-r border-white/5"
+                  />
+                ))}
               </div>
             </div>
           </Reveal>
         </div>
 
-        {/* Workflow Section */}
-        <div className="mt-24">
-          <SectionHeader
-            eyebrow="How We Work"
-            title="A structured path from brief to applause."
-            text="Our operational workflows ensure a smooth progression from understanding project goals to on-ground setup."
-          />
-          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {/* 8 Premium Corporate Cards Grid */}
+        <div className="mt-28">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Reveal>
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="w-5 h-[1px] bg-[#2E6BFF]" />
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#2E6BFF]">Capabilities</p>
+                <span className="w-5 h-[1px] bg-[#2E6BFF]" />
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white">
+                Enterprise Production Formats
+              </h2>
+            </Reveal>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-12">
+            {b2bCorporateServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <Reveal
+                  key={service.title}
+                  delay={index * 0.04}
+                  className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] shadow-lg transition-all duration-500 hover:-translate-y-1.5 border-t-2 hover:border-t-2 hover:border-t-[#2E6BFF] border-t-[#D4AF37] corp-blue-glow-hover flex flex-col h-full"
+                >
+                  {/* Card Image Area */}
+                  <div className="relative h-44 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Dark mask overlay */}
+                    <div className="absolute inset-0 bg-[#050505]/40" />
+                    
+                    {/* Floating index tag */}
+                    <span className="absolute right-4 top-4 rounded-full border border-white/10 bg-[#050505]/80 px-3 py-1 text-[10px] font-mono font-bold text-[#D4AF37]">
+                      {service.number}
+                    </span>
+
+                    {/* Icon container */}
+                    <div className="absolute left-4 top-4 grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-[#050505]/85 text-[#D4AF37] backdrop-blur-sm">
+                      <Icon size={18} />
+                    </div>
+                  </div>
+
+                  {/* Card Content Area */}
+                  <div className="p-5 flex-grow flex flex-col justify-between bg-[#151515]">
+                    <div>
+                      <h3 className="font-serif text-xl sm:text-2xl text-white leading-snug transition-colors group-hover:text-[#D4AF37]">
+                        {service.title}
+                      </h3>
+                      <p className="mt-3.5 text-xs sm:text-sm text-white/70 leading-relaxed text-justify">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Strategic Workflow Section */}
+        <div className="mt-28">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Reveal>
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="w-5 h-[1px] bg-[#D4AF37]" />
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Strategic Process</p>
+                <span className="w-5 h-[1px] bg-[#D4AF37]" />
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white">
+                Discipline-Led Event Architecture
+              </h2>
+            </Reveal>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 mt-12">
             {corporatePortfolio.workflow.map((step, index) => {
               const Icon = processIcons[index] || Check;
               return (
-                <Reveal key={step} delay={index * 0.05} className="glass-card p-6 h-full flex flex-col justify-between">
+                <Reveal
+                  key={step}
+                  delay={index * 0.05}
+                  className="group relative overflow-hidden rounded-[20px] border border-white/5 bg-[#151515]/70 p-6 h-full flex flex-col justify-between hover:border-white/15 transition-all duration-300"
+                >
+                  {/* Decorative dot matrix watermark */}
+                  <div className="absolute right-4 top-4 grid grid-cols-3 gap-1 opacity-20 pointer-events-none group-hover:opacity-40 transition-opacity">
+                    {Array.from({ length: 9 }).map((_, i) => (
+                      <span key={i} className="h-1 w-1 rounded-full bg-[#2E6BFF]" />
+                    ))}
+                  </div>
+
                   <div className="mb-6 flex items-center justify-between">
-                    <Icon className="text-gold" size={28} />
-                    <span className="rounded-full border border-champagne/20 px-4 py-2 text-xs font-semibold text-champagne">
-                      {String(index + 1).padStart(2, '0')}
+                    <div className="grid h-10 w-10 place-items-center rounded-xl border border-[#D4AF37]/35 bg-[#D4AF37]/5 text-[#D4AF37]">
+                      <Icon size={20} />
+                    </div>
+                    <span className="font-mono text-xs font-bold text-white/40">
+                      STEP {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
-                  <h3 className="font-serif text-2xl text-ivory">{step}</h3>
+                  
+                  <h3 className="font-serif text-xl sm:text-2xl text-white group-hover:text-[#D4AF37] transition-colors">{step}</h3>
                 </Reveal>
               );
             })}
           </div>
         </div>
 
-        {/* Strengths Section */}
-        <div className="mt-24 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal className="relative overflow-hidden rounded-[2rem] border border-champagne/20 bg-ivory/[0.035] shadow-soft">
-            <img src={conferenceStage} alt="Corporate conference produced by Event Brigade" className="h-full min-h-[520px] w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-obsidian/15 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-champagne">Why Choose Us</p>
-              <h2 className="mt-3 max-w-xl font-serif text-4xl leading-tight text-ivory">Seamless, creative and result-driven.</h2>
+        {/* Strengths & Executive Focus Section */}
+        <div className="mt-28 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <Reveal className="relative overflow-hidden rounded-[24px] border border-white/10 shadow-2xl h-full min-h-[380px] lg:min-h-full">
+            <img
+              src={conferenceStage}
+              alt="High-spec corporate summit setup"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-[4000ms]"
+            />
+            {/* Soft dark tech gradient */}
+            <div className="absolute inset-0 bg-[#050505]/45" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent" />
+            
+            <div className="absolute bottom-0 left-0 right-0 p-8">
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-[#2E6BFF] border border-[#2E6BFF]/35 bg-[#2E6BFF]/10 px-3 py-1.5 rounded-full">
+                Operations
+              </span>
+              <h2 className="mt-4 font-serif text-3xl sm:text-4xl text-white leading-snug">
+                Discipline Meets Brand Strategy
+              </h2>
             </div>
           </Reveal>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {corporatePortfolio.strengths.map((item, index) => {
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            {corporatePortfolio.strengths.map((strength, index) => {
               const Icon = strengthIcons[index] || ShieldCheck;
               return (
-                <Reveal key={item.title} delay={index * 0.06} className="glass-card p-6 h-full flex flex-col justify-start">
-                  <Icon className="mb-5 text-gold" size={28} />
-                  <h3 className="font-serif text-2xl text-ivory">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-smoke">{item.text}</p>
+                <Reveal
+                  key={strength.title}
+                  delay={index * 0.05}
+                  className="rounded-[20px] border border-white/10 bg-[#151515] p-6 h-full flex flex-col justify-start hover:border-[#D4AF37]/40 transition-colors"
+                >
+                  <Icon className="mb-4 text-[#D4AF37]" size={26} />
+                  <h3 className="font-serif text-xl sm:text-2xl text-white">{strength.title}</h3>
+                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-white/70">{strength.text}</p>
                 </Reveal>
               );
             })}
           </div>
         </div>
 
-        {/* Capabilities Grid */}
-        <div className="mt-24">
-          <SectionHeader
-            eyebrow="What We Do"
-            title="Corporate formats shaped into complete experiences."
-            text="Each format covers design, stage production, vendor onboarding, and guest hospitality layers."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {corporatePortfolio.services.map((service, index) => (
-              <Reveal key={service.title} delay={index * 0.05} className="group overflow-hidden rounded-[2rem] border border-champagne/20 bg-graphite shadow-soft transition duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-glow h-full flex flex-col">
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={serviceVisuals[service.title] || heroStage}
-                    alt={`${service.title} by Event Brigade`}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent" />
-                </div>
-                <div className="p-6 flex-grow flex flex-col justify-start">
-                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-champagne">
-                    {String(index + 1).padStart(2, '0')}
-                  </p>
-                  <h3 className="mt-3 min-h-16 font-serif text-3xl leading-tight text-ivory">{service.title}</h3>
-                  <ul className="mt-5 space-y-3">
-                    {service.items.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-sm leading-6 text-smoke">
-                        <Check className="mt-1 shrink-0 text-gold" size={16} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        {/* Spotlight Grid */}
-        <div className="mt-24">
-          <SectionHeader
-            eyebrow="Event Spotlight"
-            title="Real event moments from the corporate portfolio."
-            text="Highlights from conferences, leadership summits, and awards productions managed by Event Brigade."
-          />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {spotlight.map((item, index) => (
-              <Reveal
-                key={item.title}
-                delay={(index % 3) * 0.05}
-                className={`group relative overflow-hidden rounded-[1.5rem] border border-champagne/20 bg-graphite shadow-soft ${
-                  index === 0 ? 'lg:col-span-2' : ''
-                }`}
-              >
-                <img src={item.image} alt={item.title} loading="lazy" className="h-72 w-full object-cover transition duration-700 group-hover:scale-105 md:h-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/10 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.26em] text-champagne">Event Brigade</p>
-                  <h3 className="mt-2 font-serif text-2xl text-ivory">{item.title}</h3>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        {/* Clients & Reviews */}
-        <div className="mt-24 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal className="glass-card p-7 md:p-8 h-full flex flex-col justify-between">
-            <div>
-              <UsersRound className="mb-6 text-gold" size={34} />
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-champagne">Our Clients</p>
-              <h2 className="mt-4 font-serif text-4xl leading-tight text-ivory">Brands and communities served.</h2>
-            </div>
-            <div className="mt-8 grid grid-cols-2 gap-3">
-              {corporatePortfolio.clients.map((client) => (
-                <div key={client} className="rounded-2xl border border-champagne/12 bg-obsidian/55 px-4 py-3 text-sm font-semibold text-ivory/82">
-                  {client}
-                </div>
-              ))}
-            </div>
-          </Reveal>
-          <Reveal delay={0.08} className="grid gap-4 sm:grid-cols-2 h-full">
-            {[reviewOne, reviewTwo].map((review, index) => (
-              <div key={review} className="overflow-hidden rounded-[1.5rem] border border-champagne/20 bg-ivory p-3 shadow-soft h-full flex items-center justify-center">
-                <img src={review} alt={`Corporate client review ${index + 1}`} loading="lazy" className="h-full w-full rounded-[1rem] object-contain" />
-              </div>
-            ))}
-          </Reveal>
-        </div>
-
-        {/* Services We Provide Details Cards */}
-        <div className="mt-24 grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-2 xl:gap-8">
+        {/* Detailed Capabilities Lists */}
+        <div className="mt-28 grid gap-6 md:grid-cols-2">
           <Reveal
-            className="group relative overflow-hidden rounded-[2rem] border border-champagne/15 bg-graphite/40 p-8 shadow-soft transition-all duration-500 hover:border-gold/50 hover:bg-graphite/70 hover:shadow-glow h-full flex flex-col"
+            className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#151515]/60 p-8 shadow-xl transition-all duration-300 hover:border-[#D4AF37]/30 h-full flex flex-col"
           >
-            <div className="absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-gold-radial opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-30 pointer-events-none" />
-
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-champagne/80 transition-colors duration-300 group-hover:text-champagne">
-              Services we provide
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]/80">
+              Operations & Management
             </p>
-            <h3 className="mt-4 font-serif text-3xl font-semibold text-ivory transition-colors duration-300 group-hover:text-gold md:text-4xl">
-              Corporate Events
+            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-white">
+              Corporate Events Checklist
             </h3>
-            <div className="mt-5 h-px w-24 bg-gradient-to-r from-gold/50 to-transparent transition-all duration-500 group-hover:w-32 group-hover:from-gold" />
+            <div className="mt-4 h-[1px] w-24 bg-gradient-to-r from-[#D4AF37] to-transparent" />
             
-            <ul className="mt-8 grid gap-x-6 gap-y-4 sm:grid-cols-2 flex-grow">
+            <ul className="mt-6.5 grid gap-x-6 gap-y-3.5 sm:grid-cols-2 flex-grow">
               {corporateEventsList.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-3.5 text-[15px] font-medium leading-relaxed text-smoke transition-colors duration-300 group-hover:text-smoke/90"
+                  className="flex items-start gap-3 text-xs sm:text-sm leading-relaxed text-white/85"
                 >
-                  <span className="mt-1.5 shrink-0 text-[10px] text-gold/80 transition-transform duration-300 group-hover:scale-125">◆</span>
+                  <span className="mt-1 shrink-0 text-[#D4AF37] text-[8px]">◆</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -381,25 +541,23 @@ export default function CorporateServices() {
 
           <Reveal
             delay={0.08}
-            className="group relative overflow-hidden rounded-[2rem] border border-champagne/15 bg-graphite/40 p-8 shadow-soft transition-all duration-500 hover:border-gold/50 hover:bg-graphite/70 hover:shadow-glow h-full flex flex-col"
+            className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#151515]/60 p-8 shadow-xl transition-all duration-300 hover:border-[#D4AF37]/30 h-full flex flex-col"
           >
-            <div className="absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-gold-radial opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-30 pointer-events-none" />
-
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-champagne/80 transition-colors duration-300 group-hover:text-champagne">
-              Services we provide
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]/80">
+              Technical Production
             </p>
-            <h3 className="mt-4 font-serif text-3xl font-semibold text-ivory transition-colors duration-300 group-hover:text-gold md:text-4xl">
-              Corporate Solutions
+            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-white">
+              Corporate Solutions Checklist
             </h3>
-            <div className="mt-5 h-px w-24 bg-gradient-to-r from-gold/50 to-transparent transition-all duration-500 group-hover:w-32 group-hover:from-gold" />
+            <div className="mt-4 h-[1px] w-24 bg-gradient-to-r from-[#D4AF37] to-transparent" />
             
-            <ul className="mt-8 grid gap-x-6 gap-y-4 sm:grid-cols-2 flex-grow">
+            <ul className="mt-6.5 grid gap-x-6 gap-y-3.5 sm:grid-cols-2 flex-grow">
               {corporateSolutionsList.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-3.5 text-[15px] font-medium leading-relaxed text-smoke transition-colors duration-300 group-hover:text-smoke/90"
+                  className="flex items-start gap-3 text-xs sm:text-sm leading-relaxed text-white/85"
                 >
-                  <span className="mt-1.5 shrink-0 text-[10px] text-gold/80 transition-transform duration-300 group-hover:scale-125">◆</span>
+                  <span className="mt-1 shrink-0 text-[#D4AF37] text-[8px]">◆</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -407,24 +565,76 @@ export default function CorporateServices() {
           </Reveal>
         </div>
 
-        {/* CTA Banner */}
-        <Reveal className="mt-20 rounded-[2rem] border border-champagne/25 bg-ivory/[0.04] p-8 text-center shadow-glow backdrop-blur md:p-12">
-          <Quote className="mx-auto text-gold" size={34} />
-          <p className="mx-auto mt-6 max-w-4xl font-serif text-3xl leading-tight text-ivory md:text-5xl">
-            Corporate events with the discipline of production and the feel of an experience.
-          </p>
-          <a
-            href="/contact"
-            onClick={(e) => {
-              e.preventDefault();
-              window.history.pushState({}, '', '/contact');
-            }}
-            className="btn-primary mt-8 inline-flex"
-          >
-            Plan A Corporate Event
-          </a>
+        {/* Enterprise Client Logs */}
+        <div className="mt-28 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+          <Reveal className="rounded-[24px] border border-white/10 bg-[#151515] p-7 md:p-9 shadow-xl flex flex-col justify-between h-full">
+            <div>
+              <UsersRound className="mb-5 text-[#D4AF37]" size={28} />
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Corporate Credentials</p>
+              <h2 className="mt-3 font-serif text-3xl text-white">MNC Brands Trust Event Brigade</h2>
+              <p className="mt-3 text-xs sm:text-sm text-white/70">
+                Delivering secure, brand-aligned, and logistically sound event executions across corporate hubs in India.
+              </p>
+            </div>
+            
+            <div className="mt-8 grid grid-cols-2 gap-3.5">
+              {corporatePortfolio.clients.map((client) => (
+                <div
+                  key={client}
+                  className="flex items-center gap-2.5 rounded-xl border border-white/5 bg-[#050505]/75 px-4.5 py-3 text-xs sm:text-sm text-white/80"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#2E6BFF] shrink-0" />
+                  <span>{client}</span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.08} className="grid gap-4 sm:grid-cols-2 h-full">
+            {[reviewOne, reviewTwo].map((review, idx) => (
+              <div
+                key={review}
+                className="overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] p-4.5 shadow-lg h-full flex items-center justify-center hover:border-white/20 transition-all duration-300"
+              >
+                <img
+                  src={review}
+                  alt={`Corporate client review ${idx + 1}`}
+                  loading="lazy"
+                  className="h-full w-full rounded-xl object-contain filter brightness-95 hover:brightness-100 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </Reveal>
+        </div>
+
+        {/* Final Consultation Call to Action */}
+        <Reveal className="mt-28 text-center max-w-4xl mx-auto border border-white/10 bg-[#151515]/50 p-8 sm:p-12 md:p-16 rounded-[32px] relative overflow-hidden">
+          {/* Faint blueprint watermark */}
+          <div className="absolute inset-0 corp-blueprint-grid opacity-20 z-0 pointer-events-none" />
+          
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <Quote className="mx-auto text-[#D4AF37] mb-6" size={32} />
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white leading-tight">
+              Engineered For Impact.<br />
+              <span className="text-[#D4AF37] italic font-normal">Delivered With Precision.</span>
+            </h2>
+            <p className="mt-6 text-white/70 text-xs sm:text-sm leading-relaxed">
+              Partner with Kunal Garg and the Event Brigade team to execute your next leadership summit, product unveiler, awards ceremony, or dealer forum.
+            </p>
+            <a
+              href="/contact"
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', '/contact');
+              }}
+              className="gold-shimmer-btn inline-flex items-center gap-3 text-obsidian font-bold text-xs uppercase tracking-[0.2em] px-10 py-4.5 rounded-full hover:shadow-glow transition-all duration-300 mt-10"
+            >
+              Initiate Project Briefing <ArrowRight size={14} />
+            </a>
+          </div>
         </Reveal>
+
       </div>
-    </section>
+    </div>
   );
 }

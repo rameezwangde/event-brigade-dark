@@ -42,7 +42,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleLocationChange = () => {
       const path = window.location.pathname.replace(/\/$/, '') || '/';
-      setIsLightPage(path === '/wedding-portfolio' || path === '/wedding-services' || path === '/services');
+      setIsLightPage(path === '/wedding-portfolio' || path === '/wedding-services' || path === '/services' || path === '/social-services' || path === '/social-events-portfolio');
       setScrolled(window.scrollY > 24);
       if (path === '/') {
         setActive('home');
@@ -126,6 +126,7 @@ export default function Navbar() {
           {links.map((link) => {
             const hasDropdown = !!link.dropdown;
             const isLinkActive = active === link.id;
+            const isSocialPage = window.location.pathname.includes('social');
             return (
               <div key={link.id} className="group relative">
                 <a
@@ -134,9 +135,13 @@ export default function Navbar() {
                   aria-current={isLinkActive ? 'page' : undefined}
                   className={`relative flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold transition duration-300 ${
                     isLinkActive
-                      ? 'text-obsidian'
+                      ? isSocialPage
+                        ? 'text-white'
+                        : 'text-obsidian'
                       : isLightPage
-                        ? 'text-[#1C1C1C]/75 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
+                        ? isSocialPage
+                          ? 'text-[#222222]/75 hover:bg-[#D56A4A]/10 hover:text-[#D56A4A]'
+                          : 'text-[#1C1C1C]/75 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
                         : 'text-ivory/72 hover:bg-ivory/[0.06] hover:text-gold'
                   }`}
                 >
@@ -144,9 +149,11 @@ export default function Navbar() {
                     <motion.span
                       layoutId="activeNav"
                       className={`absolute inset-0 rounded-full ${
-                        isLightPage
-                          ? 'bg-gradient-to-r from-[#C8A96B] to-[#EDE4D3] shadow-sm border border-[#C8A96B]/30'
-                          : 'bg-gradient-to-r from-gold to-champagne shadow-glow'
+                        isSocialPage
+                          ? 'bg-[#D56A4A] shadow-sm'
+                          : isLightPage
+                            ? 'bg-gradient-to-r from-[#C8A96B] to-[#EDE4D3] shadow-sm border border-[#C8A96B]/30'
+                            : 'bg-gradient-to-r from-gold to-champagne shadow-glow'
                       }`}
                       transition={{ type: 'spring', stiffness: 420, damping: 34 }}
                     />
@@ -158,9 +165,13 @@ export default function Navbar() {
                         size={14}
                         className={`transition-transform duration-300 group-hover:rotate-180 ${
                           isLinkActive
-                            ? 'text-obsidian'
+                            ? isSocialPage
+                              ? 'text-white'
+                              : 'text-obsidian'
                             : isLightPage
-                              ? 'text-[#1C1C1C]/60 group-hover:text-[#C8A96B]'
+                              ? isSocialPage
+                                ? 'text-[#D56A4A] group-hover:text-[#D56A4A]'
+                                : 'text-[#1C1C1C]/60 group-hover:text-[#C8A96B]'
                               : 'text-ivory/60 group-hover:text-gold'
                         }`}
                       />
@@ -173,7 +184,9 @@ export default function Navbar() {
                     <div className="h-2 w-full" />
                     <div className={`rounded-2xl border p-1.5 shadow-soft backdrop-blur-xl ${
                       isLightPage
-                        ? 'border-[#C8A96B]/20 bg-[#FAF7F2]/95 shadow-[#C8A96B]/5'
+                        ? isSocialPage
+                          ? 'border-[#D56A4A]/20 bg-[#F9F5EF]/95 shadow-[#D56A4A]/5'
+                          : 'border-[#C8A96B]/20 bg-[#FAF7F2]/95 shadow-[#C8A96B]/5'
                         : 'border-champagne/20 bg-charcoal/95 shadow-gold/5'
                     }`}>
                       {link.dropdown.map((subItem) => (
@@ -183,7 +196,9 @@ export default function Navbar() {
                           onClick={(e) => handleNavClick(e, subItem.href)}
                           className={`block rounded-xl px-4 py-2 text-sm font-medium transition duration-200 ${
                             isLightPage
-                              ? 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/15 hover:text-[#C8A96B]'
+                              ? isSocialPage
+                                ? 'text-[#222222]/80 hover:bg-[#D56A4A]/15 hover:text-[#D56A4A]'
+                                : 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/15 hover:text-[#C8A96B]'
                               : 'text-ivory/80 hover:bg-gold/10 hover:text-gold'
                           }`}
                         >

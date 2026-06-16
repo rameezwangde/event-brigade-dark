@@ -78,7 +78,6 @@ const socialShowcase = {
 };
 
 export default function SocialServices() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [activeModule, setActiveModule] = useState(null);
 
   const serviceCards = [
@@ -120,7 +119,6 @@ export default function SocialServices() {
     }
   ];
 
-
   const testimonials = [
     {
       quote: "Event Brigade made my mom's 50th birthday truly magical. Every detail was beyond perfect!",
@@ -138,14 +136,6 @@ export default function SocialServices() {
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80"
     }
   ];
-
-  const handlePrevTestimonial = () => {
-    setActiveTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-
-  const handleNextTestimonial = () => {
-    setActiveTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
 
   return (
     <div
@@ -338,15 +328,15 @@ export default function SocialServices() {
                       loading="lazy"
                       className="h-full w-full object-cover transition duration-700 group-hover:scale-103"
                     />
-                    
-                    {/* Overlapping White Circle Icon Badge */}
-                    <div className="absolute left-6 -bottom-5 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white border border-[#D56A4A]/30 shadow text-[#D56A4A]">
-                      <Icon size={18} />
-                    </div>
                   </div>
 
                   {/* Card Body */}
-                  <div className="p-7 pt-9 flex-grow flex flex-col justify-between">
+                  <div className="p-7 pt-9 flex-grow flex flex-col justify-between relative">
+                    {/* Overlapping White Circle Icon Badge */}
+                    <div className="absolute left-6 -top-[22px] z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white border border-[#D56A4A]/30 shadow text-[#D56A4A]">
+                      <Icon size={18} />
+                    </div>
+
                     <div>
                       <h3 className="font-serif text-xl sm:text-2xl text-[#222222] font-semibold leading-snug text-left">
                         {card.title}
@@ -372,12 +362,10 @@ export default function SocialServices() {
 
       {/* COMBINED STATS & TESTIMONIAL BAR */}
       <div className="border-t border-[#D56A4A]/15 bg-[#FAF7F2] py-10 mt-16">
-        <div className="mx-auto max-w-7xl px-5 grid lg:grid-cols-12 gap-8 items-center">
-          
-          {/* STATS SECTION (col-span-7) */}
-          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-6 text-left">
-            
-            <div className="flex flex-col text-left">
+        {/* STATS SECTION ROW */}
+        <div className="mx-auto max-w-7xl px-5 border-b border-[#D56A4A]/10 pb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <div className="flex items-center gap-2 text-[#D56A4A] mb-1.5">
                 <Users size={18} />
                 <span className="font-serif text-2xl sm:text-3xl font-bold">2000+</span>
@@ -385,7 +373,7 @@ export default function SocialServices() {
               <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase">Events Planned</span>
             </div>
             
-            <div className="flex flex-col text-left">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <div className="flex items-center gap-2 text-[#D56A4A] mb-1.5">
                 <Award size={18} />
                 <span className="font-serif text-2xl sm:text-3xl font-bold">15+</span>
@@ -393,7 +381,7 @@ export default function SocialServices() {
               <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase">Years of Experience</span>
             </div>
 
-            <div className="flex flex-col text-left">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <div className="flex items-center gap-2 text-[#D56A4A] mb-1.5">
                 <MapPin size={18} />
                 <span className="font-serif text-2xl sm:text-3xl font-bold">100+</span>
@@ -401,68 +389,45 @@ export default function SocialServices() {
               <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase">Cities Served</span>
             </div>
 
-            <div className="flex flex-col text-left">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <div className="flex items-center gap-2 text-[#D56A4A] mb-1.5">
                 <Smile size={18} />
                 <span className="font-serif text-2xl sm:text-3xl font-bold">50k+</span>
               </div>
               <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase">Smiles Delivered</span>
             </div>
-
           </div>
+        </div>
 
-          {/* VERTICAL DIVIDER */}
-          <div className="hidden lg:block h-16 w-px bg-[#C8A96B]/25 lg:col-span-1 justify-self-center" />
-
-          {/* TESTIMONIAL SLIDER (col-span-4) */}
-          <div className="lg:col-span-4 flex flex-col text-left relative">
-            
-            {/* Quotation text */}
-            <div className="flex gap-3 items-start">
-              <span className="font-serif text-4xl text-[#D56A4A]/40 leading-none">“</span>
-              <div className="flex-grow">
-                <p className="font-sans text-sm md:text-base text-[#222222]/85 italic leading-relaxed">
-                  {testimonials[activeTestimonial].quote}
-                </p>
-                <div className="mt-4 flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 overflow-hidden rounded-full border border-[#D56A4A]/25 shadow-sm">
-                      <img
-                        src={testimonials[activeTestimonial].image}
-                        alt={testimonials[activeTestimonial].author}
-                        className="h-full w-full rounded-full object-cover"
-                      />
-                    </div>
-                    <span className="font-sans text-xs font-bold text-[#222222]">
-                      – {testimonials[activeTestimonial].author}
-                    </span>
+        {/* TESTIMONIALS SECTION ROW */}
+        <div className="mx-auto max-w-7xl px-5 pt-10">
+          <div className="flex gap-6 overflow-x-auto pb-6 snap-x scroll-smooth no-scrollbar">
+            {testimonials.map((t, idx) => (
+              <div
+                key={idx}
+                className="snap-start shrink-0 w-[85vw] sm:w-[350px] rounded-2xl border border-[#D56A4A]/15 bg-white p-6 shadow-sm flex flex-col justify-between"
+              >
+                <div>
+                  <span className="font-serif text-4xl text-[#D56A4A]/25 leading-none block mb-1">“</span>
+                  <p className="font-sans text-sm sm:text-base text-[#222222] italic leading-relaxed">
+                    {t.quote}
+                  </p>
+                </div>
+                <div className="mt-6 border-t border-[#D56A4A]/10 pt-4 flex items-center gap-3">
+                  <div className="h-10 w-10 overflow-hidden rounded-full border border-[#D56A4A]/25 shadow-sm">
+                    <img
+                      src={t.image}
+                      alt={t.author}
+                      className="h-full w-full object-cover"
+                    />
                   </div>
-
-                  {/* Slider Controls */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={handlePrevTestimonial}
-                      className="grid h-7 w-7 place-items-center rounded-full border border-[#D56A4A]/25 bg-white text-[#D56A4A] transition hover:bg-[#D56A4A] hover:text-[#F9F5EF]"
-                      aria-label="Previous testimonial"
-                    >
-                      <ChevronLeft size={14} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleNextTestimonial}
-                      className="grid h-7 w-7 place-items-center rounded-full border border-[#D56A4A]/25 bg-white text-[#D56A4A] transition hover:bg-[#D56A4A] hover:text-[#F9F5EF]"
-                      aria-label="Next testimonial"
-                    >
-                      <ChevronRight size={14} />
-                    </button>
-                  </div>
+                  <span className="font-sans text-xs sm:text-sm font-bold text-[#222222]">
+                    – {t.author}
+                  </span>
                 </div>
               </div>
-            </div>
-
+            ))}
           </div>
-
         </div>
       </div>
     </div>

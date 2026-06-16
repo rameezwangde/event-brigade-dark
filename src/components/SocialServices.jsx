@@ -24,13 +24,62 @@ import socialBabyShower from '../assets/social-curated/social-baby-shower-decor.
 import socialCommunity from '../assets/social-curated/social-community-stage.jpg';
 import socialActivities from '../assets/social-curated/social-paint-plant.jpg';
 import eventAtmosphere from '../assets/social-curated/social-event-atmosphere.jpg';
-import birthdayDecor from '../assets/social-curated/social-birthday-decor.jpg';
-import perfumeBar from '../assets/social-curated/social-perfume-bar.jpg';
-import babyActivity from '../assets/social-curated/social-baby-activity.jpg';
-import communityHero from '../assets/social-curated/social-community-hero.jpg';
+import socialGifts from '../assets/social-curated/social-return-gift.jpg';
+
+// Luxury Header Helper for Social Services
+function LuxuryHeader({ eyebrow, title, text, align = 'center' }) {
+  return (
+    <Reveal className={`max-w-4xl mx-auto mb-12 ${align === 'left' ? 'text-left' : 'text-center'}`}>
+      <div className={`flex items-center gap-2 mb-3 ${align === 'left' ? 'justify-start' : 'justify-center'}`}>
+        <span className="w-5 h-[1.5px] bg-[#D56A4A]/50" />
+        <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#D56A4A]">{eyebrow}</p>
+        <span className="w-5 h-[1.5px] bg-[#D56A4A]/50" />
+      </div>
+      <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#222222] font-semibold leading-[1.2]">
+        {title}
+      </h2>
+      {text && (
+        <p className="mt-4 text-sm sm:text-base text-[#222222]/70 font-sans leading-relaxed max-w-2xl mx-auto">
+          {text}
+        </p>
+      )}
+    </Reveal>
+  );
+}
+
+const socialShowcase = {
+  eyebrow: 'Social Event Services',
+  title: 'Social celebrations made personal, seamless and memorable.',
+  text: 'Birthdays, anniversaries, baby showers and community events are shaped with decor, activities, gifting, entertainment and a clear planning process.',
+  hero: socialHero,
+  modules: [
+    {
+      title: 'Birthdays',
+      text: 'Theme-led celebrations for kids and adults, from playful balloon installations to elegant party styling.',
+      image: socialBirthday
+    },
+    {
+      title: 'Anniversaries',
+      text: 'Romantic decor, milestone storytelling and warm guest experiences built around shared history.',
+      image: socialAnniversary
+    },
+    {
+      title: 'Baby Showers',
+      text: 'Coordinated backdrops, festive decor, creative stations, games and keepsake moments.',
+      image: socialBabyShower
+    },
+    {
+      title: 'Community Events',
+      text: 'Cultural calendars, club moments, festival formats and member engagement experiences.',
+      image: socialCommunity
+    }
+  ],
+  gallery: [socialActivities, socialGifts, socialBabyShower, socialCommunity]
+};
 
 export default function SocialServices() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [activeModule, setActiveModule] = useState(null);
 
   const serviceCards = [
     {
@@ -71,13 +120,6 @@ export default function SocialServices() {
     }
   ];
 
-  const galleryImages = [
-    { image: birthdayDecor, title: 'Birthday Setup' },
-    { image: socialBirthday, title: 'Celebration Cake' },
-    { image: eventAtmosphere, title: 'Luxury Table Styling' },
-    { image: perfumeBar, title: 'Elegant Hospitality' },
-    { image: babyActivity, title: 'Happy Guests' }
-  ];
 
   const testimonials = [
     {
@@ -111,80 +153,157 @@ export default function SocialServices() {
     >
       <div className="relative max-w-7xl mx-auto px-5 z-10">
 
-        {/* HERO SECTION */}
-        <Reveal className="mt-8 mb-24">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            {/* LEFT SIDE */}
-            <div className="lg:col-span-6 flex flex-col justify-center text-left">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-5 h-[1.5px] bg-[#D56A4A]/60" />
-                <p className="text-xs md:text-sm font-bold uppercase tracking-[0.34em] text-[#D56A4A]">
-                  SOCIAL EVENTS ♡
-                </p>
-              </div>
+        {/* Main Section Header */}
+        <LuxuryHeader
+          eyebrow="Our Services"
+          title="Curated Social Experiences"
+          text="From intimate gatherings to milestone celebrations, we create experiences that bring people together and leave memories that last a lifetime."
+        />
 
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[#222222] leading-[1.15] font-semibold">
-                Life's Best Moments,<br />
-                Beautifully <span className="font-script text-[#D56A4A] italic font-normal inline-block transform translate-y-1">Celebrated. ♡</span>
-              </h1>
-
-              <p className="mt-6 text-sm sm:text-base md:text-lg text-[#222222]/75 leading-relaxed max-w-xl">
-                From intimate gatherings to milestone celebrations, we create experiences that bring people together and leave memories that last a lifetime.
-              </p>
-
-              <div className="mt-8">
-                <a
-                  href="/contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.history.pushState({}, '', '/contact');
-                  }}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#D56A4A] px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-[#F9F5EF] shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-[#E07A5F] hover:shadow-xl"
-                >
-                  Explore Our Services →
-                </a>
-              </div>
-
-              {/* 4 Premium Feature Icons */}
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-[#D56A4A]/12 divide-y-0 divide-x-0 md:divide-x divide-[#C8A96B]/25">
-                <div className="flex flex-col items-center text-center px-1">
-                  <Heart size={20} className="text-[#D56A4A] mb-2" />
-                  <span className="text-xs font-semibold text-[#222222]/90 leading-tight">Personalized Experiences</span>
-                </div>
-                <div className="flex flex-col items-center text-center px-1">
-                  <Calendar size={20} className="text-[#D56A4A] mb-2" />
-                  <span className="text-xs font-semibold text-[#222222]/90 leading-tight">End-To-End Planning</span>
-                </div>
-                <div className="flex flex-col items-center text-center px-1">
-                  <Gift size={20} className="text-[#D56A4A] mb-2" />
-                  <span className="text-xs font-semibold text-[#222222]/90 leading-tight">Thoughtful Details</span>
-                </div>
-                <div className="flex flex-col items-center text-center px-1">
-                  <Star size={20} className="text-[#D56A4A] mb-2" />
-                  <span className="text-xs font-semibold text-[#222222]/90 leading-tight">Memories That Last Forever</span>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT SIDE */}
-            <div className="lg:col-span-6 relative">
-              <div className="relative aspect-[4/3] sm:aspect-[1.3] overflow-hidden rounded-[2rem] shadow-2xl border border-[#C8A96B]/15">
+        {/* Dynamic Showcase Block */}
+        <div className="mt-8">
+          <Reveal
+            id="social"
+            className="overflow-hidden rounded-[24px] border border-[#C8A96B]/20 bg-[#FAF7F2] shadow-xl scroll-mt-28"
+          >
+            <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+              {/* Left Column: Interactive Image Panel */}
+              <div className="relative min-h-[460px] overflow-hidden lg:min-h-full">
+                {/* Default Background */}
                 <img
-                  src={socialHero}
-                  alt="Luxury birthday social celebration dinner setup"
-                  className="h-full w-full object-cover"
+                  src={socialShowcase.hero}
+                  alt="Social Services by Event Brigade"
+                  loading="lazy"
+                  className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${activeModule !== null ? 'opacity-0 scale-100' : 'opacity-100 scale-105'
+                    }`}
                 />
-                {/* Subtle Image Fade to Content side */}
-                <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-[#F9F5EF] via-[#F9F5EF]/10 to-transparent pointer-events-none" />
-                
-                {/* Visual Accent */}
-                <div className="absolute bottom-4 right-4 z-20 rounded-2xl border border-[#F9F5EF]/20 bg-[#FAF7F2]/90 backdrop-blur-sm px-4 py-2 text-xs font-semibold text-[#222222] shadow">
-                  ✨ Elegant Hospitality Setup
+
+                {/* Module Specific Backgrounds */}
+                {socialShowcase.modules.map((module, moduleIndex) => (
+                  <img
+                    key={module.title}
+                    src={module.image}
+                    alt={module.title}
+                    loading="lazy"
+                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${activeModule === moduleIndex ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
+                      }`}
+                  />
+                ))}
+
+                {/* Image Gradient Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#222222]/80 via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-[#222222]/15 z-10" />
+
+                {/* Floating Content Card */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-[#D56A4A] bg-black/40 px-3.5 py-1.5 rounded-full border border-white/5 backdrop-blur-sm">
+                    {socialShowcase.eyebrow}
+                  </span>
+                  <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-white leading-snug font-semibold">
+                    {socialShowcase.title}
+                  </h3>
+                  <a
+                    href="/social-events-portfolio"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.history.pushState({}, '', '/social-events-portfolio');
+                    }}
+                    className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#D56A4A] hover:text-white transition-colors"
+                  >
+                    View Portfolio <ArrowRight size={14} />
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Column: Interaction List */}
+              <div className="flex flex-col justify-center p-6 sm:p-10 md:p-12">
+                <p className="text-sm sm:text-base leading-relaxed text-[#222222]/75">{socialShowcase.text}</p>
+                <div className="mt-8 divide-y divide-[#D56A4A]/15">
+                  {socialShowcase.modules.map((module, moduleIndex) => {
+                    const isHovered = activeModule === moduleIndex;
+                    return (
+                      <div
+                        key={module.title}
+                        onMouseEnter={() => setActiveModule(moduleIndex)}
+                        onMouseLeave={() => setActiveModule(null)}
+                        className="group cursor-pointer py-4 transition-all duration-300"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-5">
+                            <span className={`font-mono text-xs tracking-wider transition-colors duration-300 ${isHovered ? 'text-[#D56A4A]' : 'text-[#222222]/45'}`}>
+                              {String(moduleIndex + 1).padStart(2, '0')}
+                            </span>
+                            <h4 className={`font-serif text-xl sm:text-2xl font-semibold transition-all duration-300 ${isHovered ? 'text-[#D56A4A] pl-2' : 'text-[#222222]'}`}>
+                              {module.title}
+                            </h4>
+                          </div>
+                          <div className={`h-1.5 w-1.5 rounded-full bg-[#D56A4A] transition-all duration-500 ${isHovered ? 'opacity-100 scale-125' : 'opacity-0 scale-50'}`} />
+                        </div>
+
+                        <div
+                          className={`grid transition-all duration-500 ease-in-out ${isHovered ? 'grid-rows-[1fr] opacity-100 mt-3.5' : 'grid-rows-[0fr] opacity-0'
+                            }`}
+                        >
+                          <div className="overflow-hidden">
+                            <p className="pl-10 text-xs sm:text-sm leading-relaxed text-[#222222]/75">
+                              {module.text}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
+
+            {/* Horizontal Auto Scrolling Ribbon */}
+            <div className="overflow-hidden border-t border-[#C8A96B]/15 bg-[#FAF7F2]/50">
+              <div className="auto-scroll-gallery flex w-max gap-0">
+                {[...socialShowcase.gallery, ...socialShowcase.gallery].map((image, galleryIndex) => (
+                  <img
+                    key={`social-services-gallery-${galleryIndex}-${image}`}
+                    src={image}
+                    alt={`Social visual ${galleryIndex + 1}`}
+                    loading="lazy"
+                    className="h-36 w-[60vw] shrink-0 object-cover opacity-85 transition duration-300 hover:opacity-100 sm:w-[40vw] lg:w-80 border-r border-[#C8A96B]/10"
+                  />
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* 4 Premium Features Grid */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 py-8 border-t border-b border-[#D56A4A]/12">
+            {[
+              { Icon: Heart, label: 'Personalized Experiences' },
+              { Icon: Calendar, label: 'End-To-End Planning' },
+              { Icon: Gift, label: 'Thoughtful Details' },
+              { Icon: Star, label: 'Memories That Last Forever' }
+            ].map((item, index) => {
+              const { Icon, label } = item;
+              const isOdd = index % 2 === 0;
+              const isLast = index === 3;
+              return (
+                <div
+                  key={label}
+                  className={`flex flex-col items-center text-center px-2 py-4 border-[#C8A96B]/25 ${
+                    isOdd ? 'border-r' : ''
+                  } ${index < 2 ? 'border-b' : ''} md:border-b-0 md:border-r ${
+                    isLast ? 'md:border-r-0' : ''
+                  }`}
+                >
+                  <Icon size={20} className="text-[#D56A4A] mb-2" />
+                  <span className="text-xs font-semibold text-[#222222]/90 leading-tight max-w-[115px] mx-auto block">
+                    {label}
+                  </span>
+                </div>
+              );
+            })}
           </div>
-        </Reveal>
+        </div>
 
         {/* SERVICES SECTION */}
         <div className="mt-28">
@@ -247,69 +366,12 @@ export default function SocialServices() {
           </div>
         </div>
 
-        {/* PORTFOLIO SHOWCASE SECTION */}
-        <div className="mt-32">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            {/* LEFT SIDE */}
-            <div className="lg:col-span-4 flex flex-col text-left">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="w-5 h-[1.5px] bg-[#D56A4A]/60" />
-                <p className="text-xs font-bold uppercase tracking-[0.32em] text-[#D56A4A]">
-                  MOMENTS WE'VE CREATED
-                </p>
-              </div>
 
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#222222] leading-[1.2] font-semibold">
-                Designed Around People.<br />
-                Built Around <span className="font-script text-[#D56A4A] font-normal italic inline-block transform translate-y-1">Memories.</span>
-              </h2>
-
-              <p className="mt-5 text-sm sm:text-base text-[#222222]/70 leading-relaxed max-w-md">
-                Every smile, every floral installation, and every candlelit table styling represents a story that was planned with dedication.
-              </p>
-
-              <div className="mt-8">
-                <a
-                  href="/social-events-portfolio"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.history.pushState({}, '', '/social-events-portfolio');
-                  }}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#D56A4A] px-7 py-3 text-xs font-bold uppercase tracking-[0.2em] text-[#D56A4A] hover:bg-[#D56A4A] hover:text-[#F9F5EF] transition-all duration-300"
-                >
-                  VIEW OUR PORTFOLIO →
-                </a>
-              </div>
-            </div>
-
-            {/* RIGHT SIDE: Horizontal row of 5 images */}
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                {galleryImages.map((item, index) => (
-                  <Reveal
-                    key={item.title}
-                    delay={index * 0.04}
-                    className="overflow-hidden rounded-2xl border border-[#C8A96B]/20 bg-[#FAF7F2] shadow-sm group cursor-pointer"
-                  >
-                    <div className="h-64 sm:h-72 w-full overflow-hidden relative">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
 
       </div>
 
       {/* COMBINED STATS & TESTIMONIAL BAR */}
-      <div className="border-t border-[#D56A4A]/15 bg-[#FAF7F2] py-10 mt-32">
+      <div className="border-t border-[#D56A4A]/15 bg-[#FAF7F2] py-10 mt-16">
         <div className="mx-auto max-w-7xl px-5 grid lg:grid-cols-12 gap-8 items-center">
           
           {/* STATS SECTION (col-span-7) */}

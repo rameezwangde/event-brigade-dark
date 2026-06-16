@@ -146,6 +146,8 @@ const corporateShowcase = {
 export default function CorporateServices() {
   const [activeModule, setActiveModule] = useState(null);
   const [networkNodes, setNetworkNodes] = useState([]);
+  const [activeStep, setActiveStep] = useState(0);
+  const [hoveredStep, setHoveredStep] = useState(null);
 
   // Generate background network coordinates on mount
   useEffect(() => {
@@ -313,7 +315,7 @@ export default function CorporateServices() {
                         key={module.title}
                         onMouseEnter={() => setActiveModule(index)}
                         onMouseLeave={() => setActiveModule(null)}
-                        className="group cursor-pointer py-4.5 transition-all duration-300"
+                        className="group cursor-pointer py-4 transition-all duration-300"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-5">
@@ -440,35 +442,102 @@ export default function CorporateServices() {
             </Reveal>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 mt-12">
-            {corporatePortfolio.workflow.map((step, index) => {
-              const Icon = processIcons[index] || Check;
-              return (
-                <Reveal
-                  key={step}
-                  delay={index * 0.05}
-                  className="group relative overflow-hidden rounded-[20px] border border-white/5 bg-[#151515]/70 p-6 h-full flex flex-col justify-between hover:border-white/15 transition-all duration-300"
-                >
-                  {/* Decorative dot matrix watermark */}
-                  <div className="absolute right-4 top-4 grid grid-cols-3 gap-1 opacity-20 pointer-events-none group-hover:opacity-40 transition-opacity">
-                    {Array.from({ length: 9 }).map((_, i) => (
-                      <span key={i} className="h-1 w-1 rounded-full bg-[#2E6BFF]" />
-                    ))}
-                  </div>
+          {/* Creative Connected Roadmap */}
+          <div className="relative mt-20 mx-auto max-w-6xl px-4">
+            {/* The Connecting Line (Desktop) */}
+            <div className="absolute left-10 right-10 top-10 hidden h-[2px] bg-gradient-to-r from-[#D4AF37]/10 via-[#2E6BFF]/30 to-[#D4AF37]/10 lg:block">
+              {/* Active Progress glow indicator */}
+              <div 
+                className="h-full bg-gradient-to-r from-[#2E6BFF] to-[#D4AF37] transition-all duration-700 ease-out shadow-[0_0_15px_#2E6BFF]"
+                style={{ width: `${(activeStep / 5) * 100}%` }}
+              />
+            </div>
 
-                  <div className="mb-6 flex items-center justify-between">
-                    <div className="grid h-10 w-10 place-items-center rounded-xl border border-[#D4AF37]/35 bg-[#D4AF37]/5 text-[#D4AF37]">
-                      <Icon size={20} />
+            {/* The Connecting Line (Mobile/Tablet) */}
+            <div className="absolute left-10 bottom-8 top-10 w-[2px] bg-gradient-to-b from-[#D4AF37]/10 via-[#2E6BFF]/30 to-[#D4AF37]/10 lg:hidden">
+              <div 
+                className="w-full bg-gradient-to-b from-[#2E6BFF] to-[#D4AF37] transition-all duration-700 ease-out shadow-[0_0_15px_#2E6BFF]"
+                style={{ height: `${(activeStep / 5) * 100}%` }}
+              />
+            </div>
+
+            {/* Steps Container */}
+            <div className="relative grid gap-12 lg:grid-cols-6 lg:gap-6">
+              {corporatePortfolio.workflow.map((stepName, index) => {
+                const Icon = processIcons[index] || Check;
+                const isActive = activeStep === index;
+                const isHovered = hoveredStep === index;
+                
+                // Detailed descriptions for each step to make the roadmap rich
+                const stepDescriptions = [
+                  "Understanding goals, audience metrics, theme design preferences, and branding targets.",
+                  "Defining strict timelines, budget coordinates, team assignments, and operational blueprints.",
+                  "Developing 3D stage renders, screen templates, layout maps, and technical specs.",
+                  "Managing check-in queues, VIP logistics, technical calls, and real-time execution flow.",
+                  "Selecting and coordinating onboarding checklists for vetted vendors and local security.",
+                  "Assembling client evaluations, item counts, and reconciliation audits."
+                ];
+
+                return (
+                  <Reveal
+                    key={stepName}
+                    delay={index * 0.05}
+                    className="relative flex lg:flex-col items-start lg:items-center text-left lg:text-center group"
+                  >
+                    {/* Interactive Node Point */}
+                    <div 
+                      className="relative z-10 flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border transition-all duration-500 cursor-pointer lg:mx-auto"
+                      style={{
+                        borderColor: isActive || isHovered ? '#D4AF37' : 'rgba(255, 255, 255, 0.1)',
+                        backgroundColor: isActive || isHovered ? '#151515' : '#0D0D0D',
+                        boxShadow: isActive || isHovered ? '0 0 25px rgba(212, 175, 55, 0.25)' : 'none'
+                      }}
+                      onMouseEnter={() => {
+                        setHoveredStep(index);
+                        setActiveStep(index);
+                      }}
+                      onMouseLeave={() => setHoveredStep(null)}
+                      onClick={() => setActiveStep(index)}
+                    >
+                      {/* Step Indicator Number */}
+                      <span className="absolute -top-3 -right-3 font-mono text-[10px] font-bold px-2 py-0.5 rounded-full border border-white/10 bg-[#050505] text-[#D4AF37]">
+                        0{index + 1}
+                      </span>
+                      
+                      <Icon 
+                        size={26} 
+                        className="transition-transform duration-500 group-hover:scale-110"
+                        style={{ color: isActive || isHovered ? '#D4AF37' : 'rgba(255,255,255,0.4)' }}
+                      />
                     </div>
-                    <span className="font-mono text-xs font-bold text-white/40">
-                      STEP {String(index + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                  
-                  <h3 className="font-serif text-xl sm:text-2xl text-white group-hover:text-[#D4AF37] transition-colors">{step}</h3>
-                </Reveal>
-              );
-            })}
+
+                    {/* Step Content Card */}
+                    <div 
+                      className="ml-6 lg:ml-0 lg:mt-6 transition-all duration-500 lg:w-full"
+                      onMouseEnter={() => {
+                        setHoveredStep(index);
+                        setActiveStep(index);
+                      }}
+                      onMouseLeave={() => setHoveredStep(null)}
+                    >
+                      <h3 
+                        className="font-serif text-lg md:text-xl font-semibold transition-colors duration-300"
+                        style={{ color: isActive || isHovered ? '#D4AF37' : '#FFFFFF' }}
+                      >
+                        {stepName}
+                      </h3>
+                      
+                      <p 
+                        className="mt-3 text-xs md:text-sm leading-relaxed text-white/60 transition-opacity duration-500 text-justify lg:text-center"
+                        style={{ opacity: isActive || isHovered ? 1 : 0.6 }}
+                      >
+                        {stepDescriptions[index]}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -573,7 +642,7 @@ export default function CorporateServices() {
               {corporatePortfolio.clients.map((client) => (
                 <div
                   key={client}
-                  className="flex items-center gap-2.5 rounded-xl border border-white/5 bg-[#050505]/75 px-4.5 py-3 text-xs sm:text-sm text-white/80"
+                  className="flex items-center gap-2.5 rounded-xl border border-white/5 bg-[#050505]/75 px-5 py-3 text-xs sm:text-sm text-white/80"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-[#2E6BFF] shrink-0" />
                   <span>{client}</span>
@@ -586,7 +655,7 @@ export default function CorporateServices() {
             {[reviewOne, reviewTwo].map((review, idx) => (
               <div
                 key={review}
-                className="overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] p-4.5 shadow-lg h-full flex items-center justify-center hover:border-white/20 transition-all duration-300"
+                className="overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] p-5 shadow-lg h-full flex items-center justify-center hover:border-white/20 transition-all duration-300"
               >
                 <img
                   src={review}
@@ -619,7 +688,7 @@ export default function CorporateServices() {
                 e.preventDefault();
                 window.history.pushState({}, '', '/contact');
               }}
-              className="gold-shimmer-btn inline-flex items-center gap-3 text-obsidian font-bold text-xs uppercase tracking-[0.2em] px-10 py-4.5 rounded-full hover:shadow-glow transition-all duration-300 mt-10"
+              className="gold-shimmer-btn inline-flex items-center gap-3 text-obsidian font-bold text-sm sm:text-base uppercase tracking-[0.2em] px-10 py-4 rounded-full hover:shadow-glow transition-all duration-300 mt-10"
             >
               Initiate Project Briefing <ArrowRight size={14} />
             </a>

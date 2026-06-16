@@ -451,7 +451,7 @@ export default function SocialEventsPortfolio() {
                 e.preventDefault();
                 window.history.pushState({}, '', '/contact');
               }}
-              className="inline-flex items-center gap-3 border border-[#D56A4A] bg-[#D56A4A] text-[#F9F5EF] font-bold text-xs uppercase tracking-[0.2em] px-10 py-4.5 rounded-full hover:bg-transparent hover:text-[#D56A4A] transition-all duration-300 mt-10"
+              className="inline-flex items-center gap-3 border border-[#D56A4A] bg-[#D56A4A] text-[#F9F5EF] font-bold text-sm sm:text-base uppercase tracking-[0.2em] px-10 py-4 rounded-full hover:bg-transparent hover:text-[#D56A4A] transition-all duration-300 mt-10"
             >
               Consult Our Celebration Designer <ArrowRight size={14} />
             </a>

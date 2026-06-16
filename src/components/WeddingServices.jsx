@@ -128,27 +128,6 @@ function FloralOrnament({ className }) {
   );
 }
 
-// Faint Background Mandala Accent
-function BackgroundMandala({ className }) {
-  return (
-    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-      <circle cx="100" cy="100" r="80" stroke="#C8A96B" strokeWidth="0.25" opacity="0.12" strokeDasharray="3 3" />
-      <circle cx="100" cy="100" r="60" stroke="#C8A96B" strokeWidth="0.25" opacity="0.15" />
-      <circle cx="100" cy="100" r="40" stroke="#C8A96B" strokeWidth="0.3" opacity="0.1" />
-      {Array.from({ length: 12 }).map((_, i) => {
-        const angle = (i * 30 * Math.PI) / 180;
-        const x1 = 100 + Math.cos(angle) * 40;
-        const y1 = 100 + Math.sin(angle) * 40;
-        const x2 = 100 + Math.cos(angle) * 80;
-        const y2 = 100 + Math.sin(angle) * 80;
-        return (
-          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#C8A96B" strokeWidth="0.25" opacity="0.15" />
-        );
-      })}
-    </svg>
-  );
-}
-
 // Delicate botanical illustrations along left margin
 function BotanicalLeftOrnament() {
   return (
@@ -221,8 +200,6 @@ export default function WeddingServices() {
     }));
     setBubbles(generatedBubbles);
   }, []);
-
-  const weddingData = services.find(s => s.title === 'Weddings') || { servicesWeProvide: [] };
 
   return (
     <div
@@ -311,26 +288,28 @@ export default function WeddingServices() {
 
 
 
-                {/* Floating Content Card */}
-                <div className="absolute bottom-6 left-6 right-6 z-20">
-                  <div className="rounded-2xl border border-[#C8A96B]/35 bg-[#FAF7F2]/92 backdrop-blur-md p-6 shadow-xl max-w-md">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[#C8A96B]">
-                      {weddingShowcase.eyebrow}
-                    </p>
-                    <h3 className="mt-2.5 font-serif text-2xl sm:text-3xl text-[#1C1C1C] leading-snug">
-                      {weddingShowcase.title}
-                    </h3>
-                    <a
-                      href="/wedding-portfolio"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        window.history.pushState({}, '', '/wedding-portfolio');
-                      }}
-                      className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#C8A96B] hover:text-[#1C1C1C] transition-colors"
-                    >
-                      View Portfolio <ArrowRight size={14} />
-                    </a>
-                  </div>
+                {/* Image Gradient Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1C]/80 via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-[#1C1C1C]/15 z-10" />
+
+                {/* Floating Content Card (styled like corporate page to remove box blur) */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-[#C8A96B] bg-black/40 px-3.5 py-1.5 rounded-full border border-white/5 backdrop-blur-sm">
+                    {weddingShowcase.eyebrow}
+                  </span>
+                  <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-white leading-snug">
+                    {weddingShowcase.title}
+                  </h3>
+                  <a
+                    href="/wedding-portfolio"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.history.pushState({}, '', '/wedding-portfolio');
+                    }}
+                    className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#C8A96B] hover:text-white transition-colors"
+                  >
+                    View Portfolio <ArrowRight size={14} />
+                  </a>
                 </div>
               </div>
 
@@ -345,7 +324,7 @@ export default function WeddingServices() {
                         key={module.title}
                         onMouseEnter={() => setActiveModule(moduleIndex)}
                         onMouseLeave={() => setActiveModule(null)}
-                        className="group cursor-pointer py-4.5 transition-all duration-300"
+                        className="group cursor-pointer py-4 transition-all duration-300"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-5">
@@ -533,31 +512,6 @@ export default function WeddingServices() {
           </Reveal>
         </div>
 
-        {/* Section 5: Services Checklist Block */}
-        <div className="mt-24">
-          <Reveal
-            className="group relative overflow-hidden rounded-[24px] border border-[#C8A96B]/20 bg-[#F5F1EA] p-8 shadow-md transition-all duration-500 hover:border-[#C8A96B]/50"
-          >
-            {/* Corner ornament background */}
-            <BackgroundMandala className="absolute right-[-30px] bottom-[-30px] w-44 h-44 pointer-events-none opacity-20" />
-
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#C8A96B] font-sans">Services We Provide</p>
-            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-[#1C1C1C] md:text-4xl">End-to-End Wedding Management</h3>
-            <div className="mt-4 h-[1px] w-24 bg-gradient-to-r from-[#C8A96B] to-transparent" />
-
-            <ul className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2">
-              {weddingData.servicesWeProvide.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 text-xs sm:text-sm font-medium leading-relaxed text-[#1C1C1C]/80"
-                >
-                  <span className="mt-1 shrink-0 text-[#C8A96B] text-[8px]">◆</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
 
         {/* Section 6: Plan a Wedding Consultation CTA */}
         <Reveal className="mt-24 px-4 py-8 text-center relative z-10">
@@ -578,7 +532,7 @@ export default function WeddingServices() {
               e.preventDefault();
               window.history.pushState({}, '', '/contact');
             }}
-            className="gold-shimmer-btn inline-flex items-center gap-3 text-obsidian font-bold text-xs uppercase tracking-[0.2em] px-10 py-4.5 rounded-full hover:shadow-glow transition-all duration-300 mt-8"
+            className="gold-shimmer-btn inline-flex items-center gap-3 text-obsidian font-bold text-sm sm:text-base uppercase tracking-[0.2em] px-10 py-4 rounded-full hover:shadow-glow transition-all duration-300 mt-8"
           >
             Schedule Consultation <ArrowRight size={14} />
           </a>

@@ -778,7 +778,7 @@ export default function WeddingPortfolio() {
                 e.preventDefault();
                 window.history.pushState({}, '', '/contact');
               }}
-              className="gold-shimmer-btn inline-flex items-center gap-3 text-obsidian font-bold text-xs uppercase tracking-[0.2em] px-10 py-4.5 rounded-full hover:shadow-glow transition-all duration-300 mt-10"
+              className="gold-shimmer-btn inline-flex items-center gap-3 text-obsidian font-bold text-sm sm:text-base uppercase tracking-[0.2em] px-10 py-4 rounded-full hover:shadow-glow transition-all duration-300 mt-10"
             >
               Consult Our Wedding Designer <ArrowRight size={14} />
             </a>

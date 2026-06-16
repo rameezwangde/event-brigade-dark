@@ -252,21 +252,23 @@ export default function WeddingPortfolio() {
 
   return (
     <div 
-      className="relative w-full min-h-screen text-[#1C1C1C] font-sans overflow-x-hidden selection:bg-[#C8A96B]/30 selection:text-[#1C1C1C] pt-28 pb-16"
-      style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.08' numOctaves='3'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.78 0 0 0 0 0.66 0 0 0 0 0.42 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' fill='transparent'/%3E%3C/svg%3E")`,
-        backgroundColor: '#FAF7F2'
-      }}
+      className="relative w-full min-h-screen text-white font-sans overflow-x-hidden selection:bg-[#2E6BFF]/30 selection:text-white pt-28 pb-16 bg-[#050505]"
     >
       
-      {/* Soft Radial Bokeh Glows */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[10%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(200,169,107,0.06),transparent_65%)]" />
-        <div className="absolute top-[40%] right-[-15%] w-[70vw] h-[70vw] rounded-full bg-[radial-gradient(circle,rgba(200,169,107,0.05),transparent_70%)]" />
-        <div className="absolute bottom-[10%] left-[-15%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(200,169,107,0.06),transparent_60%)]" />
+      {/* Blueprint Grid & Spotlights Background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(8,27,58,0.45),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(46,107,255,0.06),transparent_50%)]" />
+        
+        {/* Tech Blueprint Grid */}
+        <div className="absolute inset-0 corp-blueprint-grid opacity-60" />
+
+        {/* Dynamic Sweeping Spotlight Beams */}
+        <div className="absolute -top-[10%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(46,107,255,0.05),transparent_60%)] corp-spotlight" />
+        <div className="absolute top-[50%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(46,107,255,0.04),transparent_60%)] corp-spotlight" style={{ animationDelay: '-12s' }} />
       </div>
 
-      {/* Floating Champagne Particles */}
+      {/* Floating Champagne Particles (Blue themed) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {bubbles.map((bubble) => (
           <div
@@ -279,8 +281,8 @@ export default function WeddingPortfolio() {
               width: bubble.size,
               height: bubble.size,
               top: '100%',
-              background: 'radial-gradient(circle, rgba(200, 169, 107, 0.45) 0%, rgba(200, 169, 107, 0.05) 70%)',
-              boxShadow: '0 0 5px rgba(200, 169, 107, 0.25)',
+              background: 'radial-gradient(circle, rgba(46, 107, 255, 0.45) 0%, rgba(46, 107, 255, 0.05) 70%)',
+              boxShadow: '0 0 5px rgba(46, 107, 255, 0.25)',
               opacity: 0.12 + Math.random() * 0.15
             }}
           />
@@ -303,26 +305,26 @@ export default function WeddingPortfolio() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="w-6 h-[1px] bg-[#C8A96B]" />
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.38em] text-[#C8A96B] font-sans">
+            <span className="w-6 h-[1px] bg-[#D4AF37]" />
+            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.38em] text-[#D4AF37] font-sans">
               Wedding Portfolio
             </p>
-            <span className="w-6 h-[1px] bg-[#C8A96B]" />
+            <span className="w-6 h-[1px] bg-[#D4AF37]" />
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[#1C1C1C] leading-[1.15] max-w-4xl mx-auto">
-            Crafting Love Stories Into <span className="italic font-normal text-[#C8A96B]">Unforgettable</span> Experiences
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white leading-[1.15] max-w-4xl mx-auto">
+            Crafting Love Stories Into <span className="italic font-normal text-[#D4AF37]">Unforgettable</span> Experiences
           </h1>
 
-          <p className="mt-6 text-sm sm:text-base md:text-lg text-[#1C1C1C]/70 font-sans max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-sm sm:text-base md:text-lg text-white/70 font-sans max-w-2xl mx-auto leading-relaxed">
             "From intimate ceremonies to grand destination celebrations, every wedding is designed with precision, emotion, and timeless elegance."
           </p>
 
           {/* Decorative Divider */}
           <div className="flex items-center justify-center gap-4 mt-8">
-            <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#C8A96B]/50" />
-            <Heart size={14} className="text-[#C8A96B]" />
-            <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#C8A96B]/50" />
+            <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#D4AF37]/50" />
+            <Heart size={14} className="text-[#D4AF37]" />
+            <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#D4AF37]/50" />
           </div>
         </motion.div>
       </div>
@@ -339,14 +341,14 @@ export default function WeddingPortfolio() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${
                   isSelected
-                    ? 'border-[#C8A96B] text-[#1C1C1C] shadow-sm'
-                    : 'border-[#C8A96B]/15 bg-[#FAF7F2]/40 text-[#1C1C1C]/70 hover:border-[#C8A96B]/40 hover:text-[#1C1C1C]'
+                    ? 'border-[#2E6BFF] text-white shadow-sm'
+                    : 'border-white/10 bg-[#151515]/40 text-white/70 hover:border-[#2E6BFF]/30 hover:text-white'
                 }`}
               >
                 {isSelected && (
                   <motion.span
                     layoutId="activeCategoryPill"
-                    className="absolute inset-0 rounded-full bg-[#C8A96B]/10"
+                    className="absolute inset-0 rounded-full bg-[#2E6BFF]/15"
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -357,292 +359,79 @@ export default function WeddingPortfolio() {
         </div>
       </div>
 
-      {/* Main Grid / Stack of Cards */}
-      <div className="relative max-w-6xl mx-auto px-5 space-y-16 z-10">
-        <motion.div layout className="space-y-16">
+      {/* Case Studies Grid */}
+      <div className="relative max-w-7xl mx-auto px-5 z-10">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, idx) => {
-              const { layout, number, title, subtitle, tag, description, image, location, date, guests } = project;
-
-              // Grid cards layout configurations
+            {filteredProjects.map((project) => {
+              const { title, subtitle, tag, image, location, date, guests } = project;
               return (
                 <motion.div
                   key={project.id}
                   layout
                   initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className={`group relative overflow-hidden rounded-[24px] border border-[#C8A96B]/20 bg-[#F5F1EA] shadow-xl transition-all duration-700 hover:border-[#C8A96B]/60 hover:shadow-[#C8A96B]/5`}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] h-[380px] shadow-xl hover:border-[#2E6BFF]/50 transition-all duration-500 cursor-pointer"
+                  onClick={() => openLightbox(project)}
                 >
-                  {/* Subtle Background Ornament */}
-                  <BackgroundMandala className="absolute right-[-40px] top-[-40px] w-48 h-48 pointer-events-none opacity-25 group-hover:rotate-12 transition-transform duration-[4000ms]" />
+                  {/* Case Study Image Cover */}
+                  <img
+                    src={image}
+                    alt={title}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[3000ms] ease-out group-hover:scale-105"
+                  />
+                  
+                  {/* Default Soft Gradients */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-500 z-10" />
 
-                  {/* Condition Layout Rendering */}
-                  {layout === 'right' && (
-                    <div className="grid lg:grid-cols-[1.1fr_0.9fr] min-h-[460px]">
-                      {/* Left: Content */}
-                      <div className="flex flex-col justify-between p-8 sm:p-10 md:p-12 relative z-10">
-                        <div>
-                          <div className="flex items-center gap-2.5 mb-6 text-xs font-semibold tracking-widest text-[#C8A96B] uppercase">
-                            <Sparkles size={14} />
-                            <span>{tag}</span>
-                          </div>
-                          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1C1C1C] leading-[1.15]">
-                            {title.replace(/Experiences\.|Celebrations\.|Emotion\.|Stage\.|Perfection\.|Legacies\./g, (m) => `\n${m}`)}
-                          </h2>
-                          <p className="text-[#C8A96B] font-serif text-lg italic mt-2">{subtitle}</p>
-                          <p className="mt-6 text-[#1C1C1C]/75 text-sm sm:text-base leading-relaxed text-justify max-w-xl">
-                            {description}
-                          </p>
+                  {/* Top Highlight Badge */}
+                  <span className="absolute left-5 top-5 rounded-md border border-[#D4AF37]/30 bg-black/60 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D4AF37] z-20">
+                    {tag}
+                  </span>
+
+                  {/* Case Study Details */}
+                  <div className="absolute bottom-5 left-5 right-5 z-20 flex flex-col justify-end">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#2E6BFF] mb-1 text-left">
+                      {subtitle}
+                    </p>
+                    <h3 className="font-serif text-2xl text-white group-hover:text-[#D4AF37] transition-colors leading-snug text-left">
+                      {title}
+                    </h3>
+                    
+                    {/* Hover Stats Section - Fades in & slides up */}
+                    <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-36 group-hover:opacity-100 group-hover:mt-4 transition-all duration-500 border-t border-white/10 pt-4">
+                      <div className="space-y-2 text-xs text-white/80 text-left">
+                        <div className="flex items-center gap-2">
+                          <MapPin size={13} className="text-[#D4AF37] shrink-0" />
+                          <span>{location}</span>
                         </div>
-
-                        <div className="mt-8 pt-8 border-t border-[#C8A96B]/15">
-                          <div className="grid grid-cols-3 gap-4 mb-8 text-xs text-[#1C1C1C]/75">
-                            <div className="flex items-center gap-2">
-                              <MapPin size={14} className="text-[#C8A96B]" />
-                              <span>{location}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Calendar size={14} className="text-[#C8A96B]" />
-                              <span>{date}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Users size={14} className="text-[#C8A96B]" />
-                              <span>{guests}</span>
-                            </div>
-                          </div>
-
-                          <button
-                            type="button"
-                            onClick={() => openLightbox(project)}
-                            className="btn-primary-luxury inline-flex items-center gap-3 border border-[#C8A96B] bg-[#C8A96B] text-[#FAF7F2] font-bold text-xs uppercase tracking-[0.2em] px-8 py-3.5 rounded-full hover:bg-transparent hover:text-[#C8A96B] transition-all duration-300"
-                          >
-                            Explore Story <ArrowRight size={14} />
-                          </button>
+                        <div className="flex items-center gap-2">
+                          <Users size={13} className="text-[#D4AF37] shrink-0" />
+                          <span>{guests}</span>
                         </div>
-
-
+                        <div className="flex items-center gap-2">
+                          <Calendar size={13} className="text-[#D4AF37] shrink-0" />
+                          <span>{date}</span>
+                        </div>
                       </div>
 
-                      {/* Right: Image Container */}
-                      <div className="relative overflow-hidden min-h-[300px] lg:min-h-full p-4 bg-[#F5F1EA]">
-                        <div className="relative w-full h-full rounded-2xl overflow-hidden border border-[#C8A96B]/30 shadow-md">
-                          {/* Floral corner overlay inside image */}
-                          <FloralOrnament className="absolute bottom-4 right-4 w-20 h-20 opacity-30 z-10" />
-
-                          <img
-                            src={image}
-                            alt={subtitle}
-                            loading="lazy"
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[3000ms] ease-out group-hover:scale-105"
-                          />
-
-                          
-                          {/* Gold Border Overlay */}
-                          <div className="absolute inset-0 border border-transparent group-hover:border-[#C8A96B]/60 transition-all duration-500 rounded-[14px] pointer-events-none z-20 m-1.5" />
-                        </div>
+                      {/* View Project Action */}
+                      <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] group-hover:translate-x-1 transition-transform text-left">
+                        <span>Explore Story</span>
+                        <ArrowRight size={12} />
                       </div>
                     </div>
-                  )}
-
-                  {layout === 'left' && (
-                    <div className="grid lg:grid-cols-[0.90fr_1.10fr] min-h-[460px]">
-                      {/* Left: Image Container */}
-                      <div className="relative overflow-hidden min-h-[300px] lg:min-h-full p-4 bg-[#F5F1EA]">
-                        <div className="relative w-full h-full rounded-2xl overflow-hidden border border-[#C8A96B]/30 shadow-md">
-                          <FloralOrnament className="absolute top-4 left-4 w-20 h-20 opacity-30 z-10 transform rotate-180" />
-
-                          <img
-                            src={image}
-                            alt={subtitle}
-                            loading="lazy"
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[3000ms] ease-out group-hover:scale-105"
-                          />
-
-                          
-                          {/* Gold Border Overlay */}
-                          <div className="absolute inset-0 border border-transparent group-hover:border-[#C8A96B]/60 transition-all duration-500 rounded-[14px] pointer-events-none z-20 m-1.5" />
-                        </div>
-                      </div>
-
-                      {/* Right: Content */}
-                      <div className="flex flex-col justify-between p-8 sm:p-10 md:p-12 relative z-10">
-                        <div>
-                          <div className="flex items-center gap-2.5 mb-6 text-xs font-semibold tracking-widest text-[#C8A96B] uppercase">
-                            <Sparkles size={14} />
-                            <span>{tag}</span>
-                          </div>
-                          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1C1C1C] leading-[1.15]">
-                            {title}
-                          </h2>
-                          <p className="text-[#C8A96B] font-serif text-lg italic mt-2">{subtitle}</p>
-                          <p className="mt-6 text-[#1C1C1C]/75 text-sm sm:text-base leading-relaxed text-justify max-w-xl">
-                            {description}
-                          </p>
-                        </div>
-
-                        <div className="mt-8 pt-8 border-t border-[#C8A96B]/15">
-                          <div className="grid grid-cols-3 gap-4 mb-8 text-xs text-[#1C1C1C]/75">
-                            <div className="flex items-center gap-2">
-                              <MapPin size={14} className="text-[#C8A96B]" />
-                              <span>{location}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Calendar size={14} className="text-[#C8A96B]" />
-                              <span>{date}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Users size={14} className="text-[#C8A96B]" />
-                              <span>{guests}</span>
-                            </div>
-                          </div>
-
-                          <button
-                            type="button"
-                            onClick={() => openLightbox(project)}
-                            className="btn-primary-luxury inline-flex items-center gap-3 border border-[#C8A96B] bg-[#C8A96B] text-[#FAF7F2] font-bold text-xs uppercase tracking-[0.2em] px-8 py-3.5 rounded-full hover:bg-transparent hover:text-[#C8A96B] transition-all duration-300"
-                          >
-                            Explore Story <ArrowRight size={14} />
-                          </button>
-                        </div>
-
-
-                      </div>
-                    </div>
-                  )}
-
-                  {layout === 'full' && (
-                    <div className="relative min-h-[520px] flex items-center p-6 sm:p-10 md:p-14 overflow-hidden bg-[#F5F1EA]">
-                      {/* Full-width Image Background */}
-                      <img
-                        src={image}
-                        alt={subtitle}
-                        loading="lazy"
-                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[4000ms] ease-out group-hover:scale-105"
-                      />
-                      
-
-
-                      {/* Inner gold frame border inside image */}
-                      <div className="absolute border border-[#C8A96B]/20 pointer-events-none z-20 rounded-[24px]" style={{ inset: '12px' }} />
-
-                      {/* Floating Content Card over the image */}
-                      <div className="relative z-20 max-w-xl rounded-3xl border border-[#C8A96B]/35 bg-[#F5F1EA]/92 backdrop-blur-md p-8 sm:p-10 shadow-xl text-[#1C1C1C]">
-                        <div className="flex items-center gap-2.5 mb-5 text-xs font-semibold tracking-widest text-[#C8A96B] uppercase">
-                          <Sparkles size={14} />
-                          <span>{tag}</span>
-                        </div>
-                        
-                        <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1C1C] leading-[1.15]">
-                          {title}
-                        </h2>
-                        <p className="text-[#C8A96B] font-serif text-base italic mt-1">{subtitle}</p>
-                        <p className="mt-4 text-[#1C1C1C]/75 text-sm sm:text-base leading-relaxed text-justify">
-                          {description}
-                        </p>
-
-                        <div className="mt-6 pt-6 border-t border-[#C8A96B]/20">
-                          <div className="grid grid-cols-3 gap-4 mb-6 text-xs text-[#1C1C1C]/75">
-                            <div className="flex items-center gap-2">
-                              <MapPin size={14} className="text-[#C8A96B]" />
-                              <span className="truncate">{location.split(',')[0]}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Calendar size={14} className="text-[#C8A96B]" />
-                              <span>{date}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Users size={14} className="text-[#C8A96B]" />
-                              <span>{guests.split(' ')[0]} Guests</span>
-                            </div>
-                          </div>
-
-                          <button
-                            type="button"
-                            onClick={() => openLightbox(project)}
-                            className="btn-primary-luxury inline-flex items-center gap-3 border border-[#C8A96B] bg-[#C8A96B] text-[#FAF7F2] font-bold text-xs uppercase tracking-[0.2em] px-8 py-3.5 rounded-full hover:bg-transparent hover:text-[#C8A96B] transition-all duration-300"
-                          >
-                            Explore Story <ArrowRight size={14} />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {layout === 'editorial' && (
-                    <div className="grid lg:grid-cols-[1fr_1fr] min-h-[480px]">
-                      {/* Left: Vogue style text column */}
-                      <div className="flex flex-col justify-between p-8 sm:p-10 md:p-12 relative z-10 bg-[#EDE4D3]/30 border-r border-[#C8A96B]/15">
-                        <div className="relative">
-                          <div className="flex items-center gap-2.5 mb-6 text-xs font-semibold tracking-widest text-[#C8A96B] uppercase">
-                            <Sparkles size={14} />
-                            <span>{tag}</span>
-                          </div>
-
-                          {/* Decorative border block */}
-                          <div className="relative p-6 border border-[#C8A96B]/30 rounded-2xl bg-[#F5F1EA]/80 mb-6">
-                            <FloralOrnament className="absolute bottom-2 right-2 w-12 h-12 opacity-40" />
-                            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#1C1C1C] leading-[1.2]">
-                              {title}
-                            </h2>
-                            <p className="text-[#C8A96B] font-serif text-base italic mt-1">{subtitle}</p>
-                          </div>
-
-                          <p className="mt-4 text-[#1C1C1C]/75 text-sm sm:text-base leading-relaxed text-justify italic">
-                            "{description}"
-                          </p>
-                        </div>
-
-                        <div className="mt-6 pt-6 border-t border-[#C8A96B]/15">
-                          <div className="grid grid-cols-3 gap-4 mb-6 text-xs text-[#1C1C1C]/75">
-                            <div className="flex items-center gap-1.5">
-                              <MapPin size={13} className="text-[#C8A96B]" strokeWidth={2.5} />
-                              <span>{location.split(',')[0]}</span>
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                              <Calendar size={13} className="text-[#C8A96B]" strokeWidth={2.5} />
-                              <span>{date}</span>
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                              <Users size={13} className="text-[#C8A96B]" strokeWidth={2.5} />
-                              <span>{guests.split(' ')[0]}</span>
-                            </div>
-                          </div>
-
-                          <button
-                            type="button"
-                            onClick={() => openLightbox(project)}
-                            className="w-full inline-flex justify-center items-center gap-3 border border-[#C8A96B] bg-[#C8A96B] text-[#FAF7F2] font-bold text-xs uppercase tracking-[0.2em] px-8 py-3.5 rounded-full hover:bg-transparent hover:text-[#C8A96B] transition-all duration-300"
-                          >
-                            View Story <ArrowRight size={14} />
-                          </button>
-                        </div>
-
-
-                      </div>
-
-                      {/* Right: Offset Image */}
-                      <div className="relative p-6 flex items-center justify-center bg-[#FAF7F2]">
-                        <div className="relative w-full h-80 sm:h-96 lg:h-full rounded-2xl overflow-hidden shadow-lg border border-[#C8A96B]/30">
-                          <img
-                            src={image}
-                            alt={subtitle}
-                            loading="lazy"
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[3000ms] ease-out group-hover:scale-105"
-                          />
-
-                          <div className="absolute inset-0 border border-transparent group-hover:border-[#C8A96B]/60 transition-all duration-500 rounded-[14px] pointer-events-none z-20 m-1.5" />
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </motion.div>
               );
             })}
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
 
       {/* Lightbox / Luxury Magazine Booklet Overlay */}
@@ -652,22 +441,22 @@ export default function WeddingPortfolio() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#FAF7F2] p-4 md:p-6 lg:p-8"
+            className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#050505]/98 p-4 md:p-6 lg:p-8"
             onClick={closeLightbox}
           >
             {/* Header Details */}
-            <div className="max-w-7xl w-full mx-auto flex items-center justify-between border-b border-[#C8A96B]/20 pb-4 relative z-10">
-              <div className="text-[#1C1C1C]">
-                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.34em] text-[#C8A96B]">
+            <div className="max-w-7xl w-full mx-auto flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
+              <div className="text-white text-left">
+                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.34em] text-[#D4AF37]">
                   {activeProject.tag} — Story {activeProject.number}
                 </p>
-                <h3 className="font-serif text-xl sm:text-2xl mt-1 text-[#1C1C1C]">
+                <h3 className="font-serif text-xl sm:text-2xl mt-1 text-white">
                   {activeProject.subtitle}
                 </h3>
               </div>
 
               <div className="flex items-center gap-6">
-                <span className="font-serif text-sm font-semibold text-[#C8A96B]">
+                <span className="font-serif text-sm font-semibold text-[#D4AF37]">
                   {String(currentSlideIndex + 1).padStart(2, '0')} / {String(activeSlides.length).padStart(2, '0')}
                 </span>
                 
@@ -675,7 +464,7 @@ export default function WeddingPortfolio() {
                 <button
                   type="button"
                   onClick={closeLightbox}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-[#C8A96B]/20 bg-[#FAF7F2] text-[#C8A96B] transition hover:bg-[#C8A96B] hover:text-[#FAF7F2]"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-[#151515] text-[#D4AF37] transition hover:bg-[#D4AF37] hover:text-[#050505]"
                   aria-label="Close booklet"
                 >
                   <X size={20} />
@@ -690,16 +479,21 @@ export default function WeddingPortfolio() {
               <button
                 type="button"
                 onClick={() => prevSlide(activeSlides.length)}
-                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-[#C8A96B]/25 bg-[#FAF7F2]/90 text-[#C8A96B] backdrop-blur transition hover:border-[#C8A96B] hover:bg-[#C8A96B] hover:text-[#FAF7F2]"
+                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
                 aria-label="Previous page"
               >
                 <ChevronLeft size={24} />
               </button>
 
               {/* Slide Image Box */}
-              <div className="w-full h-[62vh] md:h-[68vh] rounded-2xl border border-[#C8A96B]/20 bg-[#FAF7F2] p-2 sm:p-4 shadow-xl flex items-center justify-center overflow-hidden relative">
+              <div className="w-full h-[62vh] md:h-[68vh] rounded-2xl border border-white/10 bg-[#050505] p-2 sm:p-4 shadow-2xl flex items-center justify-center overflow-hidden relative">
                 {/* Vintage Frame borders */}
-                <div className="absolute inset-4 border border-[#C8A96B]/15 pointer-events-none rounded-xl" />
+                <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-xl" />
+                <div className="absolute top-6 left-6 grid grid-cols-2 gap-1.5 opacity-10 pointer-events-none">
+                  {Array.from({ length: 4 }).map((_, i) => (
+                    <span key={i} className="h-1 w-1 rounded-full bg-[#2E6BFF]" />
+                  ))}
+                </div>
                 <FloralOrnament className="absolute bottom-6 right-6 w-16 h-16 opacity-25" />
 
                 <AnimatePresence mode="wait">
@@ -720,7 +514,7 @@ export default function WeddingPortfolio() {
               <button
                 type="button"
                 onClick={() => nextSlide(activeSlides.length)}
-                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-[#C8A96B]/25 bg-[#FAF7F2]/90 text-[#C8A96B] backdrop-blur transition hover:border-[#C8A96B] hover:bg-[#C8A96B] hover:text-[#FAF7F2]"
+                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
                 aria-label="Next page"
               >
                 <ChevronRight size={24} />
@@ -729,12 +523,12 @@ export default function WeddingPortfolio() {
 
             {/* Thumbnail Scroll & Slider Guide */}
             <div className="max-w-4xl w-full mx-auto flex flex-col items-center gap-3 relative z-10" onClick={(e) => e.stopPropagation()}>
-              <p className="text-[10px] tracking-widest uppercase text-[#1C1C1C]/50">
+              <p className="text-[10px] tracking-widest uppercase text-white/40 font-mono">
                 Booklet Navigation Pages
               </p>
 
               {/* Thumbnails Row */}
-              <div className="flex gap-2 overflow-x-auto py-2 px-4 max-w-full scrollbar-thin scrollbar-thumb-[#C8A96B]">
+              <div className="flex gap-2 overflow-x-auto py-2 px-4 max-w-full scrollbar-thin scrollbar-thumb-[#D4AF37]">
                 {activeSlides.map((slide, slideIdx) => {
                   const isActive = slideIdx === currentSlideIndex;
                   return (
@@ -744,8 +538,8 @@ export default function WeddingPortfolio() {
                       onClick={() => setCurrentSlideIndex(slideIdx)}
                       className={`h-12 w-20 shrink-0 rounded border overflow-hidden p-0.5 transition duration-300 ${
                         isActive
-                          ? 'border-[#C8A96B] bg-[#C8A96B]/15 scale-105 shadow'
-                          : 'border-[#C8A96B]/20 opacity-60 hover:opacity-100'
+                          ? 'border-[#D4AF37] bg-[#D4AF37]/15 scale-105 shadow'
+                          : 'border-white/10 opacity-60 hover:opacity-100'
                       }`}
                     >
                       <img src={slide.thumb} alt={`Thumb ${slideIdx + 1}`} className="h-full w-full object-cover rounded" />
@@ -760,16 +554,16 @@ export default function WeddingPortfolio() {
 
       {/* Grand Planning Consultation CTA */}
       <div className="relative max-w-4xl mx-auto px-5 text-center mt-24 pb-12 z-10">
-        <div className="border border-[#C8A96B]/30 rounded-[32px] p-8 sm:p-12 md:p-16 bg-[#F5F1EA]/50 relative overflow-hidden">
+        <div className="border border-[#C8A96B]/20 rounded-[32px] p-8 sm:p-12 md:p-16 bg-[#151515]/40 backdrop-blur-md relative overflow-hidden">
           <FloralOrnament className="absolute top-4 left-4 w-28 h-28 opacity-20 transform rotate-180" />
           <FloralOrnament className="absolute bottom-4 right-4 w-28 h-28 opacity-20" />
           
           <div className="relative z-10 max-w-2xl mx-auto">
-            <Heart className="mx-auto text-[#C8A96B] mb-6 animate-pulse" size={36} />
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1C1C1C] leading-[1.15]">
-              Let’s Create Your <span className="italic text-[#C8A96B] font-normal">Timeless</span> Masterpiece
+            <Heart className="mx-auto text-[#D4AF37] mb-6 animate-pulse" size={36} />
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15]">
+              Let’s Create Your <span className="italic text-[#D4AF37] font-normal">Timeless</span> Masterpiece
             </h2>
-            <p className="mt-6 text-[#1C1C1C]/70 text-sm sm:text-base leading-relaxed">
+            <p className="mt-6 text-white/70 text-sm sm:text-base leading-relaxed">
               Whether you are looking to host an intimate destination wedding at a beach resort or a grand royal celebration in a majestic palace, our design experts are here to shape your dreams with flawless execution.
             </p>
             <a
@@ -787,4 +581,5 @@ export default function WeddingPortfolio() {
       </div>
     </div>
   );
+
 }

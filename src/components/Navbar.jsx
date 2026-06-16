@@ -42,7 +42,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleLocationChange = () => {
       const path = window.location.pathname.replace(/\/$/, '') || '/';
-      setIsLightPage(path === '/wedding-portfolio' || path === '/wedding-services' || path === '/services' || path === '/social-services' || path === '/social-events-portfolio');
+      setIsLightPage(path === '/wedding-services' || path === '/services' || path === '/social-services');
       setScrolled(window.scrollY > 24);
       if (path === '/') {
         setActive('home');

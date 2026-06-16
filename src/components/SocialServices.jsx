@@ -364,48 +364,56 @@ export default function SocialServices() {
       <div className="border-t border-[#D56A4A]/15 bg-[#FAF7F2] py-10 mt-16">
         {/* STATS SECTION ROW */}
         <div className="mx-auto max-w-7xl px-5 border-b border-[#D56A4A]/10 pb-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <div className="flex items-center gap-2 text-[#D56A4A] mb-1.5">
-                <Users size={18} />
-                <span className="font-serif text-2xl sm:text-3xl font-bold">2000+</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="flex items-center gap-3 justify-center md:justify-start">
+              <div className="text-[#D56A4A] shrink-0">
+                <Users size={24} />
               </div>
-              <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase">Events Planned</span>
+              <div className="flex flex-col text-left">
+                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">2000+</span>
+                <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase mt-1.5">Events Planned</span>
+              </div>
             </div>
             
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <div className="flex items-center gap-2 text-[#D56A4A] mb-1.5">
-                <Award size={18} />
-                <span className="font-serif text-2xl sm:text-3xl font-bold">15+</span>
+            <div className="flex items-center gap-3 justify-center md:justify-start">
+              <div className="text-[#D56A4A] shrink-0">
+                <Award size={24} />
               </div>
-              <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase">Years of Experience</span>
+              <div className="flex flex-col text-left">
+                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">15+</span>
+                <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase mt-1.5">Years of Experience</span>
+              </div>
             </div>
 
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <div className="flex items-center gap-2 text-[#D56A4A] mb-1.5">
-                <MapPin size={18} />
-                <span className="font-serif text-2xl sm:text-3xl font-bold">100+</span>
+            <div className="flex items-center gap-3 justify-center md:justify-start">
+              <div className="text-[#D56A4A] shrink-0">
+                <MapPin size={24} />
               </div>
-              <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase">Cities Served</span>
+              <div className="flex flex-col text-left">
+                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">100+</span>
+                <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase mt-1.5">Cities Served</span>
+              </div>
             </div>
 
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <div className="flex items-center gap-2 text-[#D56A4A] mb-1.5">
-                <Smile size={18} />
-                <span className="font-serif text-2xl sm:text-3xl font-bold">50k+</span>
+            <div className="flex items-center gap-3 justify-center md:justify-start">
+              <div className="text-[#D56A4A] shrink-0">
+                <Smile size={24} />
               </div>
-              <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase">Smiles Delivered</span>
+              <div className="flex flex-col text-left">
+                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">50k+</span>
+                <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase mt-1.5">Smiles Delivered</span>
+              </div>
             </div>
           </div>
         </div>
 
         {/* TESTIMONIALS SECTION ROW */}
         <div className="mx-auto max-w-7xl px-5 pt-10">
-          <div className="flex gap-6 overflow-x-auto pb-6 snap-x scroll-smooth no-scrollbar">
+          <div className="flex gap-6 overflow-x-auto pb-6 snap-x scroll-smooth no-scrollbar md:grid md:grid-cols-3 md:overflow-x-visible md:pb-0">
             {testimonials.map((t, idx) => (
               <div
                 key={idx}
-                className="snap-start shrink-0 w-[85vw] sm:w-[350px] rounded-2xl border border-[#D56A4A]/15 bg-white p-6 shadow-sm flex flex-col justify-between"
+                className="snap-start shrink-0 w-[85vw] sm:w-[350px] md:w-full rounded-2xl border border-[#D56A4A]/15 bg-white p-6 shadow-sm flex flex-col justify-between"
               >
                 <div>
                   <span className="font-serif text-4xl text-[#D56A4A]/25 leading-none block mb-1">“</span>

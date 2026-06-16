@@ -440,8 +440,7 @@ export default function WeddingServices() {
               <Reveal
                 key={moment.title}
                 delay={(index % 4) * 0.04}
-                className={`group overflow-hidden rounded-[20px] border border-[#C8A96B]/20 bg-[#F5F1EA] shadow-md flex flex-col justify-between ${index === 0 || index === 5 ? 'lg:col-span-2' : ''
-                  }`}
+                className="group overflow-hidden rounded-[20px] border border-[#C8A96B]/20 bg-[#F5F1EA] shadow-md flex flex-col justify-between"
               >
                 {/* Image top */}
                 <div className="relative h-48 sm:h-56 w-full overflow-hidden">

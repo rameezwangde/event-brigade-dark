@@ -19,7 +19,7 @@ export default function Founder() {
               loading="lazy"
               className="relative aspect-[4/5] max-h-[580px] w-full rounded-[2rem] object-cover object-[center_22%] shadow-soft"
             />
-            <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-champagne/20 bg-obsidian/80 p-4 backdrop-blur-md">
+            <div className="absolute bottom-5 left-5 max-w-[calc(100%-2.5rem)] rounded-2xl border border-champagne/20 bg-obsidian/80 p-4 backdrop-blur-md">
               <p className="font-serif text-2xl leading-none text-ivory">Kunal Garg</p>
               <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-champagne">Founder, Director</p>
             </div>

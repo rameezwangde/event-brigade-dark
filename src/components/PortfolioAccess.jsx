@@ -12,17 +12,17 @@ const divisions = [
     icon: Heart
   },
   {
-    title: 'Corporate Events',
-    tagline: 'Precision meets brand strategy.',
-    desc: 'Delivering product launch reveal moments, conferences, channel meets, and awards nights with exact execution.',
+    title: 'CORPORATE EVENTS',
+    tagline: 'BRINGING BRANDS TO LIFE.',
+    desc: 'From product launches and conferences to channel meets, award ceremonies, and leadership summits, we create corporate experiences that engage audiences and strengthen brands. Through strategic planning, creative execution, and seamless coordination, we deliver events that leave a lasting impact.',
     servicesUrl: '/corporate-services',
     portfolioUrl: '/corporate-portfolio',
     icon: BriefcaseBusiness
   },
   {
-    title: 'Social Celebrations',
-    tagline: 'Bespoke, warm milestone celebrations.',
-    desc: 'Shaping milestones, anniversaries, baby showers and community moments with custom decor, games and curations.',
+    title: 'SOCIAL CELEBRATIONS',
+    tagline: 'EVERY OCCASION DESERVES A CELEBRATION.',
+    desc: 'From anniversaries and baby showers to milestone birthdays and family gatherings, we create meaningful celebrations tailored to your vision. Through thoughtful planning, elegant décor, and engaging experiences, we bring people together to create memories that last a lifetime.',
     servicesUrl: '/social-services',
     portfolioUrl: '/social-events-portfolio',
     icon: PartyPopper
@@ -40,9 +40,9 @@ export default function PortfolioAccess() {
       <div className="mx-auto max-w-7xl px-5">
         <div className="mb-14 text-center">
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-champagne">Our Services</p>
+            <p className="text-base font-semibold uppercase tracking-[0.32em] text-champagne md:text-lg">Our Services</p>
             <h2 className="mt-4 font-serif text-4xl leading-tight text-ivory md:text-6xl">
-              Curated with Purpose. Executed with Precision.
+              Curated with Purpose,<br />Executed with Precision.
             </h2>
             <div className="mx-auto mt-5 h-px w-28 bg-gradient-to-r from-transparent via-gold to-transparent" />
           </Reveal>
@@ -65,10 +65,10 @@ export default function PortfolioAccess() {
                   <h3 className="font-serif text-3xl leading-tight text-ivory transition-colors duration-300 group-hover:text-gold">
                     {div.title}
                   </h3>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-champagne/80 min-h-[36px] flex items-center">
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-champagne/80 min-h-[48px] flex items-center">
                     {div.tagline}
                   </p>
-                  <p className="mt-5 text-sm leading-7 text-smoke text-justify">
+                  <p className="mt-5 text-sm leading-7 text-smoke text-left">
                     {div.desc}
                   </p>
                 </div>

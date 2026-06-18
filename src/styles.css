@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Abril+Fatface&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Playball&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Abril+Fatface&family=Abyssinica+SIL&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Playball&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +9,7 @@
 }
 
 .font-display {
-  font-family: 'Abril Fatface', serif !important;
+  font-family: 'Abyssinica SIL', serif !important;
 }
 
 .font-abel {

@@ -15,7 +15,7 @@ export default {
       fontFamily: {
         serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['Inter', 'Montserrat', 'ui-sans-serif', 'system-ui'],
-        display: ['"Abril Fatface"', 'serif'],
+        display: ['"Abyssinica SIL"', 'serif'],
         displaySans: ['Abel', 'sans-serif']
       },
       boxShadow: {

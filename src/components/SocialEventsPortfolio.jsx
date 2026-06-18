@@ -10,13 +10,19 @@ const vaaniGlob = import.meta.glob('../assets/vaani/*.{jpg,JPG,jpeg,JPEG,png,PNG
 const vaaniImages = Object.values(vaaniGlob).map((mod) => mod.default || mod);
 const vaaniHero = vaaniGlob['../assets/vaani/DSC00028.JPG']?.default || vaaniGlob['../assets/vaani/DSC00028.JPG'] || socialBirthday;
 
+// Dynamically glob all files in the babyshower folder
+const babyshowerGlob = import.meta.glob('../assets/babyshower/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const babyshowerImages = Object.values(babyshowerGlob).map((mod) => mod.default || mod);
+const babyshowerHero = babyshowerGlob['../assets/babyshower/MARI9827.JPG']?.default || babyshowerGlob['../assets/babyshower/MARI9827.JPG'] || babyshowerGlob['../assets/babyshower/IMG_5287.jpg']?.default || babyshowerGlob['../assets/babyshower/IMG_5287.jpg'] || socialBirthday;
+
 // Category filter tabs
 const categories = [
   'All Celebrations',
-  'Birthdays'
+  'Birthdays',
+  'Baby Showers'
 ];
 
-// Luxury Social Projects List (Only Vaani's Birthday Celebration remains)
+// Luxury Social Projects List (Vaani's Birthday & Shubhika & Anuj's Babyshower)
 const socialProjects = [
   {
     id: 5,
@@ -33,6 +39,22 @@ const socialProjects = [
     guests: '150 Guests',
     isRawGallery: true,
     images: vaaniImages
+  },
+  {
+    id: 6,
+    number: '02',
+    title: "Shubhika & Anuj's Pastel Babyshower.",
+    subtitle: "Shubhika & Anuj's Babyshower",
+    tag: 'Baby Showers',
+    categories: ['Baby Showers'],
+    description: "A gorgeous pastel-themed baby shower featuring custom teddy backdrops, floral decorations, and interactive guest elements.",
+    image: babyshowerHero,
+    layout: 'left', // Image Left, Content Right
+    location: 'Pune',
+    date: 'June 2026',
+    guests: '100 Guests',
+    isRawGallery: true,
+    images: babyshowerImages
   }
 ];
 
@@ -40,7 +62,11 @@ export default function SocialEventsPortfolio() {
   const [selectedCategory, setSelectedCategory] = useState(() => {
     const params = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
     const cat = params.get('category');
-    if (cat && cat.toLowerCase() === 'birthdays') return 'Birthdays';
+    if (cat) {
+      const catLower = cat.toLowerCase();
+      if (catLower === 'birthdays') return 'Birthdays';
+      if (catLower === 'baby-showers' || catLower === 'babyshower') return 'Baby Showers';
+    }
     return 'All Celebrations';
   });
   const [activeProject, setActiveProject] = useState(null);
@@ -52,8 +78,15 @@ export default function SocialEventsPortfolio() {
     const handlePopState = () => {
       const params = new URLSearchParams(window.location.search);
       const cat = params.get('category');
-      if (cat && cat.toLowerCase() === 'birthdays') {
-        setSelectedCategory('Birthdays');
+      if (cat) {
+        const catLower = cat.toLowerCase();
+        if (catLower === 'birthdays') {
+          setSelectedCategory('Birthdays');
+        } else if (catLower === 'baby-showers' || catLower === 'babyshower') {
+          setSelectedCategory('Baby Showers');
+        } else {
+          setSelectedCategory('All Celebrations');
+        }
       } else {
         setSelectedCategory('All Celebrations');
       }

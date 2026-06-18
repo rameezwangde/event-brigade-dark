@@ -42,7 +42,7 @@ export default function PortfolioAccess() {
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.32em] text-champagne">Our Services</p>
             <h2 className="mt-4 font-serif text-4xl leading-tight text-ivory md:text-6xl">
-              The Art of Event Curation
+              Curated with Purpose. Executed with Precision.
             </h2>
             <div className="mx-auto mt-5 h-px w-28 bg-gradient-to-r from-transparent via-gold to-transparent" />
           </Reveal>

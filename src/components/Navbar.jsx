@@ -17,16 +17,6 @@ const links = [
       { label: 'Social', href: '/social-services' }
     ]
   },
-  {
-    label: 'Portfolio',
-    id: 'portfolio',
-    href: '/wedding-portfolio',
-    dropdown: [
-      { label: 'Wedding Portfolio', href: '/wedding-portfolio' },
-      { label: 'Corporate Portfolio', href: '/corporate-portfolio' },
-      { label: 'Social Portfolio', href: '/social-events-portfolio' }
-    ]
-  },
   { label: 'Testimonials', id: 'testimonials', href: '/testimonials' },
   { label: 'Founder', id: 'founder', href: '/founder' },
   { label: 'Contact', id: 'contact', href: '/contact' }
@@ -42,7 +32,13 @@ export default function Navbar() {
   useEffect(() => {
     const handleLocationChange = () => {
       const path = window.location.pathname.replace(/\/$/, '') || '/';
-      setIsLightPage(path === '/wedding-services' || path === '/services' || path === '/social-services');
+      setIsLightPage(
+        path === '/wedding-services' ||
+        path === '/services' ||
+        path === '/social-services' ||
+        path === '/wedding-portfolio' ||
+        path === '/social-events-portfolio'
+      );
       setScrolled(window.scrollY > 24);
       if (path === '/') {
         setActive('home');
@@ -52,15 +48,12 @@ export default function Navbar() {
         path === '/services' ||
         path === '/wedding-services' ||
         path === '/corporate-services' ||
-        path === '/social-services'
-      ) {
-        setActive('services');
-      } else if (
-        path === '/corporate-portfolio' ||
+        path === '/social-services' ||
         path === '/wedding-portfolio' ||
+        path === '/corporate-portfolio' ||
         path === '/social-events-portfolio'
       ) {
-        setActive('portfolio');
+        setActive('services');
       } else if (path === '/testimonials') {
         setActive('testimonials');
       } else if (path === '/founder') {

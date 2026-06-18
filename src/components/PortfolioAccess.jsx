@@ -8,7 +8,7 @@ const divisions = [
     tagline: 'CRAFTED LUXURY FOR A LIFETIME OF MEMORIES.',
     desc: 'From bespoke décor and guest hospitality to entertainment and seamless coordination, we bring together every element needed to create extraordinary wedding experiences. Blending creativity, elegance, and precision, we craft moments that will be cherished for a lifetime.',
     servicesUrl: '/wedding-services',
-    portfolioUrl: '/wedding-portfolio',
+    portfolioUrl: '/wedding-services#portfolio-grid',
     icon: Heart
   },
   {
@@ -16,7 +16,7 @@ const divisions = [
     tagline: 'BRINGING BRANDS TO LIFE.',
     desc: 'From product launches and conferences to channel meets, award ceremonies, and leadership summits, we create corporate experiences that engage audiences and strengthen brands. Through strategic planning, creative execution, and seamless coordination, we deliver events that leave a lasting impact.',
     servicesUrl: '/corporate-services',
-    portfolioUrl: '/corporate-portfolio',
+    portfolioUrl: '/corporate-services#portfolio-grid',
     icon: BriefcaseBusiness
   },
   {
@@ -24,7 +24,7 @@ const divisions = [
     tagline: 'EVERY OCCASION DESERVES A CELEBRATION.',
     desc: 'From anniversaries and baby showers to milestone birthdays and family gatherings, we create meaningful celebrations tailored to your vision. Through thoughtful planning, elegant décor, and engaging experiences, we bring people together to create memories that last a lifetime.',
     servicesUrl: '/social-services',
-    portfolioUrl: '/social-events-portfolio',
+    portfolioUrl: '/social-services#portfolio-grid',
     icon: PartyPopper
   }
 ];

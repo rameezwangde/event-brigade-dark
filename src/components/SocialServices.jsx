@@ -12,8 +12,11 @@ import {
   ChevronLeft,
   ChevronRight,
   Home,
-  GraduationCap
+  GraduationCap,
+  X,
+  Sparkles
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from './Reveal.jsx';
 
 // Import local premium assets
@@ -25,6 +28,101 @@ import socialCommunity from '../assets/social-curated/social-community-stage.jpg
 import socialActivities from '../assets/social-curated/social-paint-plant.jpg';
 import eventAtmosphere from '../assets/social-curated/social-event-atmosphere.jpg';
 import socialGifts from '../assets/social-curated/social-return-gift.jpg';
+
+// Dynamically generate the 38 social event slide pages
+const socialBookletPages = Array.from({ length: 38 }, (_, i) => {
+  const pageNum = String(i + 1).padStart(2, '0');
+  return {
+    full: new URL(`../assets/social-events-portfolio/social-page-${pageNum}.jpg`, import.meta.url).href,
+    thumb: new URL(`../assets/social-events-portfolio-thumbs/social-page-${pageNum}.jpg`, import.meta.url).href
+  };
+});
+
+// Dynamically glob all files in the vaani folder
+const vaaniGlob = import.meta.glob('../assets/vaani/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const vaaniImages = Object.values(vaaniGlob).map((mod) => mod.default || mod);
+const vaaniHero = vaaniGlob['../assets/vaani/DSC00028.JPG']?.default || vaaniGlob['../assets/vaani/DSC00028.JPG'] || socialBirthday;
+
+// Luxury Social Projects List
+const socialProjects = [
+  {
+    id: 1,
+    number: '01',
+    title: 'Milestone 50 Years of Life.',
+    subtitle: "Kunal's 50th Celebration",
+    tag: 'Birthdays',
+    categories: ['Birthdays'],
+    description: 'A grand golden themed celebration with interactive photo walls, custom stage lighting, and curated hospitality details.',
+    image: socialBirthday,
+    layout: 'right',
+    location: 'JW Marriott, Pune',
+    date: 'Dec 2025',
+    guests: '150 Guests',
+    pageRange: [0, 8] // Pages 1 to 9
+  },
+  {
+    id: 2,
+    number: '02',
+    title: 'Welcome to the World Little One.',
+    subtitle: 'Teddy Baby Shower',
+    tag: 'Baby Showers',
+    categories: ['Baby Showers'],
+    description: 'Pastel balloon arches, customized Onesie-decorating tables, and teddy-themed photobooths made this baby shower a cozy family gathering full of warmth and laughter.',
+    image: socialBabyShower,
+    layout: 'left',
+    location: 'Conrad Grand Room, Pune',
+    date: 'Jan 2026',
+    guests: '120 Guests',
+    pageRange: [9, 16] // Pages 10 to 17
+  },
+  {
+    id: 3,
+    number: '03',
+    title: 'Twenty-Five Years of Shared Love.',
+    subtitle: 'The Silver Jubilee Soiree',
+    tag: 'Anniversaries',
+    categories: ['Anniversaries'],
+    description: 'Designed around silver coordinates, ambient candelabras, and live jazz performances. A celebration honoring shared milestones and beautiful family stories.',
+    image: socialAnniversary,
+    layout: 'right',
+    location: 'JW Marriott, Pune',
+    date: 'Feb 2026',
+    guests: '150 Guests',
+    pageRange: [17, 24] // Pages 18 to 25
+  },
+  {
+    id: 4,
+    number: '04',
+    title: 'Cultural Beats & Festival Rhythm.',
+    subtitle: 'The Grand Diwali Celebration',
+    tag: 'Fests & Community Events',
+    categories: ['Fests & Community Events'],
+    description: 'Connecting community spaces with immersive drapes, lighting towers, a high-spec main stage, and structured guest flows for festival operations.',
+    image: socialCommunity,
+    layout: 'left',
+    location: 'Nyati County lawns, Pune',
+    date: 'Nov 2025',
+    guests: '800 Guests',
+    pageRange: [25, 37] // Pages 26 to 38
+  },
+  {
+    id: 5,
+    number: '05',
+    title: 'A Vibrant Birthday Wonderland.',
+    subtitle: "Vaani's Birthday Celebration",
+    tag: 'Birthdays',
+    categories: ['Birthdays'],
+    description: 'A magical celebration designed and managed for Vaani, filled with premium floral drapes, custom themes, and interactive game counters.',
+    image: vaaniHero,
+    layout: 'right',
+    location: 'JW Marriott, Pune',
+    date: 'April 2026',
+    guests: '150 Guests',
+    isRawGallery: true,
+    images: vaaniImages
+  }
+];
+
 
 // Luxury Header Helper for Social Services
 function LuxuryHeader({ eyebrow, title, text, align = 'center' }) {
@@ -79,6 +177,40 @@ const socialShowcase = {
 
 export default function SocialServices() {
   const [activeModule, setActiveModule] = useState(null);
+  const [activeProject, setActiveProject] = useState(null);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  const openLightbox = (project) => {
+    setActiveProject(project);
+    setCurrentSlideIndex(0);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setActiveProject(null);
+    document.body.style.overflow = '';
+  };
+
+  const nextSlide = (rangeLength) => {
+    setCurrentSlideIndex((prev) => (prev === rangeLength - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = (rangeLength) => {
+    setCurrentSlideIndex((prev) => (prev === 0 ? rangeLength - 1 : prev - 1));
+  };
+
+  const getActiveSlides = () => {
+    if (!activeProject) return [];
+    if (activeProject.isRawGallery) {
+      return activeProject.images.map((img) => ({
+        full: img,
+        thumb: img
+      }));
+    }
+    const [start, end] = activeProject.pageRange;
+    return socialBookletPages.slice(start, end + 1);
+  };
+  const activeSlides = getActiveSlides();
 
   const serviceCards = [
     {
@@ -193,10 +325,11 @@ export default function SocialServices() {
                     {socialShowcase.title}
                   </h3>
                   <a
-                    href="/social-events-portfolio"
+                    href="#portfolio-grid"
                     onClick={(e) => {
                       e.preventDefault();
-                      window.history.pushState({}, '', '/social-events-portfolio');
+                      const el = document.getElementById('portfolio-grid');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }}
                     className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#D56A4A] hover:text-white transition-colors"
                   >
@@ -318,7 +451,22 @@ export default function SocialServices() {
                 <Reveal
                   key={card.title}
                   delay={idx * 0.04}
-                  className="group flex flex-col overflow-hidden rounded-[2rem] border border-[#C8A96B]/20 bg-[#FAF7F2] shadow-sm transition duration-500 hover:-translate-y-2 hover:shadow-md h-full"
+                  className="group flex flex-col overflow-hidden rounded-[2rem] border border-[#C8A96B]/20 bg-[#FAF7F2] shadow-sm transition duration-500 hover:-translate-y-2 hover:shadow-md h-full cursor-pointer"
+                  onClick={() => {
+                    const projectMap = {
+                      'Birthdays': "Kunal's 50th Celebration",
+                      'Anniversaries': 'The Silver Jubilee Soiree',
+                      'Baby Showers': 'Teddy Baby Shower',
+                      'Community Events': 'The Grand Diwali Celebration'
+                    };
+                    const targetTitle = projectMap[card.title];
+                    if (targetTitle) {
+                      const proj = socialProjects.find(p => p.subtitle === targetTitle);
+                      if (proj) {
+                        openLightbox(proj);
+                      }
+                    }
+                  }}
                 >
                   {/* Card Image */}
                   <div className="relative h-60 overflow-hidden rounded-t-[2rem]">
@@ -356,7 +504,82 @@ export default function SocialServices() {
           </div>
         </div>
 
+        {/* PORTFOLIO SHOWCASE SECTION */}
+        <div id="portfolio-grid" className="mt-32 scroll-mt-28">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <span className="w-5 h-[1px] bg-[#D56A4A]/50" />
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#D56A4A]">
+                — FEATURED MASTERPIECES —
+              </p>
+              <span className="w-5 h-[1px] bg-[#D56A4A]/50" />
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#222222] leading-[1.2] font-semibold">
+              Our Celebrations <span className="font-script text-[#D56A4A] font-normal italic inline-block transform translate-y-1">Portfolio</span>
+            </h2>
+            <p className="mt-4 text-sm sm:text-base text-[#222222]/70 font-sans leading-relaxed max-w-2xl mx-auto">
+              Explore our booklet records of birthdays, anniversaries, baby showers, and community festivals.
+            </p>
+          </Reveal>
 
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {socialProjects.map((project, idx) => {
+              const { title, subtitle, tag, image, location, date, guests } = project;
+              return (
+                <Reveal
+                  key={project.id}
+                  delay={idx * 0.05}
+                  className="group relative overflow-hidden rounded-[20px] border border-[#D56A4A]/20 bg-[#FAF7F2] h-[380px] shadow-xl hover:border-[#D56A4A]/50 transition-all duration-500 cursor-pointer"
+                  onClick={() => openLightbox(project)}
+                >
+                  <img
+                    src={image}
+                    alt={title}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[3000ms] ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-500 z-10" />
+
+                  <span className="absolute left-5 top-5 rounded-md border border-[#D56A4A]/30 bg-black/60 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D56A4A] z-20">
+                    {tag}
+                  </span>
+
+                  <div className="absolute bottom-5 left-5 right-5 z-20 flex flex-col justify-end">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#D56A4A] mb-1 text-left font-sans">
+                      {subtitle}
+                    </p>
+                    <h3 className="font-serif text-2xl text-white group-hover:text-[#D56A4A] transition-colors leading-snug text-left">
+                      {title}
+                    </h3>
+                    
+                    <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-36 group-hover:opacity-100 group-hover:mt-4 transition-all duration-500 border-t border-white/10 pt-4">
+                      <div className="space-y-2 text-xs text-white/80 text-left">
+                        <div className="flex items-center gap-2">
+                          <MapPin size={13} className="text-[#D56A4A] shrink-0" />
+                          <span>{location}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Users size={13} className="text-[#D56A4A] shrink-0" />
+                          <span>{guests}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Calendar size={13} className="text-[#D56A4A] shrink-0" />
+                          <span>{date}</span>
+                        </div>
+                      </div>
+
+                      <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#D56A4A] group-hover:translate-x-1 transition-transform text-left">
+                        <span>{project.isRawGallery ? 'Explore Gallery' : 'Explore Booklet'}</span>
+                        <ArrowRight size={12} />
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
 
       </div>
 
@@ -438,6 +661,135 @@ export default function SocialServices() {
           </div>
         </div>
       </div>
+
+      {/* Booklet Modal / Lightbox for Kunal's 50th Birthday Celebration */}
+      <AnimatePresence>
+        {activeProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#050505]/98 p-4 md:p-6 lg:p-8"
+            onClick={closeLightbox}
+          >
+            {/* Header Details */}
+            <div className="max-w-7xl w-full mx-auto flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
+              <div className="text-white text-left">
+                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.34em] text-[#D56A4A]">
+                  {activeProject.tag} — BOOKLET {activeProject.number}
+                </p>
+                {activeProject.tag === 'Birthdays' ? (
+                  <div className="flex items-center gap-4 mt-2" onClick={(e) => e.stopPropagation()}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const proj = socialProjects.find(p => p.subtitle === "Kunal's 50th Celebration");
+                        if (proj) {
+                          setActiveProject(proj);
+                          setCurrentSlideIndex(0);
+                        }
+                      }}
+                      className={`font-serif text-base sm:text-xl transition pb-1 ${
+                        activeProject.subtitle === "Kunal's 50th Celebration"
+                          ? 'text-[#D56A4A] border-b-2 border-[#D56A4A] font-semibold'
+                          : 'text-white/60 hover:text-white'
+                      }`}
+                    >
+                      Kunal's 50th
+                    </button>
+                    <span className="text-white/25">|</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const proj = socialProjects.find(p => p.subtitle === "Vaani's Birthday Celebration");
+                        if (proj) {
+                          setActiveProject(proj);
+                          setCurrentSlideIndex(0);
+                        }
+                      }}
+                      className={`font-serif text-base sm:text-xl transition pb-1 ${
+                        activeProject.subtitle === "Vaani's Birthday Celebration"
+                          ? 'text-[#D56A4A] border-b-2 border-[#D56A4A] font-semibold'
+                          : 'text-white/60 hover:text-white'
+                      }`}
+                    >
+                      Vaani's Birthday
+                    </button>
+                  </div>
+                ) : (
+                  <h3 className="font-serif text-xl sm:text-2xl mt-1 text-white">
+                    {activeProject.subtitle}
+                  </h3>
+                )}
+              </div>
+
+              <div className="flex items-center gap-6">
+                <span className="font-serif text-sm font-semibold text-[#D56A4A]">
+                  {String(currentSlideIndex + 1).padStart(2, '0')} / {String(activeSlides.length).padStart(2, '0')}
+                </span>
+
+                <button
+                  type="button"
+                  onClick={closeLightbox}
+                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-[#151515] text-[#D56A4A] transition hover:bg-[#D56A4A] hover:text-[#050505]"
+                  aria-label="Close booklet"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+
+            {/* Slide Showcase Arena */}
+            <div className="flex-grow flex items-center justify-center max-w-5xl w-full mx-auto my-4 relative" onClick={(e) => e.stopPropagation()}>
+              
+              {/* Left Arrow */}
+              <button
+                type="button"
+                onClick={() => prevSlide(activeSlides.length)}
+                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D56A4A] hover:bg-[#D56A4A] hover:text-[#050505]"
+                aria-label="Previous page"
+              >
+                <ChevronLeft size={24} />
+              </button>
+
+              {/* Slide Image Box */}
+              <div className="w-full h-[62vh] md:h-[68vh] rounded-2xl border border-white/10 bg-[#050505] p-2 sm:p-4 shadow-2xl flex items-center justify-center overflow-hidden relative">
+                {/* Frame borders */}
+                <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-xl" />
+                <div className="absolute top-6 left-6 grid grid-cols-2 gap-1.5 opacity-10 pointer-events-none">
+                  {Array.from({ length: 4 }).map((_, i) => (
+                    <span key={i} className="h-1 w-1 rounded-full bg-[#D56A4A]" />
+                  ))}
+                </div>
+
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={`${activeProject.id}-${currentSlideIndex}`}
+                    src={activeSlides[currentSlideIndex]?.full}
+                    alt={`Booklet page ${currentSlideIndex + 1}`}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.4 }}
+                    className="max-h-full max-w-full object-contain rounded-lg relative z-10"
+                  />
+                </AnimatePresence>
+              </div>
+
+              {/* Right Arrow */}
+              <button
+                type="button"
+                onClick={() => nextSlide(activeSlides.length)}
+                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D56A4A] hover:bg-[#D56A4A] hover:text-[#050505]"
+                aria-label="Next page"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
+
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

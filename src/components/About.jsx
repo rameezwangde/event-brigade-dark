@@ -27,7 +27,7 @@ export default function About() {
             <div className="absolute bottom-0 left-0 right-0 p-7">
               <p className="text-base font-semibold uppercase tracking-[0.28em] text-champagne md:text-lg">Introduction</p>
               <h3 className="mt-3 max-w-xl font-serif text-4xl leading-tight text-ivory">
-                Every occasion begins as a blank canvas.
+                Every Occasion Begins with a Vision.
               </h3>
             </div>
           </Reveal>

@@ -38,7 +38,7 @@ export default function About() {
             <p className="text-lg font-semibold uppercase tracking-[0.28em] text-champagne md:text-xl">Company Overview</p>
             <h3 className="mt-4 max-w-xl font-serif text-5xl leading-tight text-ivory md:text-6xl">The Brigade Behind Extraordinary Events.</h3>
             <div className="mt-6 h-px w-28 bg-gradient-to-r from-gold to-transparent" />
-            <div className="mt-7 max-w-xl space-y-5 text-base leading-8 text-smoke md:text-lg md:leading-8 text-justify">
+            <div className="mt-7 max-w-xl space-y-5 text-base leading-relaxed text-smoke md:text-lg text-left">
               {siteCopy.aboutParagraphs.map((para, idx) => (
                 <p key={idx}>{para}</p>
               ))}
@@ -46,26 +46,43 @@ export default function About() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-6 md:mt-14 lg:grid-cols-2">
-          {[
-            ['Vision', siteCopy.philosophy, Lightbulb],
-            ['Mission', siteCopy.mission, Sparkles]
-          ].map(([title, text, Icon], index) => (
-            <Reveal
-              key={title}
-              delay={index * 0.1}
-              className="timeline-card group flex min-h-0 flex-col justify-start h-full"
-            >
-              <div className="absolute left-8 top-8 z-10 grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow transition duration-300 group-hover:scale-105 md:left-9 md:top-9">
-                <Icon size={25} />
+        <div className="relative mt-16 overflow-hidden rounded-[2rem] border border-champagne/15 bg-charcoal/30 p-8 backdrop-blur-md md:p-12">
+          {/* Background Radial Glow */}
+          <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-gold-radial opacity-10 blur-3xl pointer-events-none" />
+          <div className="absolute -right-24 -bottom-24 h-72 w-72 rounded-full bg-gold-radial opacity-10 blur-3xl pointer-events-none" />
+          
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 relative z-10">
+            {/* Vision */}
+            <Reveal className="flex flex-col sm:flex-row gap-6 items-start">
+              <div className="flex-shrink-0 grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow">
+                <Lightbulb size={24} />
               </div>
-              <div className="relative z-10 pt-20">
-                <h3 className="font-serif text-4xl leading-tight text-ivory">{title}</h3>
-                <div className="mt-5 h-px w-24 bg-gradient-to-r from-gold to-transparent" />
-                <p className="mt-6 text-[15px] leading-8 text-smoke md:text-base text-justify">{text}</p>
+              <div>
+                <span className="font-mono text-xs text-gold/60 tracking-wider">01 / BRAND PURPOSE</span>
+                <h3 className="font-serif text-3xl leading-tight text-ivory mt-1">Vision</h3>
+                <p className="mt-4 text-[15px] leading-relaxed text-smoke text-left">
+                  {siteCopy.philosophy}
+                </p>
               </div>
             </Reveal>
-          ))}
+
+            {/* Vertical Divider for desktop */}
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-champagne/20 to-transparent -translate-x-1/2" />
+
+            {/* Mission */}
+            <Reveal className="flex flex-col sm:flex-row gap-6 items-start" delay={0.08}>
+              <div className="flex-shrink-0 grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow">
+                <Sparkles size={24} />
+              </div>
+              <div>
+                <span className="font-mono text-xs text-gold/60 tracking-wider">02 / THE PLEDGE</span>
+                <h3 className="font-serif text-3xl leading-tight text-ivory mt-1">Mission</h3>
+                <p className="mt-4 text-[15px] leading-relaxed text-smoke text-left">
+                  {siteCopy.mission}
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

@@ -428,33 +428,7 @@ export default function SocialEventsPortfolio() {
               </button>
             </div>
 
-            {/* Thumbnail Navigation Row */}
-            <div className="max-w-4xl w-full mx-auto flex flex-col items-center gap-3 relative z-10" onClick={(e) => e.stopPropagation()}>
-              <p className="text-[10px] tracking-widest uppercase text-white/40 font-mono">
-                Booklet Navigation Pages
-              </p>
 
-              {/* Thumbnails list */}
-              <div className="flex gap-2 overflow-x-auto py-2 px-4 max-w-full scrollbar-thin scrollbar-thumb-[#D4AF37]">
-                {activeSlides.map((slide, slideIdx) => {
-                  const isActive = slideIdx === currentSlideIndex;
-                  return (
-                    <button
-                      key={slideIdx}
-                      type="button"
-                      onClick={() => setCurrentSlideIndex(slideIdx)}
-                      className={`h-12 w-20 shrink-0 rounded border overflow-hidden p-0.5 transition duration-300 ${
-                        isActive
-                          ? 'border-[#D4AF37] bg-[#D4AF37]/15 scale-105 shadow'
-                          : 'border-white/10 opacity-60 hover:opacity-100'
-                      }`}
-                    >
-                      <img src={slide.thumb} alt={`Thumb ${slideIdx + 1}`} className="h-full w-full object-cover rounded" />
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>

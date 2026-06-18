@@ -7,10 +7,11 @@ import reception from './assets/weddings/reception.jpg';
 import specialEntry from './assets/weddings/special-entry.jpg';
 import weddingActivities from './assets/weddings/wedding-activities.jpg';
 import founderImage from '../founder.jpeg';
+import aboutBuffet from './assets/about-buffet.jpg';
 
 export const images = {
   hero: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=2200&q=85',
-  about: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1400&q=85',
+  about: aboutBuffet,
   wedding: weddingStage,
   corporate: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=85',
   social: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1400&q=85',

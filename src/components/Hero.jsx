@@ -48,7 +48,7 @@ export default function Hero() {
           <h1 className="font-display font-bold uppercase tracking-[0.05em] text-5xl leading-[0.95] text-ivory md:text-7xl lg:text-8xl">
             <span className="text-gradient">EVENT BRIGADE</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base font-display font-medium uppercase tracking-[0.32em] text-ivory/80 md:text-xl">TO YOUR RESCUE</p>
+          <p className="mx-auto mt-6 max-w-2xl text-lg font-abel uppercase tracking-[0.45em] text-ivory/80 md:text-2xl">TO YOUR RESCUE</p>
         </motion.div>
 
         <div className="mx-auto mt-16 grid max-w-4xl w-full gap-8 md:grid-cols-3">

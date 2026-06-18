@@ -94,7 +94,7 @@ export default function About() {
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#C8A96B] sm:text-base">Our Story</p>
             <h3 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-[#1C1C1C] sm:text-4xl">The Brigade Behind Extraordinary Events.</h3>
             <div className="mt-6 h-px w-28 bg-gradient-to-r from-[#C8A96B] to-transparent" />
-            <div className="mt-7 max-w-xl space-y-5 text-base leading-relaxed text-[#1C1C1C]/75 text-left">
+            <div className="mt-7 max-w-xl space-y-5 text-base leading-relaxed text-[#1C1C1C]/75 text-justify">
               {siteCopy.aboutParagraphs.map((para, idx) => (
                 <p key={idx}>{para}</p>
               ))}

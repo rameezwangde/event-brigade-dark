@@ -1,21 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  ArrowRight,
-  BadgeCheck,
-  Check,
-  ClipboardCheck,
-  Gem,
-  Gift,
-  Heart,
-  Hotel,
-  MapPinned,
-  Music,
-  Palette,
-  Plane,
-  Sparkles,
-  Utensils,
-  UsersRound
-} from 'lucide-react';
+import { ArrowRight, Gem, BadgeCheck, Plane } from 'lucide-react';
 import { services, weddingShowcase } from '../data.js';
 import Reveal from './Reveal.jsx';
 
@@ -33,62 +17,6 @@ import poolPartyVisual from '../assets/weddings/pdf-page28-xref330.jpg';
 import mandapVisual from '../assets/weddings/pdf-page21-xref1238.jpg';
 import brideGroomVisual from '../assets/weddings/pdf-page30-xref363.jpg';
 
-const planningServices = [
-  {
-    title: 'Invitation & Guest RSVP',
-    icon: Heart,
-    image: weddingInvites,
-    items: ['Wedding logo and e-invites', 'Dedicated guest communication number', 'Bulk messaging and RSVP data collection']
-  },
-  {
-    title: 'Logistics',
-    icon: MapPinned,
-    image: guestWelcome,
-    items: ['Airport, station and bus pickup coordination', 'Vehicle tracking sheets', 'On-property movement planning']
-  },
-  {
-    title: 'Hospitality',
-    icon: Hotel,
-    image: guestWelcome,
-    items: ['Festivity desks and welcome plaques', 'Luggage tagging and room allocation', 'Traditional or western welcome flow']
-  },
-  {
-    title: 'Wedding Stationery',
-    icon: Gift,
-    image: weddingInvites,
-    items: ['Thank-you tags and door knobs', 'Key jackets, hamper notes and luggage tags', 'Welcome letters and room itinerary cards']
-  },
-  {
-    title: 'Rituals Management',
-    icon: ClipboardCheck,
-    image: haldiMehendi,
-    items: ['Dedicated ritual team', 'Function-wise material packing', 'Fresh ritual items available on time']
-  },
-  {
-    title: 'Artist Management',
-    icon: Music,
-    image: reception,
-    items: ['Live bands and violin acts', 'Bollywood dancers and singers', 'Celebrity performers and comedians']
-  },
-  {
-    title: 'Food & Beverages',
-    icon: Utensils,
-    image: reception,
-    items: ['Dedicated F&B manager', 'Plate count and liquor count tracking', 'Meal boxes for departing guests']
-  },
-  {
-    title: 'Vendor Management',
-    icon: UsersRound,
-    image: weddingDecor,
-    items: ['Band, ghodi, makeup, mehendi and valet vendors', 'Licenses, bartenders, security and bouncers', 'Vetted partners for fuss-free onboarding']
-  },
-  {
-    title: 'Decor',
-    icon: Palette,
-    image: weddingDecor,
-    items: ['Theme-led design and decor', 'Culture, story and aesthetic-led concepts', 'Memorable venue transformations']
-  }
-];
 
 const celebrationMoments = [
   { title: 'Welcome & Check-In', image: guestWelcome, text: 'Guest arrival, festivity desk, room keys, luggage flow and warm first impressions.' },
@@ -371,60 +299,6 @@ export default function WeddingServices() {
           </Reveal>
         </div>
 
-        {/* Section 2: Detailed Capabilities Grid */}
-        <div className="mt-24">
-          <LuxuryHeader
-            eyebrow="Capabilities"
-            title="Every Detail, Planned with Precision"
-            text="From RSVPs and transport to styling and catering counts, our planning checklist translates concepts into stress-free events."
-          />
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12">
-            {planningServices.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <Reveal
-                  key={service.title}
-                  delay={index * 0.04}
-                  className="group flex flex-col overflow-hidden rounded-[24px] border border-[#C8A96B]/20 bg-[#F5F1EA] shadow-md transition duration-500 hover:-translate-y-1 hover:border-[#C8A96B]/50 hover:shadow-lg h-full"
-                >
-                  {/* Card Image Cover */}
-                  <div className="relative h-52 overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                    />
-
-
-                    {/* Icon frame */}
-                    <div className="absolute left-5 top-5 grid h-11 w-11 place-items-center rounded-2xl border border-[#C8A96B]/35 bg-[#FAF7F2]/90 text-[#C8A96B] backdrop-blur-sm shadow-md">
-                      <Icon size={20} />
-                    </div>
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="p-6 pt-2 flex-grow flex flex-col justify-start relative">
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#C8A96B]">
-                      {String(index + 1).padStart(2, '0')}
-                    </p>
-                    <h3 className="mt-2 min-h-[50px] font-serif text-2xl text-[#1C1C1C] leading-snug">{service.title}</h3>
-
-                    <ul className="mt-4 space-y-2.5">
-                      {service.items.map((item) => (
-                        <li key={item} className="flex items-start gap-2.5 text-xs sm:text-sm leading-relaxed text-[#1C1C1C]/75">
-                          <Check className="mt-0.5 shrink-0 text-[#C8A96B]" size={14} />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Section 3: Celebration Flow Grid */}
         <div className="mt-24">

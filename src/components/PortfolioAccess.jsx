@@ -4,9 +4,9 @@ import Reveal from './Reveal.jsx';
 
 const divisions = [
   {
-    title: 'Weddings',
-    tagline: 'Vogue-inspired luxury curation.',
-    desc: 'From custom invitations and styling to grand venue production, hospitality management and celebrity bookings.',
+    title: 'WEDDINGS',
+    tagline: 'CRAFTED LUXURY FOR A LIFETIME OF MEMORIES.',
+    desc: 'From bespoke décor and guest hospitality to entertainment and seamless coordination, we bring together every element needed to create extraordinary wedding experiences. Blending creativity, elegance, and precision, we craft moments that will be cherished for a lifetime.',
     servicesUrl: '/wedding-services',
     portfolioUrl: '/wedding-portfolio',
     icon: Heart

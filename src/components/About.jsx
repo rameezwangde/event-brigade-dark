@@ -82,7 +82,7 @@ export default function About() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-7">
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#C8A96B] sm:text-base">Introduction</p>
-              <h3 className="mt-3 max-w-xl font-serif text-3xl leading-tight text-white sm:text-4xl">
+              <h3 className="mt-3 max-w-xl font-serif text-4xl leading-tight text-white sm:text-5xl">
                 Every Occasion Begins with a Vision.
               </h3>
             </div>
@@ -92,7 +92,7 @@ export default function About() {
             <div className="absolute right-0 top-0 h-32 w-1 bg-[#C8A96B]" />
             <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-[#C8A96B] to-transparent" />
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#C8A96B] sm:text-base">Our Story</p>
-            <h3 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-[#1C1C1C] sm:text-4xl">The Brigade Behind Extraordinary Events.</h3>
+            <h3 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-[#1C1C1C] sm:text-5xl">The Brigade Behind Extraordinary Events.</h3>
             <div className="mt-6 h-px w-28 bg-gradient-to-r from-[#C8A96B] to-transparent" />
             <div className="mt-7 max-w-xl space-y-5 text-base leading-relaxed text-[#1C1C1C]/75 text-justify">
               {siteCopy.aboutParagraphs.map((para, idx) => (

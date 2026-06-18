@@ -13,10 +13,10 @@ export default function Testimonials() {
       
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader
-          eyebrow="Testimonials"
+          eyebrow="TESTIMONIALS"
           eyebrowClassName="text-2xl md:text-3xl"
-          title="Client words from events that had to go right."
-          text="Real feedback from weddings, corporate meets, social events and live productions managed by Event Brigade."
+          title={<>The Moments We Created,<br />The Stories They Tell.</>}
+          text="Discover what our clients have to say about their Event Brigade experience."
         />
 
         <div className="relative z-20 mt-20 overflow-visible pb-10">

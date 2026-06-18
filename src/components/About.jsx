@@ -1,5 +1,4 @@
 import React from 'react';
-import { Lightbulb, Sparkles } from 'lucide-react';
 import { images, siteCopy } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
@@ -54,16 +53,11 @@ export default function About() {
           <div className="flex flex-col gap-10 relative z-10">
             {/* Vision */}
             <Reveal className="flex flex-col items-center text-center">
-              <div className="grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow">
-                <Lightbulb size={24} />
-              </div>
-              <div className="mt-4 flex flex-col items-center">
-                <span className="font-mono text-xs text-gold/60 tracking-wider">01 / BRAND PURPOSE</span>
-                <h3 className="font-serif text-3xl leading-tight text-ivory mt-1">Vision</h3>
-                <p className="mt-4 text-[15px] leading-relaxed text-smoke max-w-2xl mx-auto text-center">
-                  {siteCopy.philosophy}
-                </p>
-              </div>
+              <span className="font-mono text-xs text-gold/60 tracking-wider">01 / BRAND PURPOSE</span>
+              <h3 className="font-serif text-3xl leading-tight text-ivory mt-1">Vision</h3>
+              <p className="mt-4 text-[15px] leading-relaxed text-smoke max-w-2xl mx-auto text-center">
+                {siteCopy.philosophy}
+              </p>
             </Reveal>
 
             {/* Horizontal Divider */}
@@ -71,16 +65,11 @@ export default function About() {
 
             {/* Mission */}
             <Reveal className="flex flex-col items-center text-center" delay={0.08}>
-              <div className="grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-gold-radial text-gold shadow-glow">
-                <Sparkles size={24} />
-              </div>
-              <div className="mt-4 flex flex-col items-center">
-                <span className="font-mono text-xs text-gold/60 tracking-wider">02 / THE PLEDGE</span>
-                <h3 className="font-serif text-3xl leading-tight text-ivory mt-1">Mission</h3>
-                <p className="mt-4 text-[15px] leading-relaxed text-smoke max-w-2xl mx-auto text-center">
-                  {siteCopy.mission}
-                </p>
-              </div>
+              <span className="font-mono text-xs text-gold/60 tracking-wider">02 / THE PLEDGE</span>
+              <h3 className="font-serif text-3xl leading-tight text-ivory mt-1">Mission</h3>
+              <p className="mt-4 text-[15px] leading-relaxed text-smoke max-w-2xl mx-auto text-center">
+                {siteCopy.mission}
+              </p>
             </Reveal>
           </div>
         </div>

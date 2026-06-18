@@ -1,87 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Calendar, MapPin, Users, Heart, Sparkles, ArrowRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Calendar, MapPin, Users, Heart, ArrowRight } from 'lucide-react';
 
 // Import local premium assets
 import socialBirthday from '../assets/social-curated/social-birthday-decor.jpg';
-import socialAnniversary from '../assets/social-curated/social-anniversary-hero.jpg';
-import socialBabyShower from '../assets/social-curated/social-baby-shower-decor.jpg';
-import socialCommunity from '../assets/social-curated/social-community-stage.jpg';
-
-// Dynamically generate the 38 social event slide pages
-const socialBookletPages = Array.from({ length: 38 }, (_, i) => {
-  const pageNum = String(i + 1).padStart(2, '0');
-  return {
-    full: new URL(`../assets/social-events-portfolio/social-page-${pageNum}.jpg`, import.meta.url).href,
-    thumb: new URL(`../assets/social-events-portfolio-thumbs/social-page-${pageNum}.jpg`, import.meta.url).href
-  };
-});
 
 // Dynamically glob all files in the vaani folder
 const vaaniGlob = import.meta.glob('../assets/vaani/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const vaaniImages = Object.values(vaaniGlob).map((mod) => mod.default || mod);
 const vaaniHero = vaaniGlob['../assets/vaani/DSC00028.JPG']?.default || vaaniGlob['../assets/vaani/DSC00028.JPG'] || socialBirthday;
 
-
 // Category filter tabs
 const categories = [
   'All Celebrations',
-  'Birthdays',
-  'Anniversaries',
-  'Baby Showers',
-  'Fests & Community Events'
+  'Birthdays'
 ];
 
-// Luxury Social Projects List
+// Luxury Social Projects List (Only Vaani's Birthday Celebration remains)
 const socialProjects = [
   {
-    id: 2,
-    number: '01',
-    title: 'Welcome to the World Little One.',
-    subtitle: 'Teddy Baby Shower',
-    tag: 'Baby Showers',
-    categories: ['Baby Showers'],
-    description: 'Pastel balloon arches, customized Onesie-decorating tables, and teddy-themed photobooths made this baby shower a cozy family gathering full of warmth and laughter.',
-    image: socialBabyShower,
-    layout: 'left', // Image Left, Content Right
-    location: 'Conrad Grand Room, Pune',
-    date: 'Jan 2026',
-    guests: '120 Guests',
-    pageRange: [9, 16] // Pages 10 to 17
-  },
-  {
-    id: 3,
-    number: '02',
-    title: 'Twenty-Five Years of Shared Love.',
-    subtitle: 'The Silver Jubilee Soiree',
-    tag: 'Anniversaries',
-    categories: ['Anniversaries'],
-    description: 'Designed around silver coordinates, ambient candelabras, and live jazz performances. A celebration honoring shared milestones and beautiful family stories.',
-    image: socialAnniversary,
-    layout: 'right', // Content Left, Image Right
-    location: 'JW Marriott, Pune',
-    date: 'Feb 2026',
-    guests: '150 Guests',
-    pageRange: [17, 24] // Pages 18 to 25
-  },
-  {
-    id: 4,
-    number: '03',
-    title: 'Cultural Beats & Festival Rhythm.',
-    subtitle: 'The Grand Diwali Celebration',
-    tag: 'Fests & Community Events',
-    categories: ['Fests & Community Events'],
-    description: 'Connecting community spaces with immersive drapes, lighting towers, a high-spec main stage, and structured guest flows for festival operations.',
-    image: socialCommunity,
-    layout: 'left', // Image Left, Content Right
-    location: 'Nyati County lawns, Pune',
-    date: 'Nov 2025',
-    guests: '800 Guests',
-    pageRange: [25, 37] // Pages 26 to 38
-  },
-  {
     id: 5,
-    number: '04',
+    number: '01',
     title: 'A Vibrant Birthday Wonderland.',
     subtitle: "Vaani's Birthday Celebration",
     tag: 'Birthdays',
@@ -101,12 +40,7 @@ export default function SocialEventsPortfolio() {
   const [selectedCategory, setSelectedCategory] = useState(() => {
     const params = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
     const cat = params.get('category');
-    if (cat) {
-      if (cat.toLowerCase() === 'birthdays') return 'Birthdays';
-      if (cat.toLowerCase() === 'anniversaries') return 'Anniversaries';
-      if (cat.toLowerCase() === 'baby showers') return 'Baby Showers';
-      if (cat.toLowerCase() === 'fests' || cat.toLowerCase() === 'community') return 'Fests & Community Events';
-    }
+    if (cat && cat.toLowerCase() === 'birthdays') return 'Birthdays';
     return 'All Celebrations';
   });
   const [activeProject, setActiveProject] = useState(null);
@@ -118,11 +52,8 @@ export default function SocialEventsPortfolio() {
     const handlePopState = () => {
       const params = new URLSearchParams(window.location.search);
       const cat = params.get('category');
-      if (cat) {
-        if (cat.toLowerCase() === 'birthdays') setSelectedCategory('Birthdays');
-        else if (cat.toLowerCase() === 'anniversaries') setSelectedCategory('Anniversaries');
-        else if (cat.toLowerCase() === 'baby showers') setSelectedCategory('Baby Showers');
-        else if (cat.toLowerCase() === 'fests' || cat.toLowerCase() === 'community') setSelectedCategory('Fests & Community Events');
+      if (cat && cat.toLowerCase() === 'birthdays') {
+        setSelectedCategory('Birthdays');
       } else {
         setSelectedCategory('All Celebrations');
       }
@@ -181,8 +112,7 @@ export default function SocialEventsPortfolio() {
         thumb: img
       }));
     }
-    const [start, end] = activeProject.pageRange;
-    return socialBookletPages.slice(start, end + 1);
+    return [];
   };
   const activeSlides = getActiveSlides();
 
@@ -238,7 +168,7 @@ export default function SocialEventsPortfolio() {
           </h1>
 
           <p className="mt-6 text-sm sm:text-base md:text-lg text-[#222222]/70 font-sans max-w-2xl mx-auto leading-relaxed">
-            Intimate celebrations, milestone birthdays, and community festivals organized with detailed production structure. Explore our booklet slides.
+            Explore photos and custom raw design galleries of our social celebrations.
           </p>
 
           <div className="flex items-center justify-center gap-4 mt-8">
@@ -259,11 +189,10 @@ export default function SocialEventsPortfolio() {
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${
-                  isSelected
+                className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${isSelected
                     ? 'border-[#D56A4A] text-[#FAF7F2] shadow-sm'
                     : 'border-[#D56A4A]/20 bg-[#FAF7F2]/50 text-[#222222]/70 hover:border-[#D56A4A]/50 hover:text-[#222222]'
-                }`}
+                  }`}
               >
                 {isSelected && (
                   <motion.span
@@ -304,7 +233,7 @@ export default function SocialEventsPortfolio() {
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-[3000ms] ease-out group-hover:scale-105"
                   />
-                  
+
                   {/* Default Soft Gradients */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-500 z-10" />
@@ -322,7 +251,7 @@ export default function SocialEventsPortfolio() {
                     <h3 className="font-serif text-2xl text-white group-hover:text-[#D56A4A] transition-colors leading-snug text-left">
                       {title}
                     </h3>
-                    
+
                     {/* Hover Stats Section - Fades in & slides up */}
                     <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-36 group-hover:opacity-100 group-hover:mt-4 transition-all duration-500 border-t border-white/10 pt-4">
                       <div className="space-y-2 text-xs text-white/80 text-left">
@@ -342,7 +271,7 @@ export default function SocialEventsPortfolio() {
 
                       {/* View Project Action */}
                       <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#D56A4A] group-hover:translate-x-1 transition-transform text-left">
-                        <span>Explore Booklet</span>
+                        <span>Explore Gallery</span>
                         <ArrowRight size={12} />
                       </div>
                     </div>
@@ -368,7 +297,7 @@ export default function SocialEventsPortfolio() {
             <div className="max-w-7xl w-full mx-auto flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
               <div className="text-white text-left">
                 <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.34em] text-[#D56A4A]">
-                  {activeProject.tag} — BOOKLET {activeProject.number}
+                  {activeProject.tag} — GALLERY
                 </p>
                 <h3 className="font-serif text-xl sm:text-2xl mt-1 text-white">
                   {activeProject.subtitle}
@@ -393,7 +322,7 @@ export default function SocialEventsPortfolio() {
 
             {/* Slide Showcase Arena */}
             <div className="flex-grow flex items-center justify-center max-w-5xl w-full mx-auto my-4 relative" onClick={(e) => e.stopPropagation()}>
-              
+
               {/* Left Arrow */}
               <button
                 type="button"
@@ -446,7 +375,7 @@ export default function SocialEventsPortfolio() {
       {/* Consultation Call to Action */}
       <div className="relative max-w-4xl mx-auto px-5 text-center mt-24 pb-12 z-10">
         <div className="border border-[#D56A4A]/20 rounded-[32px] p-8 sm:p-12 md:p-16 bg-[#FAF7F2] shadow-md relative overflow-hidden">
-          
+
           <div className="relative z-10 max-w-2xl mx-auto">
             <Heart className="mx-auto text-[#D56A4A] mb-6 animate-pulse" size={36} />
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#222222] leading-[1.15] font-semibold">

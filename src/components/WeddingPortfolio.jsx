@@ -252,23 +252,21 @@ export default function WeddingPortfolio() {
 
   return (
     <div 
-      className="relative w-full min-h-screen text-white font-sans overflow-x-hidden selection:bg-[#2E6BFF]/30 selection:text-white pt-28 pb-16 bg-[#050505]"
+      className="relative w-full min-h-screen text-[#1C1C1C] font-sans overflow-x-hidden selection:bg-[#C8A96B]/30 selection:text-[#1C1C1C] pt-28 pb-16"
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.08' numOctaves='3'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.78 0 0 0 0 0.66 0 0 0 0 0.42 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' fill='transparent'/%3E%3C/svg%3E")`,
+        backgroundColor: '#FAF7F2'
+      }}
     >
       
-      {/* Blueprint Grid & Spotlights Background */}
+      {/* Soft Radial Bokeh Glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(8,27,58,0.45),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(46,107,255,0.06),transparent_50%)]" />
-        
-        {/* Tech Blueprint Grid */}
-        <div className="absolute inset-0 corp-blueprint-grid opacity-60" />
-
-        {/* Dynamic Sweeping Spotlight Beams */}
-        <div className="absolute -top-[10%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(46,107,255,0.05),transparent_60%)] corp-spotlight" />
-        <div className="absolute top-[50%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(46,107,255,0.04),transparent_60%)] corp-spotlight" style={{ animationDelay: '-12s' }} />
+        <div className="absolute top-[8%] right-[-10%] w-[55vw] h-[55vw] rounded-full bg-[radial-gradient(circle,rgba(200,169,107,0.06),transparent_65%)]" />
+        <div className="absolute top-[35%] left-[-15%] w-[65vw] h-[65vw] rounded-full bg-[radial-gradient(circle,rgba(200,169,107,0.05),transparent_70%)]" />
+        <div className="absolute bottom-[8%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(200,169,107,0.05),transparent_60%)]" />
       </div>
 
-      {/* Floating Champagne Particles (Blue themed) */}
+      {/* Floating Champagne Particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {bubbles.map((bubble) => (
           <div
@@ -281,8 +279,8 @@ export default function WeddingPortfolio() {
               width: bubble.size,
               height: bubble.size,
               top: '100%',
-              background: 'radial-gradient(circle, rgba(46, 107, 255, 0.45) 0%, rgba(46, 107, 255, 0.05) 70%)',
-              boxShadow: '0 0 5px rgba(46, 107, 255, 0.25)',
+              background: 'radial-gradient(circle, rgba(200, 169, 107, 0.45) 0%, rgba(200, 169, 107, 0.05) 70%)',
+              boxShadow: '0 0 5px rgba(200, 169, 107, 0.25)',
               opacity: 0.12 + Math.random() * 0.15
             }}
           />
@@ -305,26 +303,26 @@ export default function WeddingPortfolio() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="w-6 h-[1px] bg-[#D4AF37]" />
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.38em] text-[#D4AF37] font-sans">
+            <span className="w-6 h-[1px] bg-[#C8A96B]" />
+            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.38em] text-[#C8A96B] font-sans">
               Wedding Portfolio
             </p>
-            <span className="w-6 h-[1px] bg-[#D4AF37]" />
+            <span className="w-6 h-[1px] bg-[#C8A96B]" />
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white leading-[1.15] max-w-4xl mx-auto">
-            Crafting Love Stories Into <span className="italic font-normal text-[#D4AF37]">Unforgettable</span> Experiences
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[#1C1C1C] leading-[1.15] max-w-4xl mx-auto">
+            Crafting Love Stories Into <span className="italic font-normal text-[#C8A96B]">Unforgettable</span> Experiences
           </h1>
 
-          <p className="mt-6 text-sm sm:text-base md:text-lg text-white/70 font-sans max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-sm sm:text-base md:text-lg text-[#1C1C1C]/70 font-sans max-w-2xl mx-auto leading-relaxed">
             "From intimate ceremonies to grand destination celebrations, every wedding is designed with precision, emotion, and timeless elegance."
           </p>
 
           {/* Decorative Divider */}
           <div className="flex items-center justify-center gap-4 mt-8">
-            <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#D4AF37]/50" />
-            <Heart size={14} className="text-[#D4AF37]" />
-            <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#D4AF37]/50" />
+            <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#C8A96B]/50" />
+            <Heart size={14} className="text-[#C8A96B]" />
+            <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#C8A96B]/50" />
           </div>
         </motion.div>
       </div>
@@ -341,14 +339,14 @@ export default function WeddingPortfolio() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${
                   isSelected
-                    ? 'border-[#2E6BFF] text-white shadow-sm'
-                    : 'border-white/10 bg-[#151515]/40 text-white/70 hover:border-[#2E6BFF]/30 hover:text-white'
+                    ? 'border-[#C8A96B] text-[#FAF7F2] shadow-sm'
+                    : 'border-[#C8A96B]/20 bg-[#F5F1EA]/50 text-[#1C1C1C]/70 hover:border-[#C8A96B]/50 hover:text-[#1C1C1C]'
                 }`}
               >
                 {isSelected && (
                   <motion.span
                     layoutId="activeCategoryPill"
-                    className="absolute inset-0 rounded-full bg-[#2E6BFF]/15"
+                    className="absolute inset-0 rounded-full bg-[#C8A96B]"
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -374,7 +372,7 @@ export default function WeddingPortfolio() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] h-[380px] shadow-xl hover:border-[#2E6BFF]/50 transition-all duration-500 cursor-pointer"
+                  className="group relative overflow-hidden rounded-[20px] border border-[#C8A96B]/20 bg-[#F5F1EA] h-[380px] shadow-xl hover:border-[#C8A96B]/50 transition-all duration-500 cursor-pointer"
                   onClick={() => openLightbox(project)}
                 >
                   {/* Case Study Image Cover */}
@@ -396,7 +394,7 @@ export default function WeddingPortfolio() {
 
                   {/* Case Study Details */}
                   <div className="absolute bottom-5 left-5 right-5 z-20 flex flex-col justify-end">
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#2E6BFF] mb-1 text-left">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#C8A96B] mb-1 text-left">
                       {subtitle}
                     </p>
                     <h3 className="font-serif text-2xl text-white group-hover:text-[#D4AF37] transition-colors leading-snug text-left">
@@ -491,7 +489,7 @@ export default function WeddingPortfolio() {
                 <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-xl" />
                 <div className="absolute top-6 left-6 grid grid-cols-2 gap-1.5 opacity-10 pointer-events-none">
                   {Array.from({ length: 4 }).map((_, i) => (
-                    <span key={i} className="h-1 w-1 rounded-full bg-[#2E6BFF]" />
+                    <span key={i} className="h-1 w-1 rounded-full bg-[#C8A96B]" />
                   ))}
                 </div>
                 <FloralOrnament className="absolute bottom-6 right-6 w-16 h-16 opacity-25" />
@@ -528,16 +526,16 @@ export default function WeddingPortfolio() {
 
       {/* Grand Planning Consultation CTA */}
       <div className="relative max-w-4xl mx-auto px-5 text-center mt-24 pb-12 z-10">
-        <div className="border border-[#C8A96B]/20 rounded-[32px] p-8 sm:p-12 md:p-16 bg-[#151515]/40 backdrop-blur-md relative overflow-hidden">
+        <div className="border border-[#C8A96B]/20 rounded-[32px] p-8 sm:p-12 md:p-16 bg-[#F5F1EA] shadow-md relative overflow-hidden">
           <FloralOrnament className="absolute top-4 left-4 w-28 h-28 opacity-20 transform rotate-180" />
           <FloralOrnament className="absolute bottom-4 right-4 w-28 h-28 opacity-20" />
           
           <div className="relative z-10 max-w-2xl mx-auto">
-            <Heart className="mx-auto text-[#D4AF37] mb-6 animate-pulse" size={36} />
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15]">
-              Let’s Create Your <span className="italic text-[#D4AF37] font-normal">Timeless</span> Masterpiece
+            <Heart className="mx-auto text-[#C8A96B] mb-6 animate-pulse" size={36} />
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1C1C1C] leading-[1.15]">
+              Let’s Create Your <span className="italic text-[#C8A96B] font-normal">Timeless</span> Masterpiece
             </h2>
-            <p className="mt-6 text-white/70 text-sm sm:text-base leading-relaxed">
+            <p className="mt-6 text-[#1C1C1C]/70 text-sm sm:text-base leading-relaxed">
               Whether you are looking to host an intimate destination wedding at a beach resort or a grand royal celebration in a majestic palace, our design experts are here to shape your dreams with flawless execution.
             </p>
             <a

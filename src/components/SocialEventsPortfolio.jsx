@@ -171,22 +171,16 @@ export default function SocialEventsPortfolio() {
 
   return (
     <div
-      className="relative w-full min-h-screen text-white font-sans overflow-x-hidden selection:bg-[#2E6BFF]/30 selection:text-white pt-28 pb-16 bg-[#050505]"
+      className="relative w-full min-h-screen text-[#222222] font-sans overflow-x-hidden selection:bg-[#D56A4A]/20 pt-28 pb-16 bg-[#F9F5EF]"
     >
-      {/* Blueprint Grid & Spotlights Background */}
+      {/* Soft Radial Glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(8,27,58,0.45),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(46,107,255,0.06),transparent_50%)]" />
-        
-        {/* Tech Blueprint Grid */}
-        <div className="absolute inset-0 corp-blueprint-grid opacity-60" />
-
-        {/* Dynamic Sweeping Spotlight Beams */}
-        <div className="absolute -top-[10%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(46,107,255,0.05),transparent_60%)] corp-spotlight" />
-        <div className="absolute top-[50%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(46,107,255,0.04),transparent_60%)] corp-spotlight" style={{ animationDelay: '-12s' }} />
+        <div className="absolute top-[8%] right-[-10%] w-[55vw] h-[55vw] rounded-full bg-[radial-gradient(circle,rgba(213,106,74,0.06),transparent_65%)]" />
+        <div className="absolute top-[35%] left-[-15%] w-[65vw] h-[65vw] rounded-full bg-[radial-gradient(circle,rgba(213,106,74,0.05),transparent_70%)]" />
+        <div className="absolute bottom-[8%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(213,106,74,0.05),transparent_60%)]" />
       </div>
 
-      {/* Floating Celebration Particles (Blue themed) */}
+      {/* Floating Celebration Particles (Terracotta themed) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {bubbles.map((bubble) => (
           <div
@@ -199,9 +193,9 @@ export default function SocialEventsPortfolio() {
               width: bubble.size,
               height: bubble.size,
               top: '100%',
-              background: 'radial-gradient(circle, rgba(46, 107, 255, 0.45) 0%, rgba(46, 107, 255, 0.05) 70%)',
-              boxShadow: '0 0 5px rgba(46, 107, 255, 0.25)',
-              opacity: 0.15 + Math.random() * 0.15
+              background: 'radial-gradient(circle, rgba(213, 106, 74, 0.45) 0%, rgba(213, 106, 74, 0.05) 70%)',
+              boxShadow: '0 0 5px rgba(213, 106, 74, 0.25)',
+              opacity: 0.12 + Math.random() * 0.15
             }}
           />
         ))}
@@ -215,25 +209,25 @@ export default function SocialEventsPortfolio() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.34em] text-[#D4AF37] font-sans">
+            <span className="w-6 h-[1.5px] bg-[#D56A4A]" />
+            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.34em] text-[#D56A4A] font-sans">
               Social Portfolio
             </p>
-            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
+            <span className="w-6 h-[1.5px] bg-[#D56A4A]" />
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white leading-[1.15] max-w-4xl mx-auto font-semibold">
-            We Design Around People. Built Around <span className="font-script text-[#D4AF37] font-normal italic inline-block transform translate-y-1">Memories.</span>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[#222222] leading-[1.15] max-w-4xl mx-auto font-semibold">
+            We Design Around People. Built Around <span className="font-script text-[#D56A4A] font-normal italic inline-block transform translate-y-1">Memories.</span>
           </h1>
 
-          <p className="mt-6 text-sm sm:text-base md:text-lg text-white/70 font-sans max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-sm sm:text-base md:text-lg text-[#222222]/70 font-sans max-w-2xl mx-auto leading-relaxed">
             Intimate celebrations, milestone birthdays, and community festivals organized with detailed production structure. Explore our booklet slides.
           </p>
 
           <div className="flex items-center justify-center gap-4 mt-8">
-            <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#D4AF37]/40" />
-            <Heart size={14} className="text-[#D4AF37]" />
-            <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#D4AF37]/40" />
+            <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#D56A4A]/40" />
+            <Heart size={14} className="text-[#D56A4A]" />
+            <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#D56A4A]/40" />
           </div>
         </motion.div>
       </div>
@@ -250,14 +244,14 @@ export default function SocialEventsPortfolio() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${
                   isSelected
-                    ? 'border-[#2E6BFF] text-white shadow-sm'
-                    : 'border-white/10 bg-[#151515]/40 text-white/70 hover:border-[#2E6BFF]/30 hover:text-white'
+                    ? 'border-[#D56A4A] text-[#FAF7F2] shadow-sm'
+                    : 'border-[#D56A4A]/20 bg-[#FAF7F2]/50 text-[#222222]/70 hover:border-[#D56A4A]/50 hover:text-[#222222]'
                 }`}
               >
                 {isSelected && (
                   <motion.span
                     layoutId="activeSocialCategoryPill"
-                    className="absolute inset-0 rounded-full bg-[#2E6BFF]/15"
+                    className="absolute inset-0 rounded-full bg-[#D56A4A]"
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -283,7 +277,7 @@ export default function SocialEventsPortfolio() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] h-[380px] shadow-xl hover:border-[#2E6BFF]/50 transition-all duration-500 cursor-pointer"
+                  className="group relative overflow-hidden rounded-[20px] border border-[#D56A4A]/20 bg-[#FAF7F2] h-[380px] shadow-xl hover:border-[#D56A4A]/50 transition-all duration-500 cursor-pointer"
                   onClick={() => openLightbox(project)}
                 >
                   {/* Case Study Image Cover */}
@@ -299,16 +293,16 @@ export default function SocialEventsPortfolio() {
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-500 z-10" />
 
                   {/* Top Highlight Badge */}
-                  <span className="absolute left-5 top-5 rounded-md border border-[#D4AF37]/30 bg-black/60 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D4AF37] z-20">
+                  <span className="absolute left-5 top-5 rounded-md border border-[#D56A4A]/30 bg-black/60 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D56A4A] z-20">
                     {tag}
                   </span>
 
                   {/* Case Study Details */}
                   <div className="absolute bottom-5 left-5 right-5 z-20 flex flex-col justify-end">
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#2E6BFF] mb-1 text-left">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#D56A4A] mb-1 text-left">
                       {subtitle}
                     </p>
-                    <h3 className="font-serif text-2xl text-white group-hover:text-[#D4AF37] transition-colors leading-snug text-left">
+                    <h3 className="font-serif text-2xl text-white group-hover:text-[#D56A4A] transition-colors leading-snug text-left">
                       {title}
                     </h3>
                     
@@ -316,21 +310,21 @@ export default function SocialEventsPortfolio() {
                     <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-36 group-hover:opacity-100 group-hover:mt-4 transition-all duration-500 border-t border-white/10 pt-4">
                       <div className="space-y-2 text-xs text-white/80 text-left">
                         <div className="flex items-center gap-2">
-                          <MapPin size={13} className="text-[#D4AF37] shrink-0" />
+                          <MapPin size={13} className="text-[#D56A4A] shrink-0" />
                           <span>{location}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Users size={13} className="text-[#D4AF37] shrink-0" />
+                          <Users size={13} className="text-[#D56A4A] shrink-0" />
                           <span>{guests}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Calendar size={13} className="text-[#D4AF37] shrink-0" />
+                          <Calendar size={13} className="text-[#D56A4A] shrink-0" />
                           <span>{date}</span>
                         </div>
                       </div>
 
                       {/* View Project Action */}
-                      <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] group-hover:translate-x-1 transition-transform text-left">
+                      <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#D56A4A] group-hover:translate-x-1 transition-transform text-left">
                         <span>Explore Booklet</span>
                         <ArrowRight size={12} />
                       </div>
@@ -356,7 +350,7 @@ export default function SocialEventsPortfolio() {
             {/* Header Details */}
             <div className="max-w-7xl w-full mx-auto flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
               <div className="text-white text-left">
-                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.34em] text-[#D4AF37]">
+                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.34em] text-[#D56A4A]">
                   {activeProject.tag} — BOOKLET {activeProject.number}
                 </p>
                 <h3 className="font-serif text-xl sm:text-2xl mt-1 text-white">
@@ -365,14 +359,14 @@ export default function SocialEventsPortfolio() {
               </div>
 
               <div className="flex items-center gap-6">
-                <span className="font-serif text-sm font-semibold text-[#D4AF37]">
+                <span className="font-serif text-sm font-semibold text-[#D56A4A]">
                   {String(currentSlideIndex + 1).padStart(2, '0')} / {String(activeSlides.length).padStart(2, '0')}
                 </span>
 
                 <button
                   type="button"
                   onClick={closeLightbox}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-[#151515] text-[#D4AF37] transition hover:bg-[#D4AF37] hover:text-[#050505]"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-[#151515] text-[#D56A4A] transition hover:bg-[#D56A4A] hover:text-[#050505]"
                   aria-label="Close booklet"
                 >
                   <X size={20} />
@@ -387,7 +381,7 @@ export default function SocialEventsPortfolio() {
               <button
                 type="button"
                 onClick={() => prevSlide(activeSlides.length)}
-                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
+                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D56A4A] hover:bg-[#D56A4A] hover:text-[#050505]"
                 aria-label="Previous page"
               >
                 <ChevronLeft size={24} />
@@ -399,7 +393,7 @@ export default function SocialEventsPortfolio() {
                 <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-xl" />
                 <div className="absolute top-6 left-6 grid grid-cols-2 gap-1.5 opacity-10 pointer-events-none">
                   {Array.from({ length: 4 }).map((_, i) => (
-                    <span key={i} className="h-1 w-1 rounded-full bg-[#2E6BFF]" />
+                    <span key={i} className="h-1 w-1 rounded-full bg-[#D56A4A]" />
                   ))}
                 </div>
 
@@ -421,13 +415,12 @@ export default function SocialEventsPortfolio() {
               <button
                 type="button"
                 onClick={() => nextSlide(activeSlides.length)}
-                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
+                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D56A4A] hover:bg-[#D56A4A] hover:text-[#050505]"
                 aria-label="Next page"
               >
                 <ChevronRight size={24} />
               </button>
             </div>
-
 
           </motion.div>
         )}
@@ -435,14 +428,14 @@ export default function SocialEventsPortfolio() {
 
       {/* Consultation Call to Action */}
       <div className="relative max-w-4xl mx-auto px-5 text-center mt-24 pb-12 z-10">
-        <div className="border border-[#D4AF37]/20 rounded-[32px] p-8 sm:p-12 md:p-16 bg-[#151515]/40 backdrop-blur-md relative overflow-hidden">
+        <div className="border border-[#D56A4A]/20 rounded-[32px] p-8 sm:p-12 md:p-16 bg-[#FAF7F2] shadow-md relative overflow-hidden">
           
           <div className="relative z-10 max-w-2xl mx-auto">
-            <Heart className="mx-auto text-[#D4AF37] mb-6 animate-pulse" size={36} />
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white leading-[1.15] font-semibold">
-              Let’s Craft Your Next <span className="italic text-[#D4AF37] font-normal font-sans">Milestone</span>
+            <Heart className="mx-auto text-[#D56A4A] mb-6 animate-pulse" size={36} />
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#222222] leading-[1.15] font-semibold">
+              Let’s Craft Your Next <span className="italic text-[#D56A4A] font-normal">Milestone</span>
             </h2>
-            <p className="mt-6 text-white/70 text-sm sm:text-base leading-relaxed">
+            <p className="mt-6 text-[#222222]/70 text-sm sm:text-base leading-relaxed">
               Intimate family dinners, premium birthdays, baby showers, or large community fests — we weave warmth, elegance, and coordination protocols into every celebration.
             </p>
             <a

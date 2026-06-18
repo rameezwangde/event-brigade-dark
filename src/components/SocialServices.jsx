@@ -370,7 +370,7 @@ export default function SocialServices() {
                 <Users size={24} />
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">2000+</span>
+                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">1900+</span>
                 <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase mt-1.5">Events Planned</span>
               </div>
             </div>
@@ -390,7 +390,7 @@ export default function SocialServices() {
                 <MapPin size={24} />
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">100+</span>
+                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">25+</span>
                 <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase mt-1.5">Cities Served</span>
               </div>
             </div>

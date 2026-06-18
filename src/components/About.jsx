@@ -10,8 +10,8 @@ export default function About() {
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeader
           eyebrow="About Us"
-          title={<>We do not just manage events.<br />We engineer experiences.</>}
-          text="A Pune-based full-service event management and production company built for seamless execution."
+          title={<>We Don't Just Manage Events.<br />We Create Experiences.</>}
+          text="A Pune-based event management and production company delivering seamless experiences."
           className="max-w-5xl"
         />
 

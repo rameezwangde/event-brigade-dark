@@ -158,7 +158,7 @@ export const corporatePortfolio = {
   eyebrow: 'Corporate Portfolio 2026',
   title: 'Corporate events engineered for impact.',
   intro:
-    'We do not just manage events. We engineer experiences. From a high-stakes corporate summit to an employee celebration, Event Brigade handles the complexity so teams can focus on the moment.',
+    "We Don't Just Manage Events. We Create Experiences. From a high-stakes corporate summit to an employee celebration, Event Brigade handles the complexity so teams can focus on the moment.",
   pages: [
     {
       number: '01',

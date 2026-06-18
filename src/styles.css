@@ -10,6 +10,8 @@
 
 .font-display {
   font-family: 'Abyssinica SIL', serif !important;
+  -webkit-text-stroke: 1.2px #D4AF37;
+  font-weight: 800;
 }
 
 .font-abel {

@@ -17,6 +17,16 @@ const links = [
       { label: 'Social', href: '/social-services' }
     ]
   },
+  {
+    label: 'Portfolio',
+    id: 'portfolio',
+    href: '/wedding-portfolio',
+    dropdown: [
+      { label: 'Wedding Portfolio', href: '/wedding-portfolio' },
+      { label: 'Corporate Portfolio', href: '/corporate-portfolio' },
+      { label: 'Social Portfolio', href: '/social-events-portfolio' }
+    ]
+  },
   { label: 'Testimonials', id: 'testimonials', href: '/testimonials' },
   { label: 'Founder', id: 'founder', href: '/founder' },
   { label: 'Contact', id: 'contact', href: '/contact' }
@@ -48,12 +58,15 @@ export default function Navbar() {
         path === '/services' ||
         path === '/wedding-services' ||
         path === '/corporate-services' ||
-        path === '/social-services' ||
+        path === '/social-services'
+      ) {
+        setActive('services');
+      } else if (
         path === '/wedding-portfolio' ||
         path === '/corporate-portfolio' ||
         path === '/social-events-portfolio'
       ) {
-        setActive('services');
+        setActive('portfolio');
       } else if (path === '/testimonials') {
         setActive('testimonials');
       } else if (path === '/founder') {

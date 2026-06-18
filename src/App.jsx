@@ -6,6 +6,9 @@ import About from './components/About.jsx';
 import WeddingServices from './components/WeddingServices.jsx';
 import CorporateServices from './components/CorporateServices.jsx';
 import SocialServices from './components/SocialServices.jsx';
+import WeddingPortfolio from './components/WeddingPortfolio.jsx';
+import CorporatePortfolio from './components/CorporatePortfolio.jsx';
+import SocialEventsPortfolio from './components/SocialEventsPortfolio.jsx';
 import PortfolioAccess from './components/PortfolioAccess.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Founder from './components/Founder.jsx';
@@ -70,12 +73,18 @@ export default function App() {
       <main>
         {path === '/about' ? (
           <About />
-        ) : path === '/services' || path === '/wedding-services' || path === '/wedding-portfolio' ? (
+        ) : path === '/services' || path === '/wedding-services' ? (
           <WeddingServices />
-        ) : path === '/corporate-services' || path === '/corporate-portfolio' ? (
+        ) : path === '/wedding-portfolio' ? (
+          <WeddingPortfolio />
+        ) : path === '/corporate-services' ? (
           <CorporateServices />
-        ) : path === '/social-services' || path === '/social-events-portfolio' ? (
+        ) : path === '/corporate-portfolio' ? (
+          <CorporatePortfolio />
+        ) : path === '/social-services' ? (
           <SocialServices />
+        ) : path === '/social-events-portfolio' ? (
+          <SocialEventsPortfolio />
         ) : path === '/testimonials' ? (
           <Testimonials />
         ) : path === '/founder' ? (

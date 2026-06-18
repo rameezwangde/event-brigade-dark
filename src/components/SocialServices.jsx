@@ -30,10 +30,10 @@ import socialGifts from '../assets/social-curated/social-return-gift.jpg';
 function LuxuryHeader({ eyebrow, title, text, align = 'center' }) {
   return (
     <Reveal className={`max-w-4xl mx-auto mb-12 ${align === 'left' ? 'text-left' : 'text-center'}`}>
-      <div className={`flex items-center gap-2 mb-3 ${align === 'left' ? 'justify-start' : 'justify-center'}`}>
-        <span className="w-5 h-[1.5px] bg-[#D56A4A]/50" />
-        <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#D56A4A]">{eyebrow}</p>
-        <span className="w-5 h-[1.5px] bg-[#D56A4A]/50" />
+      <div className={`flex items-center gap-2.5 mb-3.5 ${align === 'left' ? 'justify-start' : 'justify-center'}`}>
+        <span className="w-8 h-[1.5px] bg-[#D56A4A]/50" />
+        <p className="text-sm sm:text-base font-semibold uppercase tracking-[0.34em] text-[#D56A4A]">{eyebrow}</p>
+        <span className="w-8 h-[1.5px] bg-[#D56A4A]/50" />
       </div>
       <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#222222] font-semibold leading-[1.2]">
         {title}

@@ -180,7 +180,7 @@ export default function Services() {
                 </div>
 
                 <div className="flex flex-col justify-center p-7 md:p-10">
-                  <p className="text-base leading-8 text-smoke md:text-lg">{showcase.text}</p>
+                  <p className="text-base leading-8 text-smoke md:text-lg whitespace-pre-line">{showcase.text}</p>
                   <div className="mt-8 divide-y divide-champagne/10">
                     {showcase.modules.map((module, moduleIndex) => {
                       const moduleId = `${index}-${moduleIndex}`;

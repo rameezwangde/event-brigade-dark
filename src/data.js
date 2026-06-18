@@ -118,38 +118,38 @@ export const services = [
 
 export const weddingShowcase = {
   eyebrow: 'Wedding Services',
-  title: 'We do not just plan weddings. We curate experiences.',
+  title: 'WEDDINGS CRAFTED FOR A LIFETIME OF MEMORIES.',
   text:
-    'At Event Brigade, a wedding is more than an event. It is a once-in-a-lifetime story waiting to be told beautifully. From the first idea to the final farewell, we handle every detail with precision, creativity and calm execution.',
+    'From bespoke décor and guest hospitality to entertainment and seamless coordination, we bring together every element needed to create extraordinary wedding experiences.\n\nBlending creativity, elegance, and precision, we craft moments that will be cherished for a lifetime.',
   modules: [
     {
-      title: 'Invitation & RSVP',
-      text: 'Wedding logos, e-invites, special cards, guest RSVP coordination and custom wedding stationery.',
+      title: 'Invitation Management',
+      text: 'From elegant invitations to seamless RSVP tracking, we ensure every guest is informed, engaged, and welcomed from the very beginning.',
       image: weddingInvites
     },
     {
-      title: 'Logistics & Hospitality',
-      text: 'Guest travel, hotel bookings, welcome desks, transport planning, luggage tagging and room hampers.',
+      title: 'Hospitality Excellence',
+      text: 'Delivering exceptional guest experiences through thoughtful hospitality, accommodation management, and personalized care.',
       image: guestWelcome
     },
     {
-      title: 'Decor & Themes',
-      text: 'Connected wedding themes, floral installations, mandap styling and immersive venue transformations.',
+      title: 'Décor Styling',
+      text: 'Transforming venues into breathtaking settings with bespoke décor, floral artistry, and immersive design concepts.',
       image: weddingDecor
     },
     {
-      title: 'Haldi, Mehendi & Rituals',
-      text: 'Dedicated ritual teams, function-wise requirements, material planning and festive guest experiences.',
+      title: 'Wedding Rituals',
+      text: 'Thoughtfully planning and coordinating every ceremony to honor traditions while creating meaningful and memorable experiences.',
       image: haldiMehendi
     },
     {
-      title: 'Reception & Entertainment',
-      text: 'Reception design, live bands, artists, performers, celebrity acts, singers and curated stage experiences.',
+      title: 'Entertainment Curation',
+      text: 'From live performances to interactive experiences, we curate entertainment that captivates and delights every guest.',
       image: reception
     },
     {
-      title: 'Special Entries & Activities',
-      text: 'Bride and groom entries, live calligraphy, candle-making, bangle stations, perfume bars and guest engagement zones.',
+      title: 'Signature Entries and Experiences',
+      text: 'Creating unforgettable arrivals, special moments, and unique experiences that leave a lasting impression on everyone present.',
       image: specialEntry
     }
   ],

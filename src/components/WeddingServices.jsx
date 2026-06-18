@@ -164,14 +164,13 @@ function BotanicalRightOrnament() {
   );
 }
 
-// Custom Light-Themed Section Header
 function LuxuryHeader({ eyebrow, title, text, align = 'center' }) {
   return (
     <Reveal className={`max-w-4xl mx-auto mb-12 ${align === 'left' ? 'text-left' : 'text-center'}`}>
-      <div className={`flex items-center gap-2 mb-3 ${align === 'left' ? 'justify-start' : 'justify-center'}`}>
-        <span className="w-5 h-[1px] bg-[#C8A96B]/50" />
-        <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#C8A96B]">{eyebrow}</p>
-        <span className="w-5 h-[1px] bg-[#C8A96B]/50" />
+      <div className={`flex items-center gap-2.5 mb-3.5 ${align === 'left' ? 'justify-start' : 'justify-center'}`}>
+        <span className="w-8 h-[1px] bg-[#C8A96B]/50" />
+        <p className="text-sm sm:text-base font-semibold uppercase tracking-[0.34em] text-[#C8A96B]">{eyebrow}</p>
+        <span className="w-8 h-[1px] bg-[#C8A96B]/50" />
       </div>
       <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1C1C1C] leading-[1.2]">
         {title}
@@ -252,8 +251,8 @@ export default function WeddingServices() {
         {/* Main Section Header */}
         <LuxuryHeader
           eyebrow="Our Services"
-          title="Curated Wedding Experiences"
-          text="At Event Brigade, a wedding is more than an event. It is a once-in-a-lifetime story waiting to be told beautifully."
+          title="WEDDINGS CRAFTED FOR A LIFETIME OF MEMORIES."
+          text="Blending elegance, emotion, and flawless execution to create unforgettable wedding moments."
         />
 
         {/* Dynamic Showcase Block */}
@@ -315,7 +314,7 @@ export default function WeddingServices() {
 
               {/* Right Column: Interaction List */}
               <div className="flex flex-col justify-center p-6 sm:p-10 md:p-12">
-                <p className="text-sm sm:text-base leading-relaxed text-[#1C1C1C]/75">{weddingShowcase.text}</p>
+                <p className="text-sm sm:text-base leading-relaxed text-[#1C1C1C]/75 whitespace-pre-line">{weddingShowcase.text}</p>
                 <div className="mt-8 divide-y divide-[#C8A96B]/15">
                   {weddingShowcase.modules.map((module, moduleIndex) => {
                     const isHovered = activeModule === moduleIndex;

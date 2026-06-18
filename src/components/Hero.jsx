@@ -45,10 +45,10 @@ export default function Hero() {
           transition={{ duration: 0.9 }}
           className="mx-auto max-w-5xl text-center"
         >
-          <h1 className="font-serif text-5xl leading-[0.95] text-ivory md:text-7xl lg:text-8xl">
-            <span className="text-gradient">Event Brigade</span>
+          <h1 className="font-display font-extrabold uppercase tracking-[0.06em] text-5xl leading-[0.95] text-ivory md:text-7xl lg:text-8xl">
+            <span className="text-gradient">EVENT BRIGADE</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl font-light tracking-wide text-ivory/80 md:text-3xl">To Your Rescue</p>
+          <p className="mx-auto mt-6 max-w-2xl text-base font-semibold uppercase tracking-[0.32em] text-ivory/80 md:text-xl">TO YOUR RESCUE</p>
         </motion.div>
 
         <div className="mx-auto mt-16 grid max-w-4xl w-full gap-8 md:grid-cols-3">

@@ -14,7 +14,8 @@ export default {
       },
       fontFamily: {
         serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['Inter', 'Montserrat', 'ui-sans-serif', 'system-ui']
+        sans: ['Inter', 'Montserrat', 'ui-sans-serif', 'system-ui'],
+        display: ['Montserrat', 'sans-serif']
       },
       boxShadow: {
         glow: '0 0 40px rgba(212, 175, 55, 0.24)',

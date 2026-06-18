@@ -39,8 +39,9 @@ export default function About() {
             <h3 className="mt-4 max-w-xl font-serif text-5xl leading-tight text-ivory md:text-6xl">The Brigade Behind Extraordinary Events.</h3>
             <div className="mt-6 h-px w-28 bg-gradient-to-r from-gold to-transparent" />
             <div className="mt-7 max-w-xl space-y-5 text-base leading-8 text-smoke md:text-lg md:leading-8 text-justify">
-              <p>{siteCopy.about}</p>
-              <p>{siteCopy.company}</p>
+              {siteCopy.aboutParagraphs.map((para, idx) => (
+                <p key={idx}>{para}</p>
+              ))}
             </div>
           </Reveal>
         </div>

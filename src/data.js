@@ -48,10 +48,11 @@ export const brandCollage = [
 export const siteCopy = {
   heroKicker: 'To Your Rescue',
   heroLine: 'WE ARE EVENT',
-  about:
-    "Most people see an event as a series of tasks, a venue booked, a stage set, a guest list managed. At Event Brigade, we see it differently. We see a blank canvas for your brand's next big leap or your family's most cherished memory. Based in the heart of Pune and with over 15 years of experience, we are a collective of strategists, creators, and logistical experts dedicated to the art of seamless execution. Whether it's a high-stakes corporate summit or a once-in-a-lifetime celebration, we handle the complexity so you can focus on the moment.",
-  company:
-    'Event Brigade is a Pune-based, full-service event management and production company specializing in the planning and execution of corporate, social, and large-format events. With a strong foundation in operational excellence and creative strategy, we deliver end-to-end event solutions that align with client objectives, brand positioning, and audience engagement goals. Our approach integrates concept development, project management, technical production, and on-ground execution to ensure seamless delivery at every stage.',
+  aboutParagraphs: [
+    "Event Brigade was founded by a squad of passionate event enthusiasts and managers with a simple mission, to rescue people from the stress of planning and managing life's most important events. Built on creativity, enthusiasm, and a commitment to excellence, we bring together fresh ideas, meticulous planning, and flawless execution to create experiences that leave a lasting impression.",
+    "As a Pune-based event management and production company, we specialize in weddings, corporate events, social celebrations, artist management, and large-scale entertainment experiences. We believe that every event deserves its own identity, meaning, and vision. By paying attention to every detail and understanding the unique needs of our clients, we transform concepts into memorable experiences that are engaging, seamless, and truly unforgettable.",
+    "Our philosophy is simple: with dedication, teamwork, and innovation, we can turn ideas into extraordinary realities. While our clients focus on enjoying the moment, we work tirelessly behind the scenes to manage every detail, overcome every challenge, and ensure every event unfolds effortlessly from concept to completion."
+  ],
   philosophy:
     'To become India’s most trusted "Experience Factory," where every event sets a new benchmark for excellence. We aim to redefine the event management landscape by fostering a culture of precision and creativity. Our goal is to grow alongside our clients, evolving from a local leader into a national standard for how modern events should be felt, seen, and remembered.',
   mission:

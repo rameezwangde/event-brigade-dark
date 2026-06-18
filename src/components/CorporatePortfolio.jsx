@@ -1,18 +1,103 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, MapPin, Calendar, Users, Image as ImageIcon, ArrowRight } from 'lucide-react';
 
-// Scan the corporate raw uploads directory dynamically
+// Scan the RIE 2026 raw uploads directory dynamically
+const rieGlob = import.meta.glob('../assets/rie2026/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const rieImages = Object.values(rieGlob).map((mod) => mod.default || mod);
+// Select IMG_5814.JPG as the hero image if available, else first image
+const rieHero = rieGlob['../assets/rie2026/IMG_5814.JPG']?.default || rieGlob['../assets/rie2026/IMG_5814.jpg']?.default || rieGlob['../assets/rie2026/IMG_5814.JPG'] || rieGlob['../assets/rie2026/IMG_5814.jpg'] || rieImages[0];
+
+// Scan the general corporate raw uploads directory dynamically
 const corporateGlob = import.meta.glob('../assets/corporate-gallery/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
-const rawUploadedImages = Object.values(corporateGlob)
+const corporateImages = Object.values(corporateGlob)
   .map((mod) => mod.default || mod)
   .filter((path) => !path.includes('placeholder'));
 
+// Category filter tabs
+const categories = ['All Projects', 'Conferences'];
+if (corporateImages.length > 0) {
+  categories.push('Corporate Uploads');
+}
+
+// Luxury Corporate Projects List
+const corporateProjects = [];
+
+if (rieImages.length > 0) {
+  corporateProjects.push({
+    id: 1,
+    number: '01',
+    title: "RIE 2026 Annual Conference.",
+    subtitle: "RIE 2026 Summit & Meet",
+    tag: 'Conferences',
+    categories: ['Conferences'],
+    description: "A premium annual corporate conference featuring high-end LED stage setups, executive presentation areas, and structured participant operations.",
+    image: rieHero,
+    layout: 'right', // Content Left, Image Right
+    location: 'JW Marriott, Pune',
+    date: 'June 2026',
+    guests: '500+ Delegates',
+    isRawGallery: true,
+    images: rieImages
+  });
+}
+
+if (corporateImages.length > 0) {
+  corporateProjects.push({
+    id: 2,
+    number: corporateProjects.length === 0 ? '01' : '02',
+    title: "Raw Corporate Captures.",
+    subtitle: "Uploaded Corporate Gallery",
+    tag: 'Corporate Uploads',
+    categories: ['Corporate Uploads'],
+    description: "A repository of raw event photographs from recent corporate meets, stages, and activations.",
+    image: corporateImages[0],
+    layout: 'left',
+    location: 'Various Venues',
+    date: 'Recent',
+    guests: 'Dynamic',
+    isRawGallery: true,
+    images: corporateImages
+  });
+}
 
 export default function CorporatePortfolio() {
-  const [selectedCategory, setSelectedCategory] = useState('All Projects');
-  const [activePhotoIndex, setActivePhotoIndex] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(() => {
+    const params = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
+    const cat = params.get('category');
+    if (cat) {
+      const catLower = cat.toLowerCase();
+      if (catLower === 'conferences') return 'Conferences';
+      if (catLower === 'corporate-uploads' || catLower === 'uploads') return 'Corporate Uploads';
+    }
+    return 'All Projects';
+  });
+  const [activeProject, setActiveProject] = useState(null);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [networkNodes, setNetworkNodes] = useState([]);
+
+  // Sync state if category changes via search query parameter
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('category');
+      if (cat) {
+        const catLower = cat.toLowerCase();
+        if (catLower === 'conferences') {
+          setSelectedCategory('Conferences');
+        } else if (catLower === 'corporate-uploads' || catLower === 'uploads') {
+          setSelectedCategory('Corporate Uploads');
+        } else {
+          setSelectedCategory('All Projects');
+        }
+      } else {
+        setSelectedCategory('All Projects');
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    handlePopState();
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Generate background network coordinates on mount
   useEffect(() => {
@@ -26,34 +111,45 @@ export default function CorporatePortfolio() {
     setNetworkNodes(nodes);
   }, []);
 
-  const usingUploaded = rawUploadedImages.length > 0;
+  const usingUploaded = corporateProjects.length > 0;
 
-  // Build the list of images to render in the grid
-  const galleryImages = rawUploadedImages.map((path, idx) => ({
-    url: path,
-    category: 'Uploads',
-    title: `Corporate Photo ${idx + 1}`
-  }));
+  // Filter projects based on selected tab
+  const filteredProjects = selectedCategory === 'All Projects'
+    ? corporateProjects
+    : corporateProjects.filter(p => p.categories.includes(selectedCategory));
 
-  const filteredImages = galleryImages;
-
-  const openLightbox = (idx) => {
-    setActivePhotoIndex(idx);
+  // Lightbox handlers
+  const openLightbox = (project) => {
+    setActiveProject(project);
+    setCurrentSlideIndex(0);
     document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
-    setActivePhotoIndex(null);
+    setActiveProject(null);
     document.body.style.overflow = '';
   };
 
-  const nextPhoto = () => {
-    setActivePhotoIndex((prev) => (prev === filteredImages.length - 1 ? 0 : prev + 1));
+  const nextSlide = (rangeLength) => {
+    setCurrentSlideIndex((prev) => (prev === rangeLength - 1 ? 0 : prev + 1));
   };
 
-  const prevPhoto = () => {
-    setActivePhotoIndex((prev) => (prev === 0 ? filteredImages.length - 1 : prev - 1));
+  const prevSlide = (rangeLength) => {
+    setCurrentSlideIndex((prev) => (prev === 0 ? rangeLength - 1 : prev - 1));
   };
+
+  // Get pages for active project lightbox
+  const getActiveSlides = () => {
+    if (!activeProject) return [];
+    if (activeProject.isRawGallery) {
+      return activeProject.images.map((img) => ({
+        full: img,
+        thumb: img
+      }));
+    }
+    return [];
+  };
+  const activeSlides = getActiveSlides();
 
   return (
     <div className="relative w-full min-h-screen bg-[#050505] text-[#FFFFFF] font-sans overflow-x-hidden selection:bg-[#2E6BFF]/30 selection:text-white pt-28 pb-16">
@@ -112,48 +208,109 @@ export default function CorporatePortfolio() {
             A standalone space dedicated to raw photography captures of our stage set fabrications, registration desks, and summits.
           </p>
 
-          {/* Status Alert Badge */}
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#151515]/90 px-4.5 py-2 text-xs font-semibold tracking-wide text-[#D4AF37] shadow-lg">
-            <ImageIcon size={14} />
-            <span>
-              {usingUploaded
-                ? 'Displaying uploaded corporate files'
-                : 'Upload Pending — Ready for corporate event folders'}
-            </span>
-          </div>
+
 
           <div className="mx-auto mt-8 h-px w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
         </div>
 
-        {/* Raw Photos Grid or Premium Placeholder */}
-        {usingUploaded ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <AnimatePresence mode="popLayout">
-              {filteredImages.map((img, idx) => (
-                <motion.div
-                  key={img.url}
-                  layout
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] shadow-lg hover:border-[#2E6BFF]/50 transition duration-500 cursor-pointer"
-                  onClick={() => openLightbox(idx)}
+        {/* Category Navigation Tabs */}
+        {usingUploaded && (
+          <div className="flex flex-wrap justify-center items-center gap-3 mb-16 relative z-20">
+            {categories.map((cat) => {
+              const isSelected = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${
+                    isSelected
+                      ? 'border-[#2E6BFF] text-white shadow-sm'
+                      : 'border-white/10 bg-[#151515]/40 text-white/70 hover:border-white/30 hover:text-white'
+                  }`}
                 >
-                  <img
-                    src={img.url}
-                    alt={img.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-103"
-                  />
-                  
-                  {/* Overlay details on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-white z-10">
-                    <h3 className="font-serif text-lg text-white text-left">{img.title}</h3>
-                    <p className="text-[10px] text-white/50 tracking-wider uppercase mt-1.5 text-left">Click to view full size</p>
-                  </div>
-                </motion.div>
-              ))}
+                  {isSelected && (
+                    <motion.span
+                      layoutId="activeCorpCategoryPill"
+                      className="absolute inset-0 rounded-full bg-[#2E6BFF]/15"
+                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{cat}</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Project Cards Grid or Placeholder */}
+        {usingUploaded ? (
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project) => {
+                const { title, subtitle, tag, image, location, date, guests } = project;
+                return (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] h-[380px] shadow-xl hover:border-[#2E6BFF]/50 transition-all duration-500 cursor-pointer"
+                    onClick={() => openLightbox(project)}
+                  >
+                    <img
+                      src={image}
+                      alt={title}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[3000ms] ease-out group-hover:scale-105"
+                    />
+
+                    {/* Gradients */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-500 z-10" />
+
+                    {/* Top Tag Badge */}
+                    <span className="absolute left-5 top-5 rounded-md border border-[#2E6BFF]/30 bg-black/60 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#2E6BFF] z-20">
+                      {tag}
+                    </span>
+
+                    {/* Details */}
+                    <div className="absolute bottom-5 left-5 right-5 z-20 flex flex-col justify-end">
+                      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#D4AF37] mb-1 text-left">
+                        {subtitle}
+                      </p>
+                      <h3 className="font-serif text-2xl text-white group-hover:text-[#2E6BFF] transition-colors leading-snug text-left">
+                        {title}
+                      </h3>
+
+                      {/* Hover Stats Section */}
+                      <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-36 group-hover:opacity-100 group-hover:mt-4 transition-all duration-500 border-t border-white/10 pt-4">
+                        <div className="space-y-2 text-xs text-white/80 text-left">
+                          <div className="flex items-center gap-2">
+                            <MapPin size={13} className="text-[#2E6BFF] shrink-0" />
+                            <span>{location}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Users size={13} className="text-[#2E6BFF] shrink-0" />
+                            <span>{guests}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Calendar size={13} className="text-[#2E6BFF] shrink-0" />
+                            <span>{date}</span>
+                          </div>
+                        </div>
+
+                        <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#2E6BFF] group-hover:translate-x-1 transition-transform text-left">
+                          <span>Explore Gallery</span>
+                          <ArrowRight size={12} />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </AnimatePresence>
           </div>
         ) : (
@@ -193,9 +350,9 @@ export default function CorporatePortfolio() {
         )}
       </div>
 
-      {/* Lightbox Viewer */}
+      {/* Full-screen Booklet Modal / Lightbox */}
       <AnimatePresence>
-        {activePhotoIndex !== null && (
+        {activeProject && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -203,21 +360,22 @@ export default function CorporatePortfolio() {
             className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#050505]/98 p-4 md:p-6 lg:p-8"
             onClick={closeLightbox}
           >
-            {/* Header */}
+            {/* Header Details */}
             <div className="max-w-7xl w-full mx-auto flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
               <div className="text-white text-left">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#D4AF37] bg-white/5 border border-white/10 px-2 py-1 rounded">
-                  {filteredImages[activePhotoIndex]?.category || 'Corporate Gallery'}
-                </span>
-                <h3 className="font-serif text-lg sm:text-xl mt-1 text-white">
-                  {filteredImages[activePhotoIndex]?.title}
+                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.34em] text-[#D4AF37]">
+                  {activeProject.tag} — GALLERY
+                </p>
+                <h3 className="font-serif text-xl sm:text-2xl mt-1 text-white">
+                  {activeProject.subtitle}
                 </h3>
               </div>
 
               <div className="flex items-center gap-6">
                 <span className="font-serif text-sm font-semibold text-[#D4AF37]">
-                  {String(activePhotoIndex + 1).padStart(2, '0')} / {String(filteredImages.length).padStart(2, '0')}
+                  {String(currentSlideIndex + 1).padStart(2, '0')} / {String(activeSlides.length).padStart(2, '0')}
                 </span>
+
                 <button
                   type="button"
                   onClick={closeLightbox}
@@ -229,20 +387,22 @@ export default function CorporatePortfolio() {
               </div>
             </div>
 
-            {/* Showcase Arena */}
+            {/* Slide Showcase Arena */}
             <div className="flex-grow flex items-center justify-center max-w-5xl w-full mx-auto my-4 relative" onClick={(e) => e.stopPropagation()}>
+
               {/* Left Arrow */}
               <button
                 type="button"
-                onClick={prevPhoto}
+                onClick={() => prevSlide(activeSlides.length)}
                 className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
-                aria-label="Previous image"
+                aria-label="Previous page"
               >
                 <ChevronLeft size={24} />
               </button>
 
-              {/* Image Box */}
+              {/* Slide Image Box */}
               <div className="w-full h-[62vh] md:h-[68vh] rounded-2xl border border-white/10 bg-[#050505] p-2 sm:p-4 shadow-2xl flex items-center justify-center overflow-hidden relative">
+                {/* Frame borders */}
                 <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-xl" />
                 <div className="absolute top-6 left-6 grid grid-cols-2 gap-1.5 opacity-10 pointer-events-none">
                   {Array.from({ length: 4 }).map((_, i) => (
@@ -252,13 +412,13 @@ export default function CorporatePortfolio() {
 
                 <AnimatePresence mode="wait">
                   <motion.img
-                    key={filteredImages[activePhotoIndex]?.url}
-                    src={filteredImages[activePhotoIndex]?.url}
-                    alt={filteredImages[activePhotoIndex]?.title}
+                    key={`${activeProject.id}-${currentSlideIndex}`}
+                    src={activeSlides[currentSlideIndex]?.full}
+                    alt={`Gallery page ${currentSlideIndex + 1}`}
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4 }}
                     className="max-h-full max-w-full object-contain rounded-lg relative z-10"
                   />
                 </AnimatePresence>
@@ -267,9 +427,9 @@ export default function CorporatePortfolio() {
               {/* Right Arrow */}
               <button
                 type="button"
-                onClick={nextPhoto}
+                onClick={() => nextSlide(activeSlides.length)}
                 className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
-                aria-label="Next image"
+                aria-label="Next page"
               >
                 <ChevronRight size={24} />
               </button>

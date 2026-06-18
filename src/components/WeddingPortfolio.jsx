@@ -1,13 +1,85 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Image as ImageIcon, Heart } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, MapPin, Calendar, Users, Heart, ArrowRight } from 'lucide-react';
+
+// Scan the engagement raw uploads directory dynamically
+const engagementGlob = import.meta.glob('../assets/engagement/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const engagementImages = Object.values(engagementGlob).map((mod) => mod.default || mod);
+const engagementHero = engagementGlob['../assets/engagement/IMG_5099.jpg']?.default || engagementGlob['../assets/engagement/IMG_5099.jpg'] || engagementImages[0];
+
+// Scan the keyshav raw uploads directory dynamically
+const keyshavGlob = import.meta.glob('../assets/keyshav/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const keyshavImages = Object.values(keyshavGlob).map((mod) => mod.default || mod);
+const keyshavHero = keyshavGlob['../assets/keyshav/DSC03874.JPG']?.default || keyshavGlob['../assets/keyshav/DSC03874.jpg']?.default || keyshavGlob['../assets/keyshav/DSC03874.JPG'] || keyshavGlob['../assets/keyshav/DSC03874.jpg'] || keyshavImages[0];
 
 // Scan the wedding raw uploads directory dynamically
 const weddingGlob = import.meta.glob('../assets/wedding-gallery/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
-const rawUploadedImages = Object.values(weddingGlob)
+const weddingImages = Object.values(weddingGlob)
   .map((mod) => mod.default || mod)
   .filter((path) => !path.includes('placeholder'));
 
+// Category filter tabs
+const categories = ['All Celebrations', 'Weddings', 'Engagements'];
+
+// Luxury Wedding Projects List
+const weddingProjects = [];
+
+if (keyshavImages.length > 0) {
+  weddingProjects.push({
+    id: 1,
+    number: '01',
+    title: "Keyshav & Sanika's Wedding Decor.",
+    subtitle: "Keyshav & Sanika's Wedding",
+    tag: 'Weddings',
+    categories: ['Weddings'],
+    description: "A breathtaking wedding decor setup featuring custom floral mandaps, luxury grand entry arches, and premium stage lighting.",
+    image: keyshavHero,
+    layout: 'right', // Content Left, Image Right
+    location: 'Pune',
+    date: 'June 2026',
+    guests: '800+ Guests',
+    isRawGallery: true,
+    images: keyshavImages
+  });
+}
+
+if (engagementImages.length > 0) {
+  weddingProjects.push({
+    id: 2,
+    number: weddingProjects.length === 0 ? '01' : '02',
+    title: "Shikher & Ishika's Royal Engagement.",
+    subtitle: "Shikher & Ishika's Engagement",
+    tag: 'Engagements',
+    categories: ['Engagements'],
+    description: "A gorgeous luxury engagement celebration designed and styled with premium floral detailing, warm candelabras, and elegant setups.",
+    image: engagementHero,
+    layout: 'left', // Alternate layout: Image Left, Content Right
+    location: 'Pune',
+    date: 'June 2026',
+    guests: '150 Guests',
+    isRawGallery: true,
+    images: engagementImages
+  });
+}
+
+if (weddingImages.length > 0) {
+  weddingProjects.push({
+    id: 3,
+    number: weddingProjects.length === 0 ? '01' : weddingProjects.length === 1 ? '02' : '03',
+    title: "Raw Wedding Captures.",
+    subtitle: "Uploaded Wedding Gallery",
+    tag: 'Weddings',
+    categories: ['Weddings'],
+    description: "A dynamic repository of raw photos from our recent wedding set fabrications, stage builds, and floral decorations.",
+    image: weddingImages[0],
+    layout: 'right',
+    location: 'Various Venues',
+    date: 'Recent',
+    guests: 'Dynamic',
+    isRawGallery: true,
+    images: weddingImages
+  });
+}
 
 function FloralOrnament({ className }) {
   return (
@@ -58,9 +130,42 @@ function BotanicalRightOrnament() {
 }
 
 export default function WeddingPortfolio() {
-  const [selectedCategory, setSelectedCategory] = useState('All Photos');
-  const [activePhotoIndex, setActivePhotoIndex] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(() => {
+    const params = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
+    const cat = params.get('category');
+    if (cat) {
+      const catLower = cat.toLowerCase();
+      if (catLower === 'engagements') return 'Engagements';
+      if (catLower === 'weddings') return 'Weddings';
+    }
+    return 'All Celebrations';
+  });
+  const [activeProject, setActiveProject] = useState(null);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [bubbles, setBubbles] = useState([]);
+
+  // Sync state if category changes via search query parameter
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('category');
+      if (cat) {
+        const catLower = cat.toLowerCase();
+        if (catLower === 'engagements') {
+          setSelectedCategory('Engagements');
+        } else if (catLower === 'weddings') {
+          setSelectedCategory('Weddings');
+        } else {
+          setSelectedCategory('All Celebrations');
+        }
+      } else {
+        setSelectedCategory('All Celebrations');
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    handlePopState();
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Setup bubbles
   useEffect(() => {
@@ -74,34 +179,45 @@ export default function WeddingPortfolio() {
     setBubbles(generatedBubbles);
   }, []);
 
-  const usingUploaded = rawUploadedImages.length > 0;
+  const usingUploaded = weddingProjects.length > 0;
 
-  // Build the list of images to render in the grid
-  const galleryImages = rawUploadedImages.map((path, idx) => ({
-    url: path,
-    category: 'Uploads',
-    title: `Wedding Photo ${idx + 1}`
-  }));
+  // Filter projects based on selected tab
+  const filteredProjects = selectedCategory === 'All Celebrations'
+    ? weddingProjects
+    : weddingProjects.filter(p => p.categories.includes(selectedCategory));
 
-  const filteredImages = galleryImages;
-
-  const openLightbox = (idx) => {
-    setActivePhotoIndex(idx);
+  // Lightbox handlers
+  const openLightbox = (project) => {
+    setActiveProject(project);
+    setCurrentSlideIndex(0);
     document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
-    setActivePhotoIndex(null);
+    setActiveProject(null);
     document.body.style.overflow = '';
   };
 
-  const nextPhoto = () => {
-    setActivePhotoIndex((prev) => (prev === filteredImages.length - 1 ? 0 : prev + 1));
+  const nextSlide = (rangeLength) => {
+    setCurrentSlideIndex((prev) => (prev === rangeLength - 1 ? 0 : prev + 1));
   };
 
-  const prevPhoto = () => {
-    setActivePhotoIndex((prev) => (prev === 0 ? filteredImages.length - 1 : prev - 1));
+  const prevSlide = (rangeLength) => {
+    setCurrentSlideIndex((prev) => (prev === 0 ? rangeLength - 1 : prev - 1));
   };
+
+  // Get pages for active project lightbox
+  const getActiveSlides = () => {
+    if (!activeProject) return [];
+    if (activeProject.isRawGallery) {
+      return activeProject.images.map((img) => ({
+        full: img,
+        thumb: img
+      }));
+    }
+    return [];
+  };
+  const activeSlides = getActiveSlides();
 
   return (
     <div
@@ -153,7 +269,7 @@ export default function WeddingPortfolio() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-6 h-[1px] bg-[#C8A96B]" />
             <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.38em] text-[#C8A96B] font-sans">
-              Wedding Gallery
+              Wedding Portfolio
             </p>
             <span className="w-6 h-[1px] bg-[#C8A96B]" />
           </div>
@@ -163,18 +279,8 @@ export default function WeddingPortfolio() {
           </h1>
 
           <p className="mt-6 text-sm sm:text-base md:text-lg text-[#1C1C1C]/70 font-sans max-w-2xl mx-auto leading-relaxed">
-            A standalone space dedicated to raw photography captures of our wedding decor, stages, and moments.
+            Explore photos and custom raw design galleries of our wedding celebrations.
           </p>
-
-          {/* Status Alert Badge */}
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#C8A96B]/25 bg-[#F5F1EA]/85 px-4.5 py-2 text-xs font-semibold tracking-wide text-[#C8A96B] shadow-sm">
-            <ImageIcon size={14} />
-            <span>
-              {usingUploaded
-                ? 'Displaying uploaded wedding files'
-                : 'Upload Pending — Ready for wedding event folders'}
-            </span>
-          </div>
 
           <div className="flex items-center justify-center gap-4 mt-8">
             <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#C8A96B]/50" />
@@ -183,35 +289,105 @@ export default function WeddingPortfolio() {
           </div>
         </div>
 
+        {/* Category Navigation Tabs */}
+        {usingUploaded && (
+          <div className="relative max-w-7xl mx-auto px-5 mb-16 z-20">
+            <div className="flex flex-wrap justify-center items-center gap-3">
+              {categories.map((cat) => {
+                const isSelected = selectedCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${isSelected
+                        ? 'border-[#C8A96B] text-[#FAF7F2] shadow-sm'
+                        : 'border-[#C8A96B]/20 bg-[#FAF7F2]/50 text-[#1C1C1C]/70 hover:border-[#C8A96B]/50 hover:text-[#1C1C1C]'
+                      }`}
+                  >
+                    {isSelected && (
+                      <motion.span
+                        layoutId="activeWeddingCategoryPill"
+                        className="absolute inset-0 rounded-full bg-[#C8A96B]"
+                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{cat}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Raw Photos Grid or Premium Placeholder */}
         {usingUploaded ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
-              {filteredImages.map((img, idx) => (
-                <motion.div
-                  key={img.url}
-                  layout
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-[20px] border border-[#C8A96B]/15 bg-[#F5F1EA] shadow-md hover:border-[#C8A96B]/45 transition duration-500 cursor-pointer"
-                  onClick={() => openLightbox(idx)}
-                >
-                  <img
-                    src={img.url}
-                    alt={img.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-103"
-                  />
-                  
-                  {/* Overlay details on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-white z-10">
-                    <h3 className="font-serif text-lg text-[#FAF7F2] text-left">{img.title}</h3>
-                    <p className="text-[10px] text-white/60 tracking-wider uppercase mt-1.5 text-left">Click to view full size</p>
-                  </div>
-                </motion.div>
-              ))}
+              {filteredProjects.map((project) => {
+                const { title, subtitle, tag, image, location, date, guests } = project;
+                return (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    className="group relative overflow-hidden rounded-[20px] border border-[#C8A96B]/20 bg-[#FAF7F2] h-[380px] shadow-xl hover:border-[#C8A96B]/50 transition-all duration-500 cursor-pointer"
+                    onClick={() => openLightbox(project)}
+                  >
+                    <img
+                      src={image}
+                      alt={title}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[3000ms] ease-out group-hover:scale-105"
+                    />
+
+                    {/* Gradients */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-500 z-10" />
+
+                    {/* Top Tag Badge */}
+                    <span className="absolute left-5 top-5 rounded-md border border-[#C8A96B]/30 bg-black/60 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#C8A96B] z-20">
+                      {tag}
+                    </span>
+
+                    {/* Details */}
+                    <div className="absolute bottom-5 left-5 right-5 z-20 flex flex-col justify-end">
+                      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#C8A96B] mb-1 text-left">
+                        {subtitle}
+                      </p>
+                      <h3 className="font-serif text-2xl text-white group-hover:text-[#C8A96B] transition-colors leading-snug text-left">
+                        {title}
+                      </h3>
+
+                      {/* Hover Stats Section */}
+                      <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-36 group-hover:opacity-100 group-hover:mt-4 transition-all duration-500 border-t border-white/10 pt-4">
+                        <div className="space-y-2 text-xs text-white/80 text-left">
+                          <div className="flex items-center gap-2">
+                            <MapPin size={13} className="text-[#C8A96B] shrink-0" />
+                            <span>{location}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Users size={13} className="text-[#C8A96B] shrink-0" />
+                            <span>{guests}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Calendar size={13} className="text-[#C8A96B] shrink-0" />
+                            <span>{date}</span>
+                          </div>
+                        </div>
+
+                        <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#C8A96B] group-hover:translate-x-1 transition-transform text-left">
+                          <span>Explore Gallery</span>
+                          <ArrowRight size={12} />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </AnimatePresence>
           </div>
         ) : (
@@ -251,9 +427,9 @@ export default function WeddingPortfolio() {
         )}
       </div>
 
-      {/* Lightbox Viewer */}
+      {/* Full-screen Booklet Modal / Lightbox */}
       <AnimatePresence>
-        {activePhotoIndex !== null && (
+        {activeProject && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -261,25 +437,26 @@ export default function WeddingPortfolio() {
             className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#050505]/98 p-4 md:p-6 lg:p-8"
             onClick={closeLightbox}
           >
-            {/* Header */}
+            {/* Header Details */}
             <div className="max-w-7xl w-full mx-auto flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
               <div className="text-white text-left">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#D4AF37] bg-white/5 border border-white/10 px-2 py-1 rounded">
-                  {filteredImages[activePhotoIndex]?.category || 'Wedding Gallery'}
-                </span>
-                <h3 className="font-serif text-lg sm:text-xl mt-1 text-white">
-                  {filteredImages[activePhotoIndex]?.title}
+                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.34em] text-[#C8A96B]">
+                  {activeProject.tag} — GALLERY
+                </p>
+                <h3 className="font-serif text-xl sm:text-2xl mt-1 text-white">
+                  {activeProject.subtitle}
                 </h3>
               </div>
 
               <div className="flex items-center gap-6">
-                <span className="font-serif text-sm font-semibold text-[#D4AF37]">
-                  {String(activePhotoIndex + 1).padStart(2, '0')} / {String(filteredImages.length).padStart(2, '0')}
+                <span className="font-serif text-sm font-semibold text-[#C8A96B]">
+                  {String(currentSlideIndex + 1).padStart(2, '0')} / {String(activeSlides.length).padStart(2, '0')}
                 </span>
+
                 <button
                   type="button"
                   onClick={closeLightbox}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-[#151515] text-[#D4AF37] transition hover:bg-[#D4AF37] hover:text-[#050505]"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-[#151515] text-[#C8A96B] transition hover:bg-[#C8A96B] hover:text-[#050505]"
                   aria-label="Close lightbox"
                 >
                   <X size={20} />
@@ -287,32 +464,34 @@ export default function WeddingPortfolio() {
               </div>
             </div>
 
-            {/* Showcase Arena */}
+            {/* Slide Showcase Arena */}
             <div className="flex-grow flex items-center justify-center max-w-5xl w-full mx-auto my-4 relative" onClick={(e) => e.stopPropagation()}>
+
               {/* Left Arrow */}
               <button
                 type="button"
-                onClick={prevPhoto}
-                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
-                aria-label="Previous image"
+                onClick={() => prevSlide(activeSlides.length)}
+                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#C8A96B] backdrop-blur transition hover:border-[#C8A96B] hover:bg-[#C8A96B] hover:text-[#050505]"
+                aria-label="Previous page"
               >
                 <ChevronLeft size={24} />
               </button>
 
-              {/* Image Box */}
+              {/* Slide Image Box */}
               <div className="w-full h-[62vh] md:h-[68vh] rounded-2xl border border-white/10 bg-[#050505] p-2 sm:p-4 shadow-2xl flex items-center justify-center overflow-hidden relative">
+                {/* Frame borders */}
                 <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-xl" />
                 <FloralOrnament className="absolute bottom-6 right-6 w-16 h-16 opacity-25" />
 
                 <AnimatePresence mode="wait">
                   <motion.img
-                    key={filteredImages[activePhotoIndex]?.url}
-                    src={filteredImages[activePhotoIndex]?.url}
-                    alt={filteredImages[activePhotoIndex]?.title}
+                    key={`${activeProject.id}-${currentSlideIndex}`}
+                    src={activeSlides[currentSlideIndex]?.full}
+                    alt={`Gallery page ${currentSlideIndex + 1}`}
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4 }}
                     className="max-h-full max-w-full object-contain rounded-lg relative z-10"
                   />
                 </AnimatePresence>
@@ -321,9 +500,9 @@ export default function WeddingPortfolio() {
               {/* Right Arrow */}
               <button
                 type="button"
-                onClick={nextPhoto}
-                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
-                aria-label="Next image"
+                onClick={() => nextSlide(activeSlides.length)}
+                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#C8A96B] backdrop-blur transition hover:border-[#C8A96B] hover:bg-[#C8A96B] hover:text-[#050505]"
+                aria-label="Next page"
               >
                 <ChevronRight size={24} />
               </button>

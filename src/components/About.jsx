@@ -25,8 +25,8 @@ export default function About() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-obsidian/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-7">
-              <p className="text-base font-semibold uppercase tracking-[0.28em] text-champagne md:text-lg">Introduction</p>
-              <h3 className="mt-3 max-w-xl font-serif text-4xl leading-tight text-ivory">
+              <p className="text-lg font-semibold uppercase tracking-[0.28em] text-champagne md:text-xl">Introduction</p>
+              <h3 className="mt-3 max-w-xl font-serif text-5xl leading-tight text-ivory md:text-6xl">
                 Every Occasion Begins with a Vision.
               </h3>
             </div>
@@ -35,8 +35,8 @@ export default function About() {
           <Reveal delay={0.08} className="relative flex flex-col items-start justify-center overflow-hidden rounded-[2rem] border border-champagne/20 bg-[linear-gradient(145deg,rgba(248,241,223,0.08),rgba(248,241,223,0.025))] p-8 text-left shadow-soft md:p-10 h-full">
             <div className="absolute right-0 top-0 h-32 w-1 bg-gold" />
             <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-gold to-transparent" />
-            <p className="text-base font-semibold uppercase tracking-[0.28em] text-champagne md:text-lg">Company Overview</p>
-            <h3 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-ivory md:text-5xl">From idea to on-ground execution.</h3>
+            <p className="text-lg font-semibold uppercase tracking-[0.28em] text-champagne md:text-xl">Company Overview</p>
+            <h3 className="mt-4 max-w-xl font-serif text-5xl leading-tight text-ivory md:text-6xl">The Brigade Behind Extraordinary Events.</h3>
             <div className="mt-6 h-px w-28 bg-gradient-to-r from-gold to-transparent" />
             <div className="mt-7 max-w-xl space-y-5 text-base leading-8 text-smoke md:text-lg md:leading-8 text-justify">
               <p>{siteCopy.about}</p>

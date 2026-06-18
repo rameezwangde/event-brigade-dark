@@ -2,39 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Image as ImageIcon, Heart } from 'lucide-react';
 
-// Import local premium assets as fallbacks
-import weddingStage from '../assets/weddings/wedding-stage.jpg';
-import weddingDecor from '../assets/weddings/wedding-decor.jpg';
-import haldiMehendi from '../assets/weddings/haldi-mehendi.jpg';
-import reception from '../assets/weddings/reception.jpg';
-import specialEntry from '../assets/weddings/special-entry.jpg';
-import weddingActivities from '../assets/weddings/wedding-activities.jpg';
-import sangeetVisual from '../assets/weddings/pdf-page25-xref298.jpg';
-import poolPartyVisual from '../assets/weddings/pdf-page28-xref330.jpg';
-import mandapVisual from '../assets/weddings/pdf-page21-xref1238.jpg';
-import brideGroomVisual from '../assets/weddings/pdf-page30-xref363.jpg';
-
 // Scan the wedding raw uploads directory dynamically
 const weddingGlob = import.meta.glob('../assets/wedding-gallery/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const rawUploadedImages = Object.values(weddingGlob)
   .map((mod) => mod.default || mod)
   .filter((path) => !path.includes('placeholder'));
 
-// Curated fallbacks with tags for a structured gallery before user uploads photos
-const fallbackWeddingPhotos = [
-  { url: brideGroomVisual, category: 'Portraits', title: 'Bride & Groom Portrait' },
-  { url: weddingStage, category: 'Stages', title: 'Sheraton Grand Royal Mandap' },
-  { url: weddingDecor, category: 'Decor', title: 'Bespoke Floral Aisle' },
-  { url: haldiMehendi, category: 'Rituals', title: 'Sunset Haldi Ritual' },
-  { url: reception, category: 'Stages', title: 'JW Marriott Reception Stage' },
-  { url: specialEntry, category: 'Moments', title: 'Bride Special Entry Walk' },
-  { url: weddingActivities, category: 'Moments', title: 'Guest Interactive Favors Bar' },
-  { url: sangeetVisual, category: 'Moments', title: 'Sangeet Performance Production' },
-  { url: poolPartyVisual, category: 'Decor', title: 'Tropical Pool Party Styling' },
-  { url: mandapVisual, category: 'Stages', title: 'Mandap Floral Detailing' }
-];
-
-const categories = ['All Photos', 'Stages', 'Decor', 'Rituals', 'Moments', 'Portraits'];
 
 function FloralOrnament({ className }) {
   return (
@@ -104,18 +77,13 @@ export default function WeddingPortfolio() {
   const usingUploaded = rawUploadedImages.length > 0;
 
   // Build the list of images to render in the grid
-  const galleryImages = usingUploaded
-    ? rawUploadedImages.map((path, idx) => ({
-        url: path,
-        category: 'Uploads',
-        title: `Wedding Photo ${idx + 1}`
-      }))
-    : fallbackWeddingPhotos;
+  const galleryImages = rawUploadedImages.map((path, idx) => ({
+    url: path,
+    category: 'Uploads',
+    title: `Wedding Photo ${idx + 1}`
+  }));
 
-  // Filter images based on category tabs
-  const filteredImages = selectedCategory === 'All Photos' || usingUploaded
-    ? galleryImages
-    : galleryImages.filter(img => img.category === selectedCategory);
+  const filteredImages = galleryImages;
 
   const openLightbox = (idx) => {
     setActivePhotoIndex(idx);
@@ -204,7 +172,7 @@ export default function WeddingPortfolio() {
             <span>
               {usingUploaded
                 ? 'Displaying uploaded wedding files'
-                : 'Curated Fallback Mode — Upload folders to src/assets/wedding-gallery to update'}
+                : 'Upload Pending — Ready for wedding event folders'}
             </span>
           </div>
 
@@ -215,71 +183,72 @@ export default function WeddingPortfolio() {
           </div>
         </div>
 
-        {/* Category Tabs */}
-        {!usingUploaded && (
-          <div className="flex flex-wrap justify-center items-center gap-3 mb-16 relative z-20">
-            {categories.map((cat) => {
-              const isSelected = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${
-                    isSelected
-                      ? 'border-[#C8A96B] text-[#FAF7F2] shadow-sm'
-                      : 'border-[#C8A96B]/20 bg-[#F5F1EA]/50 text-[#1C1C1C]/70 hover:border-[#C8A96B]/50 hover:text-[#1C1C1C]'
-                  }`}
+        {/* Raw Photos Grid or Premium Placeholder */}
+        {usingUploaded ? (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <AnimatePresence mode="popLayout">
+              {filteredImages.map((img, idx) => (
+                <motion.div
+                  key={img.url}
+                  layout
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-[20px] border border-[#C8A96B]/15 bg-[#F5F1EA] shadow-md hover:border-[#C8A96B]/45 transition duration-500 cursor-pointer"
+                  onClick={() => openLightbox(idx)}
                 >
-                  {isSelected && (
-                    <motion.span
-                      layoutId="activeWeddingCategoryPill"
-                      className="absolute inset-0 rounded-full bg-[#C8A96B]"
-                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{cat}</span>
-                </button>
-              );
-            })}
+                  <img
+                    src={img.url}
+                    alt={img.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-103"
+                  />
+                  
+                  {/* Overlay details on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-white z-10">
+                    <h3 className="font-serif text-lg text-[#FAF7F2] text-left">{img.title}</h3>
+                    <p className="text-[10px] text-white/60 tracking-wider uppercase mt-1.5 text-left">Click to view full size</p>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl mx-auto border border-[#C8A96B]/25 rounded-[24px] bg-[#F5F1EA]/60 p-8 sm:p-12 text-center backdrop-blur-md relative overflow-hidden shadow-md"
+          >
+            {/* Elegant Corner Labels */}
+            <div className="absolute top-4 left-4 text-[#C8A96B]/30 font-mono text-[9px] select-none">GALLERY_VAULT // WEDDINGS</div>
+            <div className="absolute bottom-4 right-4 text-[#C8A96B]/40 font-mono text-[9px] select-none">READY FOR UPLOADS</div>
+            
+            <div className="mx-auto w-16 h-16 rounded-full bg-[#C8A96B]/10 flex items-center justify-center border border-[#C8A96B]/35 text-[#C8A96B] mb-6 shadow-sm">
+              <Heart size={26} className="animate-pulse" />
+            </div>
+            
+            <h3 className="font-serif text-2xl sm:text-3xl text-[#1C1C1C] mb-4">
+              Wedding Gallery <span className="text-[#C8A96B] italic font-normal">Vault Empty</span>
+            </h3>
+            
+            <p className="text-[#1C1C1C]/75 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-8 font-sans">
+              This space is configured for direct wedding photo folder uploads. Once raw photography folders are uploaded to the server, cards will dynamically render here with full-size interactive galleries.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs font-mono text-[#1C1C1C]/50">
+              <span className="flex items-center gap-2 border border-[#C8A96B]/20 bg-[#FAF7F2] px-3.5 py-1.5 rounded-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C8A96B]" />
+                PATH: src/assets/wedding-gallery/
+              </span>
+              <span className="flex items-center gap-2 border border-[#C8A96B]/20 bg-[#FAF7F2] px-3.5 py-1.5 rounded-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C8A96B]" />
+                FORMATS: JPG, PNG, WEBP
+              </span>
+            </div>
+          </motion.div>
         )}
-
-        {/* Raw Photos Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence mode="popLayout">
-            {filteredImages.map((img, idx) => (
-              <motion.div
-                key={img.url}
-                layout
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative aspect-[4/3] w-full overflow-hidden rounded-[20px] border border-[#C8A96B]/15 bg-[#F5F1EA] shadow-md hover:border-[#C8A96B]/45 transition duration-500 cursor-pointer"
-                onClick={() => openLightbox(idx)}
-              >
-                <img
-                  src={img.url}
-                  alt={img.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-103"
-                />
-                
-                {/* Overlay details on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-white z-10">
-                  {!usingUploaded && (
-                    <span className="text-[9px] uppercase tracking-widest text-[#D4AF37] font-semibold mb-1">
-                      {img.category}
-                    </span>
-                  )}
-                  <h3 className="font-serif text-lg text-[#FAF7F2] text-left">{img.title}</h3>
-                  <p className="text-[10px] text-white/60 tracking-wider uppercase mt-1.5 text-left">Click to view full size</p>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
       </div>
 
       {/* Lightbox Viewer */}

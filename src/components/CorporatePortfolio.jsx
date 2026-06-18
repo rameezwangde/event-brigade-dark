@@ -2,39 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 
-// Import corporate assets as fallbacks
-import heroStage from '../assets/corporate-extracted/corporate-p15-xref1070.jpg';
-import conferenceStage from '../assets/corporate-extracted/corporate-p17-xref1109.jpg';
-import awardsNight from '../assets/corporate-extracted/corporate-p08-xref843.jpg';
-import registrationDesk from '../assets/corporate-extracted/corporate-p14-xref1057.jpg';
-import partnerMeet from '../assets/corporate-extracted/corporate-p14-xref1046.jpg';
-import outdoorSetup from '../assets/corporate-extracted/corporate-p13-xref1011.jpg';
-import launchWalk from '../assets/corporate-extracted/corporate-p14-xref1054.jpg';
-import familyTheme from '../assets/corporate-extracted/corporate-p15-xref1073.jpg';
-import groupPhoto from '../assets/corporate-extracted/corporate-p13-xref1020.jpg';
-import clientMeet from '../assets/corporate-extracted/corporate-p12-xref973.jpg';
-
 // Scan the corporate raw uploads directory dynamically
 const corporateGlob = import.meta.glob('../assets/corporate-gallery/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const rawUploadedImages = Object.values(corporateGlob)
   .map((mod) => mod.default || mod)
   .filter((path) => !path.includes('placeholder'));
 
-// Curated fallbacks with tags for a structured gallery before user uploads photos
-const fallbackCorporatePhotos = [
-  { url: heroStage, category: 'Stages', title: 'Main LED Stage Set' },
-  { url: conferenceStage, category: 'Conferences', title: 'Executive Summit Arena' },
-  { url: awardsNight, category: 'Galas', title: 'MNC Annual Awards Gala' },
-  { url: registrationDesk, category: 'Logistics', title: 'RFID Access Registration Desk' },
-  { url: partnerMeet, category: 'Dealer Meets', title: 'Partner Summit Lounge' },
-  { url: outdoorSetup, category: 'Outdoor', title: 'Outdoor Corporate Event' },
-  { url: launchWalk, category: 'Product Launches', title: 'SUV Catwalk Unveil' },
-  { url: familyTheme, category: 'Outdoor', title: 'Tented Corporate Carnival' },
-  { url: groupPhoto, category: 'Team Building', title: 'Executive Team Strategy Camp' },
-  { url: clientMeet, category: 'Conferences', title: 'CEO Leadership Roundtable' }
-];
-
-const categories = ['All Projects', 'Conferences', 'Stages', 'Product Launches', 'Galas', 'Dealer Meets', 'Team Building'];
 
 export default function CorporatePortfolio() {
   const [selectedCategory, setSelectedCategory] = useState('All Projects');
@@ -56,18 +29,13 @@ export default function CorporatePortfolio() {
   const usingUploaded = rawUploadedImages.length > 0;
 
   // Build the list of images to render in the grid
-  const galleryImages = usingUploaded
-    ? rawUploadedImages.map((path, idx) => ({
-        url: path,
-        category: 'Uploads',
-        title: `Corporate Photo ${idx + 1}`
-      }))
-    : fallbackCorporatePhotos;
+  const galleryImages = rawUploadedImages.map((path, idx) => ({
+    url: path,
+    category: 'Uploads',
+    title: `Corporate Photo ${idx + 1}`
+  }));
 
-  // Filter images based on category tabs
-  const filteredImages = selectedCategory === 'All Projects' || usingUploaded
-    ? galleryImages
-    : galleryImages.filter(img => img.category === selectedCategory);
+  const filteredImages = galleryImages;
 
   const openLightbox = (idx) => {
     setActivePhotoIndex(idx);
@@ -150,78 +118,79 @@ export default function CorporatePortfolio() {
             <span>
               {usingUploaded
                 ? 'Displaying uploaded corporate files'
-                : 'Curated Fallback Mode — Upload folders to src/assets/corporate-gallery to update'}
+                : 'Upload Pending — Ready for corporate event folders'}
             </span>
           </div>
 
           <div className="mx-auto mt-8 h-px w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
         </div>
 
-        {/* Category Tabs */}
-        {!usingUploaded && (
-          <div className="flex flex-wrap justify-center items-center gap-3 mb-16 relative z-20">
-            {categories.map((cat) => {
-              const isSelected = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${
-                    isSelected
-                      ? 'border-[#2E6BFF] text-white shadow-sm'
-                      : 'border-white/10 bg-[#151515]/40 text-white/70 hover:border-white/30 hover:text-white'
-                  }`}
+        {/* Raw Photos Grid or Premium Placeholder */}
+        {usingUploaded ? (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <AnimatePresence mode="popLayout">
+              {filteredImages.map((img, idx) => (
+                <motion.div
+                  key={img.url}
+                  layout
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="group relative aspect-[4/3] w-full overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] shadow-lg hover:border-[#2E6BFF]/50 transition duration-500 cursor-pointer"
+                  onClick={() => openLightbox(idx)}
                 >
-                  {isSelected && (
-                    <motion.span
-                      layoutId="activeCorpCategoryPill"
-                      className="absolute inset-0 rounded-full bg-[#2E6BFF]/15"
-                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{cat}</span>
-                </button>
-              );
-            })}
+                  <img
+                    src={img.url}
+                    alt={img.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-103"
+                  />
+                  
+                  {/* Overlay details on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-white z-10">
+                    <h3 className="font-serif text-lg text-white text-left">{img.title}</h3>
+                    <p className="text-[10px] text-white/50 tracking-wider uppercase mt-1.5 text-left">Click to view full size</p>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl mx-auto border border-white/10 rounded-[24px] bg-[#0C1220]/45 p-8 sm:p-12 text-center backdrop-blur-md relative overflow-hidden"
+          >
+            {/* Tech Corner Crosshairs */}
+            <div className="absolute top-4 left-4 text-white/10 font-mono text-[9px] select-none">SYS.RAW_VAULT // 0x4B</div>
+            <div className="absolute bottom-4 right-4 text-[#2E6BFF]/20 font-mono text-[9px] select-none">READY FOR UPLOAD</div>
+            
+            <div className="mx-auto w-16 h-16 rounded-full bg-[#2E6BFF]/10 flex items-center justify-center border border-[#2E6BFF]/25 text-[#2E6BFF] mb-6 shadow-[0_0_15px_rgba(46,107,255,0.15)]">
+              <ImageIcon size={28} className="animate-pulse" />
+            </div>
+            
+            <h3 className="font-serif text-2xl sm:text-3xl text-white mb-4">
+              Corporate Gallery <span className="text-[#D4AF37] italic">Vault Empty</span>
+            </h3>
+            
+            <p className="text-white/60 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-8 font-sans">
+              This space is configured for direct event folder uploads. Once raw photography folders are uploaded to the server, cards will dynamically render here with full-size interactive galleries.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs font-mono text-white/40">
+              <span className="flex items-center gap-2 border border-white/5 bg-white/5 px-3.5 py-1.5 rounded-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2E6BFF]" />
+                PATH: src/assets/corporate-gallery/
+              </span>
+              <span className="flex items-center gap-2 border border-white/5 bg-white/5 px-3.5 py-1.5 rounded-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                FORMATS: JPG, PNG, WEBP
+              </span>
+            </div>
+          </motion.div>
         )}
-
-        {/* Raw Photos Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence mode="popLayout">
-            {filteredImages.map((img, idx) => (
-              <motion.div
-                key={img.url}
-                layout
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative aspect-[4/3] w-full overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] shadow-lg hover:border-[#2E6BFF]/50 transition duration-500 cursor-pointer"
-                onClick={() => openLightbox(idx)}
-              >
-                <img
-                  src={img.url}
-                  alt={img.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-103"
-                />
-                
-                {/* Overlay details on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-white z-10">
-                  {!usingUploaded && (
-                    <span className="text-[9px] uppercase tracking-widest text-[#D4AF37] font-semibold mb-1">
-                      {img.category}
-                    </span>
-                  )}
-                  <h3 className="font-serif text-lg text-white text-left">{img.title}</h3>
-                  <p className="text-[10px] text-white/50 tracking-wider uppercase mt-1.5 text-left">Click to view full size</p>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
       </div>
 
       {/* Lightbox Viewer */}

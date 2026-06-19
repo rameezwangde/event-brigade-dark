@@ -545,11 +545,6 @@ export default function CorporateServices() {
                     />
                     {/* Dark mask overlay */}
                     <div className="absolute inset-0 bg-[#050505]/40" />
-                    
-                    {/* Floating index tag */}
-                    <span className="absolute right-4 top-4 rounded-full border border-white/10 bg-[#050505]/80 px-3 py-1 text-[10px] font-mono font-bold text-[#D4AF37]">
-                      {service.number}
-                    </span>
                   </div>
 
                   {/* Card Content Area */}

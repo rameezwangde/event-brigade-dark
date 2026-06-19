@@ -237,11 +237,6 @@ const corporateShowcase = {
       image: conferenceStage
     },
     {
-      title: 'Logistics & RSVP Flow',
-      text: 'Secure executive check-in, RFID badge scanning, multi-hotel hospitality, and VIP transport networks.',
-      image: registrationDesk
-    },
-    {
       title: 'Product Unveils',
       text: 'Theatrical product reveals with synchronous laser shows, turntable setups, and high-impact sound design.',
       image: launchWalk

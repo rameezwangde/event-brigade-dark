@@ -658,7 +658,7 @@ export default function SocialServices() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#050505]/98 p-4 md:p-6 lg:p-8"
+            className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#050505]/80 backdrop-blur-md p-4 md:p-6 lg:p-8"
             onClick={closeLightbox}
           >
             {/* Header Details */}

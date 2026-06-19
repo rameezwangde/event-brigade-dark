@@ -22,10 +22,7 @@ import {
   Tv,
   X,
   ChevronLeft,
-  ChevronRight,
-  Calendar,
-  MapPin,
-  Users
+  ChevronRight
 } from 'lucide-react';
 import { services, corporatePortfolio } from '../data.js';
 import Reveal from './Reveal.jsx';
@@ -645,79 +642,7 @@ export default function CorporateServices() {
           </Reveal>
         </div>
 
-        {/* PORTFOLIO GRID SECTION */}
-        <div id="portfolio-grid" className="mt-32 scroll-mt-28">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 mb-3">
-                <span className="w-5 h-[1px] bg-[#D4AF37]" />
-                <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Case Studies</p>
-                <span className="w-5 h-[1px] bg-[#D4AF37]" />
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white">
-                Selected Project Showcase
-              </h2>
-            </Reveal>
-          </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {corporateCaseStudies.map((project, idx) => {
-              const { title, subtitle, highlight, image, location, date, guests, avSpecs } = project;
-              return (
-                <Reveal
-                  key={project.id}
-                  delay={idx * 0.05}
-                  className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] h-[380px] shadow-xl hover:border-[#2E6BFF]/50 transition-all duration-500 cursor-pointer"
-                  onClick={() => openLightbox(project)}
-                >
-                  <img
-                    src={image}
-                    alt={title}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[3000ms] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-500 z-10" />
-
-                  <span className="absolute left-5 top-5 rounded-md border border-[#D4AF37]/30 bg-black/60 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D4AF37] z-20">
-                    {highlight}
-                  </span>
-
-                  <div className="absolute bottom-5 left-5 right-5 z-20 flex flex-col justify-end">
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#2E6BFF] mb-1 text-left font-sans">
-                      {subtitle}
-                    </p>
-                    <h3 className="font-serif text-2xl text-white group-hover:text-[#D4AF37] transition-colors leading-snug text-left">
-                      {title}
-                    </h3>
-                    
-                    <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-36 group-hover:opacity-100 group-hover:mt-4 transition-all duration-500 border-t border-white/10 pt-4">
-                      <div className="space-y-2 text-xs text-white/80 text-left">
-                        <div className="flex items-center gap-2">
-                          <MapPin size={13} className="text-[#D4AF37] shrink-0" />
-                          <span>{location}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Users size={13} className="text-[#D4AF37] shrink-0" />
-                          <span>{guests}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Cpu size={13} className="text-[#D4AF37] shrink-0" />
-                          <span>{avSpecs}</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] group-hover:translate-x-1 transition-transform text-left">
-                        <span>Explore Case</span>
-                        <ArrowRight size={12} />
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Final Consultation Call to Action */}
         <Reveal className="mt-28 text-center max-w-4xl mx-auto border border-white/10 bg-[#151515]/50 p-8 sm:p-12 md:p-16 rounded-[32px] relative overflow-hidden">
@@ -755,7 +680,7 @@ export default function CorporateServices() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#050505]/98 p-4 md:p-6 lg:p-8"
+            className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#050505]/80 backdrop-blur-md p-4 md:p-6 lg:p-8"
             onClick={closeLightbox}
           >
             {/* Header Details */}

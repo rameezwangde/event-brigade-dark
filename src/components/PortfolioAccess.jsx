@@ -14,7 +14,7 @@ const divisions = [
   {
     title: 'CORPORATE EVENTS',
     tagline: 'BRINGING BRANDS TO LIFE.',
-    desc: 'From product launches and conferences to channel meets, award ceremonies, and leadership summits, we create corporate experiences that engage audiences and strengthen brands. Through strategic planning, creative execution, and seamless coordination, we deliver events that leave a lasting impact.',
+    desc: 'From product launches and conferences to channel partner meets, award ceremonies, and leadership summits, we create corporate experiences that engage audiences and strengthen brands. Through strategic planning, creative execution, and seamless coordination, we deliver events that leave a lasting impact.',
     servicesUrl: '/corporate-services',
     portfolioUrl: '/corporate-portfolio',
     icon: BriefcaseBusiness
@@ -40,7 +40,7 @@ export default function PortfolioAccess() {
       <div className="mx-auto max-w-7xl px-5">
         <div className="mb-14 text-center">
           <Reveal>
-            <p className="text-base font-semibold uppercase tracking-[0.32em] text-champagne md:text-lg">Our Services</p>
+            <p className="text-base font-semibold uppercase tracking-[0.34em] text-champagne md:text-lg">Our Services</p>
             <h2 className="mt-4 font-serif text-4xl leading-tight text-ivory md:text-6xl">
               Curated with Purpose,<br />Executed with Precision.
             </h2>

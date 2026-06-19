@@ -190,7 +190,7 @@ export default function SocialEventsPortfolio() {
         >
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-6 h-[1.5px] bg-[#D56A4A]" />
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.34em] text-[#D56A4A] font-sans">
+            <p className="text-base sm:text-lg font-semibold uppercase tracking-[0.34em] text-[#D56A4A] font-sans">
               Social Portfolio
             </p>
             <span className="w-6 h-[1.5px] bg-[#D56A4A]" />

@@ -202,7 +202,7 @@ function LuxuryHeader({ eyebrow, title, text, align = 'center' }) {
     <Reveal className={`max-w-4xl mx-auto mb-12 ${align === 'left' ? 'text-left' : 'text-center'}`}>
       <div className={`flex items-center gap-2.5 mb-3.5 ${align === 'left' ? 'justify-start' : 'justify-center'}`}>
         <span className="w-8 h-[1px] bg-[#C8A96B]/50" />
-        <p className="text-sm sm:text-base font-semibold uppercase tracking-[0.34em] text-[#C8A96B]">{eyebrow}</p>
+        <p className="text-base sm:text-lg font-semibold uppercase tracking-[0.34em] text-[#C8A96B]">{eyebrow}</p>
         <span className="w-8 h-[1px] bg-[#C8A96B]/50" />
       </div>
       <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1C1C1C] leading-[1.2]">

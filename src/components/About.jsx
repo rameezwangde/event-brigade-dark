@@ -8,7 +8,7 @@ function LuxuryHeader({ eyebrow, title, text }) {
     <Reveal className="max-w-4xl mx-auto mb-12 text-center">
       <div className="flex items-center justify-center gap-2.5 mb-3.5">
         <span className="w-8 h-[1px] bg-[#C8A96B]/50" />
-        <p className="text-sm sm:text-base font-semibold uppercase tracking-[0.34em] text-[#C8A96B]">{eyebrow}</p>
+        <p className="text-base sm:text-lg font-semibold uppercase tracking-[0.34em] text-[#C8A96B]">{eyebrow}</p>
         <span className="w-8 h-[1px] bg-[#C8A96B]/50" />
       </div>
       <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1C1C1C] leading-[1.2]">
@@ -49,8 +49,7 @@ export default function About() {
           <div className="flex flex-col gap-10 relative z-10">
             {/* Vision */}
             <Reveal className="flex flex-col items-center text-center">
-              <span className="font-mono text-xs text-[#C8A96B] tracking-wider">01 / BRAND PURPOSE</span>
-              <h3 className="font-serif text-3xl leading-tight text-[#1C1C1C] mt-1">Vision</h3>
+              <h3 className="font-serif text-3xl leading-tight text-[#1C1C1C]">Vision</h3>
               <p className="mt-4 text-[15px] leading-relaxed text-[#1C1C1C]/75 max-w-2xl mx-auto text-center">
                 {siteCopy.philosophy}
               </p>
@@ -61,8 +60,7 @@ export default function About() {
 
             {/* Mission */}
             <Reveal className="flex flex-col items-center text-center" delay={0.08}>
-              <span className="font-mono text-xs text-[#C8A96B] tracking-wider">02 / THE PLEDGE</span>
-              <h3 className="font-serif text-3xl leading-tight text-[#1C1C1C] mt-1">Mission</h3>
+              <h3 className="font-serif text-3xl leading-tight text-[#1C1C1C]">Mission</h3>
               <p className="mt-4 text-[15px] leading-relaxed text-[#1C1C1C]/75 max-w-2xl mx-auto text-center">
                 {siteCopy.mission}
               </p>
@@ -80,20 +78,20 @@ export default function About() {
               className="h-full min-h-[460px] w-full object-cover opacity-85"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-7">
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#C8A96B] sm:text-base">Introduction</p>
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+              <p className="text-base font-semibold uppercase tracking-[0.28em] text-[#C8A96B] sm:text-lg">Introduction</p>
               <h3 className="mt-3 max-w-xl font-serif text-4xl leading-tight text-white sm:text-5xl">
                 Every Occasion Begins with a Vision.
               </h3>
             </div>
           </Reveal>
 
-          <Reveal delay={0.08} className="relative flex flex-col items-start justify-center overflow-hidden rounded-[2rem] border border-[#C8A96B]/20 bg-[#F5F1EA] p-8 text-left shadow-md md:p-10 h-full">
-            <div className="absolute right-0 top-0 h-32 w-1 bg-[#C8A96B]" />
-            <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-[#C8A96B] to-transparent" />
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#C8A96B] sm:text-base">Our Story</p>
-            <h3 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-[#1C1C1C] sm:text-5xl">The Brigade Behind Extraordinary Events.</h3>
-            <div className="mt-6 h-px w-28 bg-gradient-to-r from-[#C8A96B] to-transparent" />
+          <Reveal delay={0.08} className="relative flex flex-col items-start justify-between overflow-hidden rounded-[2rem] border border-[#C8A96B]/20 bg-[#F5F1EA] p-8 text-left shadow-md md:p-10 h-full">
+            <div>
+              <p className="text-base font-semibold uppercase tracking-[0.28em] text-[#C8A96B] sm:text-lg">Our Story</p>
+              <h3 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-[#1C1C1C] sm:text-5xl">The Brigade Behind Extraordinary Events.</h3>
+              <div className="mt-6 h-px w-28 bg-gradient-to-r from-[#C8A96B] to-transparent" />
+            </div>
             <div className="mt-7 max-w-xl space-y-5 text-base leading-relaxed text-[#1C1C1C]/75 text-justify">
               {siteCopy.aboutParagraphs.map((para, idx) => (
                 <p key={idx}>{para}</p>

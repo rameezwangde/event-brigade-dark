@@ -13,7 +13,6 @@ export default function Contact() {
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader
           eyebrow="Plan An Event"
-          eyebrowClassName="text-2xl md:text-3xl"
           title="Let us design your next extraordinary gathering."
           text="Share your brief and the Event Brigade team will help you shape the event with clarity, creativity and confident execution."
         />

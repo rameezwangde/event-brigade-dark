@@ -268,7 +268,7 @@ export default function WeddingPortfolio() {
         <div className="text-center mt-12 mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-6 h-[1px] bg-[#C8A96B]" />
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.38em] text-[#C8A96B] font-sans">
+            <p className="text-base sm:text-lg font-semibold uppercase tracking-[0.34em] text-[#C8A96B] font-sans">
               Wedding Portfolio
             </p>
             <span className="w-6 h-[1px] bg-[#C8A96B]" />

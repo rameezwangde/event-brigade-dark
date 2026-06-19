@@ -43,6 +43,7 @@ export default function Navbar() {
     const handleLocationChange = () => {
       const path = window.location.pathname.replace(/\/$/, '') || '/';
       setIsLightPage(
+        path === '/about' ||
         path === '/wedding-services' ||
         path === '/services' ||
         path === '/social-services' ||

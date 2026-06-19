@@ -20,7 +20,7 @@ export default function EventPortfolioPage({ eyebrow, title, intro, pages, activ
 
       <div className="relative mx-auto max-w-7xl px-5">
         <div className="mb-12 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.36em] text-champagne">Work Showcase</p>
+          <p className="text-base font-semibold uppercase tracking-[0.34em] text-champagne md:text-lg">Work Showcase</p>
           <h1 className="mt-3 font-serif text-5xl leading-tight text-ivory md:text-6xl">Our Portfolio</h1>
         </div>
 
@@ -54,7 +54,7 @@ export default function EventPortfolioPage({ eyebrow, title, intro, pages, activ
                 <div className="mb-8 grid h-14 w-14 place-items-center rounded-2xl border border-gold/35 bg-obsidian/70 text-gold shadow-glow">
                   <Sparkles size={26} />
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-[0.36em] text-champagne">{eyebrow}</p>
+                <p className="text-base font-semibold uppercase tracking-[0.34em] text-champagne md:text-lg">{eyebrow}</p>
                 <h1 className="mt-5 font-serif text-5xl leading-[0.95] text-ivory md:text-7xl">{title}</h1>
                 <p className="mt-6 text-base leading-8 text-smoke md:text-lg">{intro}</p>
                 <div className="mt-9 flex flex-wrap gap-4">
@@ -85,7 +85,7 @@ export default function EventPortfolioPage({ eyebrow, title, intro, pages, activ
         <div id="portfolio-pages" className="mt-16">
           <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.36em] text-champagne">Gallery</p>
+              <p className="text-base font-semibold uppercase tracking-[0.34em] text-champagne md:text-lg">Gallery</p>
               <h2 className="mt-3 font-serif text-4xl leading-tight text-ivory md:text-5xl">Browse the complete portfolio.</h2>
             </div>
             <p className="max-w-md text-sm leading-7 text-smoke">

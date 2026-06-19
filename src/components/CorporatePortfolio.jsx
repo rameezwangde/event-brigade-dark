@@ -194,7 +194,7 @@ export default function CorporatePortfolio() {
         <div className="text-center mt-12 mb-12">
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="w-6 h-[1px] bg-[#D4AF37]" />
-            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.36em] text-[#D4AF37]">
+            <p className="text-base sm:text-lg font-semibold uppercase tracking-[0.34em] text-[#D4AF37]">
               Corporate Gallery
             </p>
             <span className="w-6 h-[1px] bg-[#D4AF37]" />

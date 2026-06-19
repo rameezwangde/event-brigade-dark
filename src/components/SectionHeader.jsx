@@ -10,7 +10,7 @@ export default function SectionHeader({ eyebrow, title, text, align = 'center', 
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7 }}
     >
-      <p className={`mb-4 text-lg font-semibold uppercase tracking-[0.24em] text-champagne md:text-xl ${eyebrowClassName}`}>{eyebrow}</p>
+      <p className={`mb-4 text-base font-semibold uppercase tracking-[0.34em] text-champagne md:text-lg ${eyebrowClassName}`}>{eyebrow}</p>
       <h2 className="font-serif font-bold text-4xl leading-tight text-ivory md:text-6xl">{title}</h2>
       {text && <p className="mt-5 text-base leading-8 text-smoke md:text-lg">{text}</p>}
     </motion.div>

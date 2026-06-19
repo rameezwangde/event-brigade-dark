@@ -324,17 +324,6 @@ export default function SocialServices() {
                   <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-white leading-snug font-semibold">
                     {socialShowcase.title}
                   </h3>
-                  <a
-                    href="#portfolio-grid"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const el = document.getElementById('portfolio-grid');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#D56A4A] hover:text-white transition-colors"
-                  >
-                    View Portfolio <ArrowRight size={14} />
-                  </a>
                 </div>
               </div>
 

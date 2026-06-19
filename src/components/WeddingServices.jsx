@@ -357,17 +357,6 @@ export default function WeddingServices() {
                   <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-white leading-snug">
                     {weddingShowcase.title}
                   </h3>
-                  <a
-                    href="#portfolio-grid"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const el = document.getElementById('portfolio-grid');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#C8A96B] hover:text-white transition-colors"
-                  >
-                    View Portfolio <ArrowRight size={14} />
-                  </a>
                 </div>
               </div>
 
@@ -432,7 +421,7 @@ export default function WeddingServices() {
 
 
         {/* Section 3: Celebration Flow Grid */}
-        <div className="mt-24">
+        <div className="mt-6">
           <LuxuryHeader
             eyebrow="Celebration Flow"
             title="Seamless Function Timelines"
@@ -452,15 +441,14 @@ export default function WeddingServices() {
                     src={moment.image}
                     alt={moment.title}
                     loading="lazy"
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    className="h-full w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-[#1C1C1C]/10 group-hover:bg-[#1C1C1C]/20 transition-colors" />
+                  <div className="absolute inset-0 bg-[#1C1C1C]/10" />
                 </div>
 
                 {/* Content drawer bottom */}
                 <div className="p-5 flex-grow bg-[#F5F1EA] border-t border-[#C8A96B]/15">
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-[#C8A96B]">Event Brigade</p>
-                  <h3 className="mt-1 font-serif text-xl text-[#1C1C1C]">{moment.title}</h3>
+                  <h3 className="font-serif text-xl text-[#1C1C1C]">{moment.title}</h3>
                   <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#1C1C1C]/75">{moment.text}</p>
                 </div>
               </Reveal>

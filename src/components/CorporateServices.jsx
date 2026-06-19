@@ -432,17 +432,6 @@ export default function CorporateServices() {
                   <h3 className="mt-4 font-serif text-3xl sm:text-4xl text-white leading-snug">
                     {corporateShowcase.title}
                   </h3>
-                  <a
-                    href="#portfolio-grid"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const el = document.getElementById('portfolio-grid');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#D4AF37] hover:text-[#2E6BFF] transition-colors"
-                  >
-                    View Case Studies <ArrowRight size={14} />
-                  </a>
                 </div>
               </div>
 
@@ -508,13 +497,13 @@ export default function CorporateServices() {
         </div>
 
         {/* 8 Premium Corporate Cards Grid */}
-        <div className="mt-28">
+        <div className="mt-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal>
-              <div className="inline-flex items-center gap-2 mb-3">
-                <span className="w-5 h-[1px] bg-[#2E6BFF]" />
-                <p className="text-xs font-semibold uppercase tracking-widest text-[#2E6BFF]">Capabilities</p>
-                <span className="w-5 h-[1px] bg-[#2E6BFF]" />
+              <div className="inline-flex items-center gap-2.5 mb-3.5">
+                <span className="w-8 h-[1px] bg-[#D4AF37]/50" />
+                <p className="text-base sm:text-lg font-semibold uppercase tracking-[0.34em] text-[#D4AF37]">Capabilities</p>
+                <span className="w-8 h-[1px] bg-[#D4AF37]/50" />
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white">
                 Enterprise Production Formats

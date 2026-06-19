@@ -513,12 +513,10 @@ export default function CorporateServices() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-12">
             {b2bCorporateServices.map((service, index) => {
-              const Icon = service.icon;
               return (
-                <Reveal
+                <div
                   key={service.title}
-                  delay={index * 0.04}
-                  className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] shadow-lg transition-all duration-500 hover:-translate-y-1.5 border-t-2 hover:border-t-2 hover:border-t-[#2E6BFF] border-t-[#D4AF37] corp-blue-glow-hover flex flex-col h-full cursor-pointer"
+                  className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] shadow-lg border-t-2 border-t-[#D4AF37] flex flex-col h-full cursor-pointer"
                   onClick={() => {
                     const projectMap = {
                       'Conferences & Summits': 'Grand Summit 2026',
@@ -543,7 +541,7 @@ export default function CorporateServices() {
                       src={service.image}
                       alt={service.title}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="h-full w-full object-cover"
                     />
                     {/* Dark mask overlay */}
                     <div className="absolute inset-0 bg-[#050505]/40" />
@@ -552,17 +550,12 @@ export default function CorporateServices() {
                     <span className="absolute right-4 top-4 rounded-full border border-white/10 bg-[#050505]/80 px-3 py-1 text-[10px] font-mono font-bold text-[#D4AF37]">
                       {service.number}
                     </span>
-
-                    {/* Icon container */}
-                    <div className="absolute left-4 top-4 grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-[#050505]/85 text-[#D4AF37] backdrop-blur-sm">
-                      <Icon size={18} />
-                    </div>
                   </div>
 
                   {/* Card Content Area */}
                   <div className="p-5 flex-grow flex flex-col justify-between bg-[#151515]">
                     <div>
-                      <h3 className="font-serif text-xl sm:text-2xl text-white leading-snug transition-colors group-hover:text-[#D4AF37]">
+                      <h3 className="font-serif text-xl sm:text-2xl text-white leading-snug">
                         {service.title}
                       </h3>
                       <p className="mt-3.5 text-xs sm:text-sm text-white/70 leading-relaxed text-justify">
@@ -570,7 +563,7 @@ export default function CorporateServices() {
                       </p>
                     </div>
                   </div>
-                </Reveal>
+                </div>
               );
             })}
           </div>

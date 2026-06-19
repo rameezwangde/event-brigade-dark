@@ -160,8 +160,6 @@ const corporateCaseStudies = [
   }
 ];
 
-// Mapping of process steps to Lucide icons
-const processIcons = [Target, Lightbulb, Gem, ClipboardCheck, Handshake, BadgeCheck];
 const strengthIcons = [ShieldCheck, BadgeCheck, ClipboardCheck, Sparkles];
 
 // 8 Premium B2B Corporate Formats
@@ -303,10 +301,7 @@ export default function CorporateServices() {
     setNetworkNodes(nodes);
   }, []);
 
-  const corporateData = services.find(s => s.title === 'Corporate Events') || { servicesWeProvide: [] };
-  const splitIndex = Math.floor(corporateData.servicesWeProvide.length / 2);
-  const corporateEventsList = corporateData.servicesWeProvide.slice(0, splitIndex);
-  const corporateSolutionsList = corporateData.servicesWeProvide.slice(splitIndex);
+
 
   return (
     <div className="relative w-full min-h-screen bg-[#050505] text-[#FFFFFF] font-sans overflow-x-hidden selection:bg-[#2E6BFF]/30 selection:text-white pt-28 pb-16">
@@ -564,119 +559,6 @@ export default function CorporateServices() {
           </div>
         </div>
 
-        {/* Strategic Workflow Section */}
-        <div className="mt-28">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 mb-3">
-                <span className="w-5 h-[1px] bg-[#D4AF37]" />
-                <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Strategic Process</p>
-                <span className="w-5 h-[1px] bg-[#D4AF37]" />
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white">
-                Discipline-Led Event Architecture
-              </h2>
-            </Reveal>
-          </div>
-
-          {/* Creative Connected Roadmap */}
-          <div className="relative mt-20 mx-auto max-w-6xl px-4">
-            {/* The Connecting Line (Desktop) */}
-            <div className="absolute left-10 right-10 top-10 hidden h-[2px] bg-gradient-to-r from-[#D4AF37]/10 via-[#2E6BFF]/30 to-[#D4AF37]/10 lg:block">
-              {/* Active Progress glow indicator */}
-              <div 
-                className="h-full bg-gradient-to-r from-[#2E6BFF] to-[#D4AF37] transition-all duration-700 ease-out shadow-[0_0_15px_#2E6BFF]"
-                style={{ width: `${(activeStep / 5) * 100}%` }}
-              />
-            </div>
-
-            {/* The Connecting Line (Mobile/Tablet) */}
-            <div className="absolute left-10 bottom-8 top-10 w-[2px] bg-gradient-to-b from-[#D4AF37]/10 via-[#2E6BFF]/30 to-[#D4AF37]/10 lg:hidden">
-              <div 
-                className="w-full bg-gradient-to-b from-[#2E6BFF] to-[#D4AF37] transition-all duration-700 ease-out shadow-[0_0_15px_#2E6BFF]"
-                style={{ height: `${(activeStep / 5) * 100}%` }}
-              />
-            </div>
-
-            {/* Steps Container */}
-            <div className="relative grid gap-12 lg:grid-cols-6 lg:gap-6">
-              {corporatePortfolio.workflow.map((stepName, index) => {
-                const Icon = processIcons[index] || Check;
-                const isActive = activeStep === index;
-                const isHovered = hoveredStep === index;
-                
-                // Detailed descriptions for each step to make the roadmap rich
-                const stepDescriptions = [
-                  "Understanding goals, audience metrics, theme design preferences, and branding targets.",
-                  "Defining strict timelines, budget coordinates, team assignments, and operational blueprints.",
-                  "Developing 3D stage renders, screen templates, layout maps, and technical specs.",
-                  "Managing check-in queues, VIP logistics, technical calls, and real-time execution flow.",
-                  "Selecting and coordinating onboarding checklists for vetted vendors and local security.",
-                  "Assembling client evaluations, item counts, and reconciliation audits."
-                ];
-
-                return (
-                  <Reveal
-                    key={stepName}
-                    delay={index * 0.05}
-                    className="relative flex lg:flex-col items-start lg:items-center text-left lg:text-center group"
-                  >
-                    {/* Interactive Node Point */}
-                    <div 
-                      className="relative z-10 flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border transition-all duration-500 cursor-pointer lg:mx-auto"
-                      style={{
-                        borderColor: isActive || isHovered ? '#D4AF37' : 'rgba(255, 255, 255, 0.1)',
-                        backgroundColor: isActive || isHovered ? '#151515' : '#0D0D0D',
-                        boxShadow: isActive || isHovered ? '0 0 25px rgba(212, 175, 55, 0.25)' : 'none'
-                      }}
-                      onMouseEnter={() => {
-                        setHoveredStep(index);
-                        setActiveStep(index);
-                      }}
-                      onMouseLeave={() => setHoveredStep(null)}
-                      onClick={() => setActiveStep(index)}
-                    >
-                      {/* Step Indicator Number */}
-                      <span className="absolute -top-3 -right-3 font-mono text-[10px] font-bold px-2 py-0.5 rounded-full border border-white/10 bg-[#050505] text-[#D4AF37]">
-                        0{index + 1}
-                      </span>
-                      
-                      <Icon 
-                        size={26} 
-                        className="transition-transform duration-500 group-hover:scale-110"
-                        style={{ color: isActive || isHovered ? '#D4AF37' : 'rgba(255,255,255,0.4)' }}
-                      />
-                    </div>
-
-                    {/* Step Content Card */}
-                    <div 
-                      className="ml-6 lg:ml-0 lg:mt-6 transition-all duration-500 lg:w-full"
-                      onMouseEnter={() => {
-                        setHoveredStep(index);
-                        setActiveStep(index);
-                      }}
-                      onMouseLeave={() => setHoveredStep(null)}
-                    >
-                      <h3 
-                        className="font-serif text-lg md:text-xl font-semibold transition-colors duration-300"
-                        style={{ color: isActive || isHovered ? '#D4AF37' : '#FFFFFF' }}
-                      >
-                        {stepName}
-                      </h3>
-                      
-                      <p 
-                        className="mt-3 text-xs md:text-sm leading-relaxed text-white/60 transition-opacity duration-500 text-justify lg:text-center"
-                        style={{ opacity: isActive || isHovered ? 1 : 0.6 }}
-                      >
-                        {stepDescriptions[index]}
-                      </p>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-        </div>
 
         {/* Strengths & Executive Focus Section */}
         <div className="mt-28 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
@@ -719,49 +601,7 @@ export default function CorporateServices() {
           </div>
         </div>
 
-        {/* Detailed Capabilities Lists */}
-        <div className="mt-28 grid gap-6 md:grid-cols-2">
-          <Reveal
-            className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#151515]/60 p-8 shadow-xl transition-all duration-300 hover:border-[#D4AF37]/30 h-full flex flex-col"
-          >
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]/80 font-sans">Operations & Management</p>
-            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-white">Corporate Events Checklist</h3>
-            <div className="mt-4 h-[1px] w-24 bg-gradient-to-r from-[#D4AF37] to-transparent" />
-            
-            <ul className="mt-6.5 grid gap-x-6 gap-y-3.5 sm:grid-cols-2 flex-grow">
-              {corporateEventsList.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 text-xs sm:text-sm leading-relaxed text-white/85"
-                >
-                  <span className="mt-1 shrink-0 text-[#D4AF37] text-[8px]">◆</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
 
-          <Reveal
-            delay={0.08}
-            className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#151515]/60 p-8 shadow-xl transition-all duration-300 hover:border-[#D4AF37]/30 h-full flex flex-col"
-          >
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]/80 font-sans">Technical Production</p>
-            <h3 className="mt-3 font-serif text-2xl sm:text-3xl font-semibold text-white">Corporate Solutions Checklist</h3>
-            <div className="mt-4 h-[1px] w-24 bg-gradient-to-r from-[#D4AF37] to-transparent" />
-            
-            <ul className="mt-6.5 grid gap-x-6 gap-y-3.5 sm:grid-cols-2 flex-grow">
-              {corporateSolutionsList.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 text-xs sm:text-sm leading-relaxed text-white/85"
-                >
-                  <span className="mt-1 shrink-0 text-[#D4AF37] text-[8px]">◆</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
 
         {/* Enterprise Client Logs */}
         <div className="mt-28 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">

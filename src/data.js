@@ -123,9 +123,14 @@ export const weddingShowcase = {
     'From bespoke décor and guest hospitality to entertainment and seamless coordination, we bring together every element needed to create extraordinary wedding experiences.\n\nBlending creativity, elegance, and precision, we craft moments that will be cherished for a lifetime.',
   modules: [
     {
-      title: 'Invitation Management',
+      title: 'Invitation Management & RSVP',
       text: 'From elegant invitations to seamless RSVP tracking, we ensure every guest is informed, engaged, and welcomed from the very beginning.',
       image: weddingInvites
+    },
+    {
+      title: 'Logistics Management',
+      text: 'From production timelines and vendor coordination to transport schedules, we manage all behind-the-scenes logistics for a stress-free wedding day.',
+      image: weddingActivities
     },
     {
       title: 'Hospitality Excellence',

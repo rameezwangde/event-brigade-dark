@@ -13,15 +13,21 @@ export default function Founder() {
         <div className="mx-auto mt-12 grid max-w-6xl items-center gap-8 lg:grid-cols-[0.46fr_0.54fr] lg:gap-12">
           <Reveal className="relative w-full justify-self-center lg:max-w-lg">
             <div className="absolute -inset-3 rounded-[2.25rem] border border-gold/25 shadow-glow" />
-            <img
-              src={images.founder}
-              alt="Kunal Garg, Founder and Director of Event Brigade"
-              loading="lazy"
-              className="relative aspect-[4/5] max-h-[580px] w-full rounded-[2rem] object-cover object-[center_22%] shadow-soft"
-            />
-            <div className="absolute bottom-5 left-5 max-w-[calc(100%-2.5rem)] rounded-2xl border border-champagne/20 bg-obsidian/80 p-4 backdrop-blur-md">
-              <p className="font-serif text-2xl leading-none text-ivory">Kunal Garg</p>
-              <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-champagne">Founder, Director</p>
+            <div className="relative overflow-hidden rounded-[2rem] aspect-[4/5] max-h-[580px] w-full shadow-soft">
+              <img
+                src={images.founder}
+                alt="Kunal Garg, Founder and Director of Event Brigade"
+                loading="lazy"
+                className="h-full w-full object-cover object-[center_22%]"
+              />
+              {/* Fade out gradient at the bottom of the photo */}
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-obsidian via-obsidian/45 to-transparent pointer-events-none" />
+
+              {/* Text Badge attached to the layout box bottom-left */}
+              <div className="absolute bottom-0 left-0 rounded-tr-2xl border-t border-r border-champagne/20 bg-obsidian/90 px-6 py-4 backdrop-blur-md z-10">
+                <p className="font-serif text-2xl leading-none text-white font-semibold">Kunal Garg</p>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-champagne">Founder, Director</p>
+              </div>
             </div>
           </Reveal>
           <Reveal className="flex flex-col justify-center gap-8 lg:py-6">

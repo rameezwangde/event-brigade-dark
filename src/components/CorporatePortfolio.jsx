@@ -287,41 +287,7 @@ export default function CorporatePortfolio() {
               })}
             </AnimatePresence>
           </div>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto border border-white/10 rounded-[24px] bg-[#0C1220]/45 p-8 sm:p-12 text-center backdrop-blur-md relative overflow-hidden"
-          >
-            {/* Tech Corner Crosshairs */}
-            <div className="absolute top-4 left-4 text-white/10 font-mono text-[9px] select-none">SYS.RAW_VAULT // 0x4B</div>
-            <div className="absolute bottom-4 right-4 text-[#2E6BFF]/20 font-mono text-[9px] select-none">READY FOR UPLOAD</div>
-
-            <div className="mx-auto w-16 h-16 rounded-full bg-[#2E6BFF]/10 flex items-center justify-center border border-[#2E6BFF]/25 text-[#2E6BFF] mb-6 shadow-[0_0_15px_rgba(46,107,255,0.15)]">
-              <ImageIcon size={28} className="animate-pulse" />
-            </div>
-
-            <h3 className="font-serif text-2xl sm:text-3xl text-white mb-4">
-              Corporate Gallery <span className="text-[#D4AF37] italic">Vault Empty</span>
-            </h3>
-
-            <p className="text-white/60 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-8 font-sans">
-              This space is configured for direct event folder uploads. Once raw photography folders are uploaded to the server, cards will dynamically render here with full-size interactive galleries.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs font-mono text-white/40">
-              <span className="flex items-center gap-2 border border-white/5 bg-white/5 px-3.5 py-1.5 rounded-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2E6BFF]" />
-                PATH: src/assets/corporate-gallery/
-              </span>
-              <span className="flex items-center gap-2 border border-white/5 bg-white/5 px-3.5 py-1.5 rounded-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                FORMATS: JPG, PNG, WEBP
-              </span>
-            </div>
-          </motion.div>
-        )}
+        ) : null}
       </div>
 
       {/* Full-screen Booklet Modal / Lightbox */}

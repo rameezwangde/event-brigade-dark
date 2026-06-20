@@ -123,15 +123,26 @@ const weddingProjects = [
 
 
 
+const mehendiVisual = 'https://cdn0.weddingwire.in/article/1411/original/960/jpg/21141-mehndi-ceremony-jayesh-khaturia-photography-udaipur-count-out-your-guests.jpeg';
+const cocktailVisual = 'https://tse3.mm.bing.net/th/id/OIP.G4OQd8PehmqpSEtN6UtkkQHaE8?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3';
+
+const welcomeVisual = 'https://tse2.mm.bing.net/th/id/OIP.XupaELD8RaDk41tGM_ep0AHaHa?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3';
+const haldiVisual = 'https://tse1.mm.bing.net/th/id/OIP.FWbFDMhofCx6N2pjHUV6qAHaE7?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3';
+
+const sangeetVisualUrl = 'https://tse4.mm.bing.net/th/id/OIP.Cenu4rdK4ozcXRpy7OQNNgHaE8?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3';
+const poolPartyVisualUrl = 'https://images.stockcake.com/public/2/4/b/24be6831-23a8-4a26-bd33-321a3ce1ce3c_large/poolside-celebration-night-stockcake.jpg';
+const mandapVisualUrl = 'https://tse2.mm.bing.net/th/id/OIP.ZbrY-Y5-UOTCKVXOp3BKDgHaE8?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3';
+const receptionVisualUrl = 'https://thfvnext.bing.com/th/id/OIP.ZQBEDIAoD_p71Fe4dhNlYQHaE8?o=7&cb=thfvnextfalcon2rm=3&rs=1&pid=ImgDetMain&o=7&rm=3';
+
 const celebrationMoments = [
-  { title: 'Welcome Experience', image: guestWelcome, text: 'Creating memorable first impressions through seamless arrivals, hospitality, and guest assistance.' },
-  { title: 'Haldi Celebration', image: haldiMehendi, text: 'Vibrant rituals brought to life with thoughtful planning, decor, and guest experiences.' },
-  { title: 'Mehendi Celebration', image: haldiMehendi, text: 'A colorful celebration filled with artistry, entertainment, and joyful moments.' },
-  { title: 'Sangeet Night', image: sangeetVisual, text: 'Performance-driven evenings featuring music, dance, entertainment, and family celebrations.' },
-  { title: 'Cocktail Evening', image: reception, text: 'Sophisticated social experiences with curated entertainment, music, and elevated hospitality.' },
-  { title: 'Poolside Celebration', image: poolPartyVisual, text: 'Relaxed daytime festivities with themed styling, music, refreshments, and guest engagement.' },
-  { title: 'Wedding Ceremony', image: mandapVisual, text: 'Beautifully orchestrated ceremonies that honor traditions while creating unforgettable memories.' },
-  { title: 'Reception Celebration', image: reception, text: 'Elegant celebrations featuring entertainment, hospitality, dining, and seamless event flow.' },
+  { title: 'Welcome Experience', image: welcomeVisual, text: 'Creating memorable first impressions through seamless arrivals, hospitality, and guest assistance.' },
+  { title: 'Haldi Celebration', image: haldiVisual, text: 'Vibrant rituals brought to life with thoughtful planning, decor, and guest experiences.' },
+  { title: 'Mehendi Celebration', image: mehendiVisual, text: 'A colorful celebration filled with artistry, entertainment, and joyful moments.' },
+  { title: 'Sangeet Night', image: sangeetVisualUrl, text: 'Performance-driven evenings featuring music, dance, entertainment, and family celebrations.' },
+  { title: 'Cocktail Evening', image: cocktailVisual, text: 'Sophisticated social experiences with curated entertainment, music, and elevated hospitality.' },
+  { title: 'Poolside Celebration', image: poolPartyVisualUrl, text: 'Relaxed daytime festivities with themed styling, music, refreshments, and guest engagement.' },
+  { title: 'Wedding Ceremony', image: mandapVisualUrl, text: 'Beautifully orchestrated ceremonies that honor traditions while creating unforgettable memories.' },
+  { title: 'Reception Celebration', image: receptionVisualUrl, text: 'Elegant celebrations featuring entertainment, hospitality, dining, and seamless event flow.' },
   { title: 'Couple Experiences', image: brideGroomVisual, text: "Dedicated spaces and moments designed around the bride and groom's journey." },
   { title: 'Signature Entries', image: specialEntry, text: 'Bride and groom entries planned with cues, music, performers, and visual impact.' }
 ];

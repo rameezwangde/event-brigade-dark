@@ -123,17 +123,26 @@ export default function Navbar() {
           className={`absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border p-1.5 shadow-soft backdrop-blur-xl transition duration-300 lg:flex ${
             isLightPage
               ? scrolled
-                ? 'border-[#C8A96B]/35 bg-[#FAF7F2]/90 shadow-glow text-[#1C1C1C]'
-                : 'border-[#C8A96B]/15 bg-[#FAF7F2]/50 text-[#1C1C1C]'
-              : scrolled
-                ? 'border-champagne/15 bg-obsidian/82 text-ivory'
-                : 'border-champagne/15 bg-obsidian/50 text-ivory'
+                ? window.location.pathname.includes('social')
+                  ? 'border-[#D56A4A]/30 bg-[#F9F5EF]/90 shadow-glow text-[#222222]'
+                  : 'border-[#C8A96B]/35 bg-[#FAF7F2]/90 shadow-glow text-[#1C1C1C]'
+                : window.location.pathname.includes('social')
+                  ? 'border-[#D56A4A]/15 bg-[#F9F5EF]/55 text-[#222222]'
+                  : 'border-[#C8A96B]/15 bg-[#FAF7F2]/50 text-[#1C1C1C]'
+              : window.location.pathname.includes('corporate')
+                ? scrolled
+                  ? 'border-[#2E6BFF]/35 bg-[#070D1E]/90 shadow-[0_0_20px_rgba(46,107,255,0.2)] text-white'
+                  : 'border-[#2E6BFF]/15 bg-[#070D1E]/60 text-white'
+                : scrolled
+                  ? 'border-champagne/20 bg-[#121214]/90 shadow-[0_4px_30px_rgba(0,0,0,0.4)] text-ivory'
+                  : 'border-champagne/15 bg-obsidian/60 text-ivory'
           }`}
         >
           {links.map((link) => {
             const hasDropdown = !!link.dropdown;
             const isLinkActive = active === link.id;
             const isSocialPage = window.location.pathname.includes('social');
+            const isCorporatePage = window.location.pathname.includes('corporate');
             return (
               <div key={link.id} className="group relative">
                 <a
@@ -142,14 +151,16 @@ export default function Navbar() {
                   aria-current={isLinkActive ? 'page' : undefined}
                   className={`relative flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold transition duration-300 ${
                     isLinkActive
-                      ? isSocialPage
+                      ? isSocialPage || isCorporatePage
                         ? 'text-white'
                         : 'text-obsidian'
                       : isLightPage
                         ? isSocialPage
                           ? 'text-[#222222]/75 hover:bg-[#D56A4A]/10 hover:text-[#D56A4A]'
                           : 'text-[#1C1C1C]/75 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
-                        : 'text-ivory/72 hover:bg-ivory/[0.06] hover:text-gold'
+                        : isCorporatePage
+                          ? 'text-ivory/72 hover:bg-[#2E6BFF]/10 hover:text-[#2E6BFF]'
+                          : 'text-ivory/72 hover:bg-ivory/[0.06] hover:text-gold'
                   }`}
                 >
                   {isLinkActive && (
@@ -158,9 +169,11 @@ export default function Navbar() {
                       className={`absolute inset-0 rounded-full ${
                         isSocialPage
                           ? 'bg-[#D56A4A] shadow-sm'
-                          : isLightPage
-                            ? 'bg-gradient-to-r from-[#C8A96B] to-[#EDE4D3] shadow-sm border border-[#C8A96B]/30'
-                            : 'bg-gradient-to-r from-gold to-champagne shadow-glow'
+                          : isCorporatePage
+                            ? 'bg-gradient-to-r from-[#2E6BFF] to-[#1E40AF] shadow-[0_0_15px_rgba(46,107,255,0.45)] border border-[#2E6BFF]/30'
+                            : isLightPage
+                              ? 'bg-gradient-to-r from-[#C8A96B] to-[#EDE4D3] shadow-sm border border-[#C8A96B]/30'
+                              : 'bg-gradient-to-r from-gold to-champagne shadow-glow'
                       }`}
                       transition={{ type: 'spring', stiffness: 420, damping: 34 }}
                     />
@@ -172,14 +185,16 @@ export default function Navbar() {
                         size={14}
                         className={`transition-transform duration-300 group-hover:rotate-180 ${
                           isLinkActive
-                            ? isSocialPage
+                            ? isSocialPage || isCorporatePage
                               ? 'text-white'
                               : 'text-obsidian'
                             : isLightPage
                               ? isSocialPage
                                 ? 'text-[#D56A4A] group-hover:text-[#D56A4A]'
                                 : 'text-[#1C1C1C]/60 group-hover:text-[#C8A96B]'
-                              : 'text-ivory/60 group-hover:text-gold'
+                              : isCorporatePage
+                                ? 'text-[#2E6BFF] group-hover:text-[#2E6BFF]'
+                                : 'text-ivory/60 group-hover:text-gold'
                         }`}
                       />
                     )}
@@ -194,7 +209,9 @@ export default function Navbar() {
                         ? isSocialPage
                           ? 'border-[#D56A4A]/20 bg-[#F9F5EF]/95 shadow-[#D56A4A]/5'
                           : 'border-[#C8A96B]/20 bg-[#FAF7F2]/95 shadow-[#C8A96B]/5'
-                        : 'border-champagne/20 bg-charcoal/95 shadow-gold/5'
+                        : isCorporatePage
+                          ? 'border-[#2E6BFF]/25 bg-[#0A1128]/95 shadow-[#2E6BFF]/5'
+                          : 'border-champagne/20 bg-charcoal/95 shadow-gold/5'
                     }`}>
                       {link.dropdown.map((subItem) => (
                         <a
@@ -206,7 +223,9 @@ export default function Navbar() {
                               ? isSocialPage
                                 ? 'text-[#222222]/80 hover:bg-[#D56A4A]/15 hover:text-[#D56A4A]'
                                 : 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/15 hover:text-[#C8A96B]'
-                              : 'text-ivory/80 hover:bg-gold/10 hover:text-gold'
+                              : isCorporatePage
+                                ? 'text-ivory/80 hover:bg-[#2E6BFF]/15 hover:text-[#2E6BFF]'
+                                : 'text-ivory/80 hover:bg-gold/10 hover:text-gold'
                           }`}
                         >
                           {subItem.label}
@@ -224,8 +243,12 @@ export default function Navbar() {
           type="button"
           className={`grid h-12 w-12 place-items-center rounded-full border transition duration-300 shadow-soft backdrop-blur-xl lg:hidden ${
             isLightPage
-              ? `border-[#C8A96B]/25 bg-[#FAF7F2]/60 text-[#C8A96B] hover:border-[#C8A96B]/60 ${open ? 'bg-[#C8A96B] text-[#FAF7F2]' : ''}`
-              : `border-champagne/25 bg-obsidian/60 text-gold hover:border-gold/60 ${open ? 'bg-gold text-obsidian' : ''}`
+              ? window.location.pathname.includes('social')
+                ? `border-[#D56A4A]/25 bg-[#F9F5EF]/60 text-[#D56A4A] hover:border-[#D56A4A]/60 ${open ? 'bg-[#D56A4A] text-white' : ''}`
+                : `border-[#C8A96B]/25 bg-[#FAF7F2]/60 text-[#C8A96B] hover:border-[#C8A96B]/60 ${open ? 'bg-[#C8A96B] text-[#FAF7F2]' : ''}`
+              : window.location.pathname.includes('corporate')
+                ? `border-[#2E6BFF]/25 bg-[#070D1E]/60 text-[#2E6BFF] hover:border-[#2E6BFF]/60 ${open ? 'bg-[#2E6BFF] text-white' : ''}`
+                : `border-champagne/25 bg-obsidian/60 text-gold hover:border-gold/60 ${open ? 'bg-gold text-obsidian' : ''}`
           }`}
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
@@ -241,14 +264,20 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           className={`mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.75rem] border p-2 shadow-soft backdrop-blur-xl lg:hidden ${
             isLightPage
-              ? 'border-[#C8A96B]/20 bg-[#FAF7F2]/95'
-              : 'border-champagne/20 bg-charcoal/95'
+              ? window.location.pathname.includes('social')
+                ? 'border-[#D56A4A]/20 bg-[#F9F5EF]/95'
+                : 'border-[#C8A96B]/20 bg-[#FAF7F2]/95'
+              : window.location.pathname.includes('corporate')
+                ? 'border-[#2E6BFF]/20 bg-[#070D1E]/95 shadow-[0_8px_32px_rgba(46,107,255,0.15)]'
+                : 'border-champagne/20 bg-charcoal/95'
           }`}
         >
           {links.map((link) => {
             const hasDropdown = !!link.dropdown;
             const isExpanded = expandedMobileItem === link.id;
             const isLinkActive = active === link.id;
+            const isSocialPage = window.location.pathname.includes('social');
+            const isCorporatePage = window.location.pathname.includes('corporate');
 
             return (
               <div key={link.id} className="block">
@@ -260,17 +289,35 @@ export default function Navbar() {
                       className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm font-semibold transition text-left ${
                         isLinkActive
                           ? isLightPage
-                            ? 'bg-[#C8A96B]/15 text-[#C8A96B]'
-                            : 'bg-gold/10 text-gold'
+                            ? isSocialPage
+                              ? 'bg-[#D56A4A]/15 text-[#D56A4A]'
+                              : 'bg-[#C8A96B]/15 text-[#C8A96B]'
+                            : isCorporatePage
+                              ? 'bg-[#2E6BFF]/15 text-[#2E6BFF]'
+                              : 'bg-gold/10 text-gold'
                           : isLightPage
-                            ? 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
-                            : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
+                            ? isSocialPage
+                              ? 'text-[#222222]/80 hover:bg-[#D56A4A]/10 hover:text-[#D56A4A]'
+                              : 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
+                            : isCorporatePage
+                              ? 'text-white/80 hover:bg-[#2E6BFF]/10 hover:text-[#2E6BFF]'
+                              : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
                       }`}
                     >
                       <span>{link.label}</span>
                       <ChevronDown
                         size={16}
-                        className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-gold' : 'text-ivory/60'}`}
+                        className={`transition-transform duration-300 ${
+                          isExpanded 
+                            ? 'rotate-180 text-gold' 
+                            : isLightPage 
+                              ? isSocialPage 
+                                ? 'text-[#D56A4A]/60' 
+                                : 'text-[#C8A96B]/60' 
+                              : isCorporatePage 
+                                ? 'text-[#2E6BFF]/60' 
+                                : 'text-ivory/60'
+                        }`}
                       />
                     </button>
                     
@@ -279,7 +326,15 @@ export default function Navbar() {
                         isExpanded ? 'max-h-40 opacity-100 mt-1 mb-2' : 'max-h-0 opacity-0 pointer-events-none'
                       }`}
                     >
-                      <div className={`pl-6 space-y-1 border-l ml-4 ${isLightPage ? 'border-[#C8A96B]/20' : 'border-champagne/15'}`}>
+                      <div className={`pl-6 space-y-1 border-l ml-4 ${
+                        isLightPage 
+                          ? isSocialPage 
+                            ? 'border-[#D56A4A]/20' 
+                            : 'border-[#C8A96B]/20' 
+                          : isCorporatePage 
+                            ? 'border-[#2E6BFF]/15' 
+                            : 'border-champagne/15'
+                      }`}>
                         {link.dropdown.map((subItem) => (
                           <a
                             key={subItem.label}
@@ -291,8 +346,12 @@ export default function Navbar() {
                             }}
                             className={`block rounded-xl px-4 py-2.5 text-xs font-semibold transition ${
                               isLightPage
-                                ? 'text-[#1C1C1C]/70 hover:text-[#C8A96B]'
-                                : 'text-ivory/70 hover:text-gold'
+                                ? isSocialPage
+                                  ? 'text-[#222222]/70 hover:text-[#D56A4A] hover:bg-[#D56A4A]/5'
+                                  : 'text-[#1C1C1C]/70 hover:text-[#C8A96B] hover:bg-[#C8A96B]/5'
+                                : isCorporatePage
+                                  ? 'text-white/70 hover:text-[#2E6BFF] hover:bg-[#2E6BFF]/5'
+                                  : 'text-ivory/70 hover:text-gold hover:bg-gold/5'
                             }`}
                           >
                             {subItem.label}
@@ -313,11 +372,19 @@ export default function Navbar() {
                     className={`block rounded-2xl px-4 py-3 text-sm font-semibold transition ${
                       isLinkActive
                         ? isLightPage
-                          ? 'bg-[#C8A96B] text-white'
-                          : 'bg-gold text-obsidian'
+                          ? isSocialPage
+                            ? 'bg-[#D56A4A] text-white'
+                            : 'bg-[#C8A96B] text-white'
+                          : isCorporatePage
+                            ? 'bg-[#2E6BFF] text-white shadow-[0_0_12px_rgba(46,107,255,0.25)]'
+                            : 'bg-gold text-obsidian'
                         : isLightPage
-                          ? 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
-                          : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
+                          ? isSocialPage
+                            ? 'text-[#222222]/80 hover:bg-[#D56A4A]/10 hover:text-[#D56A4A]'
+                            : 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
+                          : isCorporatePage
+                            ? 'text-white/80 hover:bg-[#2E6BFF]/10 hover:text-[#2E6BFF]'
+                            : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
                     }`}
                   >
                     {link.label}

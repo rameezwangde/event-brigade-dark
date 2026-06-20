@@ -6,8 +6,6 @@ import {
   Gift,
   Star,
   Users,
-  Award,
-  MapPin,
   Smile,
   ChevronLeft,
   ChevronRight,
@@ -251,23 +249,7 @@ export default function SocialServices() {
     }
   ];
 
-  const testimonials = [
-    {
-      quote: "Event Brigade made my mom's 50th birthday truly magical. Every detail was beyond perfect!",
-      author: "Ananya Sharma",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&h=120&q=80"
-    },
-    {
-      quote: "The teddy baby shower and custom onesie activity station kept our family smiling all day.",
-      author: "Meera Kapoor",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80"
-    },
-    {
-      quote: "Managing a large community event with multiple resident coordinates was executed flawlessly.",
-      author: "Rohan Singhal",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80"
-    }
-  ];
+
 
   return (
     <div
@@ -497,84 +479,7 @@ export default function SocialServices() {
 
       </div>
 
-      {/* COMBINED STATS & TESTIMONIAL BAR */}
-      <div className="border-t border-[#D56A4A]/15 bg-[#FAF7F2] py-10 mt-16">
-        {/* STATS SECTION ROW */}
-        <div className="mx-auto max-w-7xl px-5 border-b border-[#D56A4A]/10 pb-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="flex items-center gap-3 justify-center md:justify-start">
-              <div className="text-[#D56A4A] shrink-0">
-                <Users size={24} />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">1900+</span>
-                <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase mt-1.5">Events Planned</span>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-3 justify-center md:justify-start">
-              <div className="text-[#D56A4A] shrink-0">
-                <Award size={24} />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">15+</span>
-                <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase mt-1.5">Years of Experience</span>
-              </div>
-            </div>
 
-            <div className="flex items-center gap-3 justify-center md:justify-start">
-              <div className="text-[#D56A4A] shrink-0">
-                <MapPin size={24} />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">25+</span>
-                <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase mt-1.5">Cities Served</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 justify-center md:justify-start">
-              <div className="text-[#D56A4A] shrink-0">
-                <Smile size={24} />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="font-serif text-2xl sm:text-3xl font-bold leading-none text-[#222222]">50k+</span>
-                <span className="text-[11px] font-bold tracking-wider text-[#222222]/60 uppercase mt-1.5">Smiles Delivered</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* TESTIMONIALS SECTION ROW */}
-        <div className="mx-auto max-w-7xl px-5 pt-10">
-          <div className="flex gap-6 overflow-x-auto pb-6 snap-x scroll-smooth no-scrollbar md:grid md:grid-cols-3 md:overflow-x-visible md:pb-0">
-            {testimonials.map((t, idx) => (
-              <div
-                key={idx}
-                className="snap-start shrink-0 w-[85vw] sm:w-[350px] md:w-full rounded-2xl border border-[#D56A4A]/15 bg-white p-6 shadow-sm flex flex-col justify-between"
-              >
-                <div>
-                  <span className="font-serif text-4xl text-[#D56A4A]/25 leading-none block mb-1">“</span>
-                  <p className="font-sans text-sm sm:text-base text-[#222222] italic leading-relaxed">
-                    {t.quote}
-                  </p>
-                </div>
-                <div className="mt-6 border-t border-[#D56A4A]/10 pt-4 flex items-center gap-3">
-                  <div className="h-10 w-10 overflow-hidden rounded-full border border-[#D56A4A]/25 shadow-sm">
-                    <img
-                      src={t.image}
-                      alt={t.author}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <span className="font-sans text-xs sm:text-sm font-bold text-[#222222]">
-                    – {t.author}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Booklet Modal / Lightbox for Kunal's 50th Birthday Celebration */}
       <AnimatePresence>

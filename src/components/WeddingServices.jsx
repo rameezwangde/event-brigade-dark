@@ -421,7 +421,7 @@ export default function WeddingServices() {
 
 
         {/* Section 3: Celebration Flow Grid */}
-        <div className="mt-6">
+        <div className="mt-16 md:mt-20">
           <LuxuryHeader
             eyebrow="Celebration Flow"
             title="Seamless Function Timelines"

@@ -489,7 +489,7 @@ export default function CorporateServices() {
         </div>
 
         {/* 8 Premium Corporate Cards Grid */}
-        <div className="mt-6">
+        <div className="mt-16 md:mt-20">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal>
               <div className="inline-flex items-center gap-2.5 mb-3.5">
@@ -508,24 +508,7 @@ export default function CorporateServices() {
               return (
                 <div
                   key={service.title}
-                  className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] shadow-lg border-t-2 border-t-[#D4AF37] flex flex-col h-full cursor-pointer"
-                  onClick={() => {
-                    const projectMap = {
-                      'Conferences & Summits': 'Grand Summit 2026',
-                      'Product Launches': 'Next-Gen SUV Unveil',
-                      'Dealer Meets': 'B2B Channel Syndicate',
-                      'Awards Nights': 'Annual Merit Awards',
-                      'Annual Days': 'Experiential Brand Launch',
-                      'Leadership Events': 'CEO Leadership Roundtable'
-                    };
-                    const targetTitle = projectMap[service.title];
-                    if (targetTitle) {
-                      const proj = corporateCaseStudies.find(p => p.title === targetTitle);
-                      if (proj) {
-                        openLightbox(proj);
-                      }
-                    }
-                  }}
+                  className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] shadow-lg border-t-2 border-t-[#D4AF37] flex flex-col h-full"
                 >
                   {/* Card Image Area */}
                   <div className="relative h-44 overflow-hidden">

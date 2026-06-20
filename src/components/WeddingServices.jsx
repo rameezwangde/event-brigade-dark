@@ -124,14 +124,16 @@ const weddingProjects = [
 
 
 const celebrationMoments = [
-  { title: 'Welcome & Check-In', image: guestWelcome, text: 'Guest arrival, festivity desk, room keys, luggage flow and warm first impressions.' },
-  { title: 'Haldi & Mehendi', image: haldiMehendi, text: 'Festive decor, ritual support, guest comfort and function-wise experience details.' },
-  { title: 'Sangeet', image: sangeetVisual, text: 'Performance-led evenings with stage, sound, artists, choreography and family moments.' },
-  { title: 'Pool Party', image: poolPartyVisual, text: 'Relaxed daytime celebrations with themed styling, music, service and guest engagement.' },
-  { title: 'Vidhi Mandap', image: mandapVisual, text: 'Ceremony settings shaped around tradition, aesthetics, movement and ritual requirements.' },
-  { title: 'Reception', image: reception, text: 'Elegant hosting, entertainment, stage flow, hospitality and dining coordination.' },
-  { title: 'Bride & Groom Sitout', image: brideGroomVisual, text: 'Designed focal zones for portraits, greetings and couple-led experiences.' },
-  { title: 'Special Entries', image: specialEntry, text: 'Bride and groom entries planned with cues, music, performers and visual impact.' }
+  { title: 'Welcome Experience', image: guestWelcome, text: 'Creating memorable first impressions through seamless arrivals, hospitality, and guest assistance.' },
+  { title: 'Haldi Celebration', image: haldiMehendi, text: 'Vibrant rituals brought to life with thoughtful planning, decor, and guest experiences.' },
+  { title: 'Mehendi Celebration', image: haldiMehendi, text: 'A colorful celebration filled with artistry, entertainment, and joyful moments.' },
+  { title: 'Sangeet Night', image: sangeetVisual, text: 'Performance-driven evenings featuring music, dance, entertainment, and family celebrations.' },
+  { title: 'Cocktail Evening', image: reception, text: 'Sophisticated social experiences with curated entertainment, music, and elevated hospitality.' },
+  { title: 'Poolside Celebration', image: poolPartyVisual, text: 'Relaxed daytime festivities with themed styling, music, refreshments, and guest engagement.' },
+  { title: 'Wedding Ceremony', image: mandapVisual, text: 'Beautifully orchestrated ceremonies that honor traditions while creating unforgettable memories.' },
+  { title: 'Reception Celebration', image: reception, text: 'Elegant celebrations featuring entertainment, hospitality, dining, and seamless event flow.' },
+  { title: 'Couple Experiences', image: brideGroomVisual, text: "Dedicated spaces and moments designed around the bride and groom's journey." },
+  { title: 'Signature Entries', image: specialEntry, text: 'Bride and groom entries planned with cues, music, performers, and visual impact.' }
 ];
 
 const activityIdeas = [
@@ -457,7 +459,7 @@ export default function WeddingServices() {
         </div>
 
         {/* Section 4: Guest Engagement Activities */}
-        <div className="mt-24 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mt-24 mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.15fr_0.85fr]">
           <Reveal className="rounded-[24px] border border-[#C8A96B]/20 bg-[#F5F1EA] p-7 md:p-9 shadow-md flex flex-col justify-between h-full">
             <div>
               <div className="mb-5 grid h-12 w-12 place-items-center rounded-2xl border border-[#C8A96B]/35 bg-[#FAF7F2] text-[#C8A96B] shadow-sm">

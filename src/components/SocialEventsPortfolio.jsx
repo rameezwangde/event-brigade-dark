@@ -8,7 +8,7 @@ import socialBirthday from '../assets/social-curated/social-birthday-decor.jpg';
 // Dynamically glob all files in the vaani folder
 const vaaniGlob = import.meta.glob('../assets/vaani/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const vaaniImages = Object.values(vaaniGlob).map((mod) => mod.default || mod);
-const vaaniHero = vaaniGlob['../assets/vaani/DSC00028.JPG']?.default || vaaniGlob['../assets/vaani/DSC00028.JPG'] || socialBirthday;
+const vaaniHero = vaaniGlob['../assets/vaani/DSC00018.JPG']?.default || vaaniGlob['../assets/vaani/DSC00018.JPG'] || socialBirthday;
 
 // Dynamically glob all files in the babyshower folder
 const babyshowerGlob = import.meta.glob('../assets/babyshower/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });

@@ -39,7 +39,7 @@ const socialBookletPages = Array.from({ length: 38 }, (_, i) => {
 // Dynamically glob all files in the vaani folder
 const vaaniGlob = import.meta.glob('../assets/vaani/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const vaaniImages = Object.values(vaaniGlob).map((mod) => mod.default || mod);
-const vaaniHero = vaaniGlob['../assets/vaani/DSC00028.JPG']?.default || vaaniGlob['../assets/vaani/DSC00028.JPG'] || socialBirthday;
+const vaaniHero = vaaniGlob['../assets/vaani/DSC00018.JPG']?.default || vaaniGlob['../assets/vaani/DSC00018.JPG'] || socialBirthday;
 
 // Luxury Social Projects List
 const socialProjects = [

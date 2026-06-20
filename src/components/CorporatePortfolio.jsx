@@ -2,12 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, MapPin, Calendar, Users, Image as ImageIcon, ArrowRight } from 'lucide-react';
 
-// Scan the RIE 2026 raw uploads directory dynamically
-const rieGlob = import.meta.glob('../assets/rie2026/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
-const rieImages = Object.values(rieGlob).map((mod) => mod.default || mod);
-// Select IMG_5814.JPG as the hero image if available, else first image
-const rieHero = rieGlob['../assets/rie2026/IMG_5814.JPG']?.default || rieGlob['../assets/rie2026/IMG_5814.jpg']?.default || rieGlob['../assets/rie2026/IMG_5814.JPG'] || rieGlob['../assets/rie2026/IMG_5814.jpg'] || rieImages[0];
-
 // Scan the general corporate raw uploads directory dynamically
 const corporateGlob = import.meta.glob('../assets/corporate-gallery/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const corporateImages = Object.values(corporateGlob)
@@ -23,29 +17,10 @@ if (corporateImages.length > 0) {
 // Luxury Corporate Projects List
 const corporateProjects = [];
 
-if (rieImages.length > 0) {
+if (corporateImages.length > 0) {
   corporateProjects.push({
     id: 1,
     number: '01',
-    title: "RIE 2026 Annual Conference.",
-    subtitle: "RIE 2026 Summit & Meet",
-    tag: 'Conferences',
-    categories: ['Conferences'],
-    description: "A premium annual corporate conference featuring high-end LED stage setups, executive presentation areas, and structured participant operations.",
-    image: rieHero,
-    layout: 'right', // Content Left, Image Right
-    location: 'JW Marriott, Pune',
-    date: 'June 2026',
-    guests: '500+ Delegates',
-    isRawGallery: true,
-    images: rieImages
-  });
-}
-
-if (corporateImages.length > 0) {
-  corporateProjects.push({
-    id: 2,
-    number: corporateProjects.length === 0 ? '01' : '02',
     title: "Raw Corporate Captures.",
     subtitle: "Uploaded Corporate Gallery",
     tag: 'Corporate Uploads',
@@ -153,7 +128,7 @@ export default function CorporatePortfolio() {
 
   return (
     <div className="relative w-full min-h-screen bg-[#050505] text-[#FFFFFF] font-sans overflow-x-hidden selection:bg-[#2E6BFF]/30 selection:text-white pt-28 pb-16">
-      
+
       {/* Blueprint Grid & Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(8,27,58,0.45),transparent_60%)]" />
@@ -223,11 +198,10 @@ export default function CorporatePortfolio() {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${
-                    isSelected
+                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${isSelected
                       ? 'border-[#2E6BFF] text-white shadow-sm'
                       : 'border-white/10 bg-[#151515]/40 text-white/70 hover:border-white/30 hover:text-white'
-                  }`}
+                    }`}
                 >
                   {isSelected && (
                     <motion.span
@@ -323,19 +297,19 @@ export default function CorporatePortfolio() {
             {/* Tech Corner Crosshairs */}
             <div className="absolute top-4 left-4 text-white/10 font-mono text-[9px] select-none">SYS.RAW_VAULT // 0x4B</div>
             <div className="absolute bottom-4 right-4 text-[#2E6BFF]/20 font-mono text-[9px] select-none">READY FOR UPLOAD</div>
-            
+
             <div className="mx-auto w-16 h-16 rounded-full bg-[#2E6BFF]/10 flex items-center justify-center border border-[#2E6BFF]/25 text-[#2E6BFF] mb-6 shadow-[0_0_15px_rgba(46,107,255,0.15)]">
               <ImageIcon size={28} className="animate-pulse" />
             </div>
-            
+
             <h3 className="font-serif text-2xl sm:text-3xl text-white mb-4">
               Corporate Gallery <span className="text-[#D4AF37] italic">Vault Empty</span>
             </h3>
-            
+
             <p className="text-white/60 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-8 font-sans">
               This space is configured for direct event folder uploads. Once raw photography folders are uploaded to the server, cards will dynamically render here with full-size interactive galleries.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs font-mono text-white/40">
               <span className="flex items-center gap-2 border border-white/5 bg-white/5 px-3.5 py-1.5 rounded-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#2E6BFF]" />

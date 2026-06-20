@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Quote, Star, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Quote, Star, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { testimonials } from '../data.js';
 import SectionHeader from './SectionHeader.jsx';
 
 export default function Testimonials() {
   const [openReview, setOpenReview] = useState(null);
+  const [scrollDirection, setScrollDirection] = useState('normal');
+  const DirectionArrow = scrollDirection === 'reverse' ? ArrowLeft : ArrowRight;
 
   return (
     <section id="testimonials" className="relative overflow-hidden bg-gradient-to-b from-charcoal via-obsidian to-charcoal pb-36 pt-32 md:pb-44 md:pt-40">
@@ -18,37 +20,79 @@ export default function Testimonials() {
           text="Discover what our clients have to say about their Event Brigade experience."
         />
 
-        <div className="relative z-20 mt-20 overflow-visible pb-10">
+        <div className="relative z-20 mt-14 flex justify-center gap-3">
+          <button
+            type="button"
+            onClick={() => setScrollDirection('reverse')}
+            className={`grid h-12 w-12 place-items-center rounded-full border transition duration-300 ${
+              scrollDirection === 'reverse'
+                ? 'border-gold bg-gold text-obsidian shadow-glow'
+                : 'border-champagne/25 bg-obsidian/70 text-gold hover:border-gold hover:bg-gold hover:text-obsidian'
+            }`}
+            aria-label="Move testimonials left"
+            title="Move testimonials left"
+          >
+            <ArrowLeft size={22} strokeWidth={2.4} />
+          </button>
+          <button
+            type="button"
+            onClick={() => setScrollDirection('normal')}
+            className={`grid h-12 w-12 place-items-center rounded-full border transition duration-300 ${
+              scrollDirection === 'normal'
+                ? 'border-gold bg-gold text-obsidian shadow-glow'
+                : 'border-champagne/25 bg-obsidian/70 text-gold hover:border-gold hover:bg-gold hover:text-obsidian'
+            }`}
+            aria-label="Move testimonials right"
+            title="Move testimonials right"
+          >
+            <ArrowRight size={22} strokeWidth={2.4} />
+          </button>
+        </div>
+
+        <div className="relative z-20 mt-8 overflow-visible pb-10">
           <div
-            className="testimonial-scroll flex w-max gap-4 items-stretch"
-            style={{ animationPlayState: openReview !== null ? 'paused' : undefined }}
+            className="testimonial-scroll flex w-max items-stretch"
+            style={{
+              animationDirection: scrollDirection,
+              animationPlayState: openReview !== null ? 'paused' : undefined,
+            }}
           >
             {[...testimonials, ...testimonials].map((testimonial, testimonialIndex) => (
-              <button
-                type="button"
-                key={`${testimonial.name}-${testimonialIndex}`}
-                onClick={() => setOpenReview(testimonialIndex)}
-                className="relative flex flex-col justify-between min-h-[260px] w-[78vw] shrink-0 rounded-[1.25rem] border border-champagne/20 bg-[linear-gradient(145deg,rgba(248,241,223,0.08),rgba(248,241,223,0.025))] p-5 text-left shadow-soft transition duration-300 hover:-translate-y-1 hover:border-gold/45 sm:w-[380px] md:p-6 cursor-pointer"
-              >
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-                <div className="flex-1 flex flex-col justify-start">
-                  <div className="flex items-start justify-between gap-6">
-                    <Quote className="shrink-0 text-gold" size={28} />
-                    <div className="flex gap-1 text-gold">
-                      {Array.from({ length: 5 }).map((_, star) => (
-                        <Star key={star} size={13} fill="currentColor" />
-                      ))}
+              <React.Fragment key={`${testimonial.name}-${testimonialIndex}`}>
+                <button
+                  type="button"
+                  onClick={() => setOpenReview(testimonialIndex)}
+                  className="relative flex flex-col justify-between min-h-[260px] w-[78vw] shrink-0 rounded-[1.25rem] border border-champagne/20 bg-[linear-gradient(145deg,rgba(248,241,223,0.08),rgba(248,241,223,0.025))] p-5 text-left shadow-soft transition duration-300 hover:-translate-y-1 hover:border-gold/45 sm:w-[380px] md:p-6 cursor-pointer"
+                >
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+                  <div className="flex-1 flex flex-col justify-start">
+                    <div className="flex items-start justify-between gap-6">
+                      <Quote className="shrink-0 text-gold" size={28} />
+                      <div className="flex gap-1 text-gold">
+                        {Array.from({ length: 5 }).map((_, star) => (
+                          <Star key={star} size={13} fill="currentColor" />
+                        ))}
+                      </div>
                     </div>
+                    <p className="mt-5 font-serif text-xl leading-snug text-ivory md:text-2xl line-clamp-6">
+                      &ldquo;{testimonial.quote}&rdquo;
+                    </p>
                   </div>
-                  <p className="mt-5 font-serif text-xl leading-snug text-ivory md:text-2xl line-clamp-6">
-                    &ldquo;{testimonial.quote}&rdquo;
-                  </p>
+                  <div className="mt-6 border-t border-champagne/15 pt-4 w-full">
+                    <p className="text-base font-semibold text-gold">{testimonial.name}</p>
+                    <p className="mt-1 text-[0.68rem] uppercase tracking-[0.2em] text-smoke">{testimonial.role}</p>
+                  </div>
+                </button>
+
+                <div
+                  className="flex w-16 shrink-0 items-center justify-center px-3 text-gold sm:w-20"
+                  aria-hidden="true"
+                >
+                  <span className="grid h-10 w-10 place-items-center rounded-full border border-gold/25 bg-obsidian/70 shadow-[0_0_24px_rgba(212,175,55,0.18)]">
+                    <DirectionArrow size={21} strokeWidth={2.6} />
+                  </span>
                 </div>
-                <div className="mt-6 border-t border-champagne/15 pt-4 w-full">
-                  <p className="text-base font-semibold text-gold">{testimonial.name}</p>
-                  <p className="mt-1 text-[0.68rem] uppercase tracking-[0.2em] text-smoke">{testimonial.role}</p>
-                </div>
-              </button>
+              </React.Fragment>
             ))}
           </div>
         </div>

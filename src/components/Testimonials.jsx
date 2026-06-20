@@ -10,7 +10,7 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="relative overflow-hidden bg-gradient-to-b from-charcoal via-obsidian to-charcoal pb-36 pt-32 md:pb-44 md:pt-40">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,175,55,0.16),transparent_28%),radial-gradient(circle_at_84%_68%,rgba(244,208,111,0.12),transparent_30%)]" />
-      
+
       <div className="relative mx-auto max-w-7xl px-5">
         <SectionHeader
           eyebrow="TESTIMONIALS"

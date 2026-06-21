@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Abril+Fatface&family=Abyssinica+SIL&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Playball&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Abril+Fatface&family=Cinzel:wght@700;800;900&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Playball&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,9 +9,11 @@
 }
 
 .font-display {
-  font-family: 'Abyssinica SIL', serif !important;
-  -webkit-text-stroke: 1.2px #D4AF37;
-  font-weight: 800;
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif !important;
+  font-weight: 900;
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.78),
+    0 0 28px rgba(212, 175, 55, 0.38);
 }
 
 .font-abel {

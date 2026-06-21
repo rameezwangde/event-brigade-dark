@@ -113,7 +113,11 @@ export default function Navbar() {
         <a
           href="/"
           onClick={(e) => handleNavClick(e, '/')}
-          className="block h-20 w-24 transition duration-300 hover:scale-105 md:h-24 md:w-28"
+          className={`block transition duration-300 hover:scale-105 ${
+            isLightPage
+              ? 'h-[105px] w-[126px] md:h-[126px] md:w-[147px]'
+              : 'h-20 w-24 md:h-24 md:w-28'
+          }`}
           aria-label="Event Brigade Home"
         >
           <img src={currentLogo} alt="Event Brigade logo" className="h-full w-full object-contain" />

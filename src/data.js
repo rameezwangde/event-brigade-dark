@@ -1,5 +1,4 @@
 import weddingStage from './assets/weddings/wedding-stage.jpg';
-import weddingInvites from './assets/weddings/wedding-invites.jpg';
 import guestWelcome from './assets/weddings/guest-welcome.jpg';
 import weddingDecor from './assets/weddings/wedding-decor.jpg';
 import haldiMehendi from './assets/weddings/haldi-mehendi.jpg';
@@ -125,12 +124,12 @@ export const weddingShowcase = {
     {
       title: 'Invitation Management & RSVP',
       text: 'From elegant invitations to seamless RSVP tracking, we ensure every guest is informed, engaged, and welcomed from the very beginning.',
-      image: weddingInvites
+      image: 'https://marketplace.canva.com/EAFalfal7vE/1/0/1600w/canva-cream-minimalist-elegant-wedding-rsvp-postcard-STkukBXyzM0.jpg'
     },
     {
       title: 'Logistics Management',
       text: 'From production timelines and vendor coordination to transport schedules, we manage all behind-the-scenes logistics for a stress-free wedding day.',
-      image: weddingActivities
+      image: 'https://tse2.mm.bing.net/th/id/OIP.W2ROXG6rAAQ2pK7KdMsMEgHaEw?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3'
     },
     {
       title: 'Hospitality Excellence',
@@ -140,7 +139,7 @@ export const weddingShowcase = {
     {
       title: 'Décor Styling',
       text: 'Transforming venues into breathtaking settings with bespoke décor, floral artistry, and immersive design concepts.',
-      image: weddingDecor
+      image: 'https://i.pinimg.com/736x/91/31/ab/9131abc0dc845aa0fdc700abdda4789a.jpg'
     },
     {
       title: 'Wedding Rituals',

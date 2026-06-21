@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Import local premium assets
 import weddingStage from '../assets/weddings/wedding-stage.jpg';
-import weddingInvites from '../assets/weddings/wedding-invites.jpg';
 import guestWelcome from '../assets/weddings/guest-welcome.jpg';
 import weddingDecor from '../assets/weddings/wedding-decor.jpg';
 import haldiMehendi from '../assets/weddings/haldi-mehendi.jpg';
@@ -345,16 +344,33 @@ export default function WeddingServices() {
                 />
 
                 {/* Module Specific Backgrounds */}
-                {weddingShowcase.modules.map((module, moduleIndex) => (
-                  <img
-                    key={module.title}
-                    src={module.image}
-                    alt={module.title}
-                    loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${activeModule === moduleIndex ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
-                      }`}
-                  />
-                ))}
+                {weddingShowcase.modules.map((module, moduleIndex) => {
+                  const isFitImage = moduleIndex === 0 || moduleIndex === 1;
+                  return (
+                    <div
+                      key={module.title}
+                      className={`absolute inset-0 h-full w-full transition-all duration-700 ${
+                        activeModule === moduleIndex ? 'opacity-100 scale-100 z-15' : 'opacity-0 scale-95 pointer-events-none z-0'
+                      } ${isFitImage ? 'flex flex-col items-center justify-start pt-8 pb-32 px-6 bg-[#161616]' : ''}`}
+                    >
+                      {isFitImage ? (
+                        <img
+                          src={module.image}
+                          alt={module.title}
+                          loading="lazy"
+                          className="max-h-[62%] w-auto object-contain rounded-lg shadow-[0_15px_40px_rgba(0,0,0,0.5)] border border-white/5"
+                        />
+                      ) : (
+                        <img
+                          src={module.image}
+                          alt={module.title}
+                          loading="lazy"
+                          className="h-full w-full object-cover"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
 
 
 

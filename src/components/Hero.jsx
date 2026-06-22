@@ -26,7 +26,7 @@ function Counter({ value, suffix }) {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden pb-8 pt-32 md:pb-10">
+    <section id="home" className="relative overflow-hidden pb-16 pt-48 md:pb-24 md:pt-56 lg:pt-64">
       <img
         src={heroImage}
         alt="Event Brigade corporate event stage with seating and production lights"
@@ -43,16 +43,16 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
-          className="mx-auto max-w-5xl text-center"
+          className="mx-auto max-w-3xl text-center"
         >
-          <h1 className="font-display font-black uppercase tracking-[0.03em] text-5xl leading-[0.95] md:text-7xl lg:text-8xl">
+          <h1 className="font-display font-black uppercase tracking-[0.03em] text-3xl leading-[0.95] sm:text-4xl md:text-5xl lg:text-[4.5rem]">
             <span className="text-[#FAF7F2]">EVENT </span>
             <span className="text-[#D4AF37]">BRIGADE</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg font-abel uppercase tracking-[0.45em] text-ivory/80 md:text-2xl">TO YOUR RESCUE</p>
+          <p className="mx-auto mt-8 max-w-2xl text-xs font-abel uppercase tracking-[0.45em] text-ivory/80 md:text-base">TO YOUR RESCUE</p>
         </motion.div>
 
-        <div className="mx-auto mt-16 grid max-w-4xl w-full gap-8 md:grid-cols-3">
+        <div className="mx-auto mt-24 grid max-w-4xl w-full gap-8 md:grid-cols-3">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}

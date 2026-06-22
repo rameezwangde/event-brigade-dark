@@ -151,7 +151,7 @@ export default function SocialEventsPortfolio() {
 
   return (
     <div
-      className="relative w-full min-h-screen text-[#222222] font-sans overflow-x-hidden selection:bg-[#D56A4A]/20 pt-28 pb-16 bg-[#F9F5EF]"
+      className="relative w-full min-h-screen text-[#222222] font-sans overflow-x-hidden selection:bg-[#D56A4A]/20 pt-44 pb-16 bg-[#F9F5EF]"
     >
       {/* Soft Radial Glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">

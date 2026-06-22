@@ -253,7 +253,7 @@ export default function SocialServices() {
 
   return (
     <div
-      className="relative w-full min-h-screen text-[#222222] font-sans overflow-x-hidden selection:bg-[#D56A4A]/20 pt-28 pb-16 bg-[#F9F5EF]"
+      className="relative w-full min-h-screen text-[#222222] font-sans overflow-x-hidden selection:bg-[#D56A4A]/20 pt-44 pb-16 bg-[#F9F5EF]"
     >
       <div className="relative max-w-7xl mx-auto px-5 z-10">
 

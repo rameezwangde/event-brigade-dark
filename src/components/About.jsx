@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowRight, Users } from 'lucide-react';
 import { images, siteCopy } from '../data.js';
 import Reveal from './Reveal.jsx';
 
@@ -99,6 +100,35 @@ export default function About() {
             </div>
           </Reveal>
         </div>
+
+        {/* Join Us / Meet the Team Section */}
+        <Reveal delay={0.12} className="relative mt-20 text-center pb-12 z-10">
+          <div className="border border-[#C8A96B]/20 rounded-[32px] p-8 sm:p-12 md:p-16 bg-[#F5F1EA] shadow-md relative overflow-hidden">
+            {/* Background Radial Glow */}
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle,rgba(200,169,107,0.06),transparent_70%)]" />
+            
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <Users className="mx-auto text-[#C8A96B] mb-6 animate-pulse" size={36} />
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1C1C1C] leading-[1.15] font-semibold">
+                Join the <span className="italic text-[#C8A96B] font-normal">Brigade</span>
+              </h2>
+              <p className="mt-6 text-[#1C1C1C]/70 text-sm sm:text-base leading-relaxed">
+                We are always on the lookout for passionate event managers, designers, planners, and operational wizards who thrive under pressure and live for the applause. See our founding team and join the mission!
+              </p>
+              <a
+                href="/founder"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.history.pushState({}, '', '/founder');
+                }}
+                className="gold-shimmer-btn inline-flex items-center gap-3 text-obsidian font-bold text-sm sm:text-base uppercase tracking-[0.2em] px-10 py-4 rounded-full hover:shadow-glow transition-all duration-300 mt-10"
+              >
+                Meet the Team & Join Us <ArrowRight size={14} />
+              </a>
+            </div>
+          </div>
+        </Reveal>
+
       </div>
     </section>
   );

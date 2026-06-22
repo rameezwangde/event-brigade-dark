@@ -301,7 +301,7 @@ export default function CorporateServices() {
 
 
   return (
-    <div className="relative w-full min-h-screen bg-[#050505] text-[#FFFFFF] font-sans overflow-x-hidden selection:bg-[#2E6BFF]/30 selection:text-white pt-28 pb-16">
+    <div className="relative w-full min-h-screen bg-[#050505] text-[#FFFFFF] font-sans overflow-x-hidden selection:bg-[#2E6BFF]/30 selection:text-white pt-44 pb-16">
       
       {/* Blueprint Grid & Spotlights Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">

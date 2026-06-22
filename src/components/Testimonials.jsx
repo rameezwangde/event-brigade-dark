@@ -105,7 +105,7 @@ export default function Testimonials() {
                           ))}
                         </div>
                       </div>
-                      <p className="mt-5 font-serif text-lg leading-snug text-ivory md:text-xl line-clamp-5">
+                      <p className="mt-5 font-roboto font-normal text-sm sm:text-[15px] leading-relaxed text-ivory/85 line-clamp-5">
                         &ldquo;{testimonial.quote}&rdquo;
                       </p>
                     </div>
@@ -179,7 +179,7 @@ export default function Testimonials() {
               </div>
 
               <div className="mt-8">
-                <p className="font-serif text-2xl leading-relaxed text-ivory md:text-3xl">
+                <p className="font-roboto font-normal text-lg sm:text-xl leading-relaxed text-ivory/90">
                   &ldquo;{testimonials[openReview % testimonials.length].quote}&rdquo;
                 </p>
               </div>

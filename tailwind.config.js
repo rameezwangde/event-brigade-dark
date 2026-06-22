@@ -16,7 +16,8 @@ export default {
         serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['Inter', 'Montserrat', 'ui-sans-serif', 'system-ui'],
         display: ['"Cinzel"', '"Playfair Display"', 'Georgia', 'serif'],
-        displaySans: ['Abel', 'sans-serif']
+        displaySans: ['Abel', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif']
       },
       boxShadow: {
         glow: '0 0 40px rgba(212, 175, 55, 0.24)',

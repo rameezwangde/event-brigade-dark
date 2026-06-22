@@ -142,8 +142,7 @@ const celebrationMoments = [
   { title: 'Poolside Celebration', image: poolPartyVisualUrl, text: 'Relaxed daytime festivities with themed styling, music, refreshments, and guest engagement.' },
   { title: 'Wedding Ceremony', image: mandapVisualUrl, text: 'Beautifully orchestrated ceremonies that honor traditions while creating unforgettable memories.' },
   { title: 'Reception Celebration', image: receptionVisualUrl, text: 'Elegant celebrations featuring entertainment, hospitality, dining, and seamless event flow.' },
-  { title: 'Couple Experiences', image: brideGroomVisual, text: "Dedicated spaces and moments designed around the bride and groom's journey." },
-  { title: 'Signature Entries', image: specialEntry, text: 'Bride and groom entries planned with cues, music, performers, and visual impact.' }
+  { title: 'Signature Couple Experiences', image: specialEntry, text: 'From grand entries to curated couple moments, we design unforgettable experiences that leave a lasting impression.' }
 ];
 
 const activityIdeas = [
@@ -316,7 +315,7 @@ export default function WeddingServices() {
       </div>
 
       {/* Main Page Content Wrapper */}
-      <div className="relative max-w-7xl mx-auto px-5 mt-12 z-10">
+      <div className="relative max-w-7xl mx-auto px-8 md:px-12 lg:px-16 mt-12 z-10">
 
         {/* Main Section Header */}
         <LuxuryHeader
@@ -457,11 +456,11 @@ export default function WeddingServices() {
             text="Individual functions are coordinated as one fluid journey, making sure guests transition from check-in to final farewell smoothly."
           />
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-12">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-12">
             {celebrationMoments.map((moment, index) => (
               <Reveal
                 key={moment.title}
-                delay={(index % 4) * 0.04}
+                delay={(index % 3) * 0.04}
                 className="group overflow-hidden rounded-[20px] border border-[#C8A96B]/20 bg-[#F5F1EA] shadow-md flex flex-col justify-between"
               >
                 {/* Image top */}

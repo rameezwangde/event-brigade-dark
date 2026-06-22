@@ -62,13 +62,13 @@ export default function PortfolioAccess() {
                     <Icon size={22} />
                   </div>
 
-                  <h3 className="font-serif text-3xl leading-tight text-ivory transition-colors duration-300 group-hover:text-gold">
+                  <h3 className="font-serif text-3xl leading-tight text-ivory transition-colors duration-300 group-hover:text-gold min-h-[76px]">
                     {div.title}
                   </h3>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-champagne/80 min-h-[48px] flex items-center">
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-champagne/80 min-h-[48px]">
                     {div.tagline}
                   </p>
-                  <p className="mt-5 text-sm leading-7 text-smoke text-left">
+                  <p className="mt-4 text-sm leading-7 text-smoke text-justify">
                     {div.desc}
                   </p>
                 </div>

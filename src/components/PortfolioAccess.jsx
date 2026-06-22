@@ -37,7 +37,7 @@ export default function PortfolioAccess() {
 
   return (
     <section className="relative bg-obsidian pb-20 pt-16 md:pb-24 md:pt-20">
-      <div className="mx-auto max-w-7xl px-5">
+      <div className="mx-auto max-w-7xl px-8 md:px-12 lg:px-16">
         <div className="mb-14 text-center">
           <Reveal>
             <p className="text-base font-semibold uppercase tracking-[0.34em] text-champagne md:text-lg">Our Services</p>

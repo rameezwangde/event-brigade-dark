@@ -38,7 +38,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(212,175,55,0.26),transparent_32%),radial-gradient(circle_at_12%_65%,rgba(244,208,111,0.18),transparent_28%)]" />
       <div className="particles" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center px-5">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center px-8 md:px-12 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}

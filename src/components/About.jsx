@@ -33,7 +33,7 @@ export default function About() {
         backgroundColor: '#FAF7F2'
       }}
     >
-      <div className="mx-auto max-w-7xl px-5">
+      <div className="mx-auto max-w-7xl px-8 md:px-12 lg:px-16">
         <LuxuryHeader
           eyebrow="About Us"
           title={<>We Don't Just Manage Events.<br />We Create Experiences.</>}

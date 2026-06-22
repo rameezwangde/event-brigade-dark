@@ -6,7 +6,7 @@ import Reveal from './Reveal.jsx';
 export default function Founder() {
   return (
     <section id="founder" className="relative bg-gradient-to-b from-obsidian to-charcoal pb-24 pt-32 md:pb-32 md:pt-40">
-      <div className="mx-auto max-w-7xl px-5">
+      <div className="mx-auto max-w-7xl px-8 md:px-12 lg:px-16">
         <p className="text-center text-2xl font-semibold uppercase tracking-[0.24em] text-champagne md:text-3xl">
           Founder & Director
         </p>

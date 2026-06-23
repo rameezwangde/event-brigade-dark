@@ -145,6 +145,7 @@ export default function Navbar() {
           {links.map((link) => {
             const hasDropdown = !!link.dropdown;
             const isLinkActive = active === link.id;
+            const isFixedChampagneLink = link.id === 'home' || link.id === 'services';
             const isSocialPage = window.location.pathname.includes('social');
             const isCorporatePage = window.location.pathname.includes('corporate');
             return (
@@ -155,7 +156,9 @@ export default function Navbar() {
                   aria-current={isLinkActive ? 'page' : undefined}
                   className={`relative flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold transition duration-300 ${
                     isLinkActive
-                      ? isSocialPage || isCorporatePage
+                      ? isFixedChampagneLink
+                        ? 'text-[#111111]'
+                        : isSocialPage || isCorporatePage
                         ? 'text-white'
                         : 'text-obsidian'
                       : isLightPage
@@ -171,7 +174,9 @@ export default function Navbar() {
                     <motion.span
                       layoutId="activeNav"
                       className={`absolute inset-0 rounded-full ${
-                        isSocialPage
+                        isFixedChampagneLink
+                          ? 'border border-[#D0B175]/60 bg-[#E3C484] shadow-sm'
+                          : isSocialPage
                           ? 'bg-[#D56A4A] shadow-sm'
                           : isCorporatePage
                             ? 'bg-gradient-to-r from-[#2E6BFF] to-[#1E40AF] shadow-[0_0_15px_rgba(46,107,255,0.45)] border border-[#2E6BFF]/30'
@@ -189,7 +194,9 @@ export default function Navbar() {
                         size={14}
                         className={`transition-transform duration-300 group-hover:rotate-180 ${
                           isLinkActive
-                            ? isSocialPage || isCorporatePage
+                            ? isFixedChampagneLink
+                              ? 'text-[#111111]'
+                              : isSocialPage || isCorporatePage
                               ? 'text-white'
                               : 'text-obsidian'
                             : isLightPage
@@ -252,7 +259,7 @@ export default function Navbar() {
                 : `border-[#C8A96B]/25 bg-[#FAF7F2]/60 text-[#C8A96B] hover:border-[#C8A96B]/60 ${open ? 'bg-[#C8A96B] text-[#FAF7F2]' : ''}`
               : window.location.pathname.includes('corporate')
                 ? `border-[#2E6BFF]/25 bg-[#070D1E]/60 text-[#2E6BFF] hover:border-[#2E6BFF]/60 ${open ? 'bg-[#2E6BFF] text-white' : ''}`
-                : `border-champagne/25 bg-obsidian/60 text-gold hover:border-gold/60 ${open ? 'bg-gold text-obsidian' : ''}`
+                : `border-champagne/25 bg-obsidian/60 text-gold hover:border-gold/60 ${open ? 'border border-[#D0B175]/60 bg-[#E3C484] text-[#111111]' : ''}`
           }`}
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
@@ -280,6 +287,7 @@ export default function Navbar() {
             const hasDropdown = !!link.dropdown;
             const isExpanded = expandedMobileItem === link.id;
             const isLinkActive = active === link.id;
+            const isFixedChampagneLink = link.id === 'home' || link.id === 'services';
             const isSocialPage = window.location.pathname.includes('social');
             const isCorporatePage = window.location.pathname.includes('corporate');
 
@@ -292,7 +300,9 @@ export default function Navbar() {
                       onClick={() => setExpandedMobileItem(isExpanded ? null : link.id)}
                       className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm font-semibold transition text-left ${
                         isLinkActive
-                          ? isLightPage
+                          ? isFixedChampagneLink
+                            ? 'border border-[#D0B175]/60 bg-[#E3C484] text-[#111111]'
+                            : isLightPage
                             ? isSocialPage
                               ? 'bg-[#D56A4A]/15 text-[#D56A4A]'
                               : 'bg-[#C8A96B]/15 text-[#C8A96B]'
@@ -312,8 +322,10 @@ export default function Navbar() {
                       <ChevronDown
                         size={16}
                         className={`transition-transform duration-300 ${
-                          isExpanded 
-                            ? 'rotate-180 text-gold' 
+                          isExpanded
+                            ? isFixedChampagneLink
+                              ? 'rotate-180 text-[#111111]'
+                              : 'rotate-180 text-gold' 
                             : isLightPage 
                               ? isSocialPage 
                                 ? 'text-[#D56A4A]/60' 
@@ -381,7 +393,7 @@ export default function Navbar() {
                             : 'bg-[#C8A96B] text-white'
                           : isCorporatePage
                             ? 'bg-[#2E6BFF] text-white shadow-[0_0_12px_rgba(46,107,255,0.25)]'
-                            : 'bg-gold text-obsidian'
+                            : 'border border-[#D0B175]/60 bg-[#E3C484] text-[#111111]'
                         : isLightPage
                           ? isSocialPage
                             ? 'text-[#222222]/80 hover:bg-[#D56A4A]/10 hover:text-[#D56A4A]'

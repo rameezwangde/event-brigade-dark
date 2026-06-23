@@ -1,11 +1,50 @@
 import React from 'react';
-import { Mail, MapPin, MessageCircle, Phone, Send, Sparkles } from 'lucide-react';
+import { Mail, MapPin, Phone, Sparkles } from 'lucide-react';
 import { contact } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
 
+function WhatsAppIcon({ size = 18, className = '' }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.33 4.95L2 22l5.27-1.38a9.88 9.88 0 0 0 4.77 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.51 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.25-4.38c0-4.54 3.69-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.42 5.82c0 4.55-3.7 8.24-8.25 8.24Zm4.52-6.17c-.25-.12-1.47-.73-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.98-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.1-.23-.16-.48-.28Z" />
+    </svg>
+  );
+}
+
 export default function Contact() {
-  const whatsapp = `https://wa.me/918552831191?text=${encodeURIComponent('Hello Event Brigade, I would like to plan an event.')}`;
+  const whatsappNumber = contact.phones[0].replace(/\D/g, '');
+  const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`;
+  const phoneLink = `tel:${contact.phones[0].replace(/\s/g, '')}`;
+  const emailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contact.email)}`;
+  const websiteLink = `https://${contact.website.replace(/^https?:\/\//, '')}`;
+  const getWhatsappLink = (text) => `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+  const whatsapp = getWhatsappLink('Hello Event Brigade, I would like to plan an event.');
+
+  const handleInquirySubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get('name')?.trim();
+    const email = formData.get('email')?.trim();
+    const phone = formData.get('phone')?.trim();
+    const message = formData.get('message')?.trim();
+    const whatsappMessage = [
+      'Hello Event Brigade, I would like to plan an event.',
+      name ? `Name: ${name}` : null,
+      email ? `Email: ${email}` : null,
+      phone ? `Phone: ${phone}` : null,
+      message ? `Message: ${message}` : null
+    ].filter(Boolean).join('\n');
+
+    window.open(getWhatsappLink(whatsappMessage), '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section id="contact" className="relative overflow-hidden bg-obsidian pb-24 pt-32 md:pb-32 md:pt-40">
@@ -23,26 +62,26 @@ export default function Contact() {
               <p className="mt-3 text-smoke">We are always available to listen.</p>
             </div>
             <div className="mt-8 grid gap-4">
-              <a className="contact-line" href={contact.mapUrl} target="_blank" rel="noreferrer">
+              <a className="contact-line" href={mapLink} target="_blank" rel="noreferrer">
                 <MapPin className="text-gold" /> <span>{contact.address}</span>
               </a>
-              <a className="contact-line" href="tel:+918552831191">
+              <a className="contact-line" href={phoneLink}>
                 <Phone className="text-gold" /> <span>{contact.phones.join(', ')}</span>
               </a>
-              <a className="contact-line" href={`mailto:${contact.email}`}>
+              <a className="contact-line" href={emailLink} target="_blank" rel="noreferrer">
                 <Mail className="text-gold" /> <span>{contact.email}</span>
               </a>
-              <a className="contact-line" href="https://www.eventbrigade.in/">
+              <a className="contact-line" href={websiteLink} target="_blank" rel="noreferrer">
                 <Sparkles className="text-gold" /> <span>{contact.website}</span>
               </a>
             </div>
             <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary mt-7 w-full justify-center">
-              <MessageCircle size={18} /> WhatsApp Quick Contact
+              <WhatsAppIcon size={18} /> WhatsApp Quick Contact
             </a>
           </Reveal>
 
           <Reveal className="glass-card h-full p-8 md:p-10" delay={0.08}>
-            <form className="flex h-full flex-col gap-5" onSubmit={(event) => event.preventDefault()}>
+            <form className="flex h-full flex-col gap-5" onSubmit={handleInquirySubmit}>
               <div className="grid gap-5 md:grid-cols-2">
                 <label className="field">
                   <span>Name*</span>
@@ -62,15 +101,16 @@ export default function Contact() {
                 <textarea name="message" rows="6" placeholder="Tell us about your event..." required />
               </label>
               <button type="submit" className="btn-primary mt-auto w-full justify-center">
-                Send Inquiry <Send size={18} />
+                Send Inquiry <WhatsAppIcon size={18} />
               </button>
             </form>
           </Reveal>
         </div>
       </div>
       <a href="#contact" className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full border border-gold/40 bg-gold text-obsidian shadow-glow transition hover:scale-105" aria-label="Open event inquiry form">
-        <MessageCircle size={24} />
+        <WhatsAppIcon size={24} />
       </a>
     </section>
   );
 }
+

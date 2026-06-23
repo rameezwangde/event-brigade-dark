@@ -7,6 +7,14 @@ import specialEntry from './assets/weddings/special-entry.jpg';
 import weddingActivities from './assets/weddings/wedding-activities.jpg';
 import founderImage from '../founder.jpeg';
 import aboutBuffet from './assets/about-buffet.jpg';
+import weddingMainImage from '../Wedding/main Image.jpg';
+import invitationAndRsvp from '../Wedding/Invitation and RSVP.jpg';
+import logisticManagement from '../Wedding/Logistic Management.jpg';
+import guestExperience from '../Wedding/Guest Experiencw.jpg';
+import decorStyling from '../Wedding/Decor Styling.jpg';
+import weddingRituals from '../Wedding/Wedding Rituals.jpg';
+import entertainmentCuration from '../Wedding/Entertainment Curation.jpg';
+import signatureEntryWedding from '../Wedding/Signature entry.jpg';
 
 export const images = {
   hero: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=2200&q=85',
@@ -124,40 +132,40 @@ export const weddingShowcase = {
     {
       title: 'Invitation Management & RSVP',
       text: 'From elegant invitations to seamless RSVP tracking, we ensure every guest is informed, engaged, and welcomed from the very beginning.',
-      image: 'https://marketplace.canva.com/EAFalfal7vE/1/0/1600w/canva-cream-minimalist-elegant-wedding-rsvp-postcard-STkukBXyzM0.jpg'
+      image: invitationAndRsvp
     },
     {
       title: 'Logistics Management',
       text: 'From production timelines and vendor coordination to transport schedules, we manage all behind-the-scenes logistics for a stress-free wedding day.',
-      image: 'https://tse2.mm.bing.net/th/id/OIP.W2ROXG6rAAQ2pK7KdMsMEgHaEw?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3'
+      image: logisticManagement
     },
     {
       title: 'Hospitality Excellence',
       text: 'Delivering exceptional guest experiences through thoughtful hospitality, accommodation management, and personalized care.',
-      image: guestWelcome
+      image: guestExperience
     },
     {
       title: 'Décor Styling',
       text: 'Transforming venues into breathtaking settings with bespoke décor, floral artistry, and immersive design concepts.',
-      image: 'https://i.pinimg.com/736x/91/31/ab/9131abc0dc845aa0fdc700abdda4789a.jpg'
+      image: decorStyling
     },
     {
       title: 'Wedding Rituals',
       text: 'Thoughtfully planning and coordinating every ceremony to honor traditions while creating meaningful and memorable experiences.',
-      image: haldiMehendi
+      image: weddingRituals
     },
     {
       title: 'Entertainment Curation',
       text: 'From live performances to interactive experiences, we curate entertainment that captivates and delights every guest.',
-      image: reception
+      image: entertainmentCuration
     },
     {
       title: 'Signature Entries and Experiences',
       text: 'Creating unforgettable arrivals, special moments, and unique experiences that leave a lasting impression on everyone present.',
-      image: specialEntry
+      image: signatureEntryWedding
     }
   ],
-  gallery: [weddingStage, reception, specialEntry, weddingActivities]
+  gallery: [weddingMainImage, invitationAndRsvp, decorStyling, signatureEntryWedding]
 };
 
 export const corporatePortfolio = {
@@ -437,3 +445,5 @@ export const contact = {
   founderEmail: 'kunal@eventbrigade.in',
   website: 'www.eventbrigade.in'
 };
+
+

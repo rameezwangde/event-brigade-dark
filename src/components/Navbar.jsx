@@ -145,7 +145,7 @@ export default function Navbar() {
           {links.map((link) => {
             const hasDropdown = !!link.dropdown;
             const isLinkActive = active === link.id;
-            const isFixedChampagneLink = link.id === 'home' || link.id === 'services';
+            const isFixedChampagneLink = link.id === 'home' || link.id === 'services' || link.id === 'portfolio';
             const isSocialPage = window.location.pathname.includes('social');
             const isCorporatePage = window.location.pathname.includes('corporate');
             return (
@@ -161,7 +161,9 @@ export default function Navbar() {
                         : isSocialPage || isCorporatePage
                         ? 'text-white'
                         : 'text-obsidian'
-                      : isLightPage
+                      : isFixedChampagneLink
+                        ? 'text-ivory/72 hover:bg-[#E3C484] hover:text-[#111111]'
+                        : isLightPage
                         ? isSocialPage
                           ? 'text-[#222222]/75 hover:bg-[#D56A4A]/10 hover:text-[#D56A4A]'
                           : 'text-[#1C1C1C]/75 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
@@ -199,7 +201,9 @@ export default function Navbar() {
                               : isSocialPage || isCorporatePage
                               ? 'text-white'
                               : 'text-obsidian'
-                            : isLightPage
+                            : isFixedChampagneLink
+                              ? 'text-[#E3C484] group-hover:text-[#111111]'
+                              : isLightPage
                               ? isSocialPage
                                 ? 'text-[#D56A4A] group-hover:text-[#D56A4A]'
                                 : 'text-[#1C1C1C]/60 group-hover:text-[#C8A96B]'
@@ -215,29 +219,13 @@ export default function Navbar() {
                 {hasDropdown && (
                   <div className="absolute left-1/2 top-full z-50 mt-1 w-48 -translate-x-1/2 scale-95 opacity-0 invisible group-hover:scale-100 group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out origin-top">
                     <div className="h-2 w-full" />
-                    <div className={`rounded-2xl border p-1.5 shadow-soft backdrop-blur-xl ${
-                      isLightPage
-                        ? isSocialPage
-                          ? 'border-[#D56A4A]/20 bg-[#F9F5EF]/95 shadow-[#D56A4A]/5'
-                          : 'border-[#C8A96B]/20 bg-[#FAF7F2]/95 shadow-[#C8A96B]/5'
-                        : isCorporatePage
-                          ? 'border-[#2E6BFF]/25 bg-[#0A1128]/95 shadow-[#2E6BFF]/5'
-                          : 'border-champagne/20 bg-charcoal/95 shadow-gold/5'
-                    }`}>
+                    <div className="rounded-2xl border border-[#D0B175]/35 bg-[#FAF7F2]/95 p-1.5 shadow-soft backdrop-blur-xl">
                       {link.dropdown.map((subItem) => (
                         <a
                           key={subItem.label}
                           href={subItem.href}
                           onClick={(e) => handleNavClick(e, subItem.href)}
-                          className={`block rounded-xl px-4 py-2 text-sm font-medium transition duration-200 ${
-                            isLightPage
-                              ? isSocialPage
-                                ? 'text-[#222222]/80 hover:bg-[#D56A4A]/15 hover:text-[#D56A4A]'
-                                : 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/15 hover:text-[#C8A96B]'
-                              : isCorporatePage
-                                ? 'text-ivory/80 hover:bg-[#2E6BFF]/15 hover:text-[#2E6BFF]'
-                                : 'text-ivory/80 hover:bg-gold/10 hover:text-gold'
-                          }`}
+                          className="block rounded-xl px-4 py-2 text-sm font-medium text-[#1C1C1C]/80 transition duration-200 hover:bg-[#E3C484]/25 hover:text-[#111111]"
                         >
                           {subItem.label}
                         </a>
@@ -287,7 +275,7 @@ export default function Navbar() {
             const hasDropdown = !!link.dropdown;
             const isExpanded = expandedMobileItem === link.id;
             const isLinkActive = active === link.id;
-            const isFixedChampagneLink = link.id === 'home' || link.id === 'services';
+            const isFixedChampagneLink = link.id === 'home' || link.id === 'services' || link.id === 'portfolio';
             const isSocialPage = window.location.pathname.includes('social');
             const isCorporatePage = window.location.pathname.includes('corporate');
 
@@ -342,15 +330,7 @@ export default function Navbar() {
                         isExpanded ? 'max-h-40 opacity-100 mt-1 mb-2' : 'max-h-0 opacity-0 pointer-events-none'
                       }`}
                     >
-                      <div className={`pl-6 space-y-1 border-l ml-4 ${
-                        isLightPage 
-                          ? isSocialPage 
-                            ? 'border-[#D56A4A]/20' 
-                            : 'border-[#C8A96B]/20' 
-                          : isCorporatePage 
-                            ? 'border-[#2E6BFF]/15' 
-                            : 'border-champagne/15'
-                      }`}>
+                      <div className="ml-4 space-y-1 border-l border-[#D0B175]/30 pl-6">
                         {link.dropdown.map((subItem) => (
                           <a
                             key={subItem.label}
@@ -360,15 +340,7 @@ export default function Navbar() {
                               setOpen(false);
                               setExpandedMobileItem(null);
                             }}
-                            className={`block rounded-xl px-4 py-2.5 text-xs font-semibold transition ${
-                              isLightPage
-                                ? isSocialPage
-                                  ? 'text-[#222222]/70 hover:text-[#D56A4A] hover:bg-[#D56A4A]/5'
-                                  : 'text-[#1C1C1C]/70 hover:text-[#C8A96B] hover:bg-[#C8A96B]/5'
-                                : isCorporatePage
-                                  ? 'text-white/70 hover:text-[#2E6BFF] hover:bg-[#2E6BFF]/5'
-                                  : 'text-ivory/70 hover:text-gold hover:bg-gold/5'
-                            }`}
+                            className="block rounded-xl px-4 py-2.5 text-xs font-semibold text-[#1C1C1C]/75 transition hover:bg-[#E3C484]/25 hover:text-[#111111]"
                           >
                             {subItem.label}
                           </a>
@@ -414,3 +386,6 @@ export default function Navbar() {
     </header>
   );
 }
+
+
+

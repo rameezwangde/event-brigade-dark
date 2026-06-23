@@ -415,63 +415,29 @@ export default function SocialServices() {
           </Reveal>
 
           {/* 6 Capability cards grid */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {serviceCards.map((card, idx) => {
-              const Icon = card.icon;
-              return (
-                <Reveal
-                  key={card.title}
-                  delay={idx * 0.04}
-                  className="group flex flex-col overflow-hidden rounded-[2rem] border border-[#C8A96B]/20 bg-[#FAF7F2] shadow-sm transition duration-500 hover:-translate-y-2 hover:shadow-md h-full cursor-pointer"
-                  onClick={() => {
-                    const projectMap = {
-                      'Birthdays': "Kunal's 50th Celebration",
-                      'Anniversaries': 'The Silver Jubilee Soiree',
-                      'Baby Showers': 'Teddy Baby Shower',
-                      'Community Events': 'The Grand Diwali Celebration'
-                    };
-                    const targetTitle = projectMap[card.title];
-                    if (targetTitle) {
-                      const proj = socialProjects.find(p => p.subtitle === targetTitle);
-                      if (proj) {
-                        openLightbox(proj);
-                      }
-                    }
-                  }}
-                >
-                  {/* Card Image */}
-                  <div className="relative h-60 overflow-hidden rounded-t-[2rem]">
-                    <img
-                      src={card.image}
-                      alt={card.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition duration-700 group-hover:scale-103"
-                    />
-                  </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-12">
+            {serviceCards.map((card, idx) => (
+              <Reveal
+                key={card.title}
+                delay={(idx % 3) * 0.04}
+                className="group overflow-hidden rounded-[20px] border border-[#C8A96B]/20 bg-[#F5F1EA] shadow-md flex flex-col justify-between"
+              >
+                <div className="relative h-48 sm:h-56 w-full overflow-hidden">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-[#1C1C1C]/10" />
+                </div>
 
-                  {/* Card Body */}
-                  <div className="p-7 pt-9 flex-grow flex flex-col justify-between relative">
-                    {/* Overlapping White Circle Icon Badge */}
-                    <div className="absolute left-6 -top-[22px] z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white border border-[#D56A4A]/30 shadow text-[#D56A4A]">
-                      <Icon size={18} />
-                    </div>
-
-                    <div>
-                      <h3 className="font-serif text-xl sm:text-2xl text-[#222222] font-semibold leading-snug text-left">
-                        {card.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-relaxed text-[#222222]/75 text-left">
-                        {card.description}
-                      </p>
-                    </div>
-
-                    <div className="mt-6 pt-5 border-t border-[#C8A96B]/15 flex items-center justify-end">
-                      <ArrowRight size={18} className="text-[#D56A4A] transition-transform duration-300 group-hover:translate-x-1" />
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
+                <div className="p-5 flex-grow bg-[#F5F1EA] border-t border-[#C8A96B]/15">
+                  <h3 className="font-serif text-xl text-[#1C1C1C]">{card.title}</h3>
+                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#1C1C1C]/75">{card.description}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
 
@@ -612,3 +578,5 @@ export default function SocialServices() {
     </div>
   );
 }
+
+

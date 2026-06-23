@@ -1,148 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Gem, BadgeCheck, Plane, X, ChevronLeft, ChevronRight, Heart, Calendar, MapPin, Users } from 'lucide-react';
+import { ArrowRight, Gem, BadgeCheck, Plane, Heart } from 'lucide-react';
 import { services, weddingShowcase } from '../data.js';
 import Reveal from './Reveal.jsx';
-import { motion, AnimatePresence } from 'framer-motion';
 
 // Import local premium assets
-import weddingStage from '../assets/weddings/wedding-stage.jpg';
-import guestWelcome from '../assets/weddings/guest-welcome.jpg';
-import weddingDecor from '../assets/weddings/wedding-decor.jpg';
-import haldiMehendi from '../assets/weddings/haldi-mehendi.jpg';
-import reception from '../assets/weddings/reception.jpg';
-import specialEntry from '../assets/weddings/special-entry.jpg';
 import weddingActivities from '../assets/weddings/wedding-activities.jpg';
-import sangeetVisual from '../assets/weddings/pdf-page25-xref298.jpg';
-import poolPartyVisual from '../assets/weddings/pdf-page28-xref330.jpg';
-import mandapVisual from '../assets/weddings/pdf-page21-xref1238.jpg';
-import brideGroomVisual from '../assets/weddings/pdf-page30-xref363.jpg';
-
-// Dynamically generate the 35 wedding slide pages
-const weddingBookletPages = Array.from({ length: 35 }, (_, i) => {
-  const pageNum = String(i + 1).padStart(2, '0');
-  return {
-    full: new URL(`../assets/wedding-portfolio/wedding-page-${pageNum}.jpg`, import.meta.url).href,
-    thumb: new URL(`../assets/wedding-portfolio-thumbs/wedding-page-${pageNum}.jpg`, import.meta.url).href
-  };
-});
-
-// Luxury Wedding Projects List
-const weddingProjects = [
-  {
-    id: 1,
-    number: '01',
-    title: 'We Design Experiences.',
-    subtitle: 'Sheraton Grand Grandeur',
-    tag: 'Luxury Weddings',
-    categories: ['Luxury Weddings'],
-    description: 'Stories beautifully planned. Moments perfectly crafted. A celebration designed with Sabyasachi-inspired warm color palettes, rich floral backdrops, and timeless ivory setups.',
-    image: brideGroomVisual,
-    layout: 'right',
-    location: 'Sheraton Grand, Pune',
-    date: 'Dec 2025',
-    guests: '600 Guests',
-    pageRange: [0, 5] // Pages 1 to 6
-  },
-  {
-    id: 2,
-    number: '02',
-    title: 'Crafting Timeless Celebrations.',
-    subtitle: 'Udaipur Palace Union',
-    tag: 'Destination Weddings',
-    categories: ['Destination Weddings', 'Luxury Weddings'],
-    description: 'From intimate gatherings to grand affairs, we turn your vision into unforgettable wedding experiences. High-end destination layouts featuring floating mandap stages and lakeside candlelit paths.',
-    image: weddingStage,
-    layout: 'left',
-    location: 'Jagmandir Palace, Udaipur',
-    date: 'Nov 2025',
-    guests: '350 Guests',
-    pageRange: [6, 11] // Pages 7 to 12
-  },
-  {
-    id: 3,
-    number: '03',
-    title: 'Every Detail. Every Emotion.',
-    subtitle: 'The Grand Ballroom Gala',
-    tag: 'Reception Events',
-    categories: ['Reception Events', 'Luxury Weddings'],
-    description: "We don't just plan weddings, we craft memories that last forever. An immersive reception ballroom layout styled with suspended floral ceilings, golden tablescapes, and a grand stage setup.",
-    image: reception,
-    layout: 'right',
-    location: 'JW Marriott, Pune',
-    date: 'Jan 2026',
-    guests: '500 Guests',
-    pageRange: [12, 17] // Pages 13 to 18
-  },
-  {
-    id: 4,
-    number: '04',
-    title: 'Where Dreams Find Their Stage.',
-    subtitle: 'The Sundowner Mehendi & Sangeet',
-    tag: 'Mehendi & Sangeet',
-    categories: ['Mehendi & Sangeet'],
-    description: 'Thoughtful planning. Flawless execution. Unforgettable celebrations featuring vibrant colors, hand-crafted floral swings, interactive bangle bars, and a high-spec Sangeet performance stage.',
-    image: haldiMehendi,
-    layout: 'left',
-    location: 'Ritz-Carlton Lawn, Pune',
-    date: 'Feb 2026',
-    guests: '400 Guests',
-    pageRange: [18, 23] // Pages 19 to 24
-  },
-  {
-    id: 5,
-    number: '05',
-    title: 'Designed with Passion. Delivered with Perfection.',
-    subtitle: 'Bespoke Floral Aisles',
-    tag: 'Traditional Weddings',
-    categories: ['Traditional Weddings'],
-    description: 'Bespoke wedding experiences, curated just for you. Seamless integration of rich cultural heritage, sacred mandap coordinates, and fresh floral paths matching classic bridal style.',
-    image: weddingDecor,
-    layout: 'editorial',
-    location: 'Conrad Grand Ballroom, Pune',
-    date: 'March 2026',
-    guests: '700 Guests',
-    pageRange: [24, 29] // Pages 25 to 30
-  },
-  {
-    id: 6,
-    number: '06',
-    title: 'Celebrating Love. Creating Legacies.',
-    subtitle: 'The Beachfront Canopy',
-    tag: 'Destination Weddings',
-    categories: ['Destination Weddings'],
-    description: 'Your love story is unique. We make it extraordinary. A grand destination celebration under a warm sunset sky in Goa, detailed with pastel drapes, fairy lights, and live acoustic violin entries.',
-    image: specialEntry,
-    layout: 'full',
-    location: 'W Hotel beachfront, Goa',
-    date: 'April 2026',
-    guests: '300 Guests',
-    pageRange: [30, 34] // Pages 31 to 35
-  }
-];
-
-
-
-const mehendiVisual = 'https://cdn0.weddingwire.in/article/1411/original/960/jpg/21141-mehndi-ceremony-jayesh-khaturia-photography-udaipur-count-out-your-guests.jpeg';
-const cocktailVisual = 'https://tse3.mm.bing.net/th/id/OIP.G4OQd8PehmqpSEtN6UtkkQHaE8?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3';
-
-const welcomeVisual = 'https://tse2.mm.bing.net/th/id/OIP.XupaELD8RaDk41tGM_ep0AHaHa?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3';
-const haldiVisual = 'https://tse1.mm.bing.net/th/id/OIP.FWbFDMhofCx6N2pjHUV6qAHaE7?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3';
-
-const sangeetVisualUrl = 'https://tse4.mm.bing.net/th/id/OIP.Cenu4rdK4ozcXRpy7OQNNgHaE8?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3';
-const poolPartyVisualUrl = 'https://images.stockcake.com/public/2/4/b/24be6831-23a8-4a26-bd33-321a3ce1ce3c_large/poolside-celebration-night-stockcake.jpg';
-const mandapVisualUrl = 'https://tse2.mm.bing.net/th/id/OIP.ZbrY-Y5-UOTCKVXOp3BKDgHaE8?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3';
-const receptionVisualUrl = 'https://thfvnext.bing.com/th/id/OIP.ZQBEDIAoD_p71Fe4dhNlYQHaE8?o=7&cb=thfvnextfalcon2rm=3&rs=1&pid=ImgDetMain&o=7&rm=3';
+import cocktailEvening from '../../Wedding/Cocktail Evening.jpg';
+import haldiCelebration from '../../Wedding/Haldi Celebration.jpg';
+import mehendiCelebration from '../../Wedding/Mehendi Celebration.jpg';
+import poolsideCelebration from '../../Wedding/PoolSide Celebration.jpg';
+import receptionCelebration from '../../Wedding/Reception.JPG';
+import sangeetNight from '../../Wedding/Sangeet Night.jpg';
+import signatureCoupleEntries from '../../Wedding/Signnature couple entries.jpg';
+import weddingCeremony from '../../Wedding/Wedding Ceremony.jpg';
+import welcomeExperience from '../../Wedding/Welcome Experience.jpg';
 
 const celebrationMoments = [
-  { title: 'Welcome Experience', image: welcomeVisual, text: 'Creating memorable first impressions through seamless arrivals, hospitality, and guest assistance.' },
-  { title: 'Haldi Celebration', image: haldiVisual, text: 'Vibrant rituals brought to life with thoughtful planning, decor, and guest experiences.' },
-  { title: 'Mehendi Celebration', image: mehendiVisual, text: 'A colorful celebration filled with artistry, entertainment, and joyful moments.' },
-  { title: 'Sangeet Night', image: sangeetVisualUrl, text: 'Performance-driven evenings featuring music, dance, entertainment, and family celebrations.' },
-  { title: 'Cocktail Evening', image: cocktailVisual, text: 'Sophisticated social experiences with curated entertainment, music, and elevated hospitality.' },
-  { title: 'Poolside Celebration', image: poolPartyVisualUrl, text: 'Relaxed daytime festivities with themed styling, music, refreshments, and guest engagement.' },
-  { title: 'Wedding Ceremony', image: mandapVisualUrl, text: 'Beautifully orchestrated ceremonies that honor traditions while creating unforgettable memories.' },
-  { title: 'Reception Celebration', image: receptionVisualUrl, text: 'Elegant celebrations featuring entertainment, hospitality, dining, and seamless event flow.' },
-  { title: 'Signature Couple Experiences', image: specialEntry, text: 'From grand entries to curated couple moments, we design unforgettable experiences that leave a lasting impression.' }
+  { title: 'Welcome Experience', image: welcomeExperience, text: 'Creating memorable first impressions through seamless arrivals, hospitality, and guest assistance.' },
+  { title: 'Haldi Celebration', image: haldiCelebration, text: 'Vibrant rituals brought to life with thoughtful planning, decor, and guest experiences.' },
+  { title: 'Mehendi Celebration', image: mehendiCelebration, text: 'A colorful celebration filled with artistry, entertainment, and joyful moments.' },
+  { title: 'Sangeet Night', image: sangeetNight, text: 'Performance-driven evenings featuring music, dance, entertainment, and family celebrations.' },
+  { title: 'Cocktail Evening', image: cocktailEvening, text: 'Sophisticated social experiences with curated entertainment, music, and elevated hospitality.' },
+  { title: 'Poolside Celebration', image: poolsideCelebration, text: 'Relaxed daytime festivities with themed styling, music, refreshments, and guest engagement.' },
+  { title: 'Wedding Ceremony', image: weddingCeremony, text: 'Beautifully orchestrated ceremonies that honor traditions while creating unforgettable memories.' },
+  { title: 'Reception Celebration', image: receptionCelebration, text: 'Elegant celebrations featuring entertainment, hospitality, dining, and seamless event flow.' },
+  { title: 'Signature Couple Experiences', image: signatureCoupleEntries, text: 'From grand entries to curated couple moments, we design unforgettable experiences that leave a lasting impression.' }
 ];
 
 const activityIdeas = [
@@ -230,32 +112,7 @@ function LuxuryHeader({ eyebrow, title, text, align = 'center' }) {
 
 export default function WeddingServices() {
   const [activeModule, setActiveModule] = useState(null);
-  const [activeProject, setActiveProject] = useState(null);
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [bubbles, setBubbles] = useState([]);
-
-  const openLightbox = (project) => {
-    setActiveProject(project);
-    setCurrentSlideIndex(0);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeLightbox = () => {
-    setActiveProject(null);
-    document.body.style.overflow = '';
-  };
-
-  const nextSlide = (rangeLength) => {
-    setCurrentSlideIndex((prev) => (prev === rangeLength - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = (rangeLength) => {
-    setCurrentSlideIndex((prev) => (prev === 0 ? rangeLength - 1 : prev - 1));
-  };
-
-  const activeSlides = activeProject
-    ? weddingBookletPages.slice(activeProject.pageRange[0], activeProject.pageRange[1] + 1)
-    : [];
 
   // Generate champagne bubbles configuration on mount
   useEffect(() => {
@@ -530,75 +387,6 @@ export default function WeddingServices() {
             </div>
           </Reveal>
         </div>
-
-
-        {/* PORTFOLIO GRID SECTION */}
-        <div id="portfolio-grid" className="mt-32 scroll-mt-28">
-          <LuxuryHeader
-            eyebrow="Featured Weddings"
-            title="Our Weddings Portfolio"
-            text="Explore some of our beautiful wedding stories captured in detailed slide booklets."
-          />
-
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {weddingProjects.map((project, idx) => {
-              const { title, subtitle, tag, image, location, date, guests } = project;
-              return (
-                <Reveal
-                  key={project.id}
-                  delay={idx * 0.05}
-                  className="group relative overflow-hidden rounded-[20px] border border-[#C8A96B]/20 bg-[#F5F1EA] h-[380px] shadow-xl hover:border-[#C8A96B]/50 transition-all duration-500 cursor-pointer"
-                  onClick={() => openLightbox(project)}
-                >
-                  <img
-                    src={image}
-                    alt={title}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[3000ms] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-500 z-10" />
-
-                  <span className="absolute left-5 top-5 rounded-md border border-[#D4AF37]/30 bg-black/60 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D4AF37] z-20">
-                    {tag}
-                  </span>
-
-                  <div className="absolute bottom-5 left-5 right-5 z-20 flex flex-col justify-end">
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-[#C8A96B] mb-1 text-left font-sans">
-                      {subtitle}
-                    </p>
-                    <h3 className="font-serif text-2xl text-white group-hover:text-[#D4AF37] transition-colors leading-snug text-left">
-                      {title}
-                    </h3>
-                    
-                    <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-36 group-hover:opacity-100 group-hover:mt-4 transition-all duration-500 border-t border-white/10 pt-4">
-                      <div className="space-y-2 text-xs text-white/80 text-left">
-                        <div className="flex items-center gap-2">
-                          <MapPin size={13} className="text-[#D4AF37] shrink-0" />
-                          <span>{location}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Users size={13} className="text-[#D4AF37] shrink-0" />
-                          <span>{guests}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar size={13} className="text-[#D4AF37] shrink-0" />
-                          <span>{date}</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] group-hover:translate-x-1 transition-transform text-left">
-                        <span>Explore Story</span>
-                        <ArrowRight size={12} />
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-
         {/* Section 6: Plan a Wedding Consultation CTA */}
         <Reveal className="mt-24 px-4 py-8 text-center relative z-10">
           <Plane className="mx-auto text-[#C8A96B] animate-bounce" size={30} />
@@ -625,95 +413,11 @@ export default function WeddingServices() {
         </Reveal>
 
       </div>
-
-      {/* Lightbox / Luxury Magazine Booklet Overlay */}
-      <AnimatePresence>
-        {activeProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex flex-col justify-between bg-[#050505]/80 backdrop-blur-md p-4 md:p-6 lg:p-8"
-            onClick={closeLightbox}
-          >
-            {/* Header Details */}
-            <div className="max-w-7xl w-full mx-auto flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
-              <div className="text-white text-left">
-                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.34em] text-[#D4AF37]">
-                  {activeProject.tag} — Story {activeProject.number}
-                </p>
-                <h3 className="font-serif text-xl sm:text-2xl mt-1 text-white">
-                  {activeProject.subtitle}
-                </h3>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <span className="font-serif text-sm font-semibold text-[#D4AF37]">
-                  {String(currentSlideIndex + 1).padStart(2, '0')} / {String(activeSlides.length).padStart(2, '0')}
-                </span>
-                
-                <button
-                  type="button"
-                  onClick={closeLightbox}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-[#151515] text-[#D4AF37] transition hover:bg-[#D4AF37] hover:text-[#050505]"
-                  aria-label="Close booklet"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-            </div>
-
-            {/* Slide Showcase Arena */}
-            <div className="flex-grow flex items-center justify-center max-w-6xl w-full mx-auto my-4 relative" onClick={(e) => e.stopPropagation()}>
-              
-              {/* Left Arrow */}
-              <button
-                type="button"
-                onClick={() => prevSlide(activeSlides.length)}
-                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
-                aria-label="Previous page"
-              >
-                <ChevronLeft size={24} />
-              </button>
-
-              {/* Slide Image Box */}
-              <div className="w-full h-[62vh] md:h-[68vh] rounded-2xl border border-white/10 bg-[#050505] p-2 sm:p-4 shadow-2xl flex items-center justify-center overflow-hidden relative">
-                {/* Vintage Frame borders */}
-                <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-xl" />
-                <div className="absolute top-6 left-6 grid grid-cols-2 gap-1.5 opacity-10 pointer-events-none">
-                  {Array.from({ length: 4 }).map((_, i) => (
-                    <span key={i} className="h-1 w-1 rounded-full bg-[#C8A96B]" />
-                  ))}
-                </div>
-                <FloralOrnament className="absolute bottom-6 right-6 w-16 h-16 opacity-25" />
-
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={`${activeProject.id}-${currentSlideIndex}`}
-                    src={activeSlides[currentSlideIndex]?.full}
-                    alt={`Booklet page ${currentSlideIndex + 1}`}
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.4 }}
-                    className="max-h-full max-w-full object-contain rounded-lg relative z-10"
-                  />
-                </AnimatePresence>
-              </div>
-
-              {/* Right Arrow */}
-              <button
-                type="button"
-                onClick={() => nextSlide(activeSlides.length)}
-                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
-                aria-label="Next page"
-              >
-                <ChevronRight size={24} />
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
+
+
+
+
+

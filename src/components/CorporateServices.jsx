@@ -29,6 +29,10 @@ import Reveal from './Reveal.jsx';
 
 // Import corporate assets
 import heroStage from '../assets/corporate-extracted/corporate-p15-xref1070.jpg';
+import corporateMainImage from '../../Corporate/Main Image.JPG';
+import corporateStageProduction from '../../Corporate/Stage Production.jpg';
+import corporateAwardGalaSetup from '../../Corporate/Award Gala Setup.jpg';
+import corporateOutboundsImage from '../../Corporate/Corporate Outbounds.jpeg';
 import conferenceStage from '../assets/corporate-extracted/corporate-p17-xref1109.jpg';
 import awardsNight from '../assets/corporate-extracted/corporate-p08-xref843.jpg';
 import registrationDesk from '../assets/corporate-extracted/corporate-p14-xref1057.jpg';
@@ -221,7 +225,7 @@ const b2bCorporateServices = [
 
 // Corporate Showcase Config
 const corporateShowcase = {
-  hero: heroStage,
+  hero: corporateMainImage,
   eyebrow: 'Corporate Showcase',
   title: 'Precision Corporate Event Management & Production',
   text: 'At Event Brigade, we engineer custom B2B experiences with bulletproof logistics, state-of-the-art stage fabrications, and precise technical orchestration. From initial blueprint to final live broadcast, we handle the complexity so your leadership can focus on driving impact.',
@@ -229,7 +233,7 @@ const corporateShowcase = {
     {
       title: 'Stage Production & AV',
       text: 'Bespoke stage designs, large-format LED screen setups, line-array audio, and multi-camera broadcast systems.',
-      image: conferenceStage
+      image: corporateStageProduction
     },
     {
       title: 'Product Unveils',
@@ -244,15 +248,15 @@ const corporateShowcase = {
     {
       title: 'Awards Gala Setups',
       text: 'Red carpet entries, trophy presentations, live entertainment curation, and premium F&B logistics.',
-      image: awardsNight
+      image: corporateAwardGalaSetup
     },
     {
       title: 'Corporate Outbounds',
       text: 'Team building retreats, custom games, stage events, and safety-audited employee carnivals.',
-      image: familyTheme
+      image: corporateOutboundsImage
     }
   ],
-  gallery: [heroStage, conferenceStage, launchWalk, partnerMeet]
+  gallery: [corporateMainImage, corporateStageProduction, corporateAwardGalaSetup, corporateOutboundsImage]
 };
 
 export default function CorporateServices() {
@@ -746,3 +750,8 @@ export default function CorporateServices() {
     </div>
   );
 }
+
+
+
+
+

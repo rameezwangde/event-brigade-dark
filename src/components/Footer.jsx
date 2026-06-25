@@ -18,6 +18,12 @@ const serviceLinks = [
   ['Social Events', '/social-services']
 ];
 
+const portfolioLinks = [
+  ['Wedding Portfolio', '/wedding-portfolio'],
+  ['Corporate Portfolio', '/corporate-portfolio'],
+  ['Social Portfolio', '/social-events-portfolio']
+];
+
 const socialLinks = [
   ['Facebook', 'https://www.facebook.com/EventBrigade', Facebook],
   ['Instagram', 'https://www.instagram.com/eventbrigade/', Instagram],
@@ -84,6 +90,14 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+            <h4 className="mt-6 font-serif text-lg font-bold text-[#111111]">Portfolio</h4>
+            <div className="mt-3 grid gap-2.5">
+              {portfolioLinks.map(([label, href]) => (
+                <a key={label} href={href} onClick={(e) => handleNavClick(e, href)} className="block text-sm text-[#555555] transition hover:text-gold">
+                  {label}
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>
@@ -98,11 +112,11 @@ export default function Footer() {
                 <MapPin size={18} />
                 <span>Bavdhan, Pune<br />Maharashtra, India</span>
               </a>
-              <a href="tel:+918552831191" className="grid grid-cols-[20px_1fr] gap-4 transition hover:text-gold">
+              <a href={`tel:${contact.phones[0].replace(/\s/g, '')}`} className="grid grid-cols-[20px_1fr] gap-4 transition hover:text-gold">
                 <Phone size={18} />
                 <span>{contact.phones[0]}</span>
               </a>
-              <a href="tel:+919028755979" className="grid grid-cols-[20px_1fr] gap-4 transition hover:text-gold">
+              <a href={`tel:${contact.phones[1].replace(/\s/g, '')}`} className="grid grid-cols-[20px_1fr] gap-4 transition hover:text-gold">
                 <Phone size={18} />
                 <span>{contact.phones[1]}</span>
               </a>

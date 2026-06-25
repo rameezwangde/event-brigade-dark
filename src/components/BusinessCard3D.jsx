@@ -7,7 +7,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { SMAAPass } from 'three/addons/postprocessing/SMAAPass.js';
 import { Mail, MapPin, Phone, Sparkles } from 'lucide-react';
 import { contact } from '../data.js';
-import eventBrigadeLogo from '../../eventbrigade.PNG';
+import eventBrigadeLogo from '../../darker bg.png';
 import SectionHeader from './SectionHeader.jsx';
 
 function makeTextTexture(lines, options = {}) {

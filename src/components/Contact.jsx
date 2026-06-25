@@ -3,7 +3,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { contact } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
-import eventBrigadeLogo from '../../eventbrigade.PNG';
+import eventBrigadeLogo from '../../darker bg.png';
 
 function WhatsAppIcon({ size = 18, className = '' }) {
   return (

@@ -21,7 +21,7 @@ function WhatsAppIcon({ size = 18, className = '' }) {
 }
 
 export default function Contact() {
-  const whatsappNumber = contact.phones[0].replace(/\D/g, '');
+  const whatsappNumber = (contact.enquiryPhone || contact.phones[0]).replace(/\D/g, '');
   const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`;
   const phoneLink = `tel:${contact.phones[0].replace(/\s/g, '')}`;
   const emailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contact.email)}`;
@@ -102,7 +102,7 @@ export default function Contact() {
                 <textarea name="message" rows="6" placeholder="Tell us about your event..." required />
               </label>
               <button type="submit" className="btn-primary mt-auto w-full justify-center">
-                Send Inquiry <WhatsAppIcon size={18} />
+                Send Enquiry <WhatsAppIcon size={18} />
               </button>
             </form>
           </Reveal>

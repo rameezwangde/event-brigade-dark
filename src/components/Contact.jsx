@@ -1,8 +1,9 @@
 import React from 'react';
-import { Mail, MapPin, Phone, Sparkles } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { contact } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
+import eventBrigadeLogo from '../../eventbrigade.PNG';
 
 function WhatsAppIcon({ size = 18, className = '' }) {
   return (
@@ -72,7 +73,7 @@ export default function Contact() {
                 <Mail className="text-gold" /> <span>{contact.email}</span>
               </a>
               <a className="contact-line" href={websiteLink} target="_blank" rel="noreferrer">
-                <Sparkles className="text-gold" /> <span>{contact.website}</span>
+                <img src={eventBrigadeLogo} alt="Event Brigade logo" className="h-7 w-7 object-contain" /> <span>{contact.website}</span>
               </a>
             </div>
             <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary mt-7 w-full justify-center">

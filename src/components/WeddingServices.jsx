@@ -17,14 +17,14 @@ import welcomeExperience from '../../Wedding/Welcome Experience.jpg';
 
 const celebrationMoments = [
   { title: 'Welcome Experience', image: welcomeExperience, text: 'Creating memorable first impressions through seamless arrivals, hospitality, and guest assistance.' },
-  { title: 'Haldi Celebration', image: haldiCelebration, text: 'Vibrant rituals brought to life with thoughtful planning, decor, and guest experiences.' },
+  { title: 'Haldi Celebration', image: haldiCelebration, imagePosition: 'center 78%', text: 'Vibrant rituals brought to life with thoughtful planning, decor, and guest experiences.' },
   { title: 'Mehendi Celebration', image: mehendiCelebration, text: 'A colorful celebration filled with artistry, entertainment, and joyful moments.' },
   { title: 'Sangeet Night', image: sangeetNight, text: 'Performance-driven evenings featuring music, dance, entertainment, and family celebrations.' },
   { title: 'Cocktail Evening', image: cocktailEvening, text: 'Sophisticated social experiences with curated entertainment, music, and elevated hospitality.' },
   { title: 'Poolside Celebration', image: poolsideCelebration, text: 'Relaxed daytime festivities with themed styling, music, refreshments, and guest engagement.' },
   { title: 'Wedding Ceremony', image: weddingCeremony, text: 'Beautifully orchestrated ceremonies that honor traditions while creating unforgettable memories.' },
   { title: 'Reception Celebration', image: receptionCelebration, text: 'Elegant celebrations featuring entertainment, hospitality, dining, and seamless event flow.' },
-  { title: 'Signature Couple Experiences', image: signatureCoupleEntries, text: 'From grand entries to curated couple moments, we design unforgettable experiences that leave a lasting impression.' }
+  { title: 'Signature Couple Experiences', image: signatureCoupleEntries, imagePosition: 'center 30%', text: 'From grand entries to curated couple moments, we design unforgettable experiences that leave a lasting impression.' }
 ];
 
 const activityIdeas = [
@@ -211,7 +211,7 @@ export default function WeddingServices() {
                       src={module.image}
                       alt={module.title}
                       loading="lazy"
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover object-center"
                     />
                   </div>
                 ))}
@@ -314,7 +314,8 @@ export default function WeddingServices() {
                     src={moment.image}
                     alt={moment.title}
                     loading="lazy"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-center"
+                    style={moment.imagePosition ? { objectPosition: moment.imagePosition } : undefined}
                   />
                   <div className="absolute inset-0 bg-[#1C1C1C]/10" />
                 </div>

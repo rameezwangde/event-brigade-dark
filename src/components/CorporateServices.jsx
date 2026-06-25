@@ -42,8 +42,6 @@ import launchWalk from '../assets/corporate-extracted/corporate-p14-xref1054.jpg
 import familyTheme from '../assets/corporate-extracted/corporate-p15-xref1073.jpg';
 import groupPhoto from '../assets/corporate-extracted/corporate-p13-xref1020.jpg';
 import clientMeet from '../assets/corporate-extracted/corporate-p12-xref973.jpg';
-import reviewOne from '../assets/corporate-extracted/corporate-p18-xref1127.jpg';
-import reviewTwo from '../assets/corporate-extracted/corporate-p18-xref1184.jpg';
 
 // Booklet pages for corporate showcase
 const corporatePages = [
@@ -590,7 +588,7 @@ export default function CorporateServices() {
 
 
         {/* Enterprise Client Logs */}
-        <div className="mt-28 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="mt-28">
           <Reveal className="rounded-[24px] border border-white/10 bg-[#151515] p-7 md:p-9 shadow-xl flex flex-col justify-between h-full">
             <div>
               <h2 className="font-serif text-3xl text-white">Brands Trust Event Brigade</h2>
@@ -612,21 +610,6 @@ export default function CorporateServices() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.08} className="grid gap-4 sm:grid-cols-2 h-full">
-            {[reviewOne, reviewTwo].map((review, idx) => (
-              <div
-                key={review}
-                className="overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] p-5 shadow-lg h-full flex items-center justify-center hover:border-white/20 transition-all duration-300"
-              >
-                <img
-                  src={review}
-                  alt={`Corporate client review ${idx + 1}`}
-                  loading="lazy"
-                  className="h-full w-full rounded-xl object-contain filter brightness-95 hover:brightness-100 transition-all duration-300"
-                />
-              </div>
-            ))}
-          </Reveal>
         </div>
 
 

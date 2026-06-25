@@ -168,7 +168,8 @@ const b2bCorporateServices = [
   {
     number: '01',
     title: 'Annual Days',
-    image: awardsNight,
+    image: heroStage,
+    imagePosition: 'center 70%',
     icon: Milestone,
     description: 'High-impact B2B themes, customized LED backdrop graphics, precise stage set fabrications, and professional lighting control.'
   },
@@ -189,7 +190,7 @@ const b2bCorporateServices = [
   {
     number: '04',
     title: 'Awards Nights',
-    image: registrationDesk, // Reusing local assets
+    image: awardsNight,
     icon: Award,
     description: 'Chronological trophy lists, professional sound design, VIP registration queues, and high-spec corporate F&B curation.'
   },
@@ -521,6 +522,7 @@ export default function CorporateServices() {
                       alt={service.title}
                       loading="lazy"
                       className="h-full w-full object-cover"
+                      style={service.imagePosition ? { objectPosition: service.imagePosition } : undefined}
                     />
                     {/* Dark mask overlay */}
                     <div className="absolute inset-0 bg-[#050505]/40" />
@@ -591,9 +593,7 @@ export default function CorporateServices() {
         <div className="mt-28 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <Reveal className="rounded-[24px] border border-white/10 bg-[#151515] p-7 md:p-9 shadow-xl flex flex-col justify-between h-full">
             <div>
-              <UsersRound className="mb-5 text-[#D4AF37]" size={28} />
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Corporate Credentials</p>
-              <h2 className="mt-3 font-serif text-3xl text-white">MNC Brands Trust Event Brigade</h2>
+              <h2 className="font-serif text-3xl text-white">Brands Trust Event Brigade</h2>
               <p className="mt-3 text-xs sm:text-sm text-white/70">
                 Delivering secure, brand-aligned, and logistically sound event executions across corporate hubs in India.
               </p>

@@ -161,6 +161,17 @@ const corporateCaseStudies = [
 
 const strengthIcons = [ShieldCheck, BadgeCheck, ClipboardCheck, Sparkles];
 
+const corporateClientLogos = [
+  { name: 'Lodha Group', logo: 'https://www.google.com/s2/favicons?domain=lodhagroup.com&sz=128' },
+  { name: 'CREDAI', logo: 'https://www.google.com/s2/favicons?domain=credai.org&sz=128' },
+  { name: 'Ace Golfing', logo: 'https://www.google.com/s2/favicons?domain=acegolfing.com&sz=128' },
+  { name: 'Nestle', logo: 'https://www.google.com/s2/favicons?domain=nestle.com&sz=128' },
+  { name: 'Sandvik', logo: 'https://www.google.com/s2/favicons?domain=sandvik.com&sz=128' },
+  { name: 'EO Pune', logo: 'https://www.google.com/s2/favicons?domain=eopune.org&sz=128' },
+  { name: 'Goyal Properties', logo: 'https://www.google.com/s2/favicons?domain=goyalproperties.com&sz=128' },
+  { name: 'Gabriel', logo: 'https://www.google.com/s2/favicons?domain=gabrielindia.com&sz=128' }
+];
+
 // 8 Premium B2B Corporate Formats
 const b2bCorporateServices = [
   {
@@ -589,27 +600,29 @@ export default function CorporateServices() {
 
         {/* Enterprise Client Logs */}
         <div className="mt-28">
-          <Reveal className="rounded-[24px] border border-white/10 bg-[#151515] p-7 md:p-9 shadow-xl flex flex-col justify-between h-full">
-            <div>
-              <h2 className="font-serif text-3xl text-white">Brands Trust Event Brigade</h2>
-              <p className="mt-3 text-xs sm:text-sm text-white/70">
-                Delivering secure, brand-aligned, and logistically sound event executions across corporate hubs in India.
-              </p>
-            </div>
-            
-            <div className="mt-8 grid grid-cols-2 gap-3.5">
-              {corporatePortfolio.clients.map((client) => (
-                <div
-                  key={client}
-                  className="flex items-center gap-2.5 rounded-xl border border-white/5 bg-[#050505]/75 px-5 py-3 text-xs sm:text-sm text-white/80"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#2E6BFF] shrink-0" />
-                  <span>{client}</span>
-                </div>
-              ))}
+          <Reveal className="mx-auto max-w-5xl rounded-[24px] border border-white/10 bg-[#151515] p-7 text-center shadow-xl md:p-10">
+            <h2 className="font-serif text-3xl leading-tight text-white sm:text-4xl">
+              <span className="text-[#D4AF37]">Brands</span> Trust Event <span className="text-[#D4AF37]">Brigade</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
+              Delivering secure, brand-aligned, and logistically sound event executions across corporate hubs in India.
+            </p>
+
+            <div className="mt-10 overflow-hidden border-y border-white/10 py-5">
+              <div className="auto-scroll-gallery flex w-max items-center gap-8">
+                {[...corporateClientLogos, ...corporateClientLogos].map((client, index) => (
+                  <div key={`${client.name}-${index}`} className="flex shrink-0 items-center gap-3 px-2">
+                    <span className="grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-white p-2 shadow-md">
+                      <img src={client.logo} alt={`${client.name} logo`} loading="lazy" className="max-h-full max-w-full object-contain" />
+                    </span>
+                    <span className="text-sm font-semibold uppercase tracking-[0.18em] text-white/78">
+                      {client.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </Reveal>
-
         </div>
 
 

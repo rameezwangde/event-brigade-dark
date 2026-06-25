@@ -447,6 +447,27 @@ export default function SocialServices() {
 
 
 
+        {/* Social Event Enquiry CTA */}
+        <Reveal className="mt-24 mx-auto max-w-4xl rounded-[24px] border border-[#C8A96B]/20 bg-[#F5F1EA] px-6 py-10 text-center shadow-md sm:px-10 md:py-12">
+          <Sparkles className="mx-auto text-[#D56A4A]" size={30} />
+          <h2 className="mx-auto mt-5 max-w-3xl font-serif text-3xl leading-[1.25] text-[#1C1C1C] sm:text-4xl md:text-5xl">
+            Planning a Social Celebration?
+            <span className="mt-1.5 block font-normal italic text-[#D56A4A]">Let us make it effortless.</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-xs leading-relaxed text-[#1C1C1C]/65 sm:text-sm">
+            Share your occasion, guest count, and preferred date. We will help shape the decor, activities, hospitality, and complete flow.
+          </p>
+          <a
+            href="/contact"
+            onClick={(e) => {
+              e.preventDefault();
+              window.history.pushState({}, '', '/contact');
+            }}
+            className="gold-shimmer-btn mt-8 inline-flex items-center gap-3 rounded-full px-10 py-4 text-sm font-bold uppercase tracking-[0.2em] text-obsidian transition-all duration-300 hover:shadow-glow sm:text-base"
+          >
+            Send Enquiry <ArrowRight size={14} />
+          </a>
+        </Reveal>
       {/* Booklet Modal / Lightbox for Kunal's 50th Birthday Celebration */}
       <AnimatePresence>
         {activeProject && (

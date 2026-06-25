@@ -39,13 +39,13 @@ export default function BrandHeritage() {
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
 
-          <div className="absolute inset-x-0 bottom-12 top-0 flex flex-col items-center justify-center px-8 pt-10 text-center md:bottom-16 md:px-24 md:pt-12">
-            <div className="absolute inset-x-4 top-1/2 h-[78%] -translate-y-1/2 rounded-[2rem] bg-obsidian/58 blur-2xl md:inset-x-20 md:h-[70%]" />
-            <p className="relative z-10 mt-4 text-base font-semibold uppercase tracking-[0.34em] text-champagne drop-shadow-[0_2px_14px_rgba(0,0,0,1)] md:text-lg">TO YOUR RESCUE</p>
-            <h2 id="brand-heritage-title" className="relative z-10 mt-4 max-w-4xl font-serif text-4xl leading-[1.08] text-ivory drop-shadow-[0_4px_24px_rgba(0,0,0,1)] md:text-6xl md:leading-[1.06]">
+          <div className="relative flex flex-col items-center justify-center px-6 py-12 text-center sm:px-8 md:absolute md:inset-x-0 md:bottom-16 md:top-0 md:px-24 md:py-0 md:pt-12">
+            <div className="absolute inset-x-3 top-1/2 h-[88%] -translate-y-1/2 rounded-[2rem] bg-obsidian/58 blur-2xl md:inset-x-20 md:h-[70%]" />
+            <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.26em] text-champagne drop-shadow-[0_2px_14px_rgba(0,0,0,1)] sm:text-sm md:mt-4 md:text-lg md:tracking-[0.34em]">TO YOUR RESCUE</p>
+            <h2 id="brand-heritage-title" className="relative z-10 mt-3 max-w-4xl font-serif text-3xl leading-[1.12] text-ivory drop-shadow-[0_4px_24px_rgba(0,0,0,1)] sm:text-4xl md:mt-4 md:text-6xl md:leading-[1.06]">
               We master the complexity,<br />You experience the luxury.
             </h2>
-            <p className="relative z-10 mt-6 max-w-4xl text-sm leading-8 text-smoke drop-shadow-[0_2px_14px_rgba(0,0,0,1)] md:text-base text-center">
+            <p className="relative z-10 mt-5 max-w-4xl text-sm leading-7 text-smoke drop-shadow-[0_2px_14px_rgba(0,0,0,1)] md:mt-6 md:text-base md:leading-8 text-center">
               Luxury lies in the details, and that's where we excel. Every exceptional event is built on thousands of moving parts working together seamlessly. At Event Brigade, we bring together creativity, precision, and expertise to deliver unforgettable experiences that feel effortless. From intimate celebrations to large-scale productions, we handle every complexity with creative vision, meticulous planning, and flawless execution. Behind the scenes, our team works tirelessly to manage every detail, anticipate every challenge, and ensure everything comes together perfectly. While you enjoy the spotlight and create lasting memories, we're always ready, always reliable, and always to your rescue.
             </p>
 

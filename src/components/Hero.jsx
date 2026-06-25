@@ -3,7 +3,7 @@ import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, CalendarDays } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { stats } from '../data.js';
-import heroImage from '../../hero.png';
+import heroImage from '../../Hero final.jpg';
 
 function Counter({ value, suffix }) {
   const ref = useRef(null);
@@ -26,11 +26,11 @@ function Counter({ value, suffix }) {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden pb-16 pt-48 md:pb-24 md:pt-56 lg:pt-64">
+    <section id="home" className="relative min-h-[100svh] overflow-hidden pb-16 pt-48 md:pb-24 md:pt-56 lg:min-h-[56.25vw] lg:pt-64">
       <img
         src={heroImage}
         alt="Event Brigade corporate event stage with seating and production lights"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-center"
         fetchPriority="high"
         decoding="async"
       />

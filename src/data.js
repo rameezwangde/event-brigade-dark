@@ -127,7 +127,7 @@ export const weddingShowcase = {
   eyebrow: 'Wedding Services',
   title: 'WEDDINGS CRAFTED FOR A LIFETIME OF MEMORIES.',
   text:
-    'From bespoke décor and guest hospitality to entertainment and seamless coordination, we bring together every element needed to create extraordinary wedding experiences.\n\nBlending creativity, elegance, and precision, we craft moments that will be cherished for a lifetime.',
+    'From bespoke décor and guest hospitality to entertainment and seamless coordination, we bring together every element needed to create extraordinary wedding experiences.\nBlending creativity, elegance, and precision, we craft moments that will be cherished for a lifetime.',
   modules: [
     {
       title: 'Invitation Management & RSVP',

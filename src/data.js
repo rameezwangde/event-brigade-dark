@@ -456,6 +456,11 @@ export const testimonials = [
     role: "Client"
   },
   {
+    quote: "Best event management company, if you are looking for a wedding planner, EVENT BRIGADE is the best place for you. 😉",
+    name: "Amit Jambhule",
+    role: "Client"
+  },
+  {
     quote:
       'Thank you Event Brigade and Kunal Garg for organising a fun-filled event. The idea of a mocktails making competition was unique and something new and it was managed to perfection. AYW as Club will cherish this event for a long time to come. All the best and keep up the good work.',
     name: 'Chirayush Agarwal',

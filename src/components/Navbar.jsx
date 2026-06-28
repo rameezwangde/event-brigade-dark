@@ -295,15 +295,15 @@ export default function Navbar() {
                             : isCorporatePage
                               ? 'bg-[#2E6BFF]/15 text-[#2E6BFF]'
                               : 'bg-gold/10 text-gold'
-                          : isFixedChampagneLink
-                            ? 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
-                            : isLightPage
+                          : isLightPage
                             ? isSocialPage
                               ? 'text-[#222222]/80 hover:bg-[#D56A4A]/10 hover:text-[#D56A4A]'
                               : 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
-                            : isCorporatePage
-                              ? 'text-white/80 hover:bg-[#2E6BFF]/10 hover:text-[#2E6BFF]'
-                              : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
+                            : isFixedChampagneLink
+                              ? 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
+                              : isCorporatePage
+                                ? 'text-white/80 hover:bg-[#2E6BFF]/10 hover:text-[#2E6BFF]'
+                                : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
                       }`}
                     >
                       <span>{link.label}</span>
@@ -374,12 +374,12 @@ export default function Navbar() {
                           : isCorporatePage
                             ? 'bg-[#2E6BFF] text-white shadow-[0_0_12px_rgba(46,107,255,0.25)]'
                             : 'border border-[#D0B175]/60 bg-[#E3C484] text-[#111111]'
-                        : isFixedChampagneLink
-                          ? 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
-                          : isLightPage
-                            ? isSocialPage
-                              ? 'text-[#222222]/80 hover:bg-[#D56A4A]/10 hover:text-[#D56A4A]'
-                              : 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
+                        : isLightPage
+                          ? isSocialPage
+                            ? 'text-[#222222]/80 hover:bg-[#D56A4A]/10 hover:text-[#D56A4A]'
+                            : 'text-[#1C1C1C]/80 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
+                          : isFixedChampagneLink
+                            ? 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'
                             : isCorporatePage
                               ? 'text-white/80 hover:bg-[#2E6BFF]/10 hover:text-[#2E6BFF]'
                               : 'text-ivory/80 hover:bg-champagne/10 hover:text-gold'

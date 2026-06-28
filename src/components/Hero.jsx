@@ -45,11 +45,11 @@ export default function Hero() {
           transition={{ duration: 0.9 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <h1 className="font-display font-black uppercase tracking-[0.03em] text-3xl leading-[0.95] sm:text-4xl md:text-5xl lg:text-[4.5rem]">
+          <h1 className="font-display font-black uppercase tracking-[0.03em] text-4xl leading-[0.95] sm:text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6.5rem]">
             <span className="text-[#FAF7F2]">EVENT </span>
             <span className="text-[#D4AF37]">BRIGADE</span>
           </h1>
-          <p className="mx-auto mt-8 max-w-2xl text-xs font-abel uppercase tracking-[0.45em] text-ivory/80 md:text-base">TO YOUR RESCUE</p>
+          <p className="mx-auto mt-8 max-w-2xl text-sm font-abel uppercase tracking-[0.45em] text-ivory/80 sm:text-base md:text-lg lg:text-xl">TO YOUR RESCUE</p>
         </motion.div>
 
         <div className="mx-auto mt-24 grid max-w-4xl w-full gap-8 md:grid-cols-3">

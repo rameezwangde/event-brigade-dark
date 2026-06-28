@@ -12,28 +12,28 @@ const teamMembers = [
   {
     name: "Sandip Pawar",
     role: "Head of Operations",
-    bio: "The operational anchor of the Brigade. Sandip orchestrates complex event logistics, vendor operations, and real-time scheduling, ensuring absolute precision on the ground.",
+    bio: "With a keen eye for detail and operational excellence, Sandip leads the execution backbone of Event Brigade. From production and vendor management to on-ground execution, he ensures every event unfolds flawlessly, from planning to final applause.",
     image: sandipPawar,
     objectPosition: "object-center"
   },
   {
     name: "Shraddha Shinde",
     role: "Creative Head",
-    bio: "Curating visual masterpieces. Shraddha shapes the aesthetic direction of our events, orchestrating custom florals, table curation, and ambient themes that tell a story.",
+    bio: "Driven by creativity and inspired by experiences, Shraddha leads the creative direction at Event Brigade. From themes and concepts to visual storytelling, she crafts celebrations that are distinctive, immersive, and memorable.",
     image: shraddhaShinde,
     objectPosition: "object-top"
   },
   {
     name: "Yash Dhawane",
     role: "Head of Innovation",
-    bio: "Spearheading interactive concepts and future-ready event designs. Yash blends technology and art to design immersive experiences that leave a lasting impact.",
+    bio: "With a focus on innovation and continuous improvement, Yash helps shape experiences that are relevant, engaging, and memorable.",
     image: yashDhawane,
     objectPosition: "object-center"
   },
   {
     name: "Aditi Maindalkar",
     role: "Technical Head",
-    bio: "The mastermind behind structural designs, high-end sound, and intelligent lighting systems. Aditi translates design blueprints into flawless, safe physical realities.",
+    bio: "Blending technology with creativity, Aditi drives the technical vision at Event Brigade. From digital innovation to operational efficiency, she ensures every event is supported by seamless systems and smart solutions.",
     image: aditiMaindalkar,
     objectPosition: "object-center"
   }

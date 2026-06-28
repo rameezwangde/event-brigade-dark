@@ -441,6 +441,21 @@ export const testimonials = [
     role: "Client"
   },
   {
+    quote: "Well organised and taken care of smallest things through out the event. I would recommend people to get into touch with event brigade team for any events planned to make it happening and most wonderful event.\n\nAll the best Event Brigade Team.",
+    name: "Kalpesh Kawade",
+    role: "Client"
+  },
+  {
+    quote: "I recently had the pleasure of working with Event Brigade for my wedding, and I must say, they exceeded all expectations. Despite the short notice and minimal interactions we had, Kunal's team managed to bring our vision to life with stunning accuracy and creativity. The decor was exactly as we had imagined, if not better.",
+    name: "Arka Chatterjee",
+    role: "Groom"
+  },
+  {
+    quote: "We would like to take a moment to thank you and your team for the event management of our 25th Wedding Anniversary.\n\nThe entire ambience of the stage and the decor is really appreciated.\n\nIt's been 3 days now and we are still receiving calls and messages from our family and friends appreciating and expressing how much they enjoyed.\n\nOnce again thank you for making the celebration of our 25 years of togetherness the most wonderful experience thus far.\n\nRegards,\nGeeta and Om Prakash Yadav",
+    name: "Geeta Yadav",
+    role: "Client"
+  },
+  {
     quote:
       'Thank you Event Brigade and Kunal Garg for organising a fun-filled event. The idea of a mocktails making competition was unique and something new and it was managed to perfection. AYW as Club will cherish this event for a long time to come. All the best and keep up the good work.',
     name: 'Chirayush Agarwal',

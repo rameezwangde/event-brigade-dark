@@ -245,9 +245,7 @@ export default function Navbar() {
               ? window.location.pathname.includes('social')
                 ? `border-[#D56A4A]/25 bg-[#F9F5EF]/60 text-[#D56A4A] hover:border-[#D56A4A]/60 ${open ? 'bg-[#D56A4A] text-white' : ''}`
                 : `border-[#C8A96B]/25 bg-[#FAF7F2]/60 text-[#C8A96B] hover:border-[#C8A96B]/60 ${open ? 'bg-[#C8A96B] text-[#FAF7F2]' : ''}`
-              : window.location.pathname.includes('corporate')
-                ? `border-[#2E6BFF]/25 bg-[#070D1E]/60 text-[#2E6BFF] hover:border-[#2E6BFF]/60 ${open ? 'bg-[#2E6BFF] text-white' : ''}`
-                : `border-champagne/25 bg-obsidian/60 text-gold hover:border-gold/60 ${open ? 'border border-[#D0B175]/60 bg-[#E3C484] text-[#111111]' : ''}`
+              : `border-champagne/25 bg-obsidian/60 text-gold hover:border-gold/60 ${open ? 'border border-[#D0B175]/60 bg-[#E3C484] text-[#111111]' : ''}`
           }`}
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
@@ -314,13 +312,15 @@ export default function Navbar() {
                             ? isFixedChampagneLink
                               ? 'rotate-180 text-[#111111]'
                               : 'rotate-180 text-gold' 
-                            : isLightPage 
-                              ? isSocialPage 
-                                ? 'text-[#D56A4A]/60' 
-                                : 'text-[#C8A96B]/60' 
-                              : isCorporatePage 
-                                ? 'text-[#2E6BFF]/60' 
-                                : 'text-ivory/60'
+                            : isLinkActive && isFixedChampagneLink
+                              ? 'text-[#111111]'
+                              : isLightPage 
+                                ? isSocialPage 
+                                  ? 'text-[#D56A4A]/60' 
+                                  : 'text-[#C8A96B]/60' 
+                                : isCorporatePage 
+                                  ? 'text-[#2E6BFF]/60' 
+                                  : 'text-ivory/60'
                         }`}
                       />
                     </button>
@@ -340,7 +340,13 @@ export default function Navbar() {
                               setOpen(false);
                               setExpandedMobileItem(null);
                             }}
-                            className="block rounded-xl px-4 py-2.5 text-xs font-semibold text-[#1C1C1C]/75 transition hover:bg-[#E3C484]/25 hover:text-[#111111]"
+                            className={`block rounded-xl px-4 py-2.5 text-xs font-semibold transition ${
+                              isLightPage
+                                ? isSocialPage
+                                  ? 'text-[#222222]/75 hover:bg-[#D56A4A]/10 hover:text-[#D56A4A]'
+                                  : 'text-[#1C1C1C]/75 hover:bg-[#C8A96B]/10 hover:text-[#C8A96B]'
+                                : 'text-ivory/72 hover:bg-champagne/10 hover:text-gold'
+                            }`}
                           >
                             {subItem.label}
                           </a>

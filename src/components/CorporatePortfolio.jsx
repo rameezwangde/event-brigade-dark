@@ -286,14 +286,14 @@ export default function CorporatePortfolio() {
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
                   className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${isSelected
-                      ? 'border-[#2E6BFF] text-white shadow-sm'
+                      ? 'border-[#D4AF37] text-white shadow-sm'
                       : 'border-white/10 bg-[#151515]/40 text-white/70 hover:border-white/30 hover:text-white'
                     }`}
                 >
                   {isSelected && (
                     <motion.span
                       layoutId="activeCorpCategoryPill"
-                      className="absolute inset-0 rounded-full bg-[#2E6BFF]/15"
+                      className="absolute inset-0 rounded-full bg-[#D4AF37]/15"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                     />
                   )}

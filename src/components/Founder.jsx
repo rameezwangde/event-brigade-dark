@@ -1,26 +1,41 @@
 import React from 'react';
-import { Award, Users } from 'lucide-react';
+import { Award, Users, ArrowRight } from 'lucide-react';
 import { images, siteCopy } from '../data.js';
 import Reveal from './Reveal.jsx';
 
+import sandipPawar from '../../Sandip Pawar.jpeg';
+import shraddhaShinde from '../../Shraddha Shinde.jpeg';
+import yashDhawane from '../../Yash Dhawane.png';
+import aditiMaindalkar from '../../Aditi Maindalkar.jpeg';
+
 const teamMembers = [
   {
-    name: "Bhavik",
-    role: "Head of Operations & Logistics",
-    bio: "The operational glue of the Brigade. Bhavik orchestrates event logistics, vendor coordinates, and on-site scheduling, ensuring every moving piece functions flawlessly.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=750&q=80"
+    name: "Sandip Pawar",
+    role: "Head of Operations",
+    bio: "The operational anchor of the Brigade. Sandip orchestrates complex event logistics, vendor operations, and real-time scheduling, ensuring absolute precision on the ground.",
+    image: sandipPawar,
+    objectPosition: "object-center"
   },
   {
-    name: "Sagar",
-    role: "Production & Technical Lead",
-    bio: "Mastering complex stage designs, high-end AV setups, and technical execution. Sagar translates ambitious design concepts into safe, physical production wonders.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&h=750&q=80"
+    name: "Shraddha Shinde",
+    role: "Creative Head",
+    bio: "Curating visual masterpieces. Shraddha shapes the aesthetic direction of our events, orchestrating custom florals, table curation, and ambient themes that tell a story.",
+    image: shraddhaShinde,
+    objectPosition: "object-top"
   },
   {
-    name: "Creative Lead",
-    role: "Experience & Decor Curator",
-    bio: "Bringing visual storytelling to life. Curation of custom floral palettes, table settings, and light themes to reflect each client's unique celebration identity.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=750&q=80"
+    name: "Yash Dhawane",
+    role: "Head of Innovation",
+    bio: "Spearheading interactive concepts and future-ready event designs. Yash blends technology and art to design immersive experiences that leave a lasting impact.",
+    image: yashDhawane,
+    objectPosition: "object-center"
+  },
+  {
+    name: "Aditi Maindalkar",
+    role: "Technical Head",
+    bio: "The mastermind behind structural designs, high-end sound, and intelligent lighting systems. Aditi translates design blueprints into flawless, safe physical realities.",
+    image: aditiMaindalkar,
+    objectPosition: "object-center"
   }
 ];
 
@@ -29,7 +44,7 @@ export default function Founder() {
     <section id="founder" className="relative bg-gradient-to-b from-obsidian to-charcoal pb-24 pt-32 md:pb-32 md:pt-40">
       <div className="mx-auto max-w-7xl px-8 md:px-12 lg:px-16">
         <p className="text-center text-2xl font-semibold uppercase tracking-[0.24em] text-champagne md:text-3xl">
-          Founder & Director
+          The Brigades
         </p>
         <div className="mx-auto mt-12 grid max-w-6xl items-center gap-8 lg:grid-cols-[0.46fr_0.54fr] lg:gap-12">
           <Reveal className="relative w-full justify-self-center lg:max-w-lg">
@@ -89,7 +104,7 @@ export default function Founder() {
             <Reveal
               key={member.name}
               delay={index * 0.08}
-              className="glass-card group flex flex-col h-full overflow-hidden rounded-[2rem] border border-champagne/20 bg-ivory/[0.045] backdrop-blur-xl transition duration-300 hover:border-gold/50 hover:shadow-glow hover:-translate-y-1"
+              className="glass-card group flex flex-col h-full overflow-hidden rounded-[2rem] border border-champagne/20 bg-ivory/[0.045] backdrop-blur-xl transition duration-300 hover:border-gold/50 hover:shadow-glow"
             >
               {/* Photo Container */}
               <div className="relative aspect-[4/5] w-full overflow-hidden">
@@ -97,7 +112,7 @@ export default function Founder() {
                   src={member.image}
                   alt={`${member.name}, ${member.role}`}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className={`h-full w-full object-cover ${member.objectPosition || 'object-center'}`}
                 />
                 {/* Dark overlay at bottom */}
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent pointer-events-none" />
@@ -118,6 +133,34 @@ export default function Founder() {
             </Reveal>
           ))}
         </div>
+
+        {/* Join the Brigade Section */}
+        <Reveal delay={0.15} className="mt-28 text-center max-w-4xl mx-auto z-10 relative">
+          <div className="border border-champagne/15 rounded-[2.5rem] p-8 sm:p-12 md:p-16 bg-ivory/[0.025] backdrop-blur-xl shadow-glow relative overflow-hidden">
+            {/* Background Subtle Radial Glow */}
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.06),transparent_70%)]" />
+            
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <Users className="mx-auto text-gold mb-6 animate-pulse" size={38} />
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#FAF7F2] leading-tight font-semibold">
+                Join the <span className="italic text-gold font-normal">Brigade</span>
+              </h2>
+              <p className="mt-6 text-smoke text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
+                Are you an event manager, designer, planner, or technical wizard ready to create spectacular experiences? Let's join forces and build the future of events together.
+              </p>
+              <a
+                href="/contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.history.pushState({}, '', '/contact');
+                }}
+                className="gold-shimmer-btn inline-flex items-center gap-3 text-obsidian font-bold text-sm sm:text-base uppercase tracking-[0.2em] px-10 py-4 rounded-full hover:shadow-glow transition-all duration-300 mt-10"
+              >
+                Connect With Us <ArrowRight size={14} />
+              </a>
+            </div>
+          </div>
+        </Reveal>
 
       </div>
     </section>

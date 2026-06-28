@@ -30,6 +30,7 @@ import Reveal from './Reveal.jsx';
 // Import corporate assets
 import heroStage from '../assets/corporate-extracted/corporate-p15-xref1070.jpg';
 import corporateMainImage from '../../Corporate/Main Image.JPG';
+import elegantPartyImage from '../../Elegant Party Ambiance_ Dimly-Lit Banquet Hall with Blue Tablecloths and Candles.jpg';
 import corporateStageProduction from '../../Corporate/Stage Production.jpg';
 import corporateAwardGalaSetup from '../../Corporate/Award Gala Setup.jpg';
 import corporateOutboundsImage from '../../Corporate/Corporate Outbounds.jpeg';
@@ -236,7 +237,7 @@ const b2bCorporateServices = [
 
 // Corporate Showcase Config
 const corporateShowcase = {
-  hero: corporateMainImage,
+  hero: elegantPartyImage,
   eyebrow: 'Corporate Showcase',
   title: 'Precision Corporate Event Management & Production',
   text: 'At Event Brigade, we engineer custom B2B experiences with bulletproof logistics, state-of-the-art stage fabrications, and precise technical orchestration. From initial blueprint to final live broadcast, we handle the complexity so your leadership can focus on driving impact.',

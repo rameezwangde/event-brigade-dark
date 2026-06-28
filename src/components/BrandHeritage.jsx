@@ -20,7 +20,7 @@ export default function BrandHeritage() {
                 key={item.label}
                 className={`group relative overflow-hidden ${
                   index === 0 || index === 5 ? 'md:col-span-2' : 'md:col-span-1'
-                } ${index === 2 ? 'row-span-2' : ''}`}
+                } ${index === 2 ? 'md:row-span-2' : ''}`}
               >
                 <img
                   src={item.image}

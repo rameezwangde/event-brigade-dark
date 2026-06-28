@@ -16,6 +16,10 @@ const auctionsImages = Object.values(auctionsGlob).map((mod) => mod.default || m
 const kpGlob = import.meta.glob('../assets/kp-transport/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const kpImages = Object.values(kpGlob).map((mod) => mod.default || mod);
 
+// Scan the Goyal Properties raw uploads directory dynamically
+const goyalGlob = import.meta.glob('../assets/goyal-properties/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const goyalImages = Object.values(goyalGlob).map((mod) => mod.default || mod);
+
 // Category filter tabs
 const categories = ['All Projects', 'Conferences'];
 if (corporateImages.length > 0) {
@@ -26,6 +30,9 @@ if (auctionsImages.length > 0) {
 }
 if (kpImages.length > 0) {
   categories.push('KP Transport');
+}
+if (goyalImages.length > 0) {
+  categories.push('Goyal Properties');
 }
 
 // Luxury Corporate Projects List
@@ -69,6 +76,25 @@ if (kpImages.length > 0) {
   });
 }
 
+if (goyalImages.length > 0) {
+  corporateProjects.push({
+    id: corporateProjects.length + 1,
+    number: String(corporateProjects.length + 1).padStart(2, '0'),
+    title: "Goyal Properties",
+    subtitle: "Annual Day 2024",
+    tag: 'Goyal Properties',
+    categories: ['Goyal Properties'],
+    description: "Production, stage setup, and corporate annual celebration management for Goyal Properties.",
+    image: goyalImages[0],
+    layout: corporateProjects.length % 2 === 0 ? 'left' : 'right',
+    location: 'Various Venues',
+    date: '2024',
+    guests: 'Premium Attendees',
+    isRawGallery: true,
+    images: goyalImages
+  });
+}
+
 if (corporateImages.length > 0) {
   corporateProjects.push({
     id: corporateProjects.length + 1,
@@ -98,6 +124,7 @@ export default function CorporatePortfolio() {
       if (catLower === 'corporate-uploads' || catLower === 'uploads') return 'Corporate Uploads';
       if (catLower === 'bgl-auctions' || catLower === 'auctions') return 'BGL Auctions';
       if (catLower === 'kp-transport' || catLower === 'kp') return 'KP Transport';
+      if (catLower === 'goyal-properties' || catLower === 'goyal') return 'Goyal Properties';
     }
     return 'All Projects';
   });
@@ -120,6 +147,8 @@ export default function CorporatePortfolio() {
           setSelectedCategory('BGL Auctions');
         } else if (catLower === 'kp-transport' || catLower === 'kp') {
           setSelectedCategory('KP Transport');
+        } else if (catLower === 'goyal-properties' || catLower === 'goyal') {
+          setSelectedCategory('Goyal Properties');
         } else {
           setSelectedCategory('All Projects');
         }

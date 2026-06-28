@@ -177,8 +177,9 @@ const b2bCorporateServices = [
   {
     number: '01',
     title: 'Annual Days',
-    image: heroStage,
-    imagePosition: 'center 70%',
+    image: 'https://www.hire4event.com/blogs/wp-content/uploads/2025/03/Resort-for-Corporate-Annual-Day.webp',
+    imagePosition: 'center',
+    objectFit: 'object-contain',
     icon: Milestone,
     description: 'High-impact B2B themes, customized LED backdrop graphics, precise stage set fabrications, and professional lighting control.'
   },
@@ -525,12 +526,12 @@ export default function CorporateServices() {
                   className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] shadow-lg border-t-2 border-t-[#D4AF37] flex flex-col h-full"
                 >
                   {/* Card Image Area */}
-                  <div className="relative h-44 overflow-hidden">
+                  <div className="relative h-44 overflow-hidden bg-[#050505]">
                     <img
                       src={service.image}
                       alt={service.title}
                       loading="lazy"
-                      className="h-full w-full object-cover"
+                      className={`h-full w-full ${service.objectFit || 'object-cover'}`}
                       style={service.imagePosition ? { objectPosition: service.imagePosition } : undefined}
                     />
                     {/* Dark mask overlay */}

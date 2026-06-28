@@ -14,7 +14,9 @@ const teamMembers = [
     role: "Head of Operations",
     bio: "With a keen eye for detail and operational excellence, Sandip leads the execution backbone of Event Brigade. From production and vendor management to on-ground execution, he ensures every event unfolds flawlessly, from planning to final applause.",
     image: sandipPawar,
-    objectPosition: "object-[center_12%]"
+    objectPosition: "object-[center_42%]",
+    scale: 1.65,
+    transformOrigin: "center 42%"
   },
   {
     name: "Shraddha Shinde",
@@ -35,7 +37,9 @@ const teamMembers = [
     role: "Technical Head",
     bio: "Blending technology with creativity, Aditi drives the technical vision at Event Brigade. From digital innovation to operational efficiency, she ensures every event is supported by seamless systems and smart solutions.",
     image: aditiMaindalkar,
-    objectPosition: "object-[center_18%]"
+    objectPosition: "object-[center_68%]",
+    scale: 1.7,
+    transformOrigin: "center 68%"
   }
 ];
 

@@ -6,7 +6,7 @@ import Reveal from './Reveal.jsx';
 import sandipPawar from '../../Sandip Pawar.jpeg';
 import shraddhaShinde from '../../Shraddha Shinde.jpeg';
 import yashDhawane from '../../Yash Dhawane.png';
-import aditiMaindalkar from '../../Aditi Maindalkar.jpeg';
+import aditiMaindalkar from '../../Aditi Maindalkar copy.jpeg';
 
 const teamMembers = [
   {
@@ -14,7 +14,7 @@ const teamMembers = [
     role: "Head of Operations",
     bio: "With a keen eye for detail and operational excellence, Sandip leads the execution backbone of Event Brigade. From production and vendor management to on-ground execution, he ensures every event unfolds flawlessly, from planning to final applause.",
     image: sandipPawar,
-    objectPosition: "object-center"
+    objectPosition: "object-top"
   },
   {
     name: "Shraddha Shinde",
@@ -35,7 +35,8 @@ const teamMembers = [
     role: "Technical Head",
     bio: "Blending technology with creativity, Aditi drives the technical vision at Event Brigade. From digital innovation to operational efficiency, she ensures every event is supported by seamless systems and smart solutions.",
     image: aditiMaindalkar,
-    objectPosition: "object-center"
+    objectPosition: "object-center",
+    objectFit: "object-contain"
   }
 ];
 
@@ -107,12 +108,16 @@ export default function Founder() {
               className="glass-card group flex flex-col h-full overflow-hidden rounded-[2rem] border border-champagne/20 bg-ivory/[0.045] backdrop-blur-xl transition duration-300 hover:border-gold/50 hover:shadow-glow"
             >
               {/* Photo Container */}
-              <div className="relative aspect-[4/5] w-full overflow-hidden">
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#050505]">
                 <img
                   src={member.image}
                   alt={`${member.name}, ${member.role}`}
                   loading="lazy"
-                  className={`h-full w-full object-cover ${member.objectPosition || 'object-center'}`}
+                  className={`h-full w-full ${member.objectFit || 'object-cover'} ${member.objectPosition || 'object-center'}`}
+                  style={member.scale ? { 
+                    transform: `scale(${member.scale})`, 
+                    transformOrigin: member.transformOrigin || 'center center' 
+                  } : undefined}
                 />
                 {/* Dark overlay at bottom */}
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent pointer-events-none" />

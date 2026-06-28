@@ -15,7 +15,7 @@ export default {
       fontFamily: {
         serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['Inter', 'Montserrat', 'ui-sans-serif', 'system-ui'],
-        display: ['"Cinzel"', '"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Abril Fatface"', '"Playfair Display"', 'Georgia', 'serif'],
         displaySans: ['Abel', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif']
       },

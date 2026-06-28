@@ -406,6 +406,41 @@ export const testimonials = [
     role: "Parent"
   },
   {
+    quote: "Kunal is very efficient. He understands ideas and is open to endless suggestions. Very positive and excited about his work. He is Punctual and understands the value of time. He did a fab job at my party. 🤩",
+    name: "Nafisa Poonawala Hashim",
+    role: "Client"
+  },
+  {
+    quote: "Topclass management, helpful people. Did every work with a smile & great energy right from start till the end. Really wonderful.",
+    name: "Harshit Tulsyan",
+    role: "Client"
+  },
+  {
+    quote: "We thank the entire team of Event Brigade for making my sister in law wedding memorable. They made the event very grand yet elegant. Each and every member of the team worked very hard. Their planning and management is amazing.",
+    name: "Shruti Agrawal",
+    role: "Client"
+  },
+  {
+    quote: "Very good service and hardworking people",
+    name: "Ravi Kanodia",
+    role: "Client"
+  },
+  {
+    quote: "Thank you Event Brigade for making my baby’s first birthday so beautiful! The professionalism and commitment to perfection that u guys show is what sets u apart from the rest. From the very start of conversation, things were transparent and extremely smooth! And you delivered exactly what u offered .. that’s very rare these days:) thanks a ton! Looking forward to work with you again :)",
+    name: "Prerna Narayan",
+    role: "Client"
+  },
+  {
+    quote: "Entire team did a fabulous job for my little angel’s birthday party . The entire team took a good efforts and worked on minute detailing . Kunal has an amazing ideas and thoughts in his mind ,which ultimately meets the exact expectations of the client rather better than that ,he gives his opinion genuinely and whatever he suggest ,the outcome is just wow .go with this event planner without any second thought . Thanks a ton for making my angels first birthday memorable with the amazing decor. You guys are great . 👍 Keep it up .",
+    name: "Kalyani Shrotriya",
+    role: "Client"
+  },
+  {
+    quote: "Kunal and his team made our event so seamless and beautiful. It went beyond our expectations. It was thoroughly well done, every detail kept in mind and very personal. Did not feel mechanical to work with them. It seemed like their personal project. Would definitely recommend them to anyone looking to get their event to be spl as they hope it to be.",
+    name: "Shubhika Agarwal",
+    role: "Client"
+  },
+  {
     quote:
       'Thank you Event Brigade and Kunal Garg for organising a fun-filled event. The idea of a mocktails making competition was unique and something new and it was managed to perfection. AYW as Club will cherish this event for a long time to come. All the best and keep up the good work.',
     name: 'Chirayush Agarwal',
@@ -432,7 +467,7 @@ export const testimonials = [
   {
     quote:
       'Just completed an event with Kunal, Bhavik and their team. After doing several of these events in different cities, this was the first one that was just seamless and hassle free. From understanding our AV requirements to the tee, making last minute requests for changes to presentations and videos, completing the set up in a short amount of time available to them, and just instilling so much confidence in me because of their calm and "don\'t worry about a thing" attitude. Everything ran like clockwork! Would definitely recommend and use their services again.',
-    name: 'Reem Khokar',
+    name: 'Reem Khokhar',
     role: 'Client'
   },
   {

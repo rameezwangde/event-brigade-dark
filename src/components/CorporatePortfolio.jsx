@@ -8,26 +8,78 @@ const corporateImages = Object.values(corporateGlob)
   .map((mod) => mod.default || mod)
   .filter((path) => !path.includes('placeholder'));
 
+// Scan the BGL Auctions raw uploads directory dynamically
+const auctionsGlob = import.meta.glob('../assets/bgl-auctions/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const auctionsImages = Object.values(auctionsGlob).map((mod) => mod.default || mod);
+
+// Scan the KP Transport raw uploads directory dynamically
+const kpGlob = import.meta.glob('../assets/kp-transport/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const kpImages = Object.values(kpGlob).map((mod) => mod.default || mod);
+
 // Category filter tabs
 const categories = ['All Projects', 'Conferences'];
 if (corporateImages.length > 0) {
   categories.push('Corporate Uploads');
 }
+if (auctionsImages.length > 0) {
+  categories.push('BGL Auctions');
+}
+if (kpImages.length > 0) {
+  categories.push('KP Transport');
+}
 
 // Luxury Corporate Projects List
 const corporateProjects = [];
 
+if (auctionsImages.length > 0) {
+  corporateProjects.push({
+    id: corporateProjects.length + 1,
+    number: String(corporateProjects.length + 1).padStart(2, '0'),
+    title: "BGL Auctions",
+    subtitle: "Corporate Event Production",
+    tag: 'BGL Auctions',
+    categories: ['BGL Auctions'],
+    description: "Immersive corporate event setup and production management for the prestigious BGL Auctions.",
+    image: auctionsImages[0],
+    layout: 'left',
+    location: 'Various Venues',
+    date: 'Recent',
+    guests: 'Premium Attendees',
+    isRawGallery: true,
+    images: auctionsImages
+  });
+}
+
+if (kpImages.length > 0) {
+  corporateProjects.push({
+    id: corporateProjects.length + 1,
+    number: String(corporateProjects.length + 1).padStart(2, '0'),
+    title: "KP Transport",
+    subtitle: "Office Opening Ceremony",
+    tag: 'KP Transport',
+    categories: ['KP Transport'],
+    description: "Grand office opening celebration, ribbon-cutting ceremony, and premium venue management for KP Transport.",
+    image: kpImages[0],
+    layout: corporateProjects.length % 2 === 0 ? 'left' : 'right',
+    location: 'Various Venues',
+    date: 'Recent',
+    guests: 'Premium Attendees',
+    isRawGallery: true,
+    images: kpImages
+  });
+}
+
 if (corporateImages.length > 0) {
   corporateProjects.push({
-    id: 1,
-    number: '01',
+    id: corporateProjects.length + 1,
+    number: String(corporateProjects.length + 1).padStart(2, '0'),
     title: "Raw Corporate Captures.",
     subtitle: "Uploaded Corporate Gallery",
     tag: 'Corporate Uploads',
     categories: ['Corporate Uploads'],
     description: "A repository of raw event photographs from recent corporate meets, stages, and activations.",
     image: corporateImages[0],
-    layout: 'left',
+    layout: corporateProjects.length % 2 === 0 ? 'left' : 'right',
     location: 'Various Venues',
     date: 'Recent',
     guests: 'Dynamic',
@@ -44,6 +96,8 @@ export default function CorporatePortfolio() {
       const catLower = cat.toLowerCase();
       if (catLower === 'conferences') return 'Conferences';
       if (catLower === 'corporate-uploads' || catLower === 'uploads') return 'Corporate Uploads';
+      if (catLower === 'bgl-auctions' || catLower === 'auctions') return 'BGL Auctions';
+      if (catLower === 'kp-transport' || catLower === 'kp') return 'KP Transport';
     }
     return 'All Projects';
   });
@@ -62,6 +116,10 @@ export default function CorporatePortfolio() {
           setSelectedCategory('Conferences');
         } else if (catLower === 'corporate-uploads' || catLower === 'uploads') {
           setSelectedCategory('Corporate Uploads');
+        } else if (catLower === 'bgl-auctions' || catLower === 'auctions') {
+          setSelectedCategory('BGL Auctions');
+        } else if (catLower === 'kp-transport' || catLower === 'kp') {
+          setSelectedCategory('KP Transport');
         } else {
           setSelectedCategory('All Projects');
         }

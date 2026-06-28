@@ -127,17 +127,9 @@ export default function Navbar() {
           className={`absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border p-1.5 shadow-soft backdrop-blur-xl transition duration-300 lg:flex ${
             isLightPage
               ? scrolled
-                ? window.location.pathname.includes('social')
-                  ? 'border-[#D56A4A]/30 bg-[#F9F5EF]/90 shadow-glow text-[#222222]'
-                  : 'border-[#C8A96B]/35 bg-[#FAF7F2]/90 shadow-glow text-[#1C1C1C]'
-                : window.location.pathname.includes('social')
-                  ? 'border-[#D56A4A]/15 bg-[#F9F5EF]/55 text-[#222222]'
-                  : 'border-[#C8A96B]/15 bg-[#FAF7F2]/50 text-[#1C1C1C]'
-              : window.location.pathname.includes('corporate')
-                ? scrolled
-                  ? 'border-[#2E6BFF]/35 bg-[#070D1E]/90 shadow-[0_0_20px_rgba(46,107,255,0.2)] text-white'
-                  : 'border-[#2E6BFF]/15 bg-[#070D1E]/60 text-white'
-                : scrolled
+                ? 'border-[#C8A96B]/35 bg-[#FAF7F2]/90 shadow-glow text-[#1C1C1C]'
+                : 'border-[#C8A96B]/15 bg-[#FAF7F2]/50 text-[#1C1C1C]'
+              : scrolled
                   ? 'border-champagne/20 bg-[#121214]/90 shadow-[0_4px_30px_rgba(0,0,0,0.4)] text-ivory'
                   : 'border-champagne/15 bg-obsidian/60 text-ivory'
           }`}
@@ -146,8 +138,8 @@ export default function Navbar() {
             const hasDropdown = !!link.dropdown;
             const isLinkActive = active === link.id;
             const isFixedChampagneLink = link.id === 'home' || link.id === 'services' || link.id === 'portfolio';
-            const isSocialPage = window.location.pathname.includes('social');
-            const isCorporatePage = window.location.pathname.includes('corporate');
+            const isSocialPage = false;
+            const isCorporatePage = false;
             return (
               <div key={link.id} className="group relative">
                 <a
@@ -242,10 +234,12 @@ export default function Navbar() {
           type="button"
           className={`grid h-12 w-12 place-items-center rounded-full border transition duration-300 shadow-soft backdrop-blur-xl lg:hidden ${
             isLightPage
-              ? window.location.pathname.includes('social')
-                ? `border-[#D56A4A]/25 bg-[#F9F5EF]/60 text-[#D56A4A] hover:border-[#D56A4A]/60 ${open ? 'bg-[#D56A4A] text-white' : ''}`
-                : `border-[#C8A96B]/25 bg-[#FAF7F2]/60 text-[#C8A96B] hover:border-[#C8A96B]/60 ${open ? 'bg-[#C8A96B] text-[#FAF7F2]' : ''}`
-              : `border-champagne/25 bg-obsidian/60 text-gold hover:border-gold/60 ${open ? 'border border-[#D0B175]/60 bg-[#E3C484] text-[#111111]' : ''}`
+              ? open
+                ? 'border-[#C8A96B]/60 bg-[#C8A96B] text-[#FAF7F2]'
+                : 'border-[#C8A96B]/25 bg-[#FAF7F2]/60 text-[#C8A96B] hover:border-[#C8A96B]/60'
+              : open
+                ? 'border border-[#D0B175]/60 bg-[#E3C484] text-[#111111]'
+                : 'border-champagne/25 bg-obsidian/60 text-gold hover:border-gold/60'
           }`}
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
@@ -261,12 +255,8 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           className={`mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.75rem] border p-2 shadow-soft backdrop-blur-xl lg:hidden ${
             isLightPage
-              ? window.location.pathname.includes('social')
-                ? 'border-[#D56A4A]/20 bg-[#F9F5EF]/95'
-                : 'border-[#C8A96B]/20 bg-[#FAF7F2]/95'
-              : window.location.pathname.includes('corporate')
-                ? 'border-[#2E6BFF]/20 bg-[#070D1E]/95 shadow-[0_8px_32px_rgba(46,107,255,0.15)]'
-                : 'border-champagne/20 bg-charcoal/95'
+              ? 'border-[#C8A96B]/20 bg-[#FAF7F2]/95'
+              : 'border-champagne/20 bg-charcoal/95'
           }`}
         >
           {links.map((link) => {
@@ -274,8 +264,8 @@ export default function Navbar() {
             const isExpanded = expandedMobileItem === link.id;
             const isLinkActive = active === link.id;
             const isFixedChampagneLink = link.id === 'home' || link.id === 'services' || link.id === 'portfolio';
-            const isSocialPage = window.location.pathname.includes('social');
-            const isCorporatePage = window.location.pathname.includes('corporate');
+            const isSocialPage = false;
+            const isCorporatePage = false;
 
             return (
               <div key={link.id} className="block">

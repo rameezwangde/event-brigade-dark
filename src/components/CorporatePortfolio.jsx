@@ -275,34 +275,6 @@ export default function CorporatePortfolio() {
           <div className="mx-auto mt-8 h-px w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
         </div>
 
-        {/* Category Navigation Tabs */}
-        {usingUploaded && (
-          <div className="flex flex-wrap justify-center items-center gap-3 mb-16 relative z-20">
-            {categories.map((cat) => {
-              const isSelected = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`relative px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide uppercase transition duration-300 font-sans border ${isSelected
-                      ? 'border-[#D4AF37] text-white shadow-sm'
-                      : 'border-white/10 bg-[#151515]/40 text-white/70 hover:border-white/30 hover:text-white'
-                    }`}
-                >
-                  {isSelected && (
-                    <motion.span
-                      layoutId="activeCorpCategoryPill"
-                      className="absolute inset-0 rounded-full bg-[#D4AF37]/15"
-                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{cat}</span>
-                </button>
-              );
-            })}
-          </div>
-        )}
 
         {/* Project Cards Grid or Placeholder */}
         {usingUploaded ? (

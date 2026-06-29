@@ -62,24 +62,7 @@ if (engagementImages.length > 0) {
   });
 }
 
-if (weddingImages.length > 0) {
-  weddingProjects.push({
-    id: 3,
-    number: weddingProjects.length === 0 ? '01' : weddingProjects.length === 1 ? '02' : '03',
-    title: "Raw Wedding Captures.",
-    subtitle: "Uploaded Wedding Gallery",
-    tag: 'Weddings',
-    categories: ['Weddings'],
-    description: "A dynamic repository of raw photos from our recent wedding set fabrications, stage builds, and floral decorations.",
-    image: weddingImages[0],
-    layout: 'right',
-    location: 'Various Venues',
-    date: 'Recent',
-    guests: 'Dynamic',
-    isRawGallery: true,
-    images: weddingImages
-  });
-}
+
 
 function FloralOrnament({ className }) {
   return (

@@ -108,7 +108,7 @@ export default function Contact() {
           </Reveal>
         </div>
       </div>
-      <a href="#contact" className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full border border-gold/40 bg-gold text-obsidian shadow-glow transition hover:scale-105" aria-label="Open event inquiry form">
+      <a href={whatsapp} target="_blank" rel="noreferrer" className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full border border-gold/40 bg-gold text-obsidian shadow-glow transition hover:scale-105" aria-label="Chat on WhatsApp">
         <WhatsAppIcon size={24} />
       </a>
     </section>

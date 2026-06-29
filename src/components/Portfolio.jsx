@@ -13,7 +13,7 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="section bg-obsidian">
-      <div className="mx-auto max-w-7xl px-5">
+      <div className="mx-auto max-w-7xl px-8 md:px-12 lg:px-16">
         <SectionHeader
           eyebrow="Portfolio"
           title="Moments designed to be remembered."

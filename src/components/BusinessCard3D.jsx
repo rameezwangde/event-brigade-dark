@@ -321,7 +321,7 @@ export default function BusinessCard3D() {
   return (
     <section id="business-card" ref={sectionRef} className="relative overflow-hidden bg-charcoal pb-8 pt-16 md:pb-10 md:pt-20">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(212,175,55,0.16),transparent_36%),radial-gradient(circle_at_85%_60%,rgba(244,208,111,0.1),transparent_28%)]" />
-      <div className="relative mx-auto max-w-7xl px-5">
+      <div className="relative mx-auto max-w-7xl px-8 md:px-12 lg:px-16">
         <SectionHeader
           eyebrow="Signature Card"
           title="A cinematic business card for the Event Brigade founder."

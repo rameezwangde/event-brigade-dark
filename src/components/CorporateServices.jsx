@@ -377,7 +377,7 @@ export default function CorporateServices() {
       </div>
 
       {/* Main Page Layout */}
-      <div className="relative max-w-7xl mx-auto px-5 mt-12 z-10">
+      <div className="relative max-w-7xl mx-auto px-8 md:px-12 lg:px-16 mt-12 z-10">
         
         {/* Header Section */}
         <div className="text-center max-w-4xl mx-auto mb-16">
@@ -702,7 +702,7 @@ export default function CorporateServices() {
               <button
                 type="button"
                 onClick={() => prevSlide(activeSlides.length)}
-                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
+                className="absolute left-2 md:left-6 lg:left-8 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
                 aria-label="Previous slide"
               >
                 <ChevronLeft size={24} />
@@ -736,7 +736,7 @@ export default function CorporateServices() {
               <button
                 type="button"
                 onClick={() => nextSlide(activeSlides.length)}
-                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
+                className="absolute right-2 md:right-6 lg:right-8 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D4AF37] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#050505]"
                 aria-label="Next slide"
               >
                 <ChevronRight size={24} />

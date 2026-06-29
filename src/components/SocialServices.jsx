@@ -374,7 +374,7 @@ export default function SocialServices() {
     <div
       className="relative w-full min-h-screen text-[#222222] font-sans overflow-x-hidden selection:bg-[#D56A4A]/20 pt-44 pb-16 bg-[#F9F5EF]"
     >
-      <div className="relative max-w-7xl mx-auto px-5 z-10">
+      <div className="relative max-w-7xl mx-auto px-8 md:px-12 lg:px-16 z-10">
 
         {/* Main Section Header */}
         <LuxuryHeader
@@ -671,7 +671,7 @@ export default function SocialServices() {
               <button
                 type="button"
                 onClick={() => prevSlide(activeSlides.length)}
-                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D56A4A] hover:bg-[#D56A4A] hover:text-[#050505]"
+                className="absolute left-2 md:left-6 lg:left-8 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D56A4A] hover:bg-[#D56A4A] hover:text-[#050505]"
                 aria-label="Previous page"
               >
                 <ChevronLeft size={24} />
@@ -705,7 +705,7 @@ export default function SocialServices() {
               <button
                 type="button"
                 onClick={() => nextSlide(activeSlides.length)}
-                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D56A4A] hover:bg-[#D56A4A] hover:text-[#050505]"
+                className="absolute right-2 md:right-6 lg:right-8 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D56A4A] hover:bg-[#D56A4A] hover:text-[#050505]"
                 aria-label="Next page"
               >
                 <ChevronRight size={24} />

@@ -126,7 +126,7 @@ export default function Services() {
   return (
     <section id="services" className="relative overflow-hidden bg-charcoal pb-8 pt-32 md:pb-10 md:pt-40">
       <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_58%)]" />
-      <div className="relative mx-auto max-w-7xl px-5">
+      <div className="relative mx-auto max-w-7xl px-8 md:px-12 lg:px-16">
         <SectionHeader
           eyebrow="Our Services"
           title="Tailored solutions for every occasion."

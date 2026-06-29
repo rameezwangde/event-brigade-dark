@@ -324,7 +324,7 @@ export default function SocialEventsPortfolio() {
       </div>
 
       {/* Page Header */}
-      <div className="relative max-w-7xl mx-auto px-5 text-center mt-12 mb-16 z-10">
+      <div className="relative max-w-7xl mx-auto px-8 md:px-12 lg:px-16 text-center mt-12 mb-16 z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -355,7 +355,7 @@ export default function SocialEventsPortfolio() {
       </div>
 
       {/* Category Navigation Tabs */}
-      <div className="relative max-w-7xl mx-auto px-5 mb-16 z-20">
+      <div className="relative max-w-7xl mx-auto px-8 md:px-12 lg:px-16 mb-16 z-20">
         <div className="flex flex-wrap justify-center items-center gap-3">
           {categories.map((cat) => {
             const isSelected = selectedCategory === cat;
@@ -384,7 +384,7 @@ export default function SocialEventsPortfolio() {
       </div>
 
       {/* Case Studies Grid */}
-      <div className="relative max-w-7xl mx-auto px-5 z-10">
+      <div className="relative max-w-7xl mx-auto px-8 md:px-12 lg:px-16 z-10">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => {
@@ -502,7 +502,7 @@ export default function SocialEventsPortfolio() {
               <button
                 type="button"
                 onClick={() => prevSlide(activeSlides.length)}
-                className="absolute left-2 md:-left-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D56A4A] hover:text-[#050505]"
+                className="absolute left-2 md:left-6 lg:left-8 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D56A4A] hover:text-[#050505]"
                 aria-label="Previous page"
               >
                 <ChevronLeft size={24} />
@@ -536,7 +536,7 @@ export default function SocialEventsPortfolio() {
               <button
                 type="button"
                 onClick={() => nextSlide(activeSlides.length)}
-                className="absolute right-2 md:-right-12 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D56A4A] hover:text-[#050505]"
+                className="absolute right-2 md:right-6 lg:right-8 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-[#151515]/90 text-[#D56A4A] backdrop-blur transition hover:border-[#D4AF37] hover:bg-[#D56A4A] hover:text-[#050505]"
                 aria-label="Next page"
               >
                 <ChevronRight size={24} />
@@ -548,7 +548,7 @@ export default function SocialEventsPortfolio() {
       </AnimatePresence>
 
       {/* Consultation Call to Action */}
-      <div className="relative max-w-4xl mx-auto px-5 text-center mt-24 pb-12 z-10">
+      <div className="relative max-w-4xl mx-auto px-8 md:px-12 lg:px-16 text-center mt-24 pb-12 z-10">
         <div className="border border-[#D56A4A]/20 rounded-[32px] p-8 sm:p-12 md:p-16 bg-[#FAF7F2] shadow-md relative overflow-hidden">
 
           <div className="relative z-10 max-w-2xl mx-auto">

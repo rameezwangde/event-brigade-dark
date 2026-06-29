@@ -18,7 +18,7 @@ export default function EventPortfolioPage({ eyebrow, title, intro, pages, activ
       <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_62%)]" />
       <div className="particles opacity-20" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-7xl px-5">
+      <div className="relative mx-auto max-w-7xl px-8 md:px-12 lg:px-16">
         <div className="mb-12 text-center">
           <p className="text-base font-semibold uppercase tracking-[0.34em] text-champagne md:text-lg">Work Showcase</p>
           <h1 className="mt-3 font-serif text-5xl leading-tight text-ivory md:text-6xl">Our Portfolio</h1>

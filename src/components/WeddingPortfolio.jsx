@@ -8,9 +8,9 @@ const engagementImages = Object.values(engagementGlob).map((mod) => mod.default 
 const engagementHero = engagementGlob['../assets/engagement/IMG_5099.jpg']?.default || engagementGlob['../assets/engagement/IMG_5099.jpg'] || engagementImages[0];
 
 // Scan the keyshav raw uploads directory dynamically
-const keyshavGlob = import.meta.glob('../assets/keyshav/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const keyshavGlob = import.meta.glob('../assets/Keshav and Sanika/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const keyshavImages = Object.values(keyshavGlob).map((mod) => mod.default || mod);
-const keyshavHero = keyshavGlob['../assets/keyshav/DSC03874.JPG']?.default || keyshavGlob['../assets/keyshav/DSC03874.jpg']?.default || keyshavGlob['../assets/keyshav/DSC03874.JPG'] || keyshavGlob['../assets/keyshav/DSC03874.jpg'] || keyshavImages[0];
+const keyshavHero = keyshavImages[0] || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23111'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='%23C8A96B' text-anchor='middle' dominant-baseline='middle'%3EPhoto Coming Soon%3C/text%3E%3C/svg%3E";
 
 // Scan the wedding raw uploads directory dynamically
 const weddingGlob = import.meta.glob('../assets/wedding-gallery/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
@@ -24,24 +24,22 @@ const categories = ['All Celebrations', 'Weddings', 'Engagements'];
 // Luxury Wedding Projects List
 const weddingProjects = [];
 
-if (keyshavImages.length > 0) {
-  weddingProjects.push({
-    id: 1,
-    number: '01',
-    title: "Keyshav & Sanika's Wedding Decor.",
-    subtitle: "Keyshav & Sanika's Wedding",
-    tag: 'Weddings',
-    categories: ['Weddings'],
-    description: "A breathtaking wedding decor setup featuring custom floral mandaps, luxury grand entry arches, and premium stage lighting.",
-    image: keyshavHero,
-    layout: 'right', // Content Left, Image Right
-    location: 'Pune',
-    date: 'June 2026',
-    guests: '800+ Guests',
-    isRawGallery: true,
-    images: keyshavImages
-  });
-}
+weddingProjects.push({
+  id: 1,
+  number: '01',
+  title: "Keyshav & Sanika's Wedding Decor.",
+  subtitle: "Keyshav & Sanika's Wedding",
+  tag: 'Weddings',
+  categories: ['Weddings'],
+  description: "A breathtaking wedding decor setup featuring custom floral mandaps, luxury grand entry arches, and premium stage lighting.",
+  image: keyshavHero,
+  layout: 'right', // Content Left, Image Right
+  location: 'Pune',
+  date: 'June 2026',
+  guests: '800+ Guests',
+  isRawGallery: true,
+  images: keyshavImages
+});
 
 if (engagementImages.length > 0) {
   weddingProjects.push({

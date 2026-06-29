@@ -12,11 +12,7 @@ const keyshavGlob = import.meta.glob('../assets/Keshav and Sanika/*.{jpg,JPG,jpe
 const keyshavImages = Object.values(keyshavGlob).map((mod) => mod.default || mod);
 const keyshavHero = keyshavImages[0] || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23111'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='%23C8A96B' text-anchor='middle' dominant-baseline='middle'%3EPhoto Coming Soon%3C/text%3E%3C/svg%3E";
 
-// Scan the wedding raw uploads directory dynamically
-const weddingGlob = import.meta.glob('../assets/wedding-gallery/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
-const weddingImages = Object.values(weddingGlob)
-  .map((mod) => mod.default || mod)
-  .filter((path) => !path.includes('placeholder'));
+
 
 // Category filter tabs
 const categories = ['All Celebrations', 'Weddings', 'Engagements'];

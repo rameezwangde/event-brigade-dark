@@ -103,7 +103,7 @@ export default function Founder() {
         </Reveal>
 
         {/* Team Grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-12">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 mt-12">
           {teamMembers.map((member, index) => (
             <Reveal
               key={member.name}

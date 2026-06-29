@@ -26,7 +26,7 @@ function Counter({ value, suffix }) {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[100svh] overflow-hidden pb-16 pt-48 md:pb-24 md:pt-56 lg:min-h-[56.25vw] lg:pt-64">
+    <section id="home" className="relative min-h-[100svh] overflow-hidden pb-16 pt-32 md:pb-24 md:pt-40 lg:min-h-[56.25vw] lg:pt-48">
       <img
         src={heroImage}
         alt="Event Brigade corporate event stage with seating and production lights"
@@ -43,7 +43,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
-          className="mx-auto max-w-3xl text-center"
+          className="mx-auto max-w-full text-center"
         >
           <h1 className="font-display font-black uppercase tracking-[0.03em] text-4xl leading-[0.95] sm:text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[6.5rem]">
             <span className="text-[#FAF7F2]">EVENT </span>

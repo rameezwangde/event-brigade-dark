@@ -214,15 +214,15 @@ export default function CorporatePortfolio() {
   const activeSlides = getActiveSlides();
 
   return (
-    <div className="relative w-full min-h-screen bg-[#050505] text-[#FFFFFF] font-sans overflow-x-hidden selection:bg-[#2E6BFF]/30 selection:text-white pt-28 pb-16">
+    <div className="relative w-full min-h-screen bg-[#050505] text-[#FFFFFF] font-sans overflow-x-hidden selection:bg-[#D4AF37]/30 selection:text-white pt-28 pb-16">
 
       {/* Blueprint Grid & Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(8,27,58,0.45),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(46,107,255,0.06),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(212,175,55,0.06),transparent_50%)]" />
         <div className="absolute inset-0 corp-blueprint-grid opacity-60" />
-        <div className="absolute -top-[10%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(46,107,255,0.05),transparent_60%)] corp-spotlight" />
-        <div className="absolute top-[50%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(46,107,255,0.04),transparent_60%)] corp-spotlight" style={{ animationDelay: '-12s' }} />
+        <div className="absolute -top-[10%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.05),transparent_60%)] corp-spotlight" />
+        <div className="absolute top-[50%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.04),transparent_60%)] corp-spotlight" style={{ animationDelay: '-12s' }} />
       </div>
 
       {/* Network Nodes */}
@@ -230,13 +230,13 @@ export default function CorporatePortfolio() {
         {networkNodes.map((node) => (
           <motion.div
             key={node.id}
-            className="absolute rounded-full bg-[#2E6BFF]"
+            className="absolute rounded-full bg-[#D4AF37]"
             style={{
               left: `${node.x}%`,
               top: `${node.y}%`,
               width: `${node.size}px`,
               height: `${node.size}px`,
-              boxShadow: '0 0 10px #2E6BFF'
+              boxShadow: '0 0 10px #D4AF37'
             }}
             animate={{
               opacity: [0.2, 0.8, 0.2],
@@ -318,7 +318,7 @@ export default function CorporatePortfolio() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] h-[380px] shadow-xl hover:border-[#2E6BFF]/50 transition-all duration-500 cursor-pointer"
+                    className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-[#151515] h-[380px] shadow-xl hover:border-[#D4AF37]/50 transition-all duration-500 cursor-pointer"
                     onClick={() => openLightbox(project)}
                   >
                     <img
@@ -333,7 +333,7 @@ export default function CorporatePortfolio() {
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-500 z-10" />
 
                     {/* Top Tag Badge */}
-                    <span className="absolute left-5 top-5 rounded-md border border-[#2E6BFF]/30 bg-black/60 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#2E6BFF] z-20">
+                    <span className="absolute left-5 top-5 rounded-md border border-[#D4AF37]/30 bg-black/60 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#D4AF37] z-20">
                       {tag}
                     </span>
 
@@ -342,7 +342,7 @@ export default function CorporatePortfolio() {
                       <p className="text-[10px] font-semibold uppercase tracking-widest text-[#D4AF37] mb-1 text-left">
                         {subtitle}
                       </p>
-                      <h3 className="font-serif text-2xl text-white group-hover:text-[#2E6BFF] transition-colors leading-snug text-left">
+                      <h3 className="font-serif text-2xl text-white group-hover:text-[#D4AF37] transition-colors leading-snug text-left">
                         {title}
                       </h3>
 
@@ -350,20 +350,20 @@ export default function CorporatePortfolio() {
                       <div className="max-h-0 opacity-0 overflow-hidden group-hover:max-h-36 group-hover:opacity-100 group-hover:mt-4 transition-all duration-500 border-t border-white/10 pt-4">
                         <div className="space-y-2 text-xs text-white/80 text-left">
                           <div className="flex items-center gap-2">
-                            <MapPin size={13} className="text-[#2E6BFF] shrink-0" />
+                            <MapPin size={13} className="text-[#D4AF37] shrink-0" />
                             <span>{location}</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Users size={13} className="text-[#2E6BFF] shrink-0" />
+                            <Users size={13} className="text-[#D4AF37] shrink-0" />
                             <span>{guests}</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Calendar size={13} className="text-[#2E6BFF] shrink-0" />
+                            <Calendar size={13} className="text-[#D4AF37] shrink-0" />
                             <span>{date}</span>
                           </div>
                         </div>
 
-                        <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#2E6BFF] group-hover:translate-x-1 transition-transform text-left">
+                        <div className="mt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] group-hover:translate-x-1 transition-transform text-left">
                           <span>Explore Gallery</span>
                           <ArrowRight size={12} />
                         </div>
@@ -433,7 +433,7 @@ export default function CorporatePortfolio() {
                 <div className="absolute inset-4 border border-white/5 pointer-events-none rounded-xl" />
                 <div className="absolute top-6 left-6 grid grid-cols-2 gap-1.5 opacity-10 pointer-events-none">
                   {Array.from({ length: 4 }).map((_, i) => (
-                    <span key={i} className="h-1 w-1 rounded-full bg-[#2E6BFF]" />
+                    <span key={i} className="h-1 w-1 rounded-full bg-[#D4AF37]" />
                   ))}
                 </div>
 

@@ -48,7 +48,7 @@ export default function Founder() {
     <section id="founder" className="relative bg-gradient-to-b from-obsidian to-charcoal pb-24 pt-32 md:pb-32 md:pt-40">
       <div className="mx-auto max-w-7xl px-8 md:px-12 lg:px-16">
         <p className="text-center text-2xl font-semibold uppercase tracking-[0.24em] text-champagne md:text-3xl">
-          The Brigades
+          The Brigade
         </p>
         <div className="mx-auto mt-12 grid max-w-6xl items-center gap-8 lg:grid-cols-[0.46fr_0.54fr] lg:gap-12">
           <Reveal className="relative w-full justify-self-center lg:max-w-lg">

@@ -28,7 +28,7 @@ const links = [
     ]
   },
   { label: 'Testimonials', id: 'testimonials', href: '/testimonials' },
-  { label: 'The Brigades', id: 'founder', href: '/founder' },
+  { label: 'The Brigade', id: 'founder', href: '/founder' },
   { label: 'Contact', id: 'contact', href: '/contact' }
 ];
 

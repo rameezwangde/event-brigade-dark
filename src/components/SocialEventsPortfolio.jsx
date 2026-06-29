@@ -5,18 +5,199 @@ import { X, ChevronLeft, ChevronRight, Calendar, MapPin, Users, Heart, ArrowRigh
 // Import local premium assets
 import socialBirthday from '../assets/social-curated/social-birthday-decor.jpg';
 
+// Glob all folders
+const adiGlob = import.meta.glob('../assets/social-events/adi-40th/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const adiImages = Object.values(adiGlob).map((mod) => mod.default || mod);
+const adiHero = adiImages[0] || socialBirthday;
 
+const miraGlob = import.meta.glob('../assets/social-events/mira-birthday/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const miraImages = Object.values(miraGlob).map((mod) => mod.default || mod);
+const miraHero = miraImages[0] || socialBirthday;
+
+const prazlaanGlob = import.meta.glob('../assets/social-events/prazlaan-5th/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const prazlaanImages = Object.values(prazlaanGlob).map((mod) => mod.default || mod);
+const prazlaanHero = prazlaanImages[0] || socialBirthday;
+
+const shubhikaGlob = import.meta.glob('../assets/social-events/shubhika-babyshower/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const shubhikaImages = Object.values(shubhikaGlob).map((mod) => mod.default || mod);
+const shubhikaHero = shubhikaImages[0] || socialBirthday;
+
+const yogeshGlob = import.meta.glob('../assets/social-events/yogesh-anniversary/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const yogeshImages = Object.values(yogeshGlob).map((mod) => mod.default || mod);
+const yogeshHero = yogeshImages[0] || socialBirthday;
+
+const lodhaWinterGlob = import.meta.glob('../assets/social-events/lodha-winter-carnival/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const lodhaWinterImages = Object.values(lodhaWinterGlob).map((mod) => mod.default || mod);
+const lodhaWinterHero = lodhaWinterImages[0] || socialBirthday;
+
+const lodhaHoliGlob = import.meta.glob('../assets/social-events/lodha-holi/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const lodhaHoliImages = Object.values(lodhaHoliGlob).map((mod) => mod.default || mod);
+const lodhaHoliHero = lodhaHoliImages[0] || socialBirthday;
+
+const kpOfficeGlob = import.meta.glob('../assets/social-events/kp-transport-office/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const kpOfficeImages = Object.values(kpOfficeGlob).map((mod) => mod.default || mod);
+const kpOfficeHero = kpOfficeImages[0] || socialBirthday;
+
+const lodhaTownhallGlob = import.meta.glob('../assets/social-events/lodha-townhall/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const lodhaTownhallImages = Object.values(lodhaTownhallGlob).map((mod) => mod.default || mod);
+const lodhaTownhallHero = lodhaTownhallImages[0] || socialBirthday;
 
 // Category filter tabs
 const categories = [
   'All Celebrations',
   'Birthdays',
-  'Baby Showers'
+  'Baby Showers',
+  'Anniversaries',
+  'Fests & Community Events',
+  'Corporate Occasions'
 ];
 
-// Luxury Social Projects List (Vaani's Birthday & Shubhika & Anuj's Babyshower)
+// Luxury Social Projects List
 const socialProjects = [
-
+  {
+    id: 1,
+    number: '01',
+    title: "Adi's 40th Birthday Bash.",
+    subtitle: "Adi's 40th Birthday Bash",
+    tag: 'Birthdays',
+    categories: ['Birthdays'],
+    description: "A wonderful celebration featuring premium decor, vibrant themes, and seamless event execution.",
+    image: adiHero,
+    layout: 'right',
+    location: 'Pune',
+    date: 'Recent',
+    guests: '100 Guests',
+    isRawGallery: true,
+    images: adiImages
+  },
+  {
+    id: 2,
+    number: '02',
+    title: "Mira's Birthday.",
+    subtitle: "Mira's Birthday",
+    tag: 'Birthdays',
+    categories: ['Birthdays'],
+    description: "A beautiful birthday setup with custom backdrops, personalized details, and engaging activities.",
+    image: miraHero,
+    layout: 'left',
+    location: 'Pune',
+    date: 'Recent',
+    guests: '100 Guests',
+    isRawGallery: true,
+    images: miraImages
+  },
+  {
+    id: 3,
+    number: '03',
+    title: "Prazlaan's 5th Birthday.",
+    subtitle: "Prazlaan's 5th Birthday",
+    tag: 'Birthdays',
+    categories: ['Birthdays'],
+    description: "A fun-filled birthday party designed with interactive elements and lively colorful decorations.",
+    image: prazlaanHero,
+    layout: 'right',
+    location: 'Pune',
+    date: 'Recent',
+    guests: '100 Guests',
+    isRawGallery: true,
+    images: prazlaanImages
+  },
+  {
+    id: 4,
+    number: '04',
+    title: "Shubhika & Anuj's Babyshower.",
+    subtitle: "Shubhika & Anuj's Babyshower",
+    tag: 'Baby Showers',
+    categories: ['Baby Showers'],
+    description: "An elegant babyshower filled with pastel shades, floral arrangements, and heartwarming moments.",
+    image: shubhikaHero,
+    layout: 'left',
+    location: 'Pune',
+    date: 'Recent',
+    guests: '100 Guests',
+    isRawGallery: true,
+    images: shubhikaImages
+  },
+  {
+    id: 5,
+    number: '05',
+    title: "Yogesh & Sarika's 25th Anniversary.",
+    subtitle: "Yogesh & Sarika's 25th Wedding Anniversary",
+    tag: 'Anniversaries',
+    categories: ['Anniversaries'],
+    description: "A grand silver jubilee celebration honoring 25 years of togetherness with majestic decor and entertainment.",
+    image: yogeshHero,
+    layout: 'right',
+    location: 'Pune',
+    date: '3rd May',
+    guests: '150 Guests',
+    isRawGallery: true,
+    images: yogeshImages
+  },
+  {
+    id: 6,
+    number: '06',
+    title: "Lodha Belmondo Winter Carnival 2024.",
+    subtitle: "Lodha Belmondo Winter Carnival",
+    tag: 'Fests & Community Events',
+    categories: ['Fests & Community Events'],
+    description: "A lively community carnival bringing residents together with food, music, and seasonal festivities.",
+    image: lodhaWinterHero,
+    layout: 'left',
+    location: 'Lodha Belmondo, Pune',
+    date: 'Winter 2024',
+    guests: '500+ Guests',
+    isRawGallery: true,
+    images: lodhaWinterImages
+  },
+  {
+    id: 7,
+    number: '07',
+    title: "Lodha Belmondo Phoolon ki Holi 2026.",
+    subtitle: "Lodha Belmondo Phoolon ki Holi",
+    tag: 'Fests & Community Events',
+    categories: ['Fests & Community Events'],
+    description: "A vibrant festival of colors featuring organic flowers, traditional music, and an unforgettable community experience.",
+    image: lodhaHoliHero,
+    layout: 'right',
+    location: 'Lodha Belmondo, Pune',
+    date: '2026',
+    guests: '500+ Guests',
+    isRawGallery: true,
+    images: lodhaHoliImages
+  },
+  {
+    id: 8,
+    number: '08',
+    title: "KP Transport.",
+    subtitle: "Office Opening",
+    tag: 'Corporate Occasions',
+    categories: ['Corporate Occasions'],
+    description: "Corporate event management and setup for KP Transport's new office opening.",
+    image: kpOfficeHero,
+    layout: 'left',
+    location: 'Various Venues',
+    date: 'Recent',
+    guests: 'Corporate Attendees',
+    isRawGallery: true,
+    images: kpOfficeImages
+  },
+  {
+    id: 9,
+    number: '09',
+    title: "Lodha Townhall 2025.",
+    subtitle: "Lodha Townhall 2025",
+    tag: 'Corporate Occasions',
+    categories: ['Corporate Occasions'],
+    description: "Grand townhall event orchestration for Lodha Group, featuring comprehensive technical production.",
+    image: lodhaTownhallHero,
+    layout: 'right',
+    location: 'Various Venues',
+    date: '2025',
+    guests: 'Corporate Attendees',
+    isRawGallery: true,
+    images: lodhaTownhallImages
+  }
 ];
 
 export default function SocialEventsPortfolio() {

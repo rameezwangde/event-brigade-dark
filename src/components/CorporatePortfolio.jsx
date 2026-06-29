@@ -20,6 +20,8 @@ const kpImages = Object.values(kpGlob).map((mod) => mod.default || mod);
 const goyalGlob = import.meta.glob('../assets/goyal-properties/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const goyalImages = Object.values(goyalGlob).map((mod) => mod.default || mod);
 
+
+
 // Category filter tabs
 const categories = ['All Projects', 'Conferences'];
 if (corporateImages.length > 0) {
@@ -94,6 +96,7 @@ if (goyalImages.length > 0) {
     images: goyalImages
   });
 }
+
 
 if (corporateImages.length > 0) {
   corporateProjects.push({

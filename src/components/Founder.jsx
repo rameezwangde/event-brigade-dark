@@ -38,8 +38,8 @@ const teamMembers = [
     bio: "Blending technology with creativity, Aditi drives the technical vision at Event Brigade. From digital innovation to operational efficiency, she ensures every event is supported by seamless systems and smart solutions.",
     image: aditiMaindalkar,
     objectPosition: "object-[center_68%]",
-    scale: 1.7,
-    transformOrigin: "center 68%"
+    scale: 2.2,
+    transformOrigin: "center 65%"
   }
 ];
 

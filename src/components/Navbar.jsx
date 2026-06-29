@@ -146,7 +146,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   aria-current={isLinkActive ? 'page' : undefined}
-                  className={`relative flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold transition duration-300 ${
+                  className={`whitespace-nowrap relative flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold transition duration-300 ${
                     isLinkActive
                       ? isFixedChampagneLink
                         ? 'text-[#111111]'
@@ -355,7 +355,7 @@ export default function Navbar() {
                       setExpandedMobileItem(null);
                     }}
                     aria-current={isLinkActive ? 'page' : undefined}
-                    className={`block rounded-2xl px-4 py-3 text-sm font-semibold transition ${
+                    className={`whitespace-nowrap block rounded-2xl px-4 py-3 text-sm font-semibold transition ${
                       isLinkActive
                         ? isLightPage
                           ? isSocialPage

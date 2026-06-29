@@ -110,15 +110,11 @@ export default function Footer() {
                 className="grid grid-cols-[20px_1fr] gap-4 transition hover:text-gold"
               >
                 <MapPin size={18} />
-                <span>Bavdhan, Pune<br />Maharashtra, India</span>
+                <span>{contact.address}</span>
               </a>
               <a href={`tel:${contact.phones[0].replace(/\s/g, '')}`} className="grid grid-cols-[20px_1fr] gap-4 transition hover:text-gold">
                 <Phone size={18} />
                 <span>{contact.phones[0]}</span>
-              </a>
-              <a href={`tel:${contact.phones[1].replace(/\s/g, '')}`} className="grid grid-cols-[20px_1fr] gap-4 transition hover:text-gold">
-                <Phone size={18} />
-                <span>{contact.phones[1]}</span>
               </a>
               <a href={`mailto:${contact.email}`} className="grid grid-cols-[20px_1fr] gap-4 transition hover:text-gold">
                 <Mail size={18} />

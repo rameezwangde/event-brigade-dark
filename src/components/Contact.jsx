@@ -56,7 +56,7 @@ export default function Contact() {
           title="Let us design your next extraordinary gathering."
           text="Share your brief and the Event Brigade team will help you shape the event with clarity, creativity and confident execution."
         />
-        <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-2">
+        <div className="mx-auto max-w-5xl mt-12 grid items-stretch gap-8 lg:grid-cols-2">
           <Reveal className="flex h-full flex-col rounded-[2rem] border border-champagne/20 bg-charcoal/70 p-8 shadow-soft md:p-10">
             <div>
               <h3 className="font-serif text-4xl text-ivory">Contact us</h3>

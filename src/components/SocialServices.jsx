@@ -36,11 +36,6 @@ const socialBookletPages = Array.from({ length: 38 }, (_, i) => {
   };
 });
 
-// Dynamically glob all files in the vaani folder
-const vaaniGlob = import.meta.glob('../assets/vaani/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
-const vaaniImages = Object.values(vaaniGlob).map((mod) => mod.default || mod);
-const vaaniHero = vaaniGlob['../assets/vaani/DSC00018.JPG']?.default || vaaniGlob['../assets/vaani/DSC00018.JPG'] || socialBirthday;
-
 // Luxury Social Projects List
 const socialProjects = [
   {
@@ -103,22 +98,7 @@ const socialProjects = [
     guests: '800 Guests',
     pageRange: [25, 37] // Pages 26 to 38
   },
-  {
-    id: 5,
-    number: '05',
-    title: 'A Vibrant Birthday Wonderland.',
-    subtitle: "Vaani's Birthday Celebration",
-    tag: 'Birthdays',
-    categories: ['Birthdays'],
-    description: 'A magical celebration designed and managed for Vaani, filled with premium floral drapes, custom themes, and interactive game counters.',
-    image: vaaniHero,
-    layout: 'right',
-    location: 'JW Marriott, Pune',
-    date: 'April 2026',
-    guests: '150 Guests',
-    isRawGallery: true,
-    images: vaaniImages
-  }
+
 ];
 
 

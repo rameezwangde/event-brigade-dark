@@ -5,15 +5,7 @@ import { X, ChevronLeft, ChevronRight, Calendar, MapPin, Users, Heart, ArrowRigh
 // Import local premium assets
 import socialBirthday from '../assets/social-curated/social-birthday-decor.jpg';
 
-// Dynamically glob all files in the vaani folder
-const vaaniGlob = import.meta.glob('../assets/vaani/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
-const vaaniImages = Object.values(vaaniGlob).map((mod) => mod.default || mod);
-const vaaniHero = vaaniGlob['../assets/vaani/DSC00018.JPG']?.default || vaaniGlob['../assets/vaani/DSC00018.JPG'] || socialBirthday;
 
-// Dynamically glob all files in the babyshower folder
-const babyshowerGlob = import.meta.glob('../assets/babyshower/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
-const babyshowerImages = Object.values(babyshowerGlob).map((mod) => mod.default || mod);
-const babyshowerHero = babyshowerGlob['../assets/babyshower/MARI9827.JPG']?.default || babyshowerGlob['../assets/babyshower/MARI9827.JPG'] || babyshowerGlob['../assets/babyshower/IMG_5287.jpg']?.default || babyshowerGlob['../assets/babyshower/IMG_5287.jpg'] || socialBirthday;
 
 // Category filter tabs
 const categories = [
@@ -24,38 +16,7 @@ const categories = [
 
 // Luxury Social Projects List (Vaani's Birthday & Shubhika & Anuj's Babyshower)
 const socialProjects = [
-  {
-    id: 5,
-    number: '01',
-    title: 'A Vibrant Birthday Wonderland.',
-    subtitle: "Vaani's Birthday Celebration",
-    tag: 'Birthdays',
-    categories: ['Birthdays'],
-    description: 'A magical celebration designed and managed for Vaani, filled with premium floral drapes, custom themes, and interactive game counters.',
-    image: vaaniHero,
-    layout: 'right', // Content Left, Image Right
-    location: 'JW Marriott, Pune',
-    date: 'April 2026',
-    guests: '150 Guests',
-    isRawGallery: true,
-    images: vaaniImages
-  },
-  {
-    id: 6,
-    number: '02',
-    title: "Shubhika & Anuj's Pastel Babyshower.",
-    subtitle: "Shubhika & Anuj's Babyshower",
-    tag: 'Baby Showers',
-    categories: ['Baby Showers'],
-    description: "A gorgeous pastel-themed baby shower featuring custom teddy backdrops, floral decorations, and interactive guest elements.",
-    image: babyshowerHero,
-    layout: 'left', // Image Left, Content Right
-    location: 'Pune',
-    date: 'June 2026',
-    guests: '100 Guests',
-    isRawGallery: true,
-    images: babyshowerImages
-  }
+
 ];
 
 export default function SocialEventsPortfolio() {

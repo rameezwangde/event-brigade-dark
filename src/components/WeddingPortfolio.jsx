@@ -41,7 +41,7 @@ if (engagementImages.length > 0) {
   weddingProjects.push({
     id: 2,
     number: weddingProjects.length === 0 ? '01' : '02',
-    title: "Shikher & Ishika's Royal Engagement.",
+    title: "Shikher & Ishika's Royal Engagement",
     subtitle: "Shikher & Ishika's Engagement",
     tag: 'Engagements',
     categories: ['Engagements'],

@@ -23,7 +23,7 @@ const weddingProjects = [];
 weddingProjects.push({
   id: 1,
   number: '01',
-  title: "Keyshav & Sanika's Wedding Decor.",
+  title: "Keyshav & Sanika's Wedding",
   subtitle: "Keyshav & Sanika's Wedding",
   tag: 'Weddings',
   categories: ['Weddings'],

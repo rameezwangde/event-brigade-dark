@@ -170,7 +170,7 @@ const strengthIcons = [ShieldCheck, BadgeCheck, ClipboardCheck, Sparkles];
 const corporateClientLogos = [
   { name: 'Lodha Group', logo: lodhaLogo },
   { name: 'CREDAI', logo: credaiLogo },
-  { name: 'Ace Golfing', logo: 'https://scontent-bom2-4.cdninstagram.com/v/t51.2885-19/205139774_996831397721491_6016236965024897947_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby45MjUuYzIifQ&_nc_ht=scontent-bom2-4.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gHfG1tPoT5j4oP8lbGziyXGu_ahcqjRoaxbpF8VnJSOvlCQWZMTe21GQk0j8IVmNqk&_nc_ohc=JNb9BN1a-UAQ7kNvwG0B0VU&_nc_gid=Ui6p9anJAFmR83406a5uXA&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AQBIYoJdg_GMR7ETiN-0dCrM2pbakrYCLTmt9L6ZEZQQ8A&oe=6A495AAE&_nc_sid=7a9f4b' },
+  { name: 'Ace Golfing', logo: 'https://ui-avatars.com/api/?name=Ace+Golfing&background=151515&color=D4AF37&size=128&font-size=0.33' },
   { name: 'Nestle', logo: 'https://www.google.com/s2/favicons?domain=nestle.com&sz=128' },
   { name: 'Sandvik', logo: 'https://thfvnext.bing.com/th/id/OIP.PEf0GGjM8aokpoDcKkQhSgHaHa?o=7&cb=thfvnextfalcon3rm=3&rs=1&pid=ImgDetMain&o=7&rm=3' },
   { name: 'EO Pune', logo: 'https://www.google.com/s2/favicons?domain=eopune.org&sz=128' },

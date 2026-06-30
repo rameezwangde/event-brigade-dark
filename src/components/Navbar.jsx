@@ -113,14 +113,14 @@ export default function Navbar() {
         <a
           href="/"
           onClick={(e) => handleNavClick(e, '/')}
-          className={`block ${
-            isLightPage
-              ? 'h-[105px] w-[126px] md:h-[126px] md:w-[147px]'
-              : 'h-20 w-24 md:h-24 md:w-28'
-          }`}
+          className="block h-[105px] w-[126px] md:h-[126px] md:w-[147px]"
           aria-label="Event Brigade Home"
         >
-          <img src={currentLogo} alt="Event Brigade logo" className="h-full w-full object-contain" />
+          <img 
+            src={currentLogo} 
+            alt="Event Brigade logo" 
+            className={`h-full w-full object-contain ${isLightPage ? 'scale-[1.35]' : 'scale-100'}`} 
+          />
         </a>
 
         <div

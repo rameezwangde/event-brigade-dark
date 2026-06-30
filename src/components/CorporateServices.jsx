@@ -43,6 +43,11 @@ import launchWalk from '../assets/corporate-extracted/corporate-p14-xref1054.jpg
 import familyTheme from '../assets/corporate-extracted/corporate-p15-xref1073.jpg';
 import groupPhoto from '../assets/corporate-extracted/corporate-p13-xref1020.jpg';
 import clientMeet from '../assets/corporate-extracted/corporate-p12-xref973.jpg';
+import lodhaLogo from '../assets/LODHA.NS_BIG.png';
+import cosmofirstLogo from '../assets/cosmofirst.png';
+import credaiLogo from '../assets/credai.png';
+import gabrielLogo from '../assets/gabriel.png';
+import goyalLogo from '../assets/goyalproperties.png';
 
 // Booklet pages for corporate showcase
 const corporatePages = [
@@ -163,14 +168,15 @@ const corporateCaseStudies = [
 const strengthIcons = [ShieldCheck, BadgeCheck, ClipboardCheck, Sparkles];
 
 const corporateClientLogos = [
-  { name: 'Lodha Group', logo: 'https://www.google.com/s2/favicons?domain=lodhagroup.com&sz=128' },
-  { name: 'CREDAI', logo: 'https://www.google.com/s2/favicons?domain=credai.org&sz=128' },
-  { name: 'Ace Golfing', logo: 'https://www.google.com/s2/favicons?domain=acegolfing.com&sz=128' },
+  { name: 'Lodha Group', logo: lodhaLogo },
+  { name: 'CREDAI', logo: credaiLogo },
+  { name: 'Ace Golfing', logo: 'https://scontent-bom2-4.cdninstagram.com/v/t51.2885-19/205139774_996831397721491_6016236965024897947_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby45MjUuYzIifQ&_nc_ht=scontent-bom2-4.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gHfG1tPoT5j4oP8lbGziyXGu_ahcqjRoaxbpF8VnJSOvlCQWZMTe21GQk0j8IVmNqk&_nc_ohc=JNb9BN1a-UAQ7kNvwG0B0VU&_nc_gid=Ui6p9anJAFmR83406a5uXA&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AQBIYoJdg_GMR7ETiN-0dCrM2pbakrYCLTmt9L6ZEZQQ8A&oe=6A495AAE&_nc_sid=7a9f4b' },
   { name: 'Nestle', logo: 'https://www.google.com/s2/favicons?domain=nestle.com&sz=128' },
   { name: 'Sandvik', logo: 'https://thfvnext.bing.com/th/id/OIP.PEf0GGjM8aokpoDcKkQhSgHaHa?o=7&cb=thfvnextfalcon3rm=3&rs=1&pid=ImgDetMain&o=7&rm=3' },
   { name: 'EO Pune', logo: 'https://www.google.com/s2/favicons?domain=eopune.org&sz=128' },
-  { name: 'Goyal Properties', logo: 'https://www.google.com/s2/favicons?domain=goyalproperties.com&sz=128' },
-  { name: 'Gabriel', logo: 'https://www.google.com/s2/favicons?domain=gabrielindia.com&sz=128' }
+  { name: 'Goyal Properties', logo: goyalLogo },
+  { name: 'Gabriel', logo: gabrielLogo },
+  { name: 'Cosmo First', logo: cosmofirstLogo }
 ];
 
 // 8 Premium B2B Corporate Formats

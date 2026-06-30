@@ -101,7 +101,9 @@ export default function Contact() {
               <div className="py-2">
                 <a 
                   href="/EventBrigade_Profile.pdf" 
-                  download 
+                  download="EventBrigade_Company_Profile.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-white transition-colors"
                 >
                   <Download size={16} />

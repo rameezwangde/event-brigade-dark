@@ -98,18 +98,6 @@ export default function Contact() {
                 <input type="tel" name="phone" placeholder="+91" />
               </label>
               
-              <div className="py-2">
-                <a 
-                  href="/EventBrigade_Profile.pdf" 
-                  download="EventBrigade_Company_Profile.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-white transition-colors"
-                >
-                  <Download size={16} />
-                  <span>Download Company Profile (PDF)</span>
-                </a>
-              </div>
 
               <label className="field">
                 <span>Message*</span>

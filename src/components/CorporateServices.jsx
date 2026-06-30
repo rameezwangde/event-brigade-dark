@@ -173,7 +173,7 @@ const corporateClientLogos = [
   { name: 'Ace Golfing', logo: 'https://ui-avatars.com/api/?name=Ace+Golfing&background=151515&color=D4AF37&size=128&font-size=0.33' },
   { name: 'Nestle', logo: 'https://www.google.com/s2/favicons?domain=nestle.com&sz=128' },
   { name: 'Sandvik', logo: 'https://thfvnext.bing.com/th/id/OIP.PEf0GGjM8aokpoDcKkQhSgHaHa?o=7&cb=thfvnextfalcon3rm=3&rs=1&pid=ImgDetMain&o=7&rm=3' },
-  { name: 'EO Pune', logo: 'https://www.google.com/s2/favicons?domain=eopune.org&sz=128' },
+  { name: 'EO Pune', logo: 'https://scontent-bom5-1.cdninstagram.com/v/t51.82787-19/565703059_18488623423075509_6693570779197800589_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-bom5-1.cdninstagram.com&_nc_cat=109&_nc_oc=Q6cZ2gE8h_Hl6twoL-rVW3_n3hr_IUfcqUJ4vfJ5g_yyYfvS04E1668YWn980SnQmqRx0ho&_nc_ohc=Oz7CyQIXxxcQ7kNvwECXuT0&_nc_gid=E--UQuwJXfLa2Dv7W1AhwQ&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AQAAdsWzNHgwSf2tWZeH7yVS_DR19uEqgvomI0P0e4SWSA&oe=6A495AA0&_nc_sid=7a9f4b' },
   { name: 'Goyal Properties', logo: goyalLogo },
   { name: 'Gabriel', logo: gabrielLogo },
   { name: 'Cosmo First', logo: cosmofirstLogo }

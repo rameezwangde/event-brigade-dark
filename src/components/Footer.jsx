@@ -26,7 +26,7 @@ const portfolioLinks = [
 
 const socialLinks = [
   ['Facebook', 'https://www.facebook.com/EventBrigade', Facebook],
-  ['Instagram', 'https://www.instagram.com/eventbrigade/', Instagram],
+  ['Instagram', 'https://www.instagram.com/eventbrigadeofficial?igsh=MTVkNHowNDR5d2o5bg%3D%3D&utm_source=qr', Instagram],
   ['LinkedIn', 'https://in.linkedin.com/company/event-brigade', Linkedin]
 ];
 

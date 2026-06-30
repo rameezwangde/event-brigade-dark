@@ -49,6 +49,7 @@ import credaiLogo from '../assets/credai.png';
 import gabrielLogo from '../assets/gabriel.png';
 import goyalLogo from '../assets/goyalproperties.png';
 import aceGolfingLogo from '../assets/acegolfing.png';
+import eoPuneLogo from '../assets/eopune.jpg';
 
 // Booklet pages for corporate showcase
 const corporatePages = [
@@ -174,7 +175,7 @@ const corporateClientLogos = [
   { name: 'Ace Golfing', logo: aceGolfingLogo },
   { name: 'Nestle', logo: 'https://www.google.com/s2/favicons?domain=nestle.com&sz=128' },
   { name: 'Sandvik', logo: 'https://thfvnext.bing.com/th/id/OIP.PEf0GGjM8aokpoDcKkQhSgHaHa?o=7&cb=thfvnextfalcon3rm=3&rs=1&pid=ImgDetMain&o=7&rm=3' },
-  { name: 'EO Pune', logo: 'https://ui-avatars.com/api/?name=EO+Pune&background=151515&color=D4AF37&size=128&font-size=0.33' },
+  { name: 'EO Pune', logo: eoPuneLogo },
   { name: 'Goyal Properties', logo: goyalLogo },
   { name: 'Gabriel', logo: gabrielLogo },
   { name: 'Cosmo First', logo: cosmofirstLogo }

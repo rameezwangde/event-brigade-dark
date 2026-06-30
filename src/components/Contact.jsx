@@ -66,7 +66,7 @@ export default function Contact() {
               <a className="contact-line" href={mapLink} target="_blank" rel="noreferrer">
                 <MapPin className="text-gold" /> <span>{contact.address}</span>
               </a>
-              <a className="contact-line" href={phoneLink}>
+              <a className="contact-line" href={whatsapp} target="_blank" rel="noreferrer">
                 <Phone className="text-gold" /> <span>{contact.phones.join(', ')}</span>
               </a>
               <a className="contact-line" href={emailLink} target="_blank" rel="noreferrer">

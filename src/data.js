@@ -300,8 +300,8 @@ export const corporatePortfolio = {
     {
       number: '19',
       title: 'Contact',
-      text: 'Contact Event Brigade at info@eventbrigade.in or +91 9028755979.',
-      tags: ['info@eventbrigade.in', '+91 9028755979']
+      text: 'Contact Event Brigade at info@eventbrigade.in or +91 8552831191.',
+      tags: ['info@eventbrigade.in', '+91 8552831191']
     }
   ],
   workflow: [
@@ -507,8 +507,8 @@ export const testimonials = [
 export const contact = {
   address: '202, Swami Shraddha Apartments, Opposite SBI Bank, Bavdhan, Pune - 411021',
   mapUrl: 'https://maps.app.goo.gl/mWkgcbVrVeSiAfR29',
-  phones: ['+91 9028755979', '+91 8552831191'],
-  enquiryPhone: '+91 9028755979',
+  phones: ['+91 8552831191'],
+  enquiryPhone: '+91 8552831191',
   email: 'info@eventbrigade.in',
   founderEmail: 'kunal@eventbrigade.in',
   website: 'www.eventbrigade.in'

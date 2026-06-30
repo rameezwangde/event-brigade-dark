@@ -20,7 +20,15 @@ const kpImages = Object.values(kpGlob).map((mod) => mod.default || mod);
 const goyalGlob = import.meta.glob('../assets/goyal-properties/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const goyalImages = Object.values(goyalGlob).map((mod) => mod.default || mod);
 
+// Scan the Lodha Group directories dynamically
+const lodhaWinterGlob = import.meta.glob('../assets/social-events/lodha-winter-carnival/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const lodhaWinterImages = Object.values(lodhaWinterGlob).map((mod) => mod.default || mod);
 
+const lodhaHoliGlob = import.meta.glob('../assets/social-events/lodha-holi/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const lodhaHoliImages = Object.values(lodhaHoliGlob).map((mod) => mod.default || mod);
+
+const lodhaTownhallGlob = import.meta.glob('../assets/social-events/lodha-townhall/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const lodhaTownhallImages = Object.values(lodhaTownhallGlob).map((mod) => mod.default || mod);
 
 // Category filter tabs
 const categories = ['All Projects', 'Conferences'];
@@ -35,6 +43,9 @@ if (kpImages.length > 0) {
 }
 if (goyalImages.length > 0) {
   categories.push('Goyal Properties');
+}
+if (lodhaWinterImages.length > 0 || lodhaHoliImages.length > 0 || lodhaTownhallImages.length > 0) {
+  categories.push('Lodha Group');
 }
 
 // Luxury Corporate Projects List
@@ -97,6 +108,63 @@ if (goyalImages.length > 0) {
   });
 }
 
+if (lodhaTownhallImages.length > 0) {
+  corporateProjects.push({
+    id: corporateProjects.length + 1,
+    number: String(corporateProjects.length + 1).padStart(2, '0'),
+    title: "Lodha Townhall 2025.",
+    subtitle: "Lodha Townhall 2025",
+    tag: 'Lodha Group',
+    categories: ['Lodha Group', 'Conferences'],
+    description: "Grand townhall event orchestration for Lodha Group, featuring comprehensive technical production.",
+    image: lodhaTownhallImages[0],
+    layout: corporateProjects.length % 2 === 0 ? 'left' : 'right',
+    location: 'Various Venues',
+    date: '2025',
+    guests: 'Corporate Attendees',
+    isRawGallery: true,
+    images: lodhaTownhallImages
+  });
+}
+
+if (lodhaWinterImages.length > 0) {
+  corporateProjects.push({
+    id: corporateProjects.length + 1,
+    number: String(corporateProjects.length + 1).padStart(2, '0'),
+    title: "Lodha Belmondo Winter Carnival 2024.",
+    subtitle: "Lodha Belmondo Winter Carnival",
+    tag: 'Lodha Group',
+    categories: ['Lodha Group'],
+    description: "A lively community carnival bringing residents together with food, music, and seasonal festivities.",
+    image: lodhaWinterImages[0],
+    layout: corporateProjects.length % 2 === 0 ? 'left' : 'right',
+    location: 'Lodha Belmondo, Pune',
+    date: 'Winter 2024',
+    guests: '500+ Guests',
+    isRawGallery: true,
+    images: lodhaWinterImages
+  });
+}
+
+if (lodhaHoliImages.length > 0) {
+  corporateProjects.push({
+    id: corporateProjects.length + 1,
+    number: String(corporateProjects.length + 1).padStart(2, '0'),
+    title: "Lodha Belmondo Phoolon ki Holi 2026.",
+    subtitle: "Lodha Belmondo Phoolon ki Holi",
+    tag: 'Lodha Group',
+    categories: ['Lodha Group'],
+    description: "A vibrant festival of colors featuring organic flowers, traditional music, and an unforgettable community experience.",
+    image: lodhaHoliImages[0],
+    layout: corporateProjects.length % 2 === 0 ? 'left' : 'right',
+    location: 'Lodha Belmondo, Pune',
+    date: '2026',
+    guests: '500+ Guests',
+    isRawGallery: true,
+    images: lodhaHoliImages
+  });
+}
+
 
 if (corporateImages.length > 0) {
   corporateProjects.push({
@@ -128,6 +196,7 @@ export default function CorporatePortfolio() {
       if (catLower === 'bgl-auctions' || catLower === 'auctions') return 'BGL Auctions';
       if (catLower === 'kp-transport' || catLower === 'kp') return 'KP Transport';
       if (catLower === 'goyal-properties' || catLower === 'goyal') return 'Goyal Properties';
+      if (catLower === 'lodha-group' || catLower === 'lodha') return 'Lodha Group';
     }
     return 'All Projects';
   });
@@ -152,6 +221,8 @@ export default function CorporatePortfolio() {
           setSelectedCategory('KP Transport');
         } else if (catLower === 'goyal-properties' || catLower === 'goyal') {
           setSelectedCategory('Goyal Properties');
+        } else if (catLower === 'lodha-group' || catLower === 'lodha') {
+          setSelectedCategory('Lodha Group');
         } else {
           setSelectedCategory('All Projects');
         }

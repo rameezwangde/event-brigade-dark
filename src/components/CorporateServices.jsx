@@ -167,7 +167,7 @@ const corporateClientLogos = [
   { name: 'CREDAI', logo: 'https://www.google.com/s2/favicons?domain=credai.org&sz=128' },
   { name: 'Ace Golfing', logo: 'https://www.google.com/s2/favicons?domain=acegolfing.com&sz=128' },
   { name: 'Nestle', logo: 'https://www.google.com/s2/favicons?domain=nestle.com&sz=128' },
-  { name: 'Sandvik', logo: 'https://www.google.com/s2/favicons?domain=sandvik.com&sz=128' },
+  { name: 'Sandvik', logo: 'https://thfvnext.bing.com/th/id/OIP.PEf0GGjM8aokpoDcKkQhSgHaHa?o=7&cb=thfvnextfalcon3rm=3&rs=1&pid=ImgDetMain&o=7&rm=3' },
   { name: 'EO Pune', logo: 'https://www.google.com/s2/favicons?domain=eopune.org&sz=128' },
   { name: 'Goyal Properties', logo: 'https://www.google.com/s2/favicons?domain=goyalproperties.com&sz=128' },
   { name: 'Gabriel', logo: 'https://www.google.com/s2/favicons?domain=gabrielindia.com&sz=128' }
@@ -641,7 +641,7 @@ export default function CorporateServices() {
               <span className="text-[#D4AF37] italic font-normal">Delivered With Precision.</span>
             </h2>
             <p className="mt-6 text-white/70 text-xs sm:text-sm leading-relaxed">
-              Partner with Kunal Garg and the Event Brigade team to execute your next leadership summit, product unveiler, awards ceremony, or dealer forum.
+              Partner with the Event Brigade team to execute your next leadership summit, product unveiler, awards ceremony, or dealer forum.
             </p>
             <a
               href="/contact"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Download } from 'lucide-react';
 import { contact } from '../data.js';
 import Reveal from './Reveal.jsx';
 import SectionHeader from './SectionHeader.jsx';
@@ -76,7 +76,7 @@ export default function Contact() {
                 <img src={eventBrigadeLogo} alt="Event Brigade logo" className="h-7 w-7 object-contain" /> <span>{contact.website}</span>
               </a>
             </div>
-            <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary mt-7 w-full justify-center">
+            <a href={whatsapp} target="_blank" rel="noreferrer" className="btn-primary mt-auto w-full justify-center">
               <WhatsAppIcon size={18} /> WhatsApp Quick Contact
             </a>
           </Reveal>
@@ -97,6 +97,18 @@ export default function Contact() {
                 <span>Phone</span>
                 <input type="tel" name="phone" placeholder="+91" />
               </label>
+              
+              <div className="py-2">
+                <a 
+                  href="/EventBrigade_Profile.pdf" 
+                  download 
+                  className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-white transition-colors"
+                >
+                  <Download size={16} />
+                  <span>Download Company Profile (PDF)</span>
+                </a>
+              </div>
+
               <label className="field">
                 <span>Message*</span>
                 <textarea name="message" rows="6" placeholder="Tell us about your event..." required />

@@ -9,7 +9,7 @@ const quickLinks = [
   ['Services', '/wedding-services'],
   ['Portfolio', '/wedding-portfolio'],
   ['Contact', '/contact'],
-  ['Privacy', '/contact']
+  ['Privacy', '/privacy']
 ];
 
 const serviceLinks = [
@@ -150,10 +150,7 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            <div className="flex flex-wrap gap-6">
-              <a href="/contact" onClick={(e) => handleNavClick(e, '/contact')} className="transition hover:text-gold">Privacy Policy</a>
-              <a href="/contact" onClick={(e) => handleNavClick(e, '/contact')} className="transition hover:text-gold">Terms Of Service</a>
-            </div>
+
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ import Testimonials from './components/Testimonials.jsx';
 import Founder from './components/Founder.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import Privacy from './components/Privacy.jsx';
 
 
 
@@ -93,6 +94,8 @@ export default function App() {
           <Founder />
         ) : path === '/contact' ? (
           <Contact />
+        ) : path === '/privacy' ? (
+          <Privacy />
         ) : (
           <>
             <Hero />

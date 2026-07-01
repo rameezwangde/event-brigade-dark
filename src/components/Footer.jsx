@@ -126,9 +126,14 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-black/10 pt-5">
           <div className="flex flex-col gap-4 text-xs text-[#555555] md:flex-row md:items-center md:justify-between">
-            <p className="flex items-center gap-3">
-              <Zap size={16} /> © {year} Event Brigade. All rights reserved.
-            </p>
+            <div className="flex flex-col gap-4 md:flex-row md:items-center">
+              <p className="flex items-center gap-3">
+                <Zap size={16} /> © {year} Event Brigade. All rights reserved.
+              </p>
+              <div className="flex items-center gap-2">
+                <img src="https://api.visitorbadge.io/api/visitors?path=eventbrigadedark&countColor=%23d4af37&label=VISITORS" alt="Visitors" className="h-5" />
+              </div>
+            </div>
             <div className="flex flex-wrap gap-6">
               <a href="/contact" onClick={(e) => handleNavClick(e, '/contact')} className="transition hover:text-gold">Privacy Policy</a>
               <a href="/contact" onClick={(e) => handleNavClick(e, '/contact')} className="transition hover:text-gold">Terms Of Service</a>

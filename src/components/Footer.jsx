@@ -45,7 +45,7 @@ function HexButton({ href, label, Icon }) {
 }
 
 export default function Footer() {
-  const [visitorCount, setVisitorCount] = useState(null);
+  const [visitorCount, setVisitorCount] = useState('Loading...');
   const year = new Date().getFullYear();
 
   useEffect(() => {
@@ -54,9 +54,11 @@ export default function Footer() {
       .then(data => {
         if (data && data.count) {
           setVisitorCount(data.count);
+        } else {
+          setVisitorCount('API Error');
         }
       })
-      .catch(err => console.error('Failed to fetch visitor count', err));
+      .catch(err => setVisitorCount('Blocked by Adblocker/CORS'));
   }, []);
 
   const handleNavClick = (e, href) => {
@@ -144,7 +146,7 @@ export default function Footer() {
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-[#d4af37] font-semibold">
-                  {visitorCount !== null ? `Total Visitors: ${visitorCount}` : 'Loading visitors...'}
+                  Total Visitors: {visitorCount}
                 </span>
               </div>
             </div>

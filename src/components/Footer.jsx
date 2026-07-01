@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Zap } from 'lucide-react';
 import { contact } from '../data.js';
 import eventBrigadeLogo from '../../white light logo.PNG';
@@ -45,7 +45,19 @@ function HexButton({ href, label, Icon }) {
 }
 
 export default function Footer() {
+  const [visitorCount, setVisitorCount] = useState(null);
   const year = new Date().getFullYear();
+
+  useEffect(() => {
+    fetch('https://api.counterapi.dev/v1/eventbrigadedark/visitors/up')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.count) {
+          setVisitorCount(data.count);
+        }
+      })
+      .catch(err => console.error('Failed to fetch visitor count', err));
+  }, []);
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
@@ -131,7 +143,9 @@ export default function Footer() {
                 <Zap size={16} /> © {year} Event Brigade. All rights reserved.
               </p>
               <div className="flex items-center gap-2">
-                <img src="https://api.visitorbadge.io/api/visitors?path=eventbrigadedark&countColor=%23d4af37&label=VISITORS" alt="Visitors" className="h-5" />
+                <span className="text-[#d4af37] font-semibold">
+                  {visitorCount !== null ? `Total Visitors: ${visitorCount}` : 'Loading visitors...'}
+                </span>
               </div>
             </div>
             <div className="flex flex-wrap gap-6">

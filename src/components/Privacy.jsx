@@ -13,7 +13,7 @@ export default function Privacy() {
           text="Your privacy is important to us. This policy outlines our practices."
         />
         
-        <Reveal className="mt-12 space-y-8 text-smoke/90 leading-relaxed">
+        <Reveal className="mt-12 space-y-8 text-smoke/90 leading-relaxed text-justify">
           <div>
             <h3 className="text-xl font-serif text-gold mb-3">1. Information We Collect</h3>
             <p>

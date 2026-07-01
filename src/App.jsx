@@ -36,7 +36,9 @@ export default function App() {
           }
         }, 150);
       } else {
-        window.scrollTo(0, 0);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 50);
       }
     };
 

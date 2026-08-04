@@ -30,6 +30,9 @@ const lodhaHoliImages = Object.values(lodhaHoliGlob).map((mod) => mod.default ||
 const lodhaTownhallGlob = import.meta.glob('../assets/social-events/lodha-townhall/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const lodhaTownhallImages = Object.values(lodhaTownhallGlob).map((mod) => mod.default || mod);
 
+const cosmoCarsGlob = import.meta.glob(  '../assets/social-events/cosmo-cars/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const cosmoCarsImages = Object.values(cosmoCarsGlob).map((mod) => mod.default || mod);
+
 // Category filter tabs
 const categories = ['All Projects', 'Conferences'];
 if (corporateImages.length > 0) {
@@ -165,6 +168,25 @@ if (lodhaHoliImages.length > 0) {
   });
 }
 
+if (cosmoCarsImages.length > 0) {
+  corporateProjects.push({
+    id: corporateProjects.length + 1,
+    number: String(corporateProjects.length + 1).padStart(2, '0'),
+    title: "Cosmo Cars",
+    subtitle: "Cosmo Cars",
+    tag: "Cosmo Cars",
+    categories: ["Corporate Uploads"],
+    description:
+      "Corporate event production and guest experience managed by Event Brigade for Cosmo Cars.",
+    image: cosmoCarsImages[0],
+    layout: corporateProjects.length % 2 === 0 ? "left" : "right",
+    location: "Pune",
+    date: "2026",
+    guests: "Corporate Attendees",
+    isRawGallery: true,
+    images: cosmoCarsImages
+  });
+}
 
 if (corporateImages.length > 0) {
   corporateProjects.push({

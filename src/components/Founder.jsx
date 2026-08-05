@@ -7,6 +7,7 @@ import sandipPawar from '../../Sandip Pawar.jpeg';
 import shraddhaShinde from '../../Shraddha Shinde.jpeg';
 import yashDhawane from '../../Yash Dhawane.png';
 import aditiMaindalkar from '../../Aditi Maindalkar.jpeg';
+import sohampawar from '../../Soham Pawar.jpeg';
 
 const teamMembers = [
   {
@@ -38,9 +39,17 @@ const teamMembers = [
     bio: "Blending technology with creativity, Aditi drives the technical vision at Event Brigade. From digital innovation to operational efficiency, she ensures every event is supported by seamless systems and smart solutions.",
     image: aditiMaindalkar,
     objectPosition: "object-[center_68%]",
-    scale: 2.2,
+    scale: 2.5,
     transformOrigin: "center 65%"
-  }
+  },
+  {
+  name: "Soham Pawar",
+  role: "Intern",
+  image: sohampawar,
+  objectPosition: "object-center",
+  scale: 1.3,
+  transformOrigin: "center"
+}
 ];
 
 export default function Founder() {
@@ -133,11 +142,13 @@ export default function Founder() {
               </div>
               
               {/* Bio Content */}
-              <div className="p-6 flex-grow bg-charcoal/20">
-                <p className="text-sm text-smoke leading-relaxed text-justify">
-                  {member.bio}
-                </p>
-              </div>
+              {member.bio && (
+                <div className="p-6 flex-grow bg-charcoal/20">
+                  <p className="text-sm text-smoke leading-relaxed text-justify">
+                    {member.bio}
+                  </p>
+                </div>
+              )}
             </Reveal>
           ))}
         </div>

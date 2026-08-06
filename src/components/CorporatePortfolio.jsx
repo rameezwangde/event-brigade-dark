@@ -172,9 +172,9 @@ if (cosmoCarsImages.length > 0) {
   corporateProjects.push({
     id: corporateProjects.length + 1,
     number: String(corporateProjects.length + 1).padStart(2, '0'),
-    title: "Cosmo Cars",
-    subtitle: "Cosmo Cars",
-    tag: "Cosmo Cars",
+    title: "Cosmo Car Care Centre- Pune",
+    subtitle: "Inauguration",
+    tag: "Cosmo Car Care Centre Inauguration",
     categories: ["Corporate Uploads"],
     description:
       "Corporate event production and guest experience managed by Event Brigade for Cosmo Cars.",

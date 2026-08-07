@@ -26,6 +26,9 @@ const yogeshGlob = import.meta.glob('../assets/social-events/yogesh-anniversary/
 const yogeshImages = Object.values(yogeshGlob).map((mod) => mod.default || mod);
 const yogeshHero = yogeshImages[0] || socialBirthday;
 
+const lionsClubGlob = import.meta.glob('../assets/social-events/lions-goa/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const lionsClubImages = Object.values(lionsClubGlob).map((mod) => mod.default || mod);
+const lionsClubHero = lionsClubImages[0] || socialBirthday;
 
 
 // Category filter tabs
@@ -33,7 +36,8 @@ const categories = [
   'All Celebrations',
   'Birthdays',
   'Baby Showers',
-  'Anniversaries'
+  'Anniversaries',
+  'Community Events'
 ];
 
 // Luxury Social Projects List
@@ -117,6 +121,22 @@ const socialProjects = [
     guests: '150 Guests',
     isRawGallery: true,
     images: yogeshImages
+  },
+  {
+    id: 6,
+    number: '06',
+    title: "Lions Club Installation Ceremony 2026.",
+    subtitle: "Installation Ceremony",
+    tag: 'Community Events',
+    categories: ['Community Events'],
+    description: "A prestigious installation ceremony celebrating the induction of the new Lions Club leadership, featuring elegant décor, formal proceedings, and memorable moments managed by Event Brigade.",
+    image: lionsClubHero,
+    layout: 'left',
+    location: 'Goa',
+    date: '2026',
+    guests: '200+ Guests',
+    isRawGallery: true,
+    images: lionsClubImages
   }
 ];
 

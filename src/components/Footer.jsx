@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Zap } from 'lucide-react';
 import { contact } from '../data.js';
 import eventBrigadeLogo from '../../white light logo.PNG';
@@ -45,21 +45,8 @@ function HexButton({ href, label, Icon }) {
 }
 
 export default function Footer() {
-  const [visitorCount, setVisitorCount] = useState('Loading...');
-  const year = new Date().getFullYear();
+   const year = new Date().getFullYear();
 
-  useEffect(() => {
-    fetch('https://api.counterapi.dev/v1/eventbrigadedark/visitors/up')
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.count) {
-          setVisitorCount(data.count);
-        } else {
-          setVisitorCount('API Error');
-        }
-      })
-      .catch(err => setVisitorCount('Blocked by Adblocker/CORS'));
-  }, []);
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
@@ -144,13 +131,7 @@ export default function Footer() {
               <p className="flex items-center gap-3">
                 <Zap size={16} /> © {year} Event Brigade. All rights reserved.
               </p>
-              <div className="flex items-center gap-2">
-                <span className="text-[#d4af37] font-semibold">
-                  Total Visitors: {visitorCount}
-                </span>
-              </div>
             </div>
-
           </div>
         </div>
       </div>

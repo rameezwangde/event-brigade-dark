@@ -5,7 +5,6 @@ import Reveal from './Reveal.jsx';
 
 import sandipPawar from '../../Sandip Pawar.jpeg';
 import shraddhaShinde from '../../Shraddha Shinde.jpeg';
-import yashDhawane from '../../Yash Dhawane.png';
 import aditiMaindalkar from '../../Aditi Maindalkar.jpeg';
 import sohampawar from '../../Soham Pawar.jpeg';
 
@@ -25,13 +24,6 @@ const teamMembers = [
     bio: "Driven by creativity and inspired by experiences, Shraddha leads the creative direction at Event Brigade. From themes and concepts to visual storytelling, she crafts celebrations that are distinctive, immersive, and memorable.",
     image: shraddhaShinde,
     objectPosition: "object-top"
-  },
-  {
-    name: "Yash Dhawane",
-    role: "Head of Innovation",
-    bio: "With a focus on innovation and continuous improvement, Yash helps shape experiences that are relevant, engaging, and memorable.",
-    image: yashDhawane,
-    objectPosition: "object-center"
   },
   {
     name: "Aditi Maindalkar",
@@ -112,7 +104,7 @@ export default function Founder() {
         </Reveal>
 
         {/* Team Grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 mt-12">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-12">
           {teamMembers.map((member, index) => (
             <Reveal
               key={member.name}

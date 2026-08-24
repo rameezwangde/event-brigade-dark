@@ -30,6 +30,10 @@ const lionsClubGlob = import.meta.glob('../assets/social-events/lions-goa/*.{jpg
 const lionsClubImages = Object.values(lionsClubGlob).map((mod) => mod.default || mod);
 const lionsClubHero = lionsClubImages[0] || socialBirthday;
 
+const samarBirthdayGlob = import.meta.glob("../assets/social-events/samar-1st-Birthday/*.{jpg,JPG,jpeg,JPEG,png,PNG}", { eager: true });
+const samarBirthdayImages = Object.values(samarBirthdayGlob).map((mod) => mod.default || mod);
+const samarBirthdayHero = samarBirthdayImages[0] || socialBirthday;
+
 
 // Category filter tabs
 const categories = [
@@ -137,6 +141,22 @@ const socialProjects = [
     guests: '200+ Guests',
     isRawGallery: true,
     images: lionsClubImages
+  },
+    {
+    id: 7,
+    number: '07',
+    title: "Samar's 1st Birthday.",
+    subtitle: "Samar's 1st Birthday",
+    tag: 'Birthdays',
+    categories: ['Birthdays'],
+    description: "A joyful first birthday celebration featuring beautiful décor, playful details, and memorable moments.",
+    image: samarBirthdayHero,
+    layout: 'right',
+    location: 'Pune',
+    date: 'Recent',
+    guests: '100 Guests',
+    isRawGallery: true,
+    images: samarBirthdayImages
   }
 ];
 

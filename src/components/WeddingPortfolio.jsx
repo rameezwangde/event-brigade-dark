@@ -12,13 +12,32 @@ const keyshavGlob = import.meta.glob('../assets/Keshav and Sanika/*.{jpg,JPG,jpe
 const keyshavImages = Object.values(keyshavGlob).map((mod) => mod.default || mod);
 const keyshavHero = keyshavImages[0] || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23111'/%3E%3Ctext x='50%25' y='50%25' font-size='20' fill='%23C8A96B' text-anchor='middle' dominant-baseline='middle'%3EPhoto Coming Soon%3C/text%3E%3C/svg%3E";
 
-
+const siddharthAanchalGlob = import.meta.glob('../assets/siddharth-aanchal/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const siddharthAanchalImages = Object.values(siddharthAanchalGlob).map((mod) => mod.default || mod);
+const siddharthAanchalHero = siddharthAanchalImages[0];
 
 // Category filter tabs
 const categories = ['All Celebrations', 'Weddings', 'Engagements'];
 
 // Luxury Wedding Projects List
 const weddingProjects = [];
+
+weddingProjects.push({
+  id: 2,
+  number: '02',
+  title: "Siddharth & Aanchal's Wedding",
+  subtitle: "Siddharth & Aanchal's Wedding",
+  tag: 'Weddings',
+  categories: ['Weddings'],
+  description: "A beautifully curated wedding celebration featuring elegant décor, stunning floral elements, and memorable event experiences.",
+  image: siddharthAanchalHero,
+  layout: 'left',
+  location: 'Pune',
+  date: 'June 2026',
+  guests: '800+ Guests',
+  isRawGallery: true,
+  images: siddharthAanchalImages
+});
 
 weddingProjects.push({
   id: 1,

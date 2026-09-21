@@ -3,21 +3,12 @@ import { Award, Users, ArrowRight } from 'lucide-react';
 import { images, siteCopy } from '../data.js';
 import Reveal from './Reveal.jsx';
 
-import sandipPawar from '../../Sandip Pawar.jpeg';
 import shraddhaShinde from '../../Shraddha Shinde.jpeg';
 import aditiMaindalkar from '../../Aditi Maindalkar.jpeg';
 import sohampawar from '../../Soham Pawar.jpeg';
 
 const teamMembers = [
-  {
-    name: "Sandip Pawar",
-    role: "Head of Operations",
-    bio: "With a keen eye for detail and operational excellence, Sandip leads the execution backbone of Event Brigade. From production and vendor management to on-ground execution, he ensures every event unfolds flawlessly, from planning to final applause.",
-    image: sandipPawar,
-    objectPosition: "object-[center_42%]",
-    scale: 1.65,
-    transformOrigin: "center 42%"
-  },
+
   {
     name: "Shraddha Shinde",
     role: "Creative Head",
@@ -109,8 +100,8 @@ export default function Founder() {
             <Reveal
               key={member.name}
               delay={index * 0.08}
-              className="glass-card group flex flex-col h-full overflow-hidden rounded-[2rem] border border-champagne/20 bg-ivory/[0.045] backdrop-blur-xl transition duration-300 hover:border-gold/50 hover:shadow-glow"
-            >
+              className={`glass-card group flex flex-col h-full overflow-hidden rounded-[2rem] border border-champagne/20 bg-ivory/[0.045] backdrop-blur-xl transition duration-300 hover:border-gold/50 hover:shadow-glow ${index === 2 ? 'lg:col-start-1' : ''}`}
+              >
               {/* Photo Container */}
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#050505]">
                 <img

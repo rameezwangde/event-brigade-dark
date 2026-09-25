@@ -11,6 +11,7 @@ import CorporatePortfolio from './components/CorporatePortfolio.jsx';
 import SocialEventsPortfolio from './components/SocialEventsPortfolio.jsx';
 import PortfolioAccess from './components/PortfolioAccess.jsx';
 import Testimonials from './components/Testimonials.jsx';
+import FAQ from './components/FAQ.jsx';
 import Founder from './components/Founder.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
@@ -89,7 +90,11 @@ export default function App() {
         ) : path === '/social-events-portfolio' ? (
           <SocialEventsPortfolio />
         ) : path === '/testimonials' ? (
-          <Testimonials />
+          <>
+            <Testimonials />
+            <FAQ />
+          </>
+
         ) : path === '/founder' ? (
           <Founder />
         ) : path === '/contact' ? (

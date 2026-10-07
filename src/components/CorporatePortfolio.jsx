@@ -33,6 +33,11 @@ const lodhaTownhallImages = Object.values(lodhaTownhallGlob).map((mod) => mod.de
 const cosmoCarsGlob = import.meta.glob(  '../assets/social-events/cosmo-cars/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
 const cosmoCarsImages = Object.values(cosmoCarsGlob).map((mod) => mod.default || mod);
 
+// Scan the BGL Auction 2026 raw uploads directory dynamically
+const bglauctionGlob = import.meta.glob('../assets/bgl2026/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: true });
+const bglauctionImages = Object.values(bglauctionGlob).map((mod) => mod.default || mod);
+
+
 // Category filter tabs
 const categories = ['All Projects', 'Conferences'];
 if (corporateImages.length > 0) {
@@ -204,6 +209,25 @@ if (corporateImages.length > 0) {
     guests: 'Dynamic',
     isRawGallery: true,
     images: corporateImages
+  });
+}
+
+if (bglauctionImages.length > 0) {
+  corporateProjects.push({
+    id: corporateProjects.length + 1,
+    number: String(corporateProjects.length + 1).padStart(2, '0'),
+    title: "BGL Auction 2026",
+    subtitle: "Auction",
+    tag: 'BGL Auctions',
+    categories: ['BGL Auctions'],
+    description: "Immersive corporate event setup and production management for the prestigious BGL Auctions.",
+    image: bglauctionImages[0],
+    layout: 'left',
+    location: 'Lodha Belmondo',
+    date: 'Oct 2026',
+    guests: '200',
+    isRawGallery: true,
+    images: bglauctionImages
   });
 }
 

@@ -63,7 +63,7 @@ if (auctionsImages.length > 0) {
   corporateProjects.push({
     id: corporateProjects.length + 1,
     number: String(corporateProjects.length + 1).padStart(2, '0'),
-    title: "BGL Auctions",
+    title: "BGL Auction 2023",
     subtitle: "Corporate Event Production",
     tag: 'BGL Auctions',
     categories: ['BGL Auctions'],
